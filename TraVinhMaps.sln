@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraVinhMaps.Domain", "src\TraVinhMaps.Domain\TraVinhMaps.Domain.csproj", "{DDD37C37-C3C0-4A54-9255-D54FB9D8BEAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraVinhMaps.Application", "src\TraVinhMaps.Application\TraVinhMaps.Application.csproj", "{F7C42077-757F-4F7A-A904-910D9E3CE164}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{02FA8374-1B08-42F6-82D6-3AF3538AE668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraVinhMaps.Infrastructure", "src\TraVinhMaps.Infrastructure\TraVinhMaps.Infrastructure.csproj", "{7E9B9B48-6204-41D6-A98D-8FC09721DB04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraVinhMaps.Api", "src\TraVinhMaps.Api\TraVinhMaps.Api.csproj", "{18D70D8F-D1A9-4AA3-890B-A0566C6B67E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDD37C37-C3C0-4A54-9255-D54FB9D8BEAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD37C37-C3C0-4A54-9255-D54FB9D8BEAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD37C37-C3C0-4A54-9255-D54FB9D8BEAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD37C37-C3C0-4A54-9255-D54FB9D8BEAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7C42077-757F-4F7A-A904-910D9E3CE164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C42077-757F-4F7A-A904-910D9E3CE164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C42077-757F-4F7A-A904-910D9E3CE164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C42077-757F-4F7A-A904-910D9E3CE164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9B9B48-6204-41D6-A98D-8FC09721DB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9B9B48-6204-41D6-A98D-8FC09721DB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9B9B48-6204-41D6-A98D-8FC09721DB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9B9B48-6204-41D6-A98D-8FC09721DB04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18D70D8F-D1A9-4AA3-890B-A0566C6B67E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D70D8F-D1A9-4AA3-890B-A0566C6B67E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D70D8F-D1A9-4AA3-890B-A0566C6B67E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D70D8F-D1A9-4AA3-890B-A0566C6B67E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DDD37C37-C3C0-4A54-9255-D54FB9D8BEAD} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F7C42077-757F-4F7A-A904-910D9E3CE164} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{7E9B9B48-6204-41D6-A98D-8FC09721DB04} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{18D70D8F-D1A9-4AA3-890B-A0566C6B67E3} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BC3D6BB-61A5-4558-AF07-D14C24FFB69F}
+	EndGlobalSection
+EndGlobal
