@@ -1,9 +1,10 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Infrastructure.Db.Data;
 
 namespace TraVinhMaps.Infrastructure.Db;
 
@@ -12,10 +13,11 @@ public class DbContext : IDbContext
     private readonly IMongoDatabase _database;
     private readonly IMongoClient _client;
 
-    public DbContext(IConfiguration configuration)
+    public DbContext(IOptions<MongoDbSetting> mongoDbSetting)
     {
-        var connectionString = configuration["MongoDb:ConnectionString"];
-        var databaseName = configuration["MongoDb:DatabaseName"];
+        var settings = mongoDbSetting.Value;
+        var connectionString = settings.ConnectionString;
+        var databaseName = settings.DatabaseName;
 
         _client = new MongoClient(connectionString);
         _database = _client.GetDatabase(databaseName);
@@ -61,4 +63,5 @@ public class DbContext : IDbContext
             await _database.CreateCollectionAsync(collectionName);
         }
     }
+
 }
