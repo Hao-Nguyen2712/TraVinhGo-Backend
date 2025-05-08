@@ -5,10 +5,37 @@ using TraVinhMaps.Application;
 using TraVinhMaps.Infrastructure;
 using TraVinhMaps.Infrastructure.Db.Data;
 
+var root = Directory.GetCurrentDirectory();
+var dotnetEnv = Path.Combine(root, ".env");
+
+if (File.Exists(dotnetEnv))
+{
+    DotNetEnv.Env.Load(dotnetEnv);
+}
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.Configure<MongoDbSetting>(builder.Configuration.GetSection("MongoDb"));
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+      .AddEnvironmentVariables();
+builder.Services.Configure<MongoDbSetting>(options =>
+{
+    builder.Configuration.GetSection("MongoDb").Bind(options);
+
+    var envConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+    var envDatabaseName = Environment.GetEnvironmentVariable("DbName");
+
+    if (!string.IsNullOrEmpty(envConnectionString))
+    {
+        options.ConnectionString = envConnectionString;
+    }
+
+    if (!string.IsNullOrEmpty(envDatabaseName))
+    {
+        options.DatabaseName = envDatabaseName;
+    }
+
+    Console.WriteLine(options.DatabaseName + "/n" + options.ConnectionString);
+});
 // layer di
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();

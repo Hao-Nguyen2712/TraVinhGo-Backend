@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Share\**" />
+    <Content Remove="Share\**" />
+    <EmbeddedResource Remove="Share\**" />
+    <None Remove="Share\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetEnv" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
@@ -18,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Middlewares\" />
-    <Folder Include="Share\" />
   </ItemGroup>
 
 </Project>
