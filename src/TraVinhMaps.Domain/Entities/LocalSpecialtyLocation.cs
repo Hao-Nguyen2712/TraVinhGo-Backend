@@ -20,6 +20,5 @@ public class LocalSpecialtyLocation
     public required string MarkerId { get; set; }
 
     [BsonElement("location")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public required Location Location { get; set; }
 }

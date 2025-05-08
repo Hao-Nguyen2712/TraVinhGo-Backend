@@ -48,6 +48,5 @@ public class SearchHistory : BaseEntity
     ///   <c>true</c> if this instance is valid; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("isValid")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool IsValid { get; set; }
 }

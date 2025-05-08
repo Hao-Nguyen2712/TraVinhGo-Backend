@@ -35,7 +35,6 @@ public class LocalSpeacialties : BaseEntity
     /// The images.
     /// </value>
     [BsonElement("images")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public List<string>? Images { get; set; }
 
     /// <summary>
@@ -45,7 +44,6 @@ public class LocalSpeacialties : BaseEntity
     /// The locations.
     /// </value>
     [BsonElement("locations")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public required List<LocalSpecialtyLocation> Locations { get; set; }
 
     /// <summary>
@@ -65,6 +63,5 @@ public class LocalSpeacialties : BaseEntity
     ///   <c>true</c> if status; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("status")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool Status { get; set; }
 }

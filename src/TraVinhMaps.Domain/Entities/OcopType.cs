@@ -28,7 +28,6 @@ public class OcopType : BaseEntity
     ///   <c>true</c> if [ocop type status]; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("ocopTypeStatus")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool OcopTypeStatus { get; set; }
     /// <summary>
     /// Gets or sets the update at.

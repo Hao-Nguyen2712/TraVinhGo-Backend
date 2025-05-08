@@ -13,6 +13,5 @@ public class HistoryStory
     [BsonElement("content")]
     public string? Content { get; set; }
     [BsonElement("images")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public List<string>? Images { get; set; }
 }

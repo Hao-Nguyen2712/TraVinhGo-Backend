@@ -36,7 +36,6 @@ public class DestinationType : BaseEntity
     ///   <c>true</c> if status; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("status")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool Status { get; set; }
 
     /// <summary>
