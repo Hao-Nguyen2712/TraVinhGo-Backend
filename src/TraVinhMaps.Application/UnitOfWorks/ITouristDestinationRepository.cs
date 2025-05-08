@@ -12,6 +12,6 @@ namespace TraVinhMaps.Application.UnitOfWorks;
 public interface ITouristDestinationRepository : IRepository<TouristDestination>
 {
     Task<IEnumerable<TouristDestination>> GetByTagIdAsync(string tagId, CancellationToken cancellationToken = default);
-    Task<String> AddDestinationImage(string imageUrl, CancellationToken cancellationToken = default);
-    Task<String> DeleteDestinationImage(string imageUrl, CancellationToken cancellationToken = default);
+    Task<String> AddDestinationImage(string id ,string imageUrl, CancellationToken cancellationToken = default);
+    Task<String> DeleteDestinationImage( string id,string imageUrl, CancellationToken cancellationToken = default);
 }
