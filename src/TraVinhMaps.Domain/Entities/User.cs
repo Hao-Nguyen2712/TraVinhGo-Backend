@@ -51,7 +51,6 @@ namespace TraVinhMaps.Domain.Entities
         /// The profile.
         /// </value>
         [BsonElement("profile")]
-        [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
         public Profile? Profile { get; set; }
 
         /// <summary>
@@ -72,7 +71,6 @@ namespace TraVinhMaps.Domain.Entities
         /// </value>
         /// 
         [BsonElement("favorites")]
-        [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
         public List<Favorite>? Favorites { get; set; }
 
         /// <summary>
@@ -82,7 +80,6 @@ namespace TraVinhMaps.Domain.Entities
         ///   <c>true</c> if this instance is forbidden; otherwise, <c>false</c>.
         /// </value>
         [BsonElement("isForbiden")]
-        [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
         public bool IsForbidden { get; set; }
 
         /// <summary>
@@ -92,7 +89,6 @@ namespace TraVinhMaps.Domain.Entities
         ///   <c>true</c> if active; otherwise, <c>false</c>.
         /// </value>
         [BsonElement("status")]
-        [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
         public bool Status { get; set; }
     }
 }

@@ -47,6 +47,5 @@ public class Otp : BaseEntity
     ///   <c>true</c> if this instance is used; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("isUsed")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool IsUsed { get; set; }
 }

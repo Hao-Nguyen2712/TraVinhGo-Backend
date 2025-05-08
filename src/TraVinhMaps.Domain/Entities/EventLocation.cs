@@ -16,7 +16,6 @@ public class EventLocation
     public string? Address { get; set; }
 
     [BsonElement("location")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public Location? location { get; set; }
 
     [BsonElement("markerId")]

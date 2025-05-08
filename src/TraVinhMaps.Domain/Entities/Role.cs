@@ -26,6 +26,5 @@ public class Role : BaseEntity
     ///   <c>true</c> if [role status]; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("roleStatus")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool RoleStatus { get; set; }
 }

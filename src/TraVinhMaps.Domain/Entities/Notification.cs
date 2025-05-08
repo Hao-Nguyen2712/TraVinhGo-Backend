@@ -43,7 +43,6 @@ public class Notification : BaseEntity
     ///   <c>true</c> if this instance is read; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("isRead")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool IsRead { get; set; }
 }
 

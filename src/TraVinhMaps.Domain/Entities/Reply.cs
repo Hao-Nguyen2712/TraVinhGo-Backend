@@ -12,7 +12,6 @@ public class Reply
     [BsonElement("content")]
     public string? Content { get; set; }
     [BsonElement("images")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public List<string>? Images { get; set; }
     [BsonElement("createdAt")]
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
