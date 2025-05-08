@@ -12,7 +12,7 @@ namespace TraVinhMaps.Infrastructure.UnitOfWork;
 public class Repository<T> : IRepository<T> where T : BaseEntity
 {
     private readonly IDbContext _context;
-    private readonly IMongoCollection<T> _collection;
+    protected readonly IMongoCollection<T> _collection;
 
     public Repository(IDbContext context)
     {
