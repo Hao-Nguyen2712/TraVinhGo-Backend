@@ -83,7 +83,6 @@ namespace TraVinhMaps.Domain.Entities
         ///   <c>true</c> if this instance is active; otherwise, <c>false</c>.
         /// </value>
         [BsonElement("isActive")]
-        [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
         public required bool IsActive { get; set; }
     }
 }

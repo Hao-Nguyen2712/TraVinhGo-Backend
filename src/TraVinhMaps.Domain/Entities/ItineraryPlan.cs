@@ -35,7 +35,6 @@ public class ItineraryPlan : BaseEntity
     /// The locations.
     /// </value>
     [BsonElement("locations")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public List<string>? Locations { get; set; }
 
     /// <summary>
@@ -74,7 +73,6 @@ public class ItineraryPlan : BaseEntity
     ///   <c>true</c> if status is active; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("status")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool Status { get; set; }
 
     /// <summary>

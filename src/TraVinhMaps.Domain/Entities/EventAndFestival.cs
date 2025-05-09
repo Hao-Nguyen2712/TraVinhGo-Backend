@@ -64,7 +64,6 @@ public class EventAndFestival : BaseEntity
     /// The images.
     /// </value>
     [BsonElement("images")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public required List<string> Images { get; set; }
 
     /// <summary>
@@ -74,7 +73,6 @@ public class EventAndFestival : BaseEntity
     /// The location.
     /// </value>
     [BsonElement("location")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public required EventLocation Location { get; set; }
 
     /// <summary>
@@ -94,6 +92,5 @@ public class EventAndFestival : BaseEntity
     ///   <c>true</c> if status; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("status")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool Status { get; set; }
 }

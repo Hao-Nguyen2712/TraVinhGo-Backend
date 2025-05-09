@@ -19,7 +19,6 @@ public class Review : BaseEntity
     /// <summary>Gets or sets the images.</summary>
     /// <value>The images.</value>
     [BsonElement("images")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public List<string>? Images { get; set; }
 
     /// <summary>Gets or sets the comment.</summary>
@@ -42,7 +41,6 @@ public class Review : BaseEntity
     /// The reply.
     /// </value>
     [BsonElement("reply")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public List<Reply>? Reply { get; set; }
     /// <summary>
     /// Gets or sets the destination identifier.

@@ -48,7 +48,6 @@ public class TouristDestination : BaseEntity
     /// The location.
     /// </value>
     [BsonElement("location")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public required Location Location { get; set; }
     /// <summary>
     /// Gets or sets the images.
@@ -57,7 +56,6 @@ public class TouristDestination : BaseEntity
     /// The images.
     /// </value>
     [BsonElement("images")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
     public List<string>? Images { get; set; }
 
     /// <summary>
@@ -67,7 +65,6 @@ public class TouristDestination : BaseEntity
     /// The history story.
     /// </value>
     [BsonElement("historyStory")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public HistoryStory? HistoryStory { get; set; }
 
     /// <summary>
@@ -97,7 +94,6 @@ public class TouristDestination : BaseEntity
     /// The opening hours.
     /// </value>
     [BsonElement("openingHours")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public OpeningHours? OpeningHours { get; set; }
     /// <summary>
     /// Gets or sets the capacity.
@@ -114,7 +110,6 @@ public class TouristDestination : BaseEntity
     /// The contact.
     /// </value>
     [BsonElement("contact")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Document)]
     public Contact? Contact { get; set; }
 
     /// <summary>

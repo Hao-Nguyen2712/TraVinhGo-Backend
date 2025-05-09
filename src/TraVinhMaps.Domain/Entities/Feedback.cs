@@ -37,7 +37,6 @@ namespace TraVinhMaps.Domain.Entities
         /// The images.
         /// </value>
         [BsonElement("images")]
-        [BsonRepresentation(MongoDB.Bson.BsonType.Array)]
         public List<string>? Images { get; set; }
     }
 }
