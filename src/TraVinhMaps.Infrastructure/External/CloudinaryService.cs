@@ -11,22 +11,24 @@ using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using TraVinhMaps.Application.External;
+using TraVinhMaps.Application.External.Models;
 
 namespace TraVinhMaps.Infrastructure.External;
 public class CloudinaryService : ICloudinaryService
 {
     private readonly Cloudinary _cloudinary;
 
-    public CloudinaryService(IConfiguration configuration)
+    public CloudinaryService(IOptions<CloudinarySetting> config)
     {
-        var account = new Account
-            (
-            configuration["Cloudinary:CloudName"],
-            configuration["Cloudinary:ApiKey"],
-            configuration["Cloudinary:ApiSecret"]
-            );
-        _cloudinary = new Cloudinary (account);   
+        var acc = new Account
+               (
+               config.Value.CloudName,
+               config.Value.ApiKey,
+               config.Value.ApiSecret
+               );
+        _cloudinary = new Cloudinary(acc);
     }
 
     public async Task<ImageUploadResult> UploadImageAsync(IFormFile file)

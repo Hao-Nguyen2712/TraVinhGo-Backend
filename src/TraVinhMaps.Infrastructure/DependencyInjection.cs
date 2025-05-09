@@ -3,9 +3,12 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using TraVinhMaps.Application.External;
+using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
+using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -20,6 +23,12 @@ public static class DependencyInjection
 
         // Cloudinary
         services.AddScoped<ICloudinaryService, CloudinaryService>();
+
+        //TouristDestination
+        services.AddScoped<ITouristDestinationRepository, TouristDestinationRepository>();
+        services.AddScoped<ITouristDestinationService, TouristDestinationService>();
+        services.AddScoped<ImageManagementDestinationServices>();
+
         return services;
     }
 }

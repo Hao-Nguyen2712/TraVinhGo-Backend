@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using TraVinhMaps.Application;
+using TraVinhMaps.Application.External.Models;
 using TraVinhMaps.Infrastructure;
 using TraVinhMaps.Infrastructure.Db.Data;
 
@@ -44,6 +45,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//config Cloudinary
+builder.Services.Configure<CloudinarySetting>(builder.Configuration.GetSection("CloudinarySettings"));
 
 var app = builder.Build();
 
