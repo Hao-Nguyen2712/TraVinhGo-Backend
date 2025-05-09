@@ -3,6 +3,8 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using TraVinhMaps.Application.External;
+using TraVinhMaps.Application.Features.Auth;
+using TraVinhMaps.Application.Features.Auth.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
@@ -17,9 +19,14 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, Infrastructure.UnitOfWork.UnitOfWork>();
         services.AddSingleton<IDbContext, DbContext>();
         services.AddSingleton(typeof(IRepository<>), typeof(Infrastructure.UnitOfWork.Repository<>));
-
+        services.AddScoped<IAuthServices, AuthService>();
         // Cloudinary
         services.AddScoped<ICloudinaryService, CloudinaryService>();
+
+        // SpeedSmsApi
+        services.AddSingleton<ISpeedSmsService, SpeedSmsService>();
+
+        services.AddHttpClient();
         return services;
     }
 }

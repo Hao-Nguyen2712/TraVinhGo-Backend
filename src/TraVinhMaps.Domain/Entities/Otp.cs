@@ -17,9 +17,9 @@ public class Otp : BaseEntity
     /// <value>
     /// The user identifier.
     /// </value>
-    [BsonElement("userId")]
+    [BsonElement("phoneNumber")]
     [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-    public required string UserId { get; set; }
+    public required string PhoneNumber { get; set; }
 
     /// <summary>
     /// Gets or sets the otp code.
@@ -47,6 +47,5 @@ public class Otp : BaseEntity
     ///   <c>true</c> if this instance is used; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("isUsed")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.Boolean)]
     public required bool IsUsed { get; set; }
 }
