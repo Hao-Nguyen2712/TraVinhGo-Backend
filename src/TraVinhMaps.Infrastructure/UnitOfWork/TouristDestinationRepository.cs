@@ -15,7 +15,7 @@ using TraVinhMaps.Domain.Specs;
 using TraVinhMaps.Infrastructure.Db;
 
 namespace TraVinhMaps.Infrastructure.UnitOfWork;
-public class TouristDestinationRepository : Repository<TouristDestination>, ITouristDestinationRepository
+public class TouristDestinationRepository : Repository<TouristDestination>, ITouristDestinationRepository 
 {
     public TouristDestinationRepository(IDbContext context) : base(context)
     {
