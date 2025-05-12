@@ -25,7 +25,7 @@ public class ImageManagementDestinationServices
         //var imageResult = await this._cloudinaryService.UploadImageAsync(file);
         foreach (IFormFile fileItem in file)
         {
-            if (fileItem.Length == 0)
+            if (fileItem.Length == 0 || file.Count == 0)
             {
                 return null;
             }
@@ -38,4 +38,25 @@ public class ImageManagementDestinationServices
         //return imageResult.SecureUrl.ToString();
         return result;
     }
+
+    public async Task<bool> DeleteImageDestination(string imageUrl)
+    {
+        if (string.IsNullOrEmpty(imageUrl))
+            return false;
+
+        try
+        {
+            var uri = new Uri(imageUrl);
+            var fileName = uri.Segments.Last(); 
+            var publicId = System.IO.Path.GetFileNameWithoutExtension(fileName);
+
+            var result = await _cloudinaryService.DeleteImageAsync(publicId);
+            return result.Result == "ok";
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
 }

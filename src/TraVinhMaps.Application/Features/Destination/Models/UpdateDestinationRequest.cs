@@ -10,16 +10,15 @@ using Microsoft.AspNetCore.Http;
 using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Application.Features.Destination.Models;
-public class TouristDestinationRequest
+public class UpdateDestinationRequest
 {
-    //public required string Id { get; set; }
+    public required string Id { get; set; }
     public required string Name { get; set; }
     public double? AvarageRating { get; set; }
     public string? Description { get; set; }
     public required string Address { get; set; }
     public required Location Location { get; set; }
-    public List<IFormFile> ImagesFile { get; set; } 
-    public HistoryStoryRequest? HistoryStory { get; set; }
+    public HistoryStoryUpdateRequest? HistoryStory { get; set; }
     public required string DestinationTypeId { get; set; }
     public OpeningHours? OpeningHours { get; set; }
     public string? Capacity { get; set; }
