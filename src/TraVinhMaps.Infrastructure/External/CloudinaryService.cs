@@ -58,6 +58,4 @@ public class CloudinaryService : ICloudinaryService
         var result = _cloudinary.DestroyAsync(deleteResult);
         return result;
     }
-
-    
 }
