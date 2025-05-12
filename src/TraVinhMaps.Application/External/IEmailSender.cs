@@ -3,7 +3,7 @@
 
 namespace TraVinhMaps.Application.External;
 
-public interface ISpeedSmsService
+public interface IEmailSender
 {
-    Task SendSMS(string phoneTo, string message);
+    Task SendEmailAsync(string sendFor, string subject, string body, CancellationToken cancellationToken = default);
 }

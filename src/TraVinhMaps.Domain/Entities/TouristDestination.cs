@@ -139,6 +139,6 @@ public class TouristDestination : BaseEntity
     /// </value>
     [BsonElement("favoriteCount")]
     [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
-    public int? TicketCount { get; set; }
+    public int? FavoriteCount { get; set; }
 
 }

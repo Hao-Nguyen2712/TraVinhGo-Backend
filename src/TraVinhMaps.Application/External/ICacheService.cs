@@ -3,7 +3,9 @@
 
 namespace TraVinhMaps.Application.External;
 
-public interface ISpeedSmsService
+public interface ICacheService
 {
-    Task SendSMS(string phoneTo, string message);
+    Task<T?> GetData<T>(string key);
+    Task SetData<T>(string key, T data, TimeSpan? expirationTime = null);
+    Task RemoveData(string key);
 }

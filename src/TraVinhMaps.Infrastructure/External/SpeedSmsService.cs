@@ -2,84 +2,75 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Net.Http.Headers;
-using System.Text;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using TraVinhMaps.Application.Common.Dtos;
+using Microsoft.Extensions.Options;
 using TraVinhMaps.Application.External;
+using TraVinhMaps.Application.External.Models;
 
 namespace TraVinhMaps.Infrastructure.External;
 
 public class SpeedSmsService : ISpeedSmsService
 {
-
-    public const int TYPE_QC = 1;
-    public const int TYPE_CSKH = 2;
-    public const int TYPE_BRANDNAME = 3;
-    public const int TYPE_BRANDNAME_NOTIFY = 4; // Gửi sms sử dụng brandname Notify
-    public const int TYPE_GATEWAY = 5; // Gửi sms sử dụng app android từ số di động cá nhân, download app tại đây: https://speedsms.vn/sms-gateway-service/
-
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<SpeedSmsService> _logger;
-    private const string _baseUrl = "https://api.speedsms.vn/index.php";
-    private string acessToken = "VRM2fkngxgsw6sLiPDda5QvimGjdEDHa";
+    private readonly SpeedSmsSetting _speedSmsSetting;
 
-
-    public SpeedSmsService(IHttpClientFactory httpClientFactory, ILogger<SpeedSmsService> logger)
+    public SpeedSmsService(
+        IHttpClientFactory httpClientFactory,
+        ILogger<SpeedSmsService> logger,
+        IOptions<SpeedSmsSetting> speedSmsSetting)
     {
         _httpClientFactory = httpClientFactory;
         _logger = logger;
-
+        _speedSmsSetting = speedSmsSetting.Value;
     }
 
-    public Task sendMMS(string[] phones, string content, string link, string sender)
+    public async Task SendSMS(string phoneTo, string message)
     {
-        throw new NotImplementedException();
-    }
-
-    public async Task<SpeedSmsModel> sendSms(string[] phones, string content, int type, string sender)
-    {
-        string url = _baseUrl + "/sms/send";
-        if (phones.Length <= 0)
-        {
-            return null;
-        }
-        if (String.IsNullOrEmpty(content))
-        {
-            return null;
-        }
-        if (type == TYPE_BRANDNAME && String.IsNullOrEmpty(sender))
-        {
-            return null;
-        }
-        var payload = new
-        {
-            to = phones,
-            content = content,
-            type = type,
-            sender = sender
-        };
-        var json = JsonConvert.SerializeObject(payload);
+        var formattedPhone = FormatPhoneNumber(phoneTo);
+        var url = $"{_speedSmsSetting.BaseUrl}/sms/send?content={Uri.EscapeDataString(message)}&sender={_speedSmsSetting.DeviceId}&to={formattedPhone}";
         var client = _httpClientFactory.CreateClient();
-
-        var request = new HttpRequestMessage(HttpMethod.Post, url)
-        {
-            Content = new StringContent(json, Encoding.UTF8, "application/json")
-        };
-        var authValue = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{acessToken}:x"));
+        var authValue = EncodeToBase64(_speedSmsSetting.AccessToken);
+        var request = new HttpRequestMessage(HttpMethod.Post, url);
         request.Headers.Authorization = new AuthenticationHeaderValue("Basic", authValue);
-
         var response = await client.SendAsync(request);
         if (response.IsSuccessStatusCode)
         {
             var responseBody = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<SpeedSmsModel>(responseBody);
-            return result;
+            _logger.LogInformation($"SMS sent successfully: {responseBody}");
         }
         else
         {
             _logger.LogError($"Error sending SMS: {response.StatusCode}");
-            return null;
         }
+    }
+
+    private string FormatPhoneNumber(string phoneNumber)
+    {
+        if (string.IsNullOrEmpty(phoneNumber))
+        {
+            throw new ArgumentException("Phone number cannot be null or empty", nameof(phoneNumber));
+        }
+
+        // Check if the phone number starts with '0'
+        if (phoneNumber.StartsWith("0"))
+        {
+            // Replace the leading '0' with '84'
+            return "84" + phoneNumber.Substring(1);
+        }
+
+        // Return the original phone number if it doesn't start with '0'
+        return phoneNumber;
+    }
+
+    private string EncodeToBase64(string plainText)
+    {
+        if (string.IsNullOrEmpty(plainText))
+        {
+            return string.Empty;
+        }
+
+        byte[] textBytes = System.Text.Encoding.UTF8.GetBytes(plainText + ":x");
+        return Convert.ToBase64String(textBytes);
     }
 }
