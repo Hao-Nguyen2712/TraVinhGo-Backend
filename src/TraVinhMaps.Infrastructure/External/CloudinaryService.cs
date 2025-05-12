@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using TraVinhMaps.Application.External;
 using TraVinhMaps.Application.External.Models;
@@ -59,5 +58,4 @@ public class CloudinaryService : ICloudinaryService
         return result;
     }
 
-    
 }

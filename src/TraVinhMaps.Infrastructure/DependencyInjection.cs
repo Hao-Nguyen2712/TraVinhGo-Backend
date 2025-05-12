@@ -9,6 +9,12 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
 using TraVinhMaps.Infrastructure.UnitOfWork;
+using TraVinhMaps.Application.Features.Users;
+using TraVinhMaps.Infrastructure.CustomRepositories;
+using TraVinhMaps.Application.Features.Users.Interface;
+using FluentValidation;
+using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Application.Validators;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -28,6 +34,14 @@ public static class DependencyInjection
         services.AddScoped<ITouristDestinationRepository, TouristDestinationRepository>();
         services.AddScoped<ITouristDestinationService, TouristDestinationService>();
         services.AddScoped<ImageManagementDestinationServices>();
+
+        // User
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<UploadImageUser>();
+
+        // FluentValidation
+        // services.AddScoped<IValidator<User>, UserValidator>();
 
         return services;
     }

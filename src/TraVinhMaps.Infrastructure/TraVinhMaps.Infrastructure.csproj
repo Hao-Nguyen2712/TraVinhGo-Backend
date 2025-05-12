@@ -16,8 +16,4 @@
     <ProjectReference Include="..\TraVinhMaps.Domain\TraVinhMaps.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CustomRepositories\" />
-  </ItemGroup>
-
 </Project>
