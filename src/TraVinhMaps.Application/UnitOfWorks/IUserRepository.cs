@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.UnitOfWorks;
 public interface IUserRepository : IRepository<User>
@@ -15,4 +16,5 @@ public interface IUserRepository : IRepository<User>
     Task<long> CountAsync(Expression<Func<User, bool>> predicate = null, CancellationToken cancellationToken = default);
     Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
+    Task<Pagination<User>> GetUserAsync(UserSpecParams  userSpecParams , CancellationToken cancellationToken = default);
 }

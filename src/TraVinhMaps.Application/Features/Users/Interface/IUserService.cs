@@ -3,6 +3,7 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.Users.Interface;
 public interface IUserService
@@ -35,4 +36,5 @@ public interface IUserService
     Task<long> CountAsync(Expression<Func<User, bool>> predicate = null, CancellationToken cancellationToken = default);
     Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
+    Task<Pagination<User>> GetUsersAsync(UserSpecParams  userSpecParams , CancellationToken cancellationToken = default);
 }

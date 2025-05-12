@@ -27,11 +27,25 @@ public class UsersController : ControllerBase
         // _userValidator = userValidator;
     }
 
-    [HttpGet]
+    [HttpGet("all")]
     public async Task<IActionResult> GetAllUsers()
     {
         var list = await _userService.ListAllAsync();
         return Ok(list);
+    }
+
+    [HttpGet("active")]
+    public async Task<IActionResult> GetActiveUsers()
+    {
+        var user = await _userService.ListAsync(u => u.Status == true);
+        return Ok(user);
+    }
+
+    [HttpGet("inActive")]
+    public async Task<IActionResult> GetInActiveUsers()
+    {
+        var inActiveUser = await _userService.ListAsync(u => u.Status == false);
+        return Ok(inActiveUser);
     }
 
     [HttpGet("{id}", Name = "GetUserById")]
@@ -46,6 +60,34 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
+    [HttpGet("count")]
+    public async Task<IActionResult> GetCountUsers()
+    {
+        var countUser = await _userService.CountAsync();
+        return Ok(countUser);
+    }
+
+    [HttpGet("count-active")]
+    public async Task<IActionResult> GetCountActiveUsers()
+    {
+        var countUser = await _userService.CountAsync(u => u.Status == true);
+        return Ok(countUser);
+    }
+
+    [HttpGet("count-inActive")]
+    public async Task<IActionResult> GetCountInActiveUsers()
+    {
+        var countUser = await _userService.CountAsync(u => u.Status == false);
+        return Ok(countUser);
+    }
+
+    [HttpGet("count/banned")]
+    public async Task<IActionResult> GetBannedUsersCount()
+    {
+        var banUserCount = await _userService.CountAsync(u => u.IsForbidden == true);
+        return Ok(banUserCount);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
@@ -57,7 +99,8 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> UpdateUser([FromForm] UserRequest userRequest, IFormFile? imageFile)
     {
         var existingUser = await _userService.GetByIdAsync(userRequest.Id);
-        if(existingUser == null){
+        if (existingUser == null)
+        {
             return NotFound();
         }
 
@@ -91,4 +134,5 @@ public class UsersController : ControllerBase
         var user = await _userService.RestoreUser(id);
         return Ok(user);
     }
+
 }

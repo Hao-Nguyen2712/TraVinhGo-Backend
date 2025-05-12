@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.Users;
 public class UserService : IUserService
@@ -44,6 +45,11 @@ public class UserService : IUserService
     public async Task<User> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return await _userRepository.GetByIdAsync(id, cancellationToken);
+    }
+
+    public async Task<Pagination<User>> GetUsersAsync(UserSpecParams userSpecParams, CancellationToken cancellationToken = default)
+    {
+        return await _userRepository.GetUserAsync(userSpecParams, cancellationToken);
     }
 
     public async Task<IEnumerable<User>> ListAllAsync(CancellationToken cancellationToken = default)
