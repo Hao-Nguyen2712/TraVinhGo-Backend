@@ -27,8 +27,8 @@ builder.Services.Configure<MongoDbSetting>(options =>
 {
     builder.Configuration.GetSection("MongoDb").Bind(options);
 
-    var envConnectionString = Environment.GetEnvironmentVariable("mongodb://localhost:27017/");
-    var envDatabaseName = Environment.GetEnvironmentVariable("TraVinhMaps");
+    var envConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+    var envDatabaseName = Environment.GetEnvironmentVariable("DbName");
 
     if (!string.IsNullOrEmpty(envConnectionString))
     {

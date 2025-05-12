@@ -70,14 +70,14 @@ public class UsersController : ControllerBase
     [HttpGet("count-active")]
     public async Task<IActionResult> GetCountActiveUsers()
     {
-        var countUser = await _userService.CountAsync(u => u.Status == true);
+        var countUser = await _userService.CountAsync(u => u.Status == true && u.IsForbidden == false);
         return Ok(countUser);
     }
 
     [HttpGet("count-inActive")]
     public async Task<IActionResult> GetCountInActiveUsers()
     {
-        var countUser = await _userService.CountAsync(u => u.Status == false);
+        var countUser = await _userService.CountAsync(u => u.Status == false && u.IsForbidden == true);
         return Ok(countUser);
     }
 

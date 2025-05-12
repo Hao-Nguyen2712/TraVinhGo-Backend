@@ -85,6 +85,11 @@ public class UserRepository : Repository<User>, IUserRepository
         };
     }
 
+    public Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default)
     {
         var filter = Builders<User>.Filter.Eq(u => u.Id, id);
