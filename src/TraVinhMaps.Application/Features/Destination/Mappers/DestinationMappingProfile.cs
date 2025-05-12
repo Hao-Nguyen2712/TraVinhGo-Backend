@@ -16,5 +16,6 @@ public class DestinationMappingProfile : AutoMapper.Profile
     public DestinationMappingProfile()
     {
         CreateMap<TouristDestinationRequest, TouristDestination>().ReverseMap();
+        CreateMap<HistoryStoryRequest, HistoryStory>().ReverseMap();
     }
 }
