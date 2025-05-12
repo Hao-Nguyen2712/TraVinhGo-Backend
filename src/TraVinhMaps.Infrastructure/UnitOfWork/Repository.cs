@@ -66,4 +66,10 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
         await _collection.ReplaceOneAsync(filter, entity, new ReplaceOptions { IsUpsert = false }, cancellationToken);
     }
+
+    public async Task<T> GetAsyns(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
+    {
+
+        return await _collection.Find(predicate).FirstOrDefaultAsync(cancellationToken);
+    }
 }
