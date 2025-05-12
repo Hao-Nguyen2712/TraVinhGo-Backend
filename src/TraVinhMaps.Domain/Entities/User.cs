@@ -26,7 +26,7 @@ public class User : BaseEntity
     /// Gets or sets the password of the user.
     /// </summary>
     [BsonElement("password")]
-    public required string Password { get; set; }
+    public string? Password { get; set; }
 
     /// <summary>
     /// Gets or sets the email of the user.

@@ -2,9 +2,11 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 namespace TraVinhMaps.Application.External.Models;
-public class CloudinarySetting
+
+public class MailSettings
 {
-    public string CloudName { get; set; }
-    public string ApiKey { get; set; }
-    public string ApiSecret { get; set; }
+    public string Username { get; set; }
+    public string Password { get; set; }
+    public string Host { get; set; }
+    public int Port { get; set; }
 }

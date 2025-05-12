@@ -38,4 +38,5 @@ public interface IRepository<T> where T : BaseEntity
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns></returns>
     Task<long> CountAsync(Expression<Func<T, bool>> predicate = null, CancellationToken cancellationToken = default);
+    Task<T> GetAsyns(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default);
 }

@@ -17,18 +17,20 @@ public class Otp : BaseEntity
     /// <value>
     /// The user identifier.
     /// </value>
-    [BsonElement("userId")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-    public required string UserId { get; set; }
+    [BsonElement("actualIdentifier")]
+    public required string ActualIdentifier { get; set; }
 
+    [BsonElement("identifierType")]
+    public required string IdentifierType { get; set; }
     /// <summary>
     /// Gets or sets the otp code.
     /// </summary>
     /// <value>
     /// The otp code.
     /// </value>
-    [BsonElement("otpCode")]
-    public required string OtpCode { get; set; }
+
+    [BsonElement("hashedOtpCode")]
+    public required string HashedOtpCode { get; set; }
 
     /// <summary>
     /// Gets or sets the expired at.
@@ -48,4 +50,19 @@ public class Otp : BaseEntity
     /// </value>
     [BsonElement("isUsed")]
     public required bool IsUsed { get; set; }
+
+    /// <summary>
+    /// Gets or sets the number of failed verification attempts for this OTP.
+    /// Can be used for rate limiting or locking out an OTP after too many failed attempts.
+    /// </summary>
+    [BsonElement("attemptCount")]
+    public int? AttemptCount { get; set; }
+
+    /// <summary>
+    /// Gets or sets the date and time when this OTP was last attempted for verification.
+    /// Useful for more sophisticated attempt tracking.
+    /// </summary>
+    [BsonElement("lastAttemptAt")]
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime? LastAttemptAt { get; set; }
 }

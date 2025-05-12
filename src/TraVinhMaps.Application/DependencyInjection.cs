@@ -3,6 +3,8 @@
 
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
+using TraVinhMaps.Application.Features.Auth;
+using TraVinhMaps.Application.Features.Auth.Interface;
 
 namespace TraVinhMaps.Application;
 
@@ -10,6 +12,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        // usecase Di
+        services.AddScoped<IAuthServices, AuthService>();
+
         return services;
     }
 }

@@ -46,7 +46,7 @@ public class TouristDestinationRepository : Repository<TouristDestination>, ITou
 
         var destination = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
         if (destination == null) return null;
-        if(destination.Images == null)
+        if (destination.Images == null)
         {
             var setImagesUpdate = Builders<TouristDestination>.Update.Set(p => p.Images, new List<String>());
             await _collection.UpdateOneAsync(filter, setImagesUpdate);
@@ -109,7 +109,7 @@ public class TouristDestinationRepository : Repository<TouristDestination>, ITou
                 PageSize = touristDestinationSpecParams.PageSize,
                 PageIndex = touristDestinationSpecParams.PageIndex,
                 Data = await DataFilter(touristDestinationSpecParams, filter, cancellationToken),
-                Count = await _collection.CountDocumentsAsync(Builders<TouristDestination>.Filter.Empty, cancellationToken: cancellationToken) 
+                Count = await _collection.CountDocumentsAsync(Builders<TouristDestination>.Filter.Empty, cancellationToken: cancellationToken)
             };
         }
         return new Pagination<TouristDestination>
