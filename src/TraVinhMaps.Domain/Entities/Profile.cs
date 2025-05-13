@@ -12,10 +12,9 @@ namespace TraVinhMaps.Domain.Entities;
 /// </summary>
 public class Profile
 {
-    [BsonElement("firstName")]
-    public string? FirstName { get; set; }
-    [BsonElement("lastName")]
-    public string? LastName { get; set; }
+    [BsonElement("fullName")]
+    public string? FullName { get; set; }
+
     [BsonElement("phoneNumber")]
     public string? PhoneNumber { get; set; }
     [BsonElement("address")]
