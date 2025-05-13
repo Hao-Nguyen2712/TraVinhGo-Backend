@@ -39,8 +39,7 @@ public class UserRepository : Repository<User>, IUserRepository
         {
             var regex = new BsonRegularExpression(userSpecParams.Search, "i");
             var searchFilter = builder.Or(
-                builder.Regex(u => u.Profile.FirstName, regex),
-                builder.Regex(u => u.Profile.LastName, regex),
+                builder.Regex(u => u.Profile.FullName, regex),
                 builder.Regex(u => u.Username, regex)
             );
             filter &= searchFilter;
@@ -56,10 +55,7 @@ public class UserRepository : Repository<User>, IUserRepository
         switch (userSpecParams.Sort?.ToLower())
         {
             case "firstname_desc":
-                sortDefinition = sortBuilder.Descending(x => x.Profile.FirstName);
-                break;
-            case "lastname_asc":
-                sortDefinition = sortBuilder.Ascending(x => x.Profile.LastName);
+                sortDefinition = sortBuilder.Descending(x => x.Profile.FullName);
                 break;
             case "username_desc":
                 sortDefinition = sortBuilder.Descending(x => x.Username);

@@ -8,6 +8,7 @@ using TraVinhMaps.Application.Features.Users.Mappers;
 using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Api.Controllers;
 
@@ -39,6 +40,13 @@ public class UsersController : ControllerBase
     {
         var user = await _userService.ListAsync(u => u.Status == true);
         return Ok(user);
+    }
+
+    [HttpGet("paging")]
+    public async Task<IActionResult> GetUserPaging([FromQuery] UserSpecParams userSpecParams)
+    {
+        var list = await _userService.GetUsersAsync(userSpecParams);
+        return Ok(list);
     }
 
     [HttpGet("inActive")]
