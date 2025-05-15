@@ -2,11 +2,11 @@ using CloudinaryDotNet;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Users;
 using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Mappers;
 using TraVinhMaps.Application.Features.Users.Models;
-using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 
@@ -63,7 +63,7 @@ public class UsersController : ControllerBase
 
         if (user == null)
         {
-            return NotFound();
+            throw new NotFoundException("User not found!");
         }
         return Ok(user);
     }
@@ -109,7 +109,7 @@ public class UsersController : ControllerBase
         var existingUser = await _userService.GetByIdAsync(userRequest.Id);
         if (existingUser == null)
         {
-            return NotFound();
+            throw new NotFoundException("User not found!");
         }
 
         var updatedUser = UserMapper.Mapper.Map(userRequest, existingUser);
@@ -125,7 +125,7 @@ public class UsersController : ControllerBase
         return Ok(updatedUser);
     }
 
-    [HttpDelete("LockUer/{id}")]
+    [HttpDelete("LockUser/{id}")]
     public async Task<IActionResult> DeleteUser(string id)
     {
         var user = await _userService.DeleteUser(id);
@@ -133,7 +133,7 @@ public class UsersController : ControllerBase
         {
             return Ok(user);
         }
-        return BadRequest("Failed to lock account");
+        throw new BadRequestException("Failed to lock account");
     }
 
     [HttpPut("RestoreUser/{id}")]
