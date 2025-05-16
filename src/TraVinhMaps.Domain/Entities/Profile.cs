@@ -15,8 +15,15 @@ public class Profile
     [BsonElement("fullName")]
     public string? FullName { get; set; }
 
+    [BsonElement("dateOfBirth")]
+    public DateOnly? DateOfBirth { get; set; }
+
     [BsonElement("phoneNumber")]
     public string? PhoneNumber { get; set; }
+
+    [BsonElement("gender")]
+    public string? Gender { get; set; }
+
     [BsonElement("address")]
     public string? Address { get; set; }
     [BsonElement("avatar")]
