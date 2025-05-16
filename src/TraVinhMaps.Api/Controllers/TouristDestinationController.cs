@@ -9,6 +9,9 @@ using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Application.Features.Destination.Mappers;
 using TraVinhMaps.Domain.Specs;
+using TraVinhMaps.Api.Extensions;
+using System.Collections.Generic;
+using TraVinhMaps.Application.Common.Exceptions;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]
@@ -29,7 +32,7 @@ public class TouristDestinationController : ControllerBase
     public async Task<IActionResult> GetAllDestinations()
     {
         var list = await this._touristDestinationService.ListAllAsync();
-        return Ok(list);
+        return this.ApiOk(list);
     }
 
     [HttpGet]
@@ -37,7 +40,7 @@ public class TouristDestinationController : ControllerBase
     public async Task<IActionResult> GetTouristDestinationPaging([FromQuery]TouristDestinationSpecParams touristDestinationSpecParams)
     {
         var list = await this._touristDestinationService.GetTouristDestination(touristDestinationSpecParams);
-        return Ok(list);
+        return this.ApiOk(list);
     }
 
     [HttpGet]
@@ -45,7 +48,7 @@ public class TouristDestinationController : ControllerBase
     public async Task<IActionResult> GetDeletedDestination()
     {
         var list = await this._touristDestinationService.ListAsync(p => p.status == false);
-        return Ok(list);
+        return this.ApiOk(list);
     }
 
     [HttpGet]
@@ -53,7 +56,7 @@ public class TouristDestinationController : ControllerBase
     public async Task<IActionResult> GetActiveDestination()
     {
         var list = await this._touristDestinationService.ListAsync(p => p.status == true);
-        return Ok(list);
+        return this.ApiOk(list);
     }
 
     [HttpGet]
@@ -61,7 +64,7 @@ public class TouristDestinationController : ControllerBase
     public async Task<IActionResult> GetCountDestination()
     {
         var count = await this._touristDestinationService.CountAsync();
-        return Ok(count);
+        return this.ApiOk(count);
     }
 
     [HttpGet]
@@ -77,7 +80,7 @@ public class TouristDestinationController : ControllerBase
         {
             return NotFound();
         }
-        return Ok(destination);
+        return this.ApiOk(destination);
     }
 
     [HttpPost]
@@ -88,16 +91,16 @@ public class TouristDestinationController : ControllerBase
 
         if (touristDestination.ImagesFile == null || touristDestination.ImagesFile.Count == 0)
         {
-            return BadRequest("Tourist attractions must have at least 1 photo");
+            return this.ApiError("Tourist attractions must have at least 1 photo");
         }
         var linkImage = await _imageManagementDestinationServices.AddImageDestination(touristDestination.ImagesFile);
 
-        if (linkImage == null) return BadRequest("No valid image uploaded.");
+        if (linkImage == null) return this.ApiError("No valid image uploaded.");
 
         if (touristDestination.HistoryStory.ImagesFile != null || touristDestination.HistoryStory.ImagesFile.Count > 0)
         {
             linkHistoryImage = await _imageManagementDestinationServices.AddImageDestination(touristDestination.HistoryStory.ImagesFile);
-            if (linkHistoryImage == null) return BadRequest("No valid history image uploaded.");
+            if (linkHistoryImage == null) return this.ApiError("No valid history image uploaded.");
         }
         var touristDestination1 = DestinationMapper.Mapper.Map<TouristDestination>(touristDestination);
         var newDestination = await this._touristDestinationService.AddAsync(touristDestination1);
@@ -113,7 +116,7 @@ public class TouristDestinationController : ControllerBase
                 await this._touristDestinationService.AddDestinationHistoryStoryImage(newDestination.Id, historyItem);
             }
         }
-        return CreatedAtRoute("GetDestinationById", new {id = newDestination.Id }, newDestination);
+        return CreatedAtRoute("GetDestinationById", new {id = newDestination.Id }, this.ApiOk(newDestination));
     }
 
     //[HttpPost]
@@ -133,7 +136,7 @@ public class TouristDestinationController : ControllerBase
         {
             await this._touristDestinationService.AddDestinationImage(addImageRequest.id, item);
         }
-        return Ok(linkImage);
+        return this.ApiOk(linkImage);
     }
     [HttpPost]
     [Route("AddDestinationHistoryStoryImage")]
@@ -144,7 +147,7 @@ public class TouristDestinationController : ControllerBase
         {
             await this._touristDestinationService.AddDestinationHistoryStoryImage(addImageRequest.id, item);
         }
-        return Ok(linkImage);
+        return this.ApiOk(linkImage);
     }
 
     [HttpDelete]
@@ -154,15 +157,15 @@ public class TouristDestinationController : ControllerBase
         var isDeleteUrl = await this._imageManagementDestinationServices.DeleteImageDestination(deleteDestinationImageRequest.imageUrl);
         if(!isDeleteUrl)
         {
-            return BadRequest("No valid images url were removed.");
+            return this.ApiError("No valid images url were removed.");
         }
         var result = await this._touristDestinationService.DeleteDestinationImage(deleteDestinationImageRequest.id, deleteDestinationImageRequest.imageUrl);
 
         if (result == "Image deleted successfully")
         {
-            return Ok(true);
+            return this.ApiOk(true);
         }
-        return BadRequest("No valid images were removed.");
+        return this.ApiError("No valid images were removed.");
     }
 
     [HttpDelete]
@@ -172,15 +175,15 @@ public class TouristDestinationController : ControllerBase
         var isDeleteUrl = await this._imageManagementDestinationServices.DeleteImageDestination(deleteDestinationImageRequest.imageUrl);
         if (!isDeleteUrl)
         {
-            return BadRequest("No valid images url were removed.");
+            return this.ApiError("No valid images url were removed.");
         }
         var result = await this._touristDestinationService.DeleteDestinationHistoryStoryImage(deleteDestinationImageRequest.id, deleteDestinationImageRequest.imageUrl);
 
         if (result == "Image deleted successfully")
         {
-            return Ok(true);
+            return this.ApiOk(true);
         }
-        return BadRequest("No valid images were removed.");
+        return this.ApiError("No valid images were removed.");
     }
 
     [HttpPut]
@@ -189,12 +192,12 @@ public class TouristDestinationController : ControllerBase
     {
         if (updateDestinationRequest == null)
         {
-            return BadRequest("Object can't be null");
+            return this.ApiError("Object can't be null");
         }
         var destination = await _touristDestinationService.GetByIdAsync(updateDestinationRequest.Id);
         if (destination == null)
         {
-            return NotFound();
+            throw new NotFoundException("No Destination was found");
         }
         destination.Name = updateDestinationRequest.Name;
         destination.Description = updateDestinationRequest.Description;
@@ -211,7 +214,7 @@ public class TouristDestinationController : ControllerBase
         //destination.TicketCount = updateDestinationRequest.TicketCount;
         destination.UpdateAt = DateTime.Now;
         await this._touristDestinationService.UpdateAsync(destination);
-        return CreatedAtRoute("GetDestinationById", new { id = updateDestinationRequest.Id }, updateDestinationRequest);
+        return CreatedAtRoute("GetDestinationById", new { id = updateDestinationRequest.Id }, this.ApiOk(updateDestinationRequest));
     }
 
     [HttpPut]
@@ -219,13 +222,13 @@ public class TouristDestinationController : ControllerBase
     public async Task<IActionResult> PlusFavorite(string id)
     {
         if (string.IsNullOrWhiteSpace(id))
-            return BadRequest("id can't be null or empty");
+            return this.ApiError("id can't be null or empty");
 
         var result = await _touristDestinationService.PlusFavorite(id);
 
         if (result)
-            return Ok("Favorite count increased successfully");
-        return NotFound("Destination not found or update failed");
+            return this.ApiOk("Favorite count increased successfully");
+        throw new NotFoundException("Destination not found or update failed");
     }
 
     [HttpDelete]
@@ -234,16 +237,16 @@ public class TouristDestinationController : ControllerBase
     {
         if (id == null)
         {
-            return BadRequest("id can't be null");
+            return this.ApiError("id can't be null");
         }
         var destination = await _touristDestinationService.GetByIdAsync(id);
         if (destination == null)
         {
-            return NotFound();
+            throw new NotFoundException("No Destination was found");
         }
         destination.status = false;
         await this._touristDestinationService.UpdateAsync(destination);
         //return NoContent();
-        return Ok("Destination deleted successfully");
+        return this.ApiOk("Destination deleted successfully");
     }
 }

@@ -25,6 +25,13 @@ public static class DataSeeding
             var database = client.GetDatabase(mongoDbSettings.DatabaseName);
 
             await SeedOcopProducts(database, logger);
+            await SeedTagSample(database, logger);
+            var markers = await seedMarker(database, logger);
+            if (markers.Any())
+            {
+                var markerId = markers.First().Id; // lấy Id đầu tiên làm ví dụ
+                await seedTypeDestination(database, logger, markerId); // truyền Id vào seedTypeDestination
+            }
         }
         catch (Exception ex)
         {
@@ -195,6 +202,139 @@ new OcopProduct
             };
 
         await collection.InsertManyAsync(product);
+    }
+
+    private static async Task SeedTagSample(IMongoDatabase database, ILogger<IHost> logger)
+    {
+        var collection = database.GetCollection<Tags>("Tags");
+        var count = await collection.CountDocumentsAsync(FilterDefinition<Tags>.Empty);
+        if (count > 0)
+        {
+            logger.LogInformation("Tags collection already contains data. Skipping seeding.");
+            return;
+        }
+
+        logger.LogInformation("Seeding Tag collection...");
+
+        var Tags = new List<Tags>()
+        {
+            new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Introduce",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206098/coconut-tree_htkwqe.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+            new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Ocop",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206105/plantingtree_oyhi7m.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+            new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Tip Travel",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206098/lightbulb_mdvz4n.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+            new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Destination",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206098/destination_n8kp0f.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+            new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Local specialty",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206098/food_v6izlc.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+            new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Stay",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206098/hotel_rzhyqr.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+             new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Festivals",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206098/dragon-boat_vwsqix.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+              new Tags
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Utilities",
+                image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747206099/resource-allocation_gpmfgq.png",
+                CreatedAt = DateTime.UtcNow,
+            },
+        };
+        await collection.InsertManyAsync(Tags);
+    }
+
+    private static async Task<List<Marker>> seedMarker(IMongoDatabase database, ILogger<IHost> logger)
+    {
+        var collection = database.GetCollection<Marker>("Marker");
+        var count = await collection.CountDocumentsAsync(FilterDefinition<Marker>.Empty);
+        if (count > 0)
+        {
+            logger.LogInformation("Tags collection already contains data. Skipping seeding.");
+            return await collection.Find(FilterDefinition<Marker>.Empty).ToListAsync();
+        }
+        logger.LogInformation("Seeding Tag collection...");
+
+        var markers = new List<Marker>()
+        {
+            new Marker
+            {
+                Id= ObjectId.GenerateNewId().ToString(),
+                Name = "Buiding Destination",
+                Image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747207304/building_aczwaz.png",
+                Status = true,
+                CreatedAt = DateTime.UtcNow,
+            },
+            new Marker
+            {
+                Id= ObjectId.GenerateNewId().ToString(),
+                Name = "Natural Destination",
+                Image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747207304/park_fa2ttf.png",
+                Status = true,
+                CreatedAt = DateTime.UtcNow,
+            }
+        };
+        await collection.InsertManyAsync(markers);
+        return markers;
+    }
+
+    private static async Task seedTypeDestination(IMongoDatabase database, ILogger<IHost> logger, string markerId)
+    {
+        var collection = database.GetCollection<DestinationType>("DestinationType");
+        var count = await collection.CountDocumentsAsync(FilterDefinition<DestinationType>.Empty);
+        if (count > 0)
+        {
+            logger.LogInformation("Tags collection already contains data. Skipping seeding.");
+            return;
+        }
+        logger.LogInformation("Seeding Tag collection...");
+        var destinationTypeList = new List<DestinationType>()
+        {
+            new DestinationType
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                CreatedAt= DateTime.UtcNow,
+                MarkerId= markerId,
+                Name= "Religious Buildings",
+                Status= true,
+                UpdateAt = DateTime.UtcNow,
+            },
+        };
+        await collection.InsertManyAsync(destinationTypeList);
     }
 
     private static async Task<string> SeedSellingLink(IMongoDatabase database)

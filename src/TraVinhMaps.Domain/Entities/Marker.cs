@@ -36,5 +36,4 @@ public class Marker : BaseEntity
     /// </value>
     [BsonElement("status")]
     public required bool Status { get; set; }
-
 }
