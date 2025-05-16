@@ -19,6 +19,8 @@ using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Application.Validators;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
+using TraVinhMaps.Application.Features.OcopProduct.Interface;
+using TraVinhMaps.Application.Features.OcopProduct;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -51,6 +53,11 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<UploadImageUser>();
+
+        //OcopProduct
+        services.AddScoped<IOcopProductRepository, OcopProductRepository>();
+        services.AddScoped<IOcopProductService, OcopProductService>();
+        services.AddScoped<ImageManagementOcopProductServices>();
 
         // FluentValidation
         // services.AddScoped<IValidator<User>, UserValidator>();
