@@ -17,6 +17,8 @@ using TraVinhMaps.Application.Features.Users.Interface;
 using FluentValidation;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Application.Validators;
+using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
+using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -40,6 +42,10 @@ public static class DependencyInjection
         services.AddScoped<ITouristDestinationRepository, TouristDestinationRepository>();
         services.AddScoped<ITouristDestinationService, TouristDestinationService>();
         services.AddScoped<ImageManagementDestinationServices>();
+        //EventAndFestival
+        services.AddScoped<IEventAndFestivalRepository,EventAndFestivalRepository>();
+        services.AddScoped<IEventAndFestivalService, EventAndFestivalService>();
+        services.AddScoped<ImageManagementEventAndFestivalServices>();
 
         // User
         services.AddScoped<IUserRepository, UserRepository>();

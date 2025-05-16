@@ -92,5 +92,5 @@ public class EventAndFestival : BaseEntity
     ///   <c>true</c> if status; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("status")]
-    public required bool Status { get; set; }
+    public required bool Status { get; set; } = true;
 }
