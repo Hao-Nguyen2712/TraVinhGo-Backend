@@ -86,8 +86,8 @@ public class OcopProductController : ControllerBase
         var imageFile = await _imageManagementOcopProductServices.AddImageOcopProduct(createOcopProductRequest.ProductImageFile);
         if (imageFile == null) { throw new NotFoundException("No valid image uploaded."); }
         var createOcopProduct = OcopProductMapper.Mapper.Map<OcopProduct>(createOcopProductRequest);
-
         var ocopProducts = await _service.AddAsync(createOcopProduct);
+        ocopProducts.Status = true;
         foreach (var item in imageFile)
         {
             await this._service.AddImageOcopProduct(ocopProducts.Id, item);
@@ -114,21 +114,21 @@ public class OcopProductController : ControllerBase
     public async Task<IActionResult> UpdateOcopProduct([FromBody] UpdateOcopProductRequest updateOcopProductRequest)
     {
         var updateOcopProduct = OcopProductMapper.Mapper.Map<OcopProduct>(updateOcopProductRequest);
-        await _service.UpdateOcopProductAsync(updateOcopProduct);
-        return this.ApiOk("Updated Ocop Product Successfully.");
+        await _service.UpdateAsync(updateOcopProduct);
+        return this.ApiOk("Updated ocop product Successfully.");
     }
     [HttpDelete]
     [Route("DeleteOcopProduct/{id}")]
     public async Task<IActionResult> DeleteOcopProduct(string id)
     {
         var ocopProduct = await _service.GetByIdAsync(id);
-        if (ocopProduct == null)
-        {
+        if (ocopProduct == null) { 
             throw new NotFoundException("Ocop product not found.");
-        }
+            }
         await _service.DeleteOcopProductAsync(id);
         return this.ApiOk("Deleted ocop product successfully.");
     }
+
     [HttpPut]
     [Route("RestoreOcopProduct/{id}")]
     public async Task<IActionResult> RestoreOcopProduct(string id)
