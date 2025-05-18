@@ -19,6 +19,8 @@ using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Application.Validators;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
+using TraVinhMaps.Application.Features.Notifications.Interface;
+using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.CommunityTips.Interface;
@@ -67,6 +69,11 @@ public static class DependencyInjection
 
         // FluentValidation
         // services.AddScoped<IValidator<User>, UserValidator>();
+
+        // Notification
+        services.AddScoped<INotificationsRepository, NotificationsRepository>();
+        services.AddScoped<INotificationService, NotificationsService>();
+
         services.AddHttpClient();
 
         return services;
