@@ -21,6 +21,10 @@ using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.Notifications;
+using TraVinhMaps.Application.Features.OcopProduct.Interface;
+using TraVinhMaps.Application.Features.OcopProduct;
+using TraVinhMaps.Application.Features.CommunityTips.Interface;
+using TraVinhMaps.Application.Features.CommunityTips;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -54,6 +58,15 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<UploadImageUser>();
 
+        //OcopProduct
+        services.AddScoped<IOcopProductRepository, OcopProductRepository>();
+        services.AddScoped<IOcopProductService, OcopProductService>();
+        services.AddScoped<ImageManagementOcopProductServices>();
+
+        //CommunityTips
+        services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
+        services.AddScoped<ICommunityTipsService, CommunityTipsService>();
+
         // FluentValidation
         // services.AddScoped<IValidator<User>, UserValidator>();
 
@@ -61,13 +74,7 @@ public static class DependencyInjection
         services.AddScoped<INotificationsRepository, NotificationsRepository>();
         services.AddScoped<INotificationService, NotificationsService>();
 
-
-
-
         services.AddHttpClient();
-
-
-
 
         return services;
     }
