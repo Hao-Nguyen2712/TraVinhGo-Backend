@@ -5,6 +5,7 @@ using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Features.Auth.Interface;
 
@@ -26,15 +27,32 @@ public class AuthController : ControllerBase
     [HttpPost("request-email-authen")]
     public async Task<IActionResult> AuthenWithEmail(string email)
     {
+        if (email == null)
+        {
+            return this.ApiError("Email is required", HttpStatusCode.BadRequest);
+        }
         var result = await _authServices.AuthenWithEmail(email);
-        return this.ApiOk(result, "Email authentication requested successfully");
+        var response = new
+        {
+            token = result
+        };
+        return this.ApiOk(JsonConvert.SerializeObject(response), "Email authentication requested successfully");
     }
 
     [HttpPost("request-phonenumber-authen")]
     public async Task<IActionResult> AuthenWithPhoneNumber(string phoneNumber)
     {
+        if (phoneNumber == null)
+        {
+            return this.ApiError("Phone number is required", HttpStatusCode.BadRequest);
+        }
         var result = await _authServices.AuthenWithPhoneNumber(phoneNumber);
-        return this.ApiOk(result, "Phone number authentication requested successfully");
+        var response = new
+        {
+            token = result
+        };
+        return this.ApiOk(JsonConvert.SerializeObject(response)
+        , "Phone number authentication requested successfully");
     }
 
     [HttpPost("confirm-otp-authen")]
@@ -54,7 +72,7 @@ public class AuthController : ControllerBase
         {
             return this.ApiError("Invalid OTP", HttpStatusCode.Unauthorized);
         }
-        return this.ApiOk(result, "OTP verified successfully");
+        return this.ApiOk(JsonConvert.SerializeObject(result), "OTP verified successfully");
     }
     #endregion
 
@@ -83,5 +101,20 @@ public class AuthController : ControllerBase
         }
         var sessions = await _authServices.GetAllSessionUser(userId);
         return this.ApiOk(sessions, "Active sessions retrieved successfully");
+    }
+
+    [HttpPost("refresh-otp")]
+    public async Task<IActionResult> RefreshOtp(string item)
+    {
+        if (string.IsNullOrEmpty(item))
+        {
+            return this.ApiError("Item need require", HttpStatusCode.BadRequest);
+        }
+        var result = await _authServices.RefreshOtp(item);
+        var response = new
+        {
+            token = result
+        };
+        return this.ApiOk(JsonConvert.SerializeObject(response), "OTP refreshed successfully");
     }
 }

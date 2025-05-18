@@ -1,10 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-
-// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.External;
@@ -50,7 +46,7 @@ public class AuthService : IAuthServices
         var otpEntity = new Otp
         {
             Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-            ActualIdentifier = phoneNumber,
+            Identifier = phoneNumber,
             IdentifierType = "phone-number",
             CreatedAt = DateTime.UtcNow,
             ExpiredAt = DateTime.UtcNow.AddMinutes(5),
@@ -81,7 +77,7 @@ public class AuthService : IAuthServices
         var otpEntity = new Otp
         {
             Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-            ActualIdentifier = email,
+            Identifier = email,
             IdentifierType = "email",
             CreatedAt = DateTime.UtcNow,
             ExpiredAt = DateTime.UtcNow.AddMinutes(5),
@@ -160,7 +156,7 @@ public class AuthService : IAuthServices
                 var newUser = new User
                 {
                     Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-                    PhoneNumber = actualIdentifier,
+                    PhoneNumber = otpEntity.Identifier, // phoneNumber
                     CreatedAt = DateTime.UtcNow,
                     RoleId = role.Id,
                     Status = true,
@@ -182,7 +178,7 @@ public class AuthService : IAuthServices
                 var newUser = new User
                 {
                     Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-                    Email = actualIdentifier,
+                    Email = otpEntity.Identifier, // email
                     CreatedAt = DateTime.UtcNow,
                     RoleId = role.Id,
                     Status = true,
@@ -279,5 +275,54 @@ public class AuthService : IAuthServices
             });
         }
         return result;
+    }
+
+    public async Task<string> RefreshOtp(string item, CancellationToken cancellationToken = default)
+    {
+        // Use regex to determine if the input is an email or phone number
+        bool isEmail = System.Text.RegularExpressions.Regex.IsMatch(item, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        bool isPhoneNumber = System.Text.RegularExpressions.Regex.IsMatch(item, @"^(\+\d{1,3}[- ]?)?\d{10,15}$");
+
+        if (!isEmail && !isPhoneNumber)
+        {
+            throw new BadRequestException("Invalid input format. Must be a valid email or phone number.");
+        }
+
+        // Generate a new OTP
+        var otp = GenarateOtpExtension.GenerateOtp();
+
+        // Create a new OTP entity
+        var otpEntity = new Otp
+        {
+            Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+            Identifier = item,
+            IdentifierType = isEmail ? "email" : "phone-number",
+            CreatedAt = DateTime.UtcNow,
+            ExpiredAt = DateTime.UtcNow.AddMinutes(5),
+            IsUsed = false,
+            AttemptCount = 0,
+            HashedOtpCode = HashingExtension.HashOtp(otp)
+        };
+
+        // Save OTP to database
+        await _otpRepository.AddAsync(otpEntity, cancellationToken);
+
+        // Generate context ID and save to cache
+        var contextId = Guid.NewGuid().ToString();
+        var key = CacheKey + contextId;
+        await _cacheService.SetData(key, otpEntity.Id);
+
+        // Send OTP based on identifier type
+        if (isEmail)
+        {
+            await _emailSender.SendEmailAsync(item, "OTP Verification For TraVinhGo", otp, cancellationToken);
+        }
+        else // phone number
+        {
+            var message = $"Your OTP in TRAVINHGO is {otp}";
+            await _speedSmsService.SendSMS(item, message);
+        }
+
+        return contextId;
     }
 }

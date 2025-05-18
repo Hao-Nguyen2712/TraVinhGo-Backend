@@ -26,4 +26,6 @@ public interface IAuthServices
     // Get the session from the user
     Task<List<SessionUserResponse>> GetAllSessionUser(string userId, CancellationToken cancellationToken = default);
 
+    Task<string> RefreshOtp(string item, CancellationToken cancellationToken = default);
+
 }

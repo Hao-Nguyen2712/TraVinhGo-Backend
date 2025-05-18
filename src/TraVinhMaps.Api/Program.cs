@@ -19,6 +19,12 @@ if (File.Exists(dotnetEnv))
 }
 var builder = WebApplication.CreateBuilder(args);
 
+// config cong ip:5000 danh cho Android emulator
+// phat trien bang http dum cho nhanh
+builder.WebHost
+    .UseKestrel()
+    .UseUrls("http://localhost:5000", "http://192.168.3.132:5000");
+
 // Add services to the container.
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
       .AddEnvironmentVariables();
@@ -42,6 +48,20 @@ builder.Services.Configure<MongoDbSetting>(options =>
 
     Console.WriteLine(options.DatabaseName + "/n" + options.ConnectionString);
 });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
+;
+
 // layer di
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
@@ -191,6 +211,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.UseAuthentication();
 // Add our custom authentication response handler
 app.UseMiddleware<CustomAuthenticationMiddleware>();
