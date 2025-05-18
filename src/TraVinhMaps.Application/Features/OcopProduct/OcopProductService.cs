@@ -34,11 +34,11 @@ public class OcopProductService : IOcopProductService
         return _ocopProductRepository.CountAsync(predicate, cancellationToken);
     }
 
-    //public Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
-    //{
-    //    return _ocopProductRepository.DeleteAsync(entity, cancellationToken);
-    //}
-    public Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default)
+    public Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
+    {
+        return _ocopProductRepository.DeleteAsync(entity, cancellationToken);
+    }
+    public Task DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.DeleteOcopProductAsync(id, cancellationToken);
     }
@@ -79,10 +79,6 @@ public class OcopProductService : IOcopProductService
     public Task UpdateAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.UpdateAsync(entity, cancellationToken);
-    }
-    public Task<bool> UpdateOcopProductAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
-    {
-        return _ocopProductRepository.UpdateOcopProductAsync(entity, cancellationToken);
     }
 
     public Task<String> AddImageOcopProduct(string id, string imageUrl, CancellationToken cancellationToken = default)

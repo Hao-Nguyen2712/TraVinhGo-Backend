@@ -17,7 +17,6 @@ public class CreateOcopProductRequest
     public string? ProductPrice { get; set; }
     public required string OcopTypeId { get; set; }
     public required bool Status { get; set; }
-    public required DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     //public List<SellLocation>? Sellocations { get; set; }
     public required string CompanyId { get; set; }
     public required int OcopPoint { get; set; }

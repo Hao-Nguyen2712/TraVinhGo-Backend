@@ -101,18 +101,12 @@ public class OcopProductRepository : Repository<OcopProduct>, IOcopProductReposi
         var ocopProduct = await _collection.Find(filter).ToListAsync();
         return ocopProduct;
     }
-    public async Task<bool> UpdateOcopProductAsync(OcopProduct ocopProduct, CancellationToken cancellationToken = default)
-    {
-        var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, ocopProduct.Id);
-        var result = await _collection.ReplaceOneAsync(filter, ocopProduct, cancellationToken: cancellationToken);
-        return result.IsAcknowledged && result.ModifiedCount > 0;
-    }
     public async Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default)
     {
         var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, id);
-        var update = Builders<OcopProduct>.Update.Set(u => u.Status, false);
-        var deleteOcopProduct = await _collection.UpdateOneAsync(filter, update);
-        return deleteOcopProduct.IsAcknowledged && deleteOcopProduct.ModifiedCount > 0;
+        var restore = Builders<OcopProduct>.Update.Set(r => r.Status, false);
+        var restoreOcopProduct = await _collection.UpdateOneAsync(filter, restore);
+        return restoreOcopProduct.IsAcknowledged && restoreOcopProduct.ModifiedCount < 0;
     }
     public async Task<bool> RestoreOcopProductAsync(string id, CancellationToken cancellationToken = default)
     {
