@@ -31,9 +31,8 @@ public interface IOcopProductService
     /// <returns></returns>
     Task<IEnumerable<Domain.Entities.OcopProduct>> AddRangeAsync(IEnumerable<Domain.Entities.OcopProduct> entities, CancellationToken cancellationToken = default);
     Task UpdateAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
-    Task<bool> UpdateOcopProductAsync(Domain.Entities.OcopProduct ocopProduct, CancellationToken cancellationToken = default);
-    //Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
-    Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default);
+    Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
+    Task DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreOcopProductAsync(string id, CancellationToken cancellationToken = default);
     /// <summary>
     /// Counts the asynchronous.
