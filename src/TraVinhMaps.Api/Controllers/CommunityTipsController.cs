@@ -24,7 +24,7 @@ public class CommunityTipsController : ControllerBase
     [Route("GetAllTipActive")]
     public async Task<IActionResult> GetAllTipActive()
     {
-        var getAllTipActive = await _service.GetAllTipActiveAsync();
+        var getAllTipActive = await _service.ListAsync(tip => tip.Status == true);
         return this.ApiOk(getAllTipActive);
     }
 
@@ -51,11 +51,11 @@ public class CommunityTipsController : ControllerBase
         return this.ApiOk(countTips);
     }
     [HttpPost]
-    [Route("CreateTip")]
-    public async Task<IActionResult> CreateTip([FromForm] CreateCommunityTipRequest createCommunityTipRequest)
+    [Route("AddTip")]
+    public async Task<IActionResult> AddTip([FromForm] CreateCommunityTipRequest createCommunityTipRequest)
     {
-        var createTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
-        var tip = await _service.AddAsync(createTip);
+        var addTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
+        var tip = await _service.AddAsync(addTip);
         tip.Status = true;
         return CreatedAtRoute("GetByIdTip", new { id = tip.Id }, tip);
     }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
+using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.OcopProduct;
@@ -86,8 +87,13 @@ public class OcopProductService : IOcopProductService
         return _ocopProductRepository.AddImageOcopProduct(id, imageUrl, cancellationToken);
     }
 
-    public Task<IEnumerable<Domain.Entities.OcopProduct>> GetAllOcopProductActiveAsync(CancellationToken cancellationToken = default)
+    public Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default)
     {
-        return _ocopProductRepository.GetAllOcopProductActiveAsync(cancellationToken);
+        return _ocopProductRepository.AddSellLocation(id, sellLocation, cancellationToken);
+    }
+
+    public Task<bool> DeleteSellLocation(string ocopProductId, string sellLocationName, CancellationToken cancellationToken = default)
+    {
+        return _ocopProductRepository.DeleteSellLocation(ocopProductId, sellLocationName, cancellationToken);
     }
 }

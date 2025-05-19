@@ -21,7 +21,6 @@ public interface ICommunityTipsService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns></returns>
     Task<IEnumerable<Domain.Entities.Tips>> ListAsync(Expression<Func<Domain.Entities.Tips, bool>> predicate, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Domain.Entities.Tips>> GetAllTipActiveAsync(CancellationToken cancellationToken = default);
     Task<Domain.Entities.Tips> AddAsync(Domain.Entities.Tips entity, CancellationToken cancellationToken = default);
     /// <summary>
     /// Adds the range asynchronous with conditional
