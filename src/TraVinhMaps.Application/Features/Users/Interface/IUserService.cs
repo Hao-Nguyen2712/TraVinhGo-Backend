@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
+using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 
@@ -37,4 +38,5 @@ public interface IUserService
     Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
     Task<Pagination<User>> GetUsersAsync(UserSpecParams  userSpecParams , CancellationToken cancellationToken = default);
+    Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default);
 }

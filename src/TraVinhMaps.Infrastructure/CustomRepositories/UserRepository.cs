@@ -3,6 +3,7 @@
 
 using MongoDB.Bson;
 using MongoDB.Driver;
+using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
@@ -14,6 +15,31 @@ public class UserRepository : Repository<User>, IUserRepository
 {
     public UserRepository(IDbContext context) : base(context)
     {
+    }
+
+    public async Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default)
+    {
+       if(string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.RoleId) ){
+            throw new ArgumentException("Username, Password, and RoleId are required.");
+        }
+
+        var admin = new User
+        {
+            Id = ObjectId.GenerateNewId().ToString(),
+            Username = null,
+            Password = request.Password,
+            RoleId = request.RoleId,
+            CreatedAt = DateTime.UtcNow,
+            Status = true,
+            IsForbidden = false,
+            Email = request.Email,
+            PhoneNumber = null,
+            Profile = null,
+            Favorites = null,
+            UpdatedAt = null
+        };
+        await AddAsync(admin, cancellationToken);
+        return admin;
     }
 
     public async Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default)

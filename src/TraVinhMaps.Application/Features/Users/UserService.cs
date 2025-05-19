@@ -3,6 +3,7 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.Users.Interface;
+using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
@@ -15,6 +16,11 @@ public class UserService : IUserService
     public UserService(IUserRepository userRepository)
     {
         _userRepository = userRepository;
+    }
+
+    public async Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default)
+    {
+        return await _userRepository.AddAdminAsync(request, cancellationToken);
     }
 
     public async Task<User> AddAsync(User entity, CancellationToken cancellationToken = default)
