@@ -39,11 +39,6 @@ public class CommunityTipsService : ICommunityTipsService
         return _communityTipsRepository.DeleteTipAsync(id, cancellationToken);
     }
 
-    public Task<IEnumerable<Tips>> GetAllTipActiveAsync(CancellationToken cancellationToken = default)
-    {
-        return _communityTipsRepository.GetAllTipActiveAsync(cancellationToken);
-    }
-
     public Task<Tips> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return _communityTipsRepository.GetByIdAsync(id, cancellationToken);

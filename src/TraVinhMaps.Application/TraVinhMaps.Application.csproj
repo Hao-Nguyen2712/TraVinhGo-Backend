@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Exceptions\" />
-    <Folder Include="Features\Users\Models\" />
   </ItemGroup>
 
 </Project>

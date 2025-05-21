@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 
@@ -17,4 +18,5 @@ public interface IUserRepository : IRepository<User>
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
     Task<Pagination<User>> GetUserAsync(UserSpecParams userSpecParams, CancellationToken cancellationToken = default);
     Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
+    Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default);
 }

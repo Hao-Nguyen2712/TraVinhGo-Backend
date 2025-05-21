@@ -11,7 +11,6 @@ using TraVinhMaps.Domain.Entities;
 namespace TraVinhMaps.Application.UnitOfWorks;
 public interface ICommunityTipsRepository : IRepository<Tips>
 {
-    Task<IEnumerable<Tips>> GetAllTipActiveAsync(CancellationToken cancellationToken = default);
     Task<bool> DeleteTipAsync(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreTipAsync(string id, CancellationToken cancellationToken = default);
 }

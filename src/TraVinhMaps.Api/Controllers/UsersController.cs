@@ -103,6 +103,13 @@ public class UsersController : ControllerBase
         return CreatedAtRoute(nameof(GetUserById), new { id = user.Id }, user);
     }
 
+    [HttpPost("admin")]
+    public async Task<IActionResult> AddAdmin([FromBody] AddAdminRequest request)
+    {
+        var createdAdmin = await _userService.AddAdminAsync(request);
+        return CreatedAtRoute(nameof(GetUserById), new { id = createdAdmin.Id }, createdAdmin);
+    }
+
     [HttpPut]
     public async Task<IActionResult> UpdateUser([FromForm] UserRequest userRequest, IFormFile? imageFile)
     {

@@ -130,4 +130,27 @@ public class OcopProductRepository : Repository<OcopProduct>, IOcopProductReposi
         var updateResult = await _collection.UpdateOneAsync(filter, updateImage, cancellationToken: cancellationToken);
         return imageUrl;
     }
+
+    public async Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, id);
+        var ocopProduct = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (ocopProduct == null) return null;
+        if (ocopProduct.Sellocations == null)
+        {
+            var newListSellLocation = Builders<OcopProduct>.Update.Set(im => im.Sellocations, new List<SellLocation>());
+            await _collection.UpdateOneAsync(filter, newListSellLocation);
+        }
+        var updateSellLocaton = Builders<OcopProduct>.Update.Push(p => p.Sellocations, sellLocation);
+        var updateResult = await _collection.UpdateOneAsync(filter, updateSellLocaton, cancellationToken: cancellationToken);
+        return sellLocation;
+    }
+
+    public async Task<bool> DeleteSellLocation(string ocopProductId, string sellLocationName, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<OcopProduct>.Filter.And(Builders<OcopProduct>.Filter.Eq(o => o.Id, ocopProductId), Builders<OcopProduct>.Filter.ElemMatch(p => p.Sellocations, s => s.LocationName == sellLocationName));
+        var update = Builders<OcopProduct>.Update.PullFilter(p => p.Sellocations, s => s.LocationName == sellLocationName);
+        var result = await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
+        return result.IsAcknowledged && result.ModifiedCount > 0;
+    }
 }

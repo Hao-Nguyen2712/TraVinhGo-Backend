@@ -34,7 +34,7 @@ public class OcopProductController : ControllerBase
     [Route("GetAllOcopProductActive")]
     public async Task<IActionResult> GetAllOcopProductActive()
     {
-        var getAllOcopProductActive = await _service.GetAllOcopProductActiveAsync();
+        var getAllOcopProductActive = await _service.ListAsync(ocop => ocop.Status == true);
         return this.ApiOk(getAllOcopProductActive);
     }
 
@@ -46,8 +46,8 @@ public class OcopProductController : ControllerBase
         return this.ApiOk(listOcopProduct);
     }
     [HttpGet]
-    [Route("GetByIdOcopProduct/{id}", Name = "GetByIdOcopProduct")]
-    public async Task<IActionResult> GetByIdOcopProduct(string id)
+    [Route("GetOcopProductById/{id}", Name = "GetOcopProductById")]
+    public async Task<IActionResult> GetOcopProductById(string id)
     {
         var ocopProduct = await _service.GetByIdAsync(id);
         return this.ApiOk(ocopProduct);
@@ -74,8 +74,8 @@ public class OcopProductController : ControllerBase
         return this.ApiOk(countOcopProducts);
     }
     [HttpPost]
-    [Route("CreateOcopProduct")]
-    public async Task<IActionResult> CreateOcopProduct([FromForm] CreateOcopProductRequest createOcopProductRequest)
+    [Route("AddOcopProduct")]
+    public async Task<IActionResult> AddOcopProduct([FromForm] CreateOcopProductRequest createOcopProductRequest)
     {
         if (createOcopProductRequest.ProductImageFile == null || createOcopProductRequest.ProductImageFile.Count == 0)
         {
@@ -90,7 +90,7 @@ public class OcopProductController : ControllerBase
         {
             await this._service.AddImageOcopProduct(ocopProducts.Id, item);
         }
-        return CreatedAtRoute("GetByIdOcopProduct", new { id = ocopProducts.Id }, ocopProducts);
+        return CreatedAtRoute("GetOcopProductById", new { id = ocopProducts.Id }, this.ApiOk(ocopProducts));
     }
     [HttpPost]
     [Route("AddImageOcopProduct")]
@@ -124,7 +124,7 @@ public class OcopProductController : ControllerBase
             throw new NotFoundException("Ocop product not found.");
             }
         await _service.DeleteOcopProductAsync(id);
-        return this.ApiOk("Deleted ocop product successfully.");
+        return this.ApiOk("Ocop product deleted successfully.");
     }
 
     [HttpPut]
@@ -137,7 +137,35 @@ public class OcopProductController : ControllerBase
             throw new NotFoundException("Ocop product not found.");
         }
         await _service.RestoreOcopProductAsync(id);
-        return this.ApiOk("Restore ocop product successfully.");
+        return this.ApiOk("Ocop product restored successfully.");
     }
+    [HttpPost]
+    [Route("AddSellLocation")]
+    public async Task<IActionResult> AddSellLocation(string id, [FromBody] SellLocation sellLocation)
+    {
+        var ocopProduct = await _service.GetByIdAsync(id);
+        if (ocopProduct == null)
+        {
+            throw new NotFoundException("Ocop product not found.");
+        }
+        var addSellLocation = await _service.AddSellLocation(id, sellLocation);
+        return this.ApiOk(addSellLocation);
+    }
+    [HttpDelete]
+    [Route("DeleteSellLocation")]
+    public async Task<IActionResult> DeleteSellLocation(string id, string name)
+    {
+        var ocopProduct = await _service.GetByIdAsync(id);
+        if (ocopProduct == null)
+        {
+            throw new NotFoundException("Ocop product not found.");
+        }
+        if(!ocopProduct.Sellocations.Any(n => n.LocationName == name))
+        {
+            throw new NotFoundException("Sell location not found.");
+        }
 
+        var deleteSellLocation = await _service.DeleteSellLocation(id, name);
+        return this.ApiOk("Sell location deleted successfully.");
+    }
 }
