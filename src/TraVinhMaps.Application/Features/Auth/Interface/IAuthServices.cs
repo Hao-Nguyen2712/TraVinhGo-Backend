@@ -28,4 +28,11 @@ public interface IAuthServices
 
     Task<string> RefreshOtp(string item, CancellationToken cancellationToken = default);
 
+    // Admin authentication with email/phone + password
+    Task<string> AuthenAdminWithCredentials(string identifier, string password, CancellationToken cancellationToken = default);
+    // Admin authentication with OTP
+    Task<AuthResponse> VerifyOtpAdmin(string identifier, string otp, string? device, string? ipAddress, CancellationToken cancellationToken = default);
+    Task<string> ForgetPassword(string identifier);
+    Task<bool> ResetPassword(string identifier, string newPassword);
+    Task<bool> VerifyOtpForResetPassword(string identifier, string otp, CancellationToken cancellationToken = default);
 }

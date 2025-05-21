@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Features.Auth.Interface;
+using TraVinhMaps.Application.Features.Auth.Models;
 
 namespace TraVinhMaps.Api.Controllers;
 
@@ -22,7 +23,7 @@ public class AuthController : ControllerBase
         _authServices = authServices;
     }
 
-    #region Request Authen for User endpoint
+    #region Request Authentication for User endpoint
 
     [HttpPost("request-email-authen")]
     public async Task<IActionResult> AuthenWithEmail(string email)
@@ -55,6 +56,8 @@ public class AuthController : ControllerBase
         , "Phone number authentication requested successfully");
     }
 
+    #endregion
+
     [HttpPost("confirm-otp-authen")]
     public async Task<IActionResult> Confirm(string otp)
     {
@@ -74,7 +77,6 @@ public class AuthController : ControllerBase
         }
         return this.ApiOk(JsonConvert.SerializeObject(result), "OTP verified successfully");
     }
-    #endregion
 
     [HttpPost("logout")]
     [Authorize]
@@ -117,4 +119,92 @@ public class AuthController : ControllerBase
         };
         return this.ApiOk(JsonConvert.SerializeObject(response), "OTP refreshed successfully");
     }
+
+    #region Authentication Admin endpoint feature
+
+    [HttpPost("login-admin")]
+    public async Task<IActionResult> LoginAdmin([FromBody] AuthAdminRequest request)
+    {
+        var result = await _authServices.AuthenAdminWithCredentials(request.Identifier, request.Password);
+        if (string.IsNullOrEmpty(result))
+        {
+            return this.ApiError(result, HttpStatusCode.BadRequest);
+        }
+        return this.ApiOk(result, "Login successfully");
+    }
+
+    [HttpPost("confirm-otp-admin")]
+    public async Task<IActionResult> ConfirmOtpAdmin(string otp)
+    {
+        var id = Request.Headers["id"].ToString();
+        if (string.IsNullOrEmpty(id))
+        {
+            return this.ApiError("ID is required", HttpStatusCode.Unauthorized);
+        }
+        var ip = Request.Headers["X-Forwarded-For"].FirstOrDefault()
+                 ?? Request.HttpContext.Connection.RemoteIpAddress?.ToString();
+
+        string? device = Request.Headers["device"].ToString();
+        var result = await _authServices.VerifyOtpAdmin(id, otp, device, ip);
+        if (result == null)
+        {
+            return this.ApiError("Invalid OTP", HttpStatusCode.Unauthorized);
+        }
+        return this.ApiOk(JsonConvert.SerializeObject(result), "OTP verified successfully");
+    }
+    #endregion
+
+    #region Forget password 
+    // endpoint for handle reset password  
+    [HttpPost("forgot-password")]
+    public async Task<IActionResult> ForgetPassword(string identifier)
+    {
+        if (string.IsNullOrEmpty(identifier))
+        {
+            return this.ApiError("Identifier is required", HttpStatusCode.BadRequest);
+        }
+        var result = await _authServices.ForgetPassword(identifier);
+        if (string.IsNullOrEmpty(result))
+        {
+            return this.ApiError(result, HttpStatusCode.BadRequest);
+        }
+        return this.ApiOk(result, "Request forget password is handle successfully");
+    }
+    // endpoint for handle confirm new password
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest resetPassword)
+    {
+        if (string.IsNullOrEmpty(resetPassword.Identifier) || string.IsNullOrEmpty(resetPassword.NewPassword))
+        {
+            return this.ApiError("Identifier and new password are required", HttpStatusCode.BadRequest);
+        }
+        var result = await _authServices.ResetPassword(resetPassword.Identifier, resetPassword.NewPassword);
+        if (!result)
+        {
+            return this.ApiError("Reset password failed", HttpStatusCode.BadRequest);
+        }
+        return this.ApiOk("Reset password sucessfull");
+    }
+    // endpoint for handle confirm otp forget
+    [HttpPost("confirm-otp-forgot-password")]
+    public async Task<IActionResult> RefreshOtpForgotPassword(string otpCode)
+    {
+        var id = Request.Headers["id"].ToString();
+        if (string.IsNullOrEmpty(id))
+        {
+            return this.ApiError("ID is required", HttpStatusCode.BadRequest);
+        }
+        if (string.IsNullOrEmpty(otpCode))
+        {
+            return this.ApiError("otp is required", HttpStatusCode.BadRequest);
+        }
+        var result = await _authServices.VerifyOtpForResetPassword(id, otpCode);
+        var response = new
+        {
+            token = result
+        };
+        return this.ApiOk(JsonConvert.SerializeObject(response), "OTP refreshed successfully");
+    }
+    #endregion
 }
+

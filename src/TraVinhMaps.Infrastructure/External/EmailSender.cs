@@ -90,7 +90,7 @@ public class EmailSender : IEmailSender
                     text-align: center;
                     font-size: 12px;
                     color: #777;
-                    margin-top: 20px;
+                    margin-top: 16px;
                 }}
             </style>
         </head>
