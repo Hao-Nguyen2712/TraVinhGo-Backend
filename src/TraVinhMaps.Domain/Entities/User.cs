@@ -41,7 +41,6 @@ public class User : BaseEntity
     /// The role identifier.
     /// </value>
     [BsonElement("roleId")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
     public required string RoleId { get; set; }
 
     /// <summary>

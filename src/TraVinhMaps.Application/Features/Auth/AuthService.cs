@@ -1,10 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-
-// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.External;
@@ -50,13 +46,13 @@ public class AuthService : IAuthServices
         var otpEntity = new Otp
         {
             Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-            ActualIdentifier = phoneNumber,
+            Identifier = phoneNumber,
             IdentifierType = "phone-number",
             CreatedAt = DateTime.UtcNow,
             ExpiredAt = DateTime.UtcNow.AddMinutes(5),
             IsUsed = false,
             AttemptCount = 0,
-            HashedOtpCode = HashingExtension.HashOtp(otp)
+            HashedOtpCode = HashingExtension.HashWithSHA256(otp)
         };
         await _otpRepository.AddAsync(otpEntity, cancellationToken);
 
@@ -81,13 +77,13 @@ public class AuthService : IAuthServices
         var otpEntity = new Otp
         {
             Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-            ActualIdentifier = email,
+            Identifier = email,
             IdentifierType = "email",
             CreatedAt = DateTime.UtcNow,
             ExpiredAt = DateTime.UtcNow.AddMinutes(5),
             IsUsed = false,
             AttemptCount = 0,
-            HashedOtpCode = HashingExtension.HashOtp(otp)
+            HashedOtpCode = HashingExtension.HashWithSHA256(otp)
         };
         await _otpRepository.AddAsync(otpEntity, cancellationToken);
 
@@ -133,7 +129,7 @@ public class AuthService : IAuthServices
         }
 
         // Verify OTP hash
-        var hashingOtp = HashingExtension.HashOtp(otp);
+        var hashingOtp = HashingExtension.HashWithSHA256(otp);
         if (otpEntity.HashedOtpCode != hashingOtp)
         {
             otpEntity.AttemptCount++;
@@ -160,7 +156,7 @@ public class AuthService : IAuthServices
                 var newUser = new User
                 {
                     Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-                    PhoneNumber = actualIdentifier,
+                    PhoneNumber = otpEntity.Identifier, // phoneNumber
                     CreatedAt = DateTime.UtcNow,
                     RoleId = role.Id,
                     Status = true,
@@ -182,7 +178,7 @@ public class AuthService : IAuthServices
                 var newUser = new User
                 {
                     Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
-                    Email = actualIdentifier,
+                    Email = otpEntity.Identifier, // email
                     CreatedAt = DateTime.UtcNow,
                     RoleId = role.Id,
                     Status = true,
@@ -279,5 +275,375 @@ public class AuthService : IAuthServices
             });
         }
         return result;
+    }
+
+    public async Task<string> RefreshOtp(string item, CancellationToken cancellationToken = default)
+    {
+        // Use regex to determine if the input is an email or phone number
+        bool isEmail = System.Text.RegularExpressions.Regex.IsMatch(item, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        bool isPhoneNumber = System.Text.RegularExpressions.Regex.IsMatch(item, @"^(\+\d{1,3}[- ]?)?\d{10,15}$");
+
+        if (!isEmail && !isPhoneNumber)
+        {
+            throw new BadRequestException("Invalid input format. Must be a valid email or phone number.");
+        }
+
+        // Check all the OTP already exists in the database
+        // and mark them as used
+        var existingOtp = await _otpRepository.ListAsync(x => x.Identifier == item && x.IsUsed == false, cancellationToken);
+        foreach (var otpItem in existingOtp)
+        {
+            if (otpItem.ExpiredAt > DateTime.UtcNow)
+            {
+                otpItem.IsUsed = true;
+                await _otpRepository.UpdateAsync(otpItem, cancellationToken);
+            }
+        }
+        // Generate a new OTP
+        var otp = GenarateOtpExtension.GenerateOtp();
+
+        // Create a new OTP entity
+        var otpEntity = new Otp
+        {
+            Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+            Identifier = item,
+            IdentifierType = isEmail ? "email" : "phone-number",
+            CreatedAt = DateTime.UtcNow,
+            ExpiredAt = DateTime.UtcNow.AddMinutes(5),
+            IsUsed = false,
+            AttemptCount = 0,
+            HashedOtpCode = HashingExtension.HashWithSHA256(otp)
+        };
+
+        // Save OTP to database
+        await _otpRepository.AddAsync(otpEntity, cancellationToken);
+
+        // Generate context ID and save to cache
+        var contextId = Guid.NewGuid().ToString();
+        var key = CacheKey + contextId;
+        await _cacheService.SetData(key, otpEntity.Id);
+
+        // Send OTP based on identifier type
+        if (isEmail)
+        {
+            await _emailSender.SendEmailAsync(item, "OTP Verification For TraVinhGo", otp, cancellationToken);
+        }
+        else // phone number
+        {
+            var message = $"Your OTP in TRAVINHGO is {otp}";
+            await _speedSmsService.SendSMS(item, message);
+        }
+
+        return contextId;
+    }
+
+    public async Task<string> AuthenAdminWithCredentials(string identifier, string password, CancellationToken cancellationToken = default)
+    {
+        if (identifier == null || password == null)
+        {
+            throw new BadRequestException("Identifier and password cannot be null");
+        }
+        var user = await _userRepository.GetAsyns(x => x.Email == identifier || x.PhoneNumber == identifier, cancellationToken);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+
+        if (user.Password != HashingExtension.HashWithSHA256(password))
+        {
+            throw new BadRequestException("Invalid password");
+        }
+
+        if (user.Status == false || user.IsForbidden)
+        {
+            throw new BadRequestException("This account is locked");
+        }
+
+        // check with the role admin
+        var role = await _roleRepository.GetByIdAsync(user.RoleId, cancellationToken);
+        if (role == null || role.RoleName != "admin")
+        {
+            throw new BadRequestException("this account not admin");
+        }
+
+        // Generate OTP
+        var otp = GenarateOtpExtension.GenerateOtp();
+
+        bool isEmail = System.Text.RegularExpressions.Regex.IsMatch(identifier, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+        // the indentifier is not email
+        if (!isEmail)
+        {
+            var message = $"Your OTP in TRAVINHGO is {otp}";
+            await _speedSmsService.SendSMS(user.PhoneNumber, message);
+        }
+        else
+        {
+            await _emailSender.SendEmailAsync(user.Email, "OTP Verification For TraVinhGo", otp, cancellationToken);
+        }
+        var otpEntity = new Otp
+        {
+            Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+            Identifier = isEmail ? user.Email : user.PhoneNumber,
+            IdentifierType = isEmail ? "email" : "phone-number",
+            CreatedAt = DateTime.UtcNow,
+            ExpiredAt = DateTime.UtcNow.AddMinutes(5),
+            IsUsed = false,
+            AttemptCount = 0,
+            HashedOtpCode = HashingExtension.HashWithSHA256(otp)
+        };
+        await _otpRepository.AddAsync(otpEntity, cancellationToken);
+
+        var contextId = Guid.NewGuid().ToString();
+        // save to cache
+        var key = CacheKey + contextId;
+        await _cacheService.SetData(key, otpEntity.Id);
+
+        // return
+        return contextId;
+    }
+
+    public async Task<AuthResponse> VerifyOtpAdmin(string identifier, string otp, string? device, string? ipAddress, CancellationToken cancellationToken = default)
+    {
+
+        var actualIdentifier = await _cacheService.GetData<string>(CacheKey + identifier);
+        if (actualIdentifier == null)
+        {
+            throw new NotFoundException("otp is not found");
+        }
+
+        var otpEntity = await _otpRepository.GetAsyns(x => x.Id == actualIdentifier && x.IsUsed == false, cancellationToken);
+        if (otpEntity == null)
+        {
+            throw new NotFoundException("otp is not found");
+        }
+
+        // Check if OTP is expired
+        if (otpEntity.ExpiredAt < DateTime.UtcNow)
+        {
+            await _cacheService.RemoveData(CacheKey + identifier);
+            otpEntity.IsUsed = true;
+            await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+            throw new BadRequestException("OTP is expired");
+        }
+
+        // Check if max attempts exceeded
+        if (otpEntity.AttemptCount > 5)
+        {
+            await _cacheService.RemoveData(CacheKey + identifier);
+            otpEntity.IsUsed = true;
+            await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+            throw new BadRequestException("OTP is expired");
+        }
+
+        // Verify OTP hash
+        var hashingOtp = HashingExtension.HashWithSHA256(otp);
+        if (otpEntity.HashedOtpCode != hashingOtp)
+        {
+            otpEntity.AttemptCount++;
+            otpEntity.LastAttemptAt = DateTime.UtcNow;
+            await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+            throw new BadRequestException("Invalid OTP");
+        }
+
+        // Mark OTP as used and remove from cache
+        otpEntity.IsUsed = true;
+        await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+        await _cacheService.RemoveData(CacheKey + identifier);
+
+        // Authenticate or create user based on identifier type
+        var user = await _userRepository.GetAsyns(x => x.Email == otpEntity.Identifier || x.PhoneNumber == otpEntity.Identifier, cancellationToken);
+
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        var sessionID = Guid.NewGuid().ToString();
+        var refreshToken = Guid.NewGuid().ToString();
+
+        // Create new session
+        var session = new UserSession
+        {
+            Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+            UserId = user.Id,
+            CreatedAt = DateTime.UtcNow,
+            ExpireAt = DateTime.UtcNow.AddDays(1),
+            SessionId = HashingTokenExtension.HashToken(sessionID),
+            RefreshToken = HashingTokenExtension.HashToken(refreshToken),
+            RefreshTokenExpireAt = DateTime.UtcNow.AddDays(7),
+            IsActive = true,
+            DeviceInfo = device,
+            IpAddress = ipAddress
+        };
+
+        await _sessionRepository.AddAsync(session, cancellationToken);
+        // Enforce session limit with 3 devices
+        await EnforceSessionLimitAsync(user.Id, session, cancellationToken);
+        // Return response
+        return new AuthResponse
+        {
+            SessionId = sessionID,
+            RefreshToken = refreshToken
+        };
+    }
+
+    public async Task<string> ForgetPassword(string identifier)
+    {
+
+        bool isEmail = System.Text.RegularExpressions.Regex.IsMatch(identifier, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        bool isPhoneNumber = System.Text.RegularExpressions.Regex.IsMatch(identifier, @"^(\+\d{1,3}[- ]?)?\d{10,15}$");
+
+        if (!isEmail && !isPhoneNumber)
+        {
+            throw new BadRequestException("Invalid input format. Must be a valid email or phone number.");
+        }
+
+        if (isEmail)
+        {
+            var user = await _userRepository.GetAsyns(x => x.Email == identifier);
+            if (user == null)
+            {
+                throw new NotFoundException("User not found");
+            }
+
+            if (user.IsForbidden)
+            {
+                throw new BadRequestException("This account is locked");
+            }
+
+            if (user.Status == false)
+            {
+                throw new BadRequestException("This account is locked");
+            }
+
+            var otp = GenarateOtpExtension.GenerateOtp();
+            await _emailSender.SendEmailAsync(user.Email, "OTP Verification For TraVinhGo", otp);
+            var otpEntity = new Otp
+            {
+                Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+                Identifier = user.Email,
+                IdentifierType = "email",
+                CreatedAt = DateTime.UtcNow,
+                ExpiredAt = DateTime.UtcNow.AddMinutes(5),
+                IsUsed = false,
+                AttemptCount = 0,
+                HashedOtpCode = HashingExtension.HashWithSHA256(otp)
+            };
+
+            await _otpRepository.AddAsync(otpEntity);
+            var contextId = Guid.NewGuid().ToString();
+            // save to cache
+            var key = CacheKey + contextId;
+            await _cacheService.SetData(key, otpEntity.Id);
+            return contextId;
+        }
+        else
+        {
+            var user = await _userRepository.GetAsyns(x => x.PhoneNumber == identifier);
+            if (user == null)
+            {
+                throw new NotFoundException("User not found");
+            }
+            if (user.IsForbidden)
+            {
+                throw new BadRequestException("This account is locked");
+            }
+            if (user.Status == false)
+            {
+                throw new BadRequestException("This account is locked");
+            }
+            var otp = GenarateOtpExtension.GenerateOtp();
+            var message = $"Your OTP in TRAVINHGO is {otp}";
+            await _speedSmsService.SendSMS(user.PhoneNumber, message);
+            var otpEntity = new Otp
+            {
+                Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+                Identifier = user.PhoneNumber,
+                IdentifierType = "phone-number",
+                CreatedAt = DateTime.UtcNow,
+                ExpiredAt = DateTime.UtcNow.AddMinutes(5),
+                IsUsed = false,
+                AttemptCount = 0,
+                HashedOtpCode = HashingExtension.HashWithSHA256(otp)
+            };
+            await _otpRepository.AddAsync(otpEntity);
+            var contextId = Guid.NewGuid().ToString();
+            // save to cache
+            var key = CacheKey + contextId;
+            await _cacheService.SetData(key, otpEntity.Id);
+            return contextId;
+        }
+    }
+
+    public async Task<bool> ResetPassword(string identifier, string newPassword)
+    {
+        if (identifier == null || newPassword == null)
+        {
+            throw new BadRequestException("idetifier and password must not null");
+        }
+        var user = await _userRepository.GetAsyns(x => x.Email == identifier || x.PhoneNumber == identifier);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        try
+        {
+            user.Password = HashingExtension.HashWithSHA256(newPassword);
+            await _userRepository.UpdateAsync(user);
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new BadRequestException("Fail to update new password");
+        }
+    }
+
+    public async Task<bool> VerifyOtpForResetPassword(string identifier, string otp, CancellationToken cancellationToken = default)
+    {
+        var actualIdentifier = await _cacheService.GetData<string>(CacheKey + identifier);
+        if (actualIdentifier == null)
+        {
+            throw new NotFoundException("otp is not found");
+        }
+
+        var otpEntity = await _otpRepository.GetAsyns(x => x.Id == actualIdentifier && x.IsUsed == false, cancellationToken);
+        if (otpEntity == null)
+        {
+            throw new NotFoundException("otp is not found");
+        }
+
+        // Check if OTP is expired
+        if (otpEntity.ExpiredAt < DateTime.UtcNow)
+        {
+            await _cacheService.RemoveData(CacheKey + identifier);
+            otpEntity.IsUsed = true;
+            await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+            return false;
+        }
+
+        // Check if max attempts exceeded
+        if (otpEntity.AttemptCount > 5)
+        {
+            await _cacheService.RemoveData(CacheKey + identifier);
+            otpEntity.IsUsed = true;
+            await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+            return false;
+        }
+
+        // Verify OTP hash
+        var hashingOtp = HashingExtension.HashWithSHA256(otp);
+        if (otpEntity.HashedOtpCode != hashingOtp)
+        {
+            otpEntity.AttemptCount++;
+            otpEntity.LastAttemptAt = DateTime.UtcNow;
+            await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+            return false;
+        }
+
+        // Mark OTP as used and remove from cache
+        otpEntity.IsUsed = true;
+        await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
+        await _cacheService.RemoveData(CacheKey + identifier);
+        return true;
     }
 }

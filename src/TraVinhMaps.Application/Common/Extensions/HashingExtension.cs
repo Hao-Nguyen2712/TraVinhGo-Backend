@@ -14,7 +14,7 @@ public static class HashingExtension
     /// </summary>
     /// <param name="plainOtp">The plain otp.</param>
     /// <returns></returns>
-    public static string HashOtp(string plainOtp)
+    public static string HashWithSHA256(string plainOtp)
     {
         using (SHA256 sha256Hash = SHA256.Create())
         {

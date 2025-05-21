@@ -65,7 +65,7 @@ public class SessionAuthenticationHandler : AuthenticationHandler<SessionAuthent
         }
 
         // 2. Hash the incoming sessionId to match the stored hash.
-        // Assuming HashingExtension.HashOtp is the correct method used for SessionId
+        // Assuming HashingExtension.HashWithSHA256 is the correct method used for SessionId
         var hashedSessionId = HashingTokenExtension.HashToken(sessionId);
 
         // 3. Validate the sessionId against the UserSession entity.
