@@ -236,6 +236,7 @@ public class AuthService : IAuthServices
             return;
         }
         session.IsActive = false;
+        //session.RefreshToken = null;
         await _sessionRepository.UpdateAsync(session, cancellationToken);
     }
 
@@ -349,7 +350,8 @@ public class AuthService : IAuthServices
             throw new NotFoundException("User not found");
         }
 
-        if (user.Password != HashingExtension.HashWithSHA256(password))
+        var hashPass = HashingExtension.HashWithSHA256(password);
+        if (user.Password != hashPass)
         {
             throw new BadRequestException("Invalid password");
         }
@@ -361,7 +363,7 @@ public class AuthService : IAuthServices
 
         // check with the role admin
         var role = await _roleRepository.GetByIdAsync(user.RoleId, cancellationToken);
-        if (role == null || role.RoleName != "admin")
+        if (role == null || (role.RoleName != "admin" && role.RoleName != "super-admin"))
         {
             throw new BadRequestException("this account not admin");
         }
@@ -645,5 +647,54 @@ public class AuthService : IAuthServices
         await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
         await _cacheService.RemoveData(CacheKey + identifier);
         return true;
+    }
+
+    public async Task<string> AuthenWithEmailAdmin(string email, CancellationToken cancellationToken = default)
+    {
+        if (email == null)
+        {
+            throw new BadRequestException("Identifier cannot be null");
+        }
+        var user = await _userRepository.GetAsyns(x => x.Email == email, cancellationToken);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+
+        var currentRole = user.RoleId;
+
+        var role = await _roleRepository.GetByIdAsync(currentRole, cancellationToken);
+
+        if (role == null || (role.RoleName != "admin" && role.RoleName != "super-admin"))
+        {
+            throw new BadRequestException("this account not admin");
+        }
+
+        if (!user.Status || user.IsForbidden)
+        {
+            throw new BadRequestException("This account is locked");
+        }
+        var otp = GenarateOtpExtension.GenerateOtp();
+        await _emailSender.SendEmailAsync(user.Email, "OTP Verification For TraVinhGo", otp, cancellationToken);
+        var otpEntity = new Otp
+        {
+            Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+            Identifier = user.Email,
+            IdentifierType = "email",
+            CreatedAt = DateTime.UtcNow,
+            ExpiredAt = DateTime.UtcNow.AddMinutes(5),
+            IsUsed = false,
+            AttemptCount = 0,
+            HashedOtpCode = HashingExtension.HashWithSHA256(otp)
+        };
+        await _otpRepository.AddAsync(otpEntity, cancellationToken);
+
+        var contextId = Guid.NewGuid().ToString();
+        // save to cache
+        var key = CacheKey + contextId;
+        await _cacheService.SetData(key, otpEntity.Id);
+
+        // return
+        return contextId;
     }
 }
