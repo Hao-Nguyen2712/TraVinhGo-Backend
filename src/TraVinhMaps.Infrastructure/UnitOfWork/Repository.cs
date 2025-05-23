@@ -47,7 +47,8 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public async Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
-        var filter = Builders<T>.Filter.Eq(e => e.Id, id);
+         var filter = Builders<T>.Filter.Eq(e => e.Id, id);
+        //var filter = Builders<T>.Filter.Eq("_id", id);
         return await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
     }
 
@@ -69,7 +70,6 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public async Task<T> GetAsyns(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
     {
-
         return await _collection.Find(predicate).FirstOrDefaultAsync(cancellationToken);
     }
 }
