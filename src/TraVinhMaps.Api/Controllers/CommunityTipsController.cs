@@ -25,7 +25,11 @@ public class CommunityTipsController : ControllerBase
     public async Task<IActionResult> GetAllTipActive()
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         var getAllTipActive = await _service.ListAsync(tip => tip.Status == true);
+=======
+        var getAllTipActive = await _service.ListAsync(t => t.Status == true);
+>>>>>>> Stashed changes
 =======
         var getAllTipActive = await _service.ListAsync(t => t.Status == true);
 >>>>>>> Stashed changes
@@ -59,9 +63,12 @@ public class CommunityTipsController : ControllerBase
     public async Task<IActionResult> AddTip([FromForm] CreateCommunityTipRequest createCommunityTipRequest)
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         var addTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
         var tip = await _service.AddAsync(addTip);
 =======
+=======
+>>>>>>> Stashed changes
         // check for existing tip with same title and tag
         var existingTips = await _service.ListAsync(t => t.Title.ToLower().Trim() == createCommunityTipRequest.Title.ToLower().Trim() &&
         t.TagId == createCommunityTipRequest.TagId);
