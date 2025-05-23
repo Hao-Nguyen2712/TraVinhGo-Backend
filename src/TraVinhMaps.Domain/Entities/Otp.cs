@@ -17,7 +17,7 @@ public class Otp : BaseEntity
     /// <value>
     /// The user identifier.
     /// </value>
-    [BsonElement("actualIdentifier")]
+    [BsonElement("Identifier")]
     public required string Identifier { get; set; }
 
     [BsonElement("identifierType")]

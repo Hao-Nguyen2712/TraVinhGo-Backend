@@ -60,8 +60,6 @@ builder.Services.AddCors(options =>
         });
 });
 
-;
-
 // layer di
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
@@ -73,7 +71,7 @@ builder.Services.AddAuthentication("SessionAuth")
     .AddScheme<SessionAuthenticationSchemeOptions, SessionAuthenticationHandler>("SessionAuth", options =>
     {
         options.ValidateExpiration = true;
-        options.HeaderName = "X-Session-Token";
+        //  options.HeaderName = "X-Session-Token";
     });
 
 builder.Services.AddControllers();

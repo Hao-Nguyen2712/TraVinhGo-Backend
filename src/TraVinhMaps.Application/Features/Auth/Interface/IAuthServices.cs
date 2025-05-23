@@ -25,11 +25,13 @@ public interface IAuthServices
     Task EnforceSessionLimitAsync(string userId, UserSession newSession, CancellationToken cancellationToken = default);
     // Get the session from the user
     Task<List<SessionUserResponse>> GetAllSessionUser(string userId, CancellationToken cancellationToken = default);
-
+    // Add more new Otp for the authentication
     Task<string> RefreshOtp(string item, CancellationToken cancellationToken = default);
 
     // Admin authentication with email/phone + password
     Task<string> AuthenAdminWithCredentials(string identifier, string password, CancellationToken cancellationToken = default);
+    // Admin authentication with email through google
+    Task<string> AuthenWithEmailAdmin(string email, CancellationToken cancellationToken = default);
     // Admin authentication with OTP
     Task<AuthResponse> VerifyOtpAdmin(string identifier, string otp, string? device, string? ipAddress, CancellationToken cancellationToken = default);
     Task<string> ForgetPassword(string identifier);

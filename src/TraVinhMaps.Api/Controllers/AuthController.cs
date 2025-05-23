@@ -78,7 +78,7 @@ public class AuthController : ControllerBase
         return this.ApiOk(JsonConvert.SerializeObject(result), "OTP verified successfully");
     }
 
-    [HttpPost("logout")]
+    [HttpGet("logout")]
     [Authorize]
     public async Task<IActionResult> Logout()
     {
@@ -93,7 +93,8 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("get-active-session")]
-    [Authorize(Roles = "user")]
+    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "super-admin")]
     public async Task<IActionResult> GetAllTheActiveSession()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -131,6 +132,21 @@ public class AuthController : ControllerBase
             return this.ApiError(result, HttpStatusCode.BadRequest);
         }
         return this.ApiOk(result, "Login successfully");
+    }
+
+    [HttpPost("login-email-authen-admin")]
+    public async Task<IActionResult> AuthenWithEmailAdmin(string email)
+    {
+        if (email == null)
+        {
+            return this.ApiError("Email is required", HttpStatusCode.BadRequest);
+        }
+        var result = await _authServices.AuthenWithEmailAdmin(email);
+        var response = new
+        {
+            token = result
+        };
+        return this.ApiOk(JsonConvert.SerializeObject(response), "Email authentication requested successfully");
     }
 
     [HttpPost("confirm-otp-admin")]
