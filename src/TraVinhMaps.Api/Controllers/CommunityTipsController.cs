@@ -24,7 +24,11 @@ public class CommunityTipsController : ControllerBase
     [Route("GetAllTipActive")]
     public async Task<IActionResult> GetAllTipActive()
     {
+<<<<<<< Updated upstream
         var getAllTipActive = await _service.ListAsync(tip => tip.Status == true);
+=======
+        var getAllTipActive = await _service.ListAsync(t => t.Status == true);
+>>>>>>> Stashed changes
         return this.ApiOk(getAllTipActive);
     }
 
@@ -33,14 +37,14 @@ public class CommunityTipsController : ControllerBase
     public async Task<IActionResult> GetAllTip()
     {
         var listTip = await _service.ListAllAsync();
-        return this.ApiOk(listTip);
+        return Ok(listTip);
     }
     [HttpGet]
     [Route("GetByIdTip/{id}", Name = "GetByIdTip")]
     public async Task<IActionResult> GetByIdTip(string id)
     {
         var tip = await _service.GetByIdAsync(id);
-        return this.ApiOk(tip);
+        return Ok(tip);
     }
   
     [HttpGet]
@@ -54,8 +58,22 @@ public class CommunityTipsController : ControllerBase
     [Route("AddTip")]
     public async Task<IActionResult> AddTip([FromForm] CreateCommunityTipRequest createCommunityTipRequest)
     {
+<<<<<<< Updated upstream
         var addTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
         var tip = await _service.AddAsync(addTip);
+=======
+        // check for existing tip with same title and tag
+        var existingTips = await _service.ListAsync(t => t.Title.ToLower().Trim() == createCommunityTipRequest.Title.ToLower().Trim() &&
+        t.TagId == createCommunityTipRequest.TagId);
+
+        if(existingTips.Any())
+        {
+            throw new BadRequestException("A tip with the same title and tag already exists.");
+        }
+
+        var createTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
+        var tip = await _service.AddAsync(createTip);
+>>>>>>> Stashed changes
         tip.Status = true;
         return CreatedAtRoute("GetByIdTip", new { id = tip.Id }, tip);
     }
