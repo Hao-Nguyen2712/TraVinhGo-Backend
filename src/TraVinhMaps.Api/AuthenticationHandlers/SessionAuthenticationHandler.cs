@@ -69,15 +69,22 @@ public class SessionAuthenticationHandler : AuthenticationHandler<SessionAuthent
         var hashedSessionId = HashingTokenExtension.HashToken(sessionId);
 
         // 3. Validate the sessionId against the UserSession entity.
-        var userSession = await _sessionRepository.GetAsyns(
-            s => s.SessionId == hashedSessionId && s.IsActive && s.ExpireAt > DateTime.UtcNow,
-            System.Threading.CancellationToken.None);
+        var userSession = await _sessionRepository.GetAsyns(x => x.SessionId == hashedSessionId);
 
         if (userSession == null)
         {
             return AuthenticateResult.Fail("Invalid or expired session ID.");
         }
 
+        if (Options.ValidateExpiration && userSession.RefreshTokenExpireAt < DateTime.UtcNow)
+        {
+            return AuthenticateResult.Fail("Session ID has expired.");
+        }
+
+        if (!userSession.IsActive)
+        {
+            return AuthenticateResult.Fail("Session ID is not active.");
+        }
 
         var user = await _userRepository.GetByIdAsync(userSession.UserId, System.Threading.CancellationToken.None);
         if (user == null)

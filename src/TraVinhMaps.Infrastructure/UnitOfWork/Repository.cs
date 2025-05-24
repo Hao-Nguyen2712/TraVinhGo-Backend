@@ -41,14 +41,15 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
-        var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+        //  var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+        var filter = Builders<T>.Filter.Eq("_id", entity.Id);
         await _collection.DeleteOneAsync(filter, cancellationToken);
     }
 
     public async Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
-         var filter = Builders<T>.Filter.Eq(e => e.Id, id);
-        //var filter = Builders<T>.Filter.Eq("_id", id);
+        // var filter = Builders<T>.Filter.Eq(e => e.Id, id);
+        var filter = Builders<T>.Filter.Eq("_id", id);
         return await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
     }
 
@@ -64,12 +65,40 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
-        var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
-        await _collection.ReplaceOneAsync(filter, entity, new ReplaceOptions { IsUpsert = false }, cancellationToken);
+        // var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+        var filter = Builders<T>.Filter.Eq("_id", entity.Id); // Hoặc e => e.Id nếu dùng biểu thức
+
+        var updateDefinition = BuildUpdateDefinition(entity);
+
+        await _collection.UpdateOneAsync(filter, updateDefinition, cancellationToken: cancellationToken);
     }
 
     public async Task<T> GetAsyns(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken = default)
     {
         return await _collection.Find(predicate).FirstOrDefaultAsync(cancellationToken);
     }
+
+    private UpdateDefinition<T> BuildUpdateDefinition(T entity)
+    {
+        var updates = new List<UpdateDefinition<T>>();
+        var properties = typeof(T).GetProperties();
+
+        foreach (var prop in properties)
+        {
+            if (prop.Name == "Id" || prop.Name == "_id") continue; // Bỏ qua _id vì không update được
+
+            var value = prop.GetValue(entity);
+
+            // Optional: Bỏ qua null nếu không muốn update null
+            if (value != null)
+            {
+                updates.Add(Builders<T>.Update.Set(prop.Name, value));
+            }
+        }
+
+        return updates.Count > 0
+            ? Builders<T>.Update.Combine(updates)
+            : null;
+    }
+
 }
