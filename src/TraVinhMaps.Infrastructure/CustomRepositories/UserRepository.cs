@@ -9,6 +9,7 @@ using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.UnitOfWork;
+using TraVinhMaps.Application.Common.Extensions;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
 public class UserRepository : Repository<User>, IUserRepository
@@ -27,7 +28,7 @@ public class UserRepository : Repository<User>, IUserRepository
         {
             Id = ObjectId.GenerateNewId().ToString(),
             Username = null,
-            Password = request.Password,
+            Password = HashingTokenExtension.HashToken(request.Password),
             RoleId = request.RoleId,
             CreatedAt = DateTime.UtcNow,
             Status = true,
