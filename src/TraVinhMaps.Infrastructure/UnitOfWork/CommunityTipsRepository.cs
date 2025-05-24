@@ -10,12 +10,6 @@ namespace TraVinhMaps.Infrastructure.UnitOfWork;
 public class CommunityTipsRepository : Repository<Tips>, ICommunityTipsRepository
 {
     public CommunityTipsRepository(IDbContext dbContext) : base(dbContext) { }
-    public async Task<IEnumerable<Tips>> GetAllTipActiveAsync(CancellationToken cancellationToken = default)
-    {
-        var filter = Builders<Tips>.Filter.Eq(o => o.Status, true);
-        var listTip = await _collection.Find(filter).ToListAsync();
-        return listTip;
-    }
     public async Task<bool> DeleteTipAsync(string id, CancellationToken cancellationToken = default)
     {
         var filter = Builders<Tips>.Filter.Eq(o => o.Id, id);

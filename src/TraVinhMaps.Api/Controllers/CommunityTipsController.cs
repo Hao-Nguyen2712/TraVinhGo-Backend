@@ -24,7 +24,7 @@ public class CommunityTipsController : ControllerBase
     [Route("GetAllTipActive")]
     public async Task<IActionResult> GetAllTipActive()
     {
-        var getAllTipActive = await _service.ListAsync(tip => tip.Status == true);
+        var getAllTipActive = await _service.ListAsync(t => t.Status == true);
         return this.ApiOk(getAllTipActive);
     }
 
@@ -33,16 +33,16 @@ public class CommunityTipsController : ControllerBase
     public async Task<IActionResult> GetAllTip()
     {
         var listTip = await _service.ListAllAsync();
-        return this.ApiOk(listTip);
+        return Ok(listTip);
     }
     [HttpGet]
     [Route("GetByIdTip/{id}", Name = "GetByIdTip")]
     public async Task<IActionResult> GetByIdTip(string id)
     {
         var tip = await _service.GetByIdAsync(id);
-        return this.ApiOk(tip);
+        return Ok(tip);
     }
-  
+
     [HttpGet]
     [Route("CountTips")]
     public async Task<IActionResult> CountTips()
@@ -51,11 +51,20 @@ public class CommunityTipsController : ControllerBase
         return this.ApiOk(countTips);
     }
     [HttpPost]
-    [Route("AddTip")]
-    public async Task<IActionResult> AddTip([FromForm] CreateCommunityTipRequest createCommunityTipRequest)
+    [Route("CreateTip")]
+    public async Task<IActionResult> CreateTip([FromBody] CreateCommunityTipRequest createCommunityTipRequest)
     {
-        var addTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
-        var tip = await _service.AddAsync(addTip);
+        // check for existing tip with same title and tag
+        var existingTips = await _service.ListAsync(t => t.Title.ToLower().Trim() == createCommunityTipRequest.Title.ToLower().Trim() ||
+        t.TagId == createCommunityTipRequest.TagId);
+
+        if(existingTips.Any())
+        {
+            throw new BadRequestException("A tip with the same title and tag already exists.");
+        }
+
+        var createTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
+        var tip = await _service.AddAsync(createTip);
         tip.Status = true;
         return CreatedAtRoute("GetByIdTip", new { id = tip.Id }, tip);
     }
@@ -63,7 +72,13 @@ public class CommunityTipsController : ControllerBase
     [Route("UpdateTip")]
     public async Task<IActionResult> UpdateTip([FromBody] UpdateCommunityTipRequest updateCommunityTipRequest)
     {
+        var oldTip = await _service.GetByIdAsync(updateCommunityTipRequest.Id);
+        if(oldTip == null)
+            throw new NotFoundException("Tip not found.");
+
         var updateTip = CommunityTipsMapper.Mapper.Map<Tips>(updateCommunityTipRequest);
+        updateTip.Status = oldTip.Status;
+
         await _service.UpdateAsync(updateTip);
         return this.ApiOk("Updated tip successfully.");
     }
