@@ -41,13 +41,15 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
-        //  var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+
+        //var filter = Builders<T>.Filter.Eq(e => e.Id, new ObjectId(entity.Id));
         var filter = Builders<T>.Filter.Eq("_id", entity.Id);
         await _collection.DeleteOneAsync(filter, cancellationToken);
     }
 
     public async Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
+        //var newId = ObjectId.TryParse(id, out var objectId);
         // var filter = Builders<T>.Filter.Eq(e => e.Id, id);
         var filter = Builders<T>.Filter.Eq("_id", id);
         return await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);

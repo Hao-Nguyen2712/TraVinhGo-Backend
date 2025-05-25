@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
+using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
@@ -12,10 +13,12 @@ namespace TraVinhMaps.Application.Features.Users;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IRepository<Role> _roleRepository;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository, IRepository<Role> roleRepository)
     {
         _userRepository = userRepository;
+        _roleRepository = roleRepository;
     }
 
     public async Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default)
@@ -76,5 +79,30 @@ public class UserService : IUserService
     public async Task UpdateAsync(User entity, CancellationToken cancellationToken = default)
     {
         await _userRepository.UpdateAsync(entity, cancellationToken);
+    }
+
+    public async Task<AdminProfileResponse> GetProfileAdmin(string id, CancellationToken cancellationToken = default)
+    {
+        var user = await _userRepository.GetByIdAsync(id, cancellationToken);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found!");
+        }
+        var role = await _roleRepository.GetByIdAsync(user.RoleId, cancellationToken);
+        var adminProfile = new AdminProfileResponse
+        {
+            Id = user.Id,
+            UserName = user.Username,
+            Email = user.Email,
+            PhoneNumber = user.PhoneNumber,
+            Password = user.Password, // Consider hashing this before returning
+            RoleName = role?.RoleName ?? "admin",
+            CreatedAt = user.CreatedAt,
+            UpdatedAt = user.UpdatedAt,
+            Avatar = user.Profile?.Avatar,
+            IsForbidden = user.IsForbidden,
+            Status = user.Status
+        };
+        return adminProfile;
     }
 }

@@ -1,7 +1,9 @@
-using CloudinaryDotNet;
-using FluentValidation;
-using Microsoft.AspNetCore.Http;
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Users;
 using TraVinhMaps.Application.Features.Users.Interface;
@@ -150,4 +152,22 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
+    //[Authorize(Roles = "admin")]
+    //[Authorize(Roles = "super-admin")]
+    [HttpGet("get-profile-admin")]
+    public async Task<IActionResult> GetProfileAdmin()
+    {
+        // var sessionId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        var sessionId = "60f7b3b3b3b3b3b3b3b3b3b3";
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.ApiError("Session ID not found in token", HttpStatusCode.Unauthorized);
+        }
+        var result = await _userService.GetProfileAdmin(sessionId);
+        if (result == null)
+        {
+            return this.ApiError("User not found", HttpStatusCode.NotFound);
+        }
+        return this.ApiOk(result, "Get profile admin successfully");
+    }
 }
