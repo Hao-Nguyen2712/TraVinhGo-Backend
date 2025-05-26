@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using TraVinhMaps.Application.Common.Exceptions;
+using TraVinhMaps.Application.Features.Tags.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
 
 namespace TraVinhMaps.Api.Controllers;
@@ -12,24 +13,24 @@ namespace TraVinhMaps.Api.Controllers;
 [ApiController]
 public class TagsController : ControllerBase
 {
-    private readonly IRepository<TraVinhMaps.Domain.Entities.Tags> _tagRepository;
+    private readonly ITagService _tagService;
 
-    public TagsController(IRepository<TraVinhMaps.Domain.Entities.Tags> tagRepository)
+    public TagsController(ITagService tagService)
     {
-        _tagRepository = tagRepository;
+        _tagService = tagService;
     }
 
     [HttpGet("all")]
     public async Task<IActionResult> GetAllTags()
     {
-        var tags = await _tagRepository.ListAllAsync();
+        var tags = await _tagService.ListAllAsync();
         return Ok(tags);
     }
 
     [HttpGet("GetTagById/{id}")]
     public async Task<IActionResult> GetTagById(string id)
     {
-        var tag = await _tagRepository.GetByIdAsync(id);
+        var tag = await _tagService.GetByIdAsync(id);
 
         if (tag == null)
         {
