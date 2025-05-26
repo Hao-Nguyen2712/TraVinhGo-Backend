@@ -16,7 +16,5 @@ public interface IUserRepository : IRepository<User>
     Task<long> CountAsync(Expression<Func<User, bool>> predicate = null, CancellationToken cancellationToken = default);
     Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
-    Task<Pagination<User>> GetUserAsync(UserSpecParams userSpecParams, CancellationToken cancellationToken = default);
     Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
-    Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default);
 }

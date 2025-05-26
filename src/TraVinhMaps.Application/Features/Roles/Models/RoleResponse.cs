@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TraVinhMaps.Application.Features.Users.Models;
-public class AddAdminRequest
+namespace TraVinhMaps.Application.Features.Roles.Models;
+public class RoleResponse
 {
-    public string Email { get; set; } = default!;
-    public string Password { get; set; } = default!;
-    public string RoleId { get; set; } = default!;
+    public string Id { get; set; }
+    public string RoleName { get; set; }
+    public bool RoleStatus { get; set; }
+    public DateTime CreatedAt { get; set; }
 }

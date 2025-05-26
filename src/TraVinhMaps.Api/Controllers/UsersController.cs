@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
+using TraVinhMaps.Application.Common.Extensions;
+using TraVinhMaps.Application.Features.Roles.Interface;
 using TraVinhMaps.Application.Features.Users;
 using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Mappers;
@@ -22,20 +24,29 @@ public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
     private readonly UploadImageUser _uploadImageUser;
+    private readonly IRoleService _roleService;
 
     // private readonly IValidator<User> _userValidator;
 
-    public UsersController(IUserService userService, UploadImageUser uploadImageUser)
+    public UsersController(IUserService userService, UploadImageUser uploadImageUser, IRoleService roleService)
     {
         _userService = userService;
         _uploadImageUser = uploadImageUser;
+        _roleService = roleService;
         // _userValidator = userValidator;
     }
 
     [HttpGet("all")]
     public async Task<IActionResult> GetAllUsers()
     {
-        var list = await _userService.ListAllAsync();
+        // Get the user role from the role repository
+        var userRole = (await _roleService.ListAllAsync()).
+            FirstOrDefault(r => r.RoleName.ToLower() == "user" && r.RoleStatus);
+        if (userRole == null)
+        {
+            throw new NotFoundException("User role not found.");
+        }
+        var list = await _userService.ListAsync(u => u.RoleId == userRole.Id);
         return Ok(list);
     }
 
@@ -44,13 +55,6 @@ public class UsersController : ControllerBase
     {
         var user = await _userService.ListAsync(u => u.Status == true);
         return Ok(user);
-    }
-
-    [HttpGet("paging")]
-    public async Task<IActionResult> GetUserPaging([FromQuery] UserSpecParams userSpecParams)
-    {
-        var list = await _userService.GetUsersAsync(userSpecParams);
-        return Ok(list);
     }
 
     [HttpGet("inActive")]
@@ -103,15 +107,11 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
+        // HASH PASSWORD
+        user.Password = HashingTokenExtension.HashToken(user.Password);
+        user.IsForbidden = false;
         var createUser = await _userService.AddAsync(user);
         return CreatedAtRoute(nameof(GetUserById), new { id = user.Id }, user);
-    }
-
-    [HttpPost("admin")]
-    public async Task<IActionResult> AddAdmin([FromBody] AddAdminRequest request)
-    {
-        var createdAdmin = await _userService.AddAdminAsync(request);
-        return CreatedAtRoute(nameof(GetUserById), new { id = createdAdmin.Id }, createdAdmin);
     }
 
     [HttpPut]

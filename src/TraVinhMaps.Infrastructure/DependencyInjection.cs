@@ -15,7 +15,6 @@ using TraVinhMaps.Application.Features.Users;
 using TraVinhMaps.Infrastructure.CustomRepositories;
 using TraVinhMaps.Application.Features.Users.Interface;
 using FluentValidation;
-using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Application.Validators;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
@@ -25,6 +24,12 @@ using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.CommunityTips.Interface;
 using TraVinhMaps.Application.Features.CommunityTips;
+using TraVinhMaps.Application.Features.Admins.Interface;
+using TraVinhMaps.Application.Features.Admins;
+using TraVinhMaps.Application.Features.Roles.Interface;
+using TraVinhMaps.Application.Features.Roles;
+using TraVinhMaps.Application.Features.Tags.Interface;
+using TraVinhMaps.Application.Features.Tags;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -58,7 +63,7 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<UploadImageUser>();
 
-        //OcopProduct
+        // OcopProduct
         services.AddScoped<IOcopProductRepository, OcopProductRepository>();
         services.AddScoped<IOcopProductService, OcopProductService>();
         services.AddScoped<ImageManagementOcopProductServices>();
@@ -73,6 +78,17 @@ public static class DependencyInjection
         // Notification
         services.AddScoped<INotificationsRepository, NotificationsRepository>();
         services.AddScoped<INotificationService, NotificationsService>();
+
+        // Admin Management
+        services.AddScoped<IAdminRepository, AdminsRepository>();
+        services.AddScoped<IAdminService, AdminService>();
+
+        // Role Management
+        services.AddScoped<IRoleRepository, RoleRepository>();
+        services.AddScoped<IRoleService, RoleService>();
+
+        // Tags
+        services.AddScoped<ITagService, TagService>();
 
         services.AddHttpClient();
 

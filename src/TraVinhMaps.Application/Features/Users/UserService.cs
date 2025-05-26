@@ -5,10 +5,8 @@ using System.Linq.Expressions;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.External;
 using TraVinhMaps.Application.Features.Users.Interface;
-using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.Users;
 public class UserService : IUserService
@@ -22,11 +20,6 @@ public class UserService : IUserService
         _userRepository = userRepository;
         _roleRepository = roleRepository;
         _cloudinaryService = cloudinaryService;
-    }
-
-    public async Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default)
-    {
-        return await _userRepository.AddAdminAsync(request, cancellationToken);
     }
 
     public async Task<User> AddAsync(User entity, CancellationToken cancellationToken = default)
@@ -57,11 +50,6 @@ public class UserService : IUserService
     public async Task<User> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return await _userRepository.GetByIdAsync(id, cancellationToken);
-    }
-
-    public async Task<Pagination<User>> GetUsersAsync(UserSpecParams userSpecParams, CancellationToken cancellationToken = default)
-    {
-        return await _userRepository.GetUserAsync(userSpecParams, cancellationToken);
     }
 
     public async Task<IEnumerable<User>> ListAllAsync(CancellationToken cancellationToken = default)
