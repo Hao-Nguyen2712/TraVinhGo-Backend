@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.External;
 using TraVinhMaps.Application.Features.Users.Interface;
+using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
