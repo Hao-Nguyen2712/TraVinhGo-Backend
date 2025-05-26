@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Infrastructure.Db.Data;
@@ -32,6 +33,8 @@ public static class DataSeeding
                 var markerId = markers.First().Id; // lấy Id đầu tiên làm ví dụ
                 await seedTypeDestination(database, logger, markerId); // truyền Id vào seedTypeDestination
             }
+            await SeedRole(database, logger);
+            await SeedUserAccount(database, logger);
         }
         catch (Exception ex)
         {
@@ -335,6 +338,105 @@ new OcopProduct
             },
         };
         await collection.InsertManyAsync(destinationTypeList);
+    }
+    // Role seeding method
+    private static async Task SeedRole(IMongoDatabase database, ILogger<IHost> logger)
+    {
+        var collection = database.GetCollection<Role>("Role");
+        var count = await collection.CountDocumentsAsync(FilterDefinition<Role>.Empty);
+        if (count > 0)
+        {
+            logger.LogInformation("Role collection already contains data. Skipping seeding.");
+            return;
+        }
+
+        logger.LogInformation("Seeding Role collection...");
+
+        var role = new List<Role>()
+        {
+            new Role
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                RoleName = "super-admin",
+                RoleStatus = true,
+                CreatedAt = DateTime.Now
+            },
+            new Role
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                RoleName = "admin",
+                RoleStatus = true,
+                CreatedAt = DateTime.Now
+            },
+            new Role
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                RoleName = "user",
+                RoleStatus = true,
+                CreatedAt = DateTime.Now
+            }
+        };
+
+        await collection.InsertManyAsync(role);
+    }
+
+    // seeding method account user
+    private static async Task SeedUserAccount(IMongoDatabase database, ILogger<IHost> logger)
+    {
+        var collection = database.GetCollection<User>("User");
+        var count = await collection.CountDocumentsAsync(FilterDefinition<User>.Empty);
+        if (count > 0)
+        {
+            logger.LogInformation("Role collection already contains data. Skipping seeding.");
+            return;
+        }
+
+        logger.LogInformation("Seeding Role collection...");
+
+        var role = await database.GetCollection<Role>("Role")
+            .Find(r => r.RoleName == "admin")
+            .FirstOrDefaultAsync();
+
+        if (role == null)
+        {
+            logger.LogError("Role 'admin' not found. Cannot seed user accounts.");
+            return;
+        }
+        var userList = new List<User>()
+        {
+            new User
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Email = "joonnguyen2712@gmail.com",
+                Password = HashingExtension.HashWithSHA256("27122003"),
+                CreatedAt = DateTime.UtcNow,
+                RoleId = role.Id, // Replace with actual role ID
+                Status = true,
+                IsForbidden = false,
+            },
+            new User
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Email = "haoncce171957@fpt.edu.vn",
+                Password = HashingExtension.HashWithSHA256("27122003"),
+                CreatedAt = DateTime.UtcNow,
+                RoleId = role.Id, // Replace with actual role ID
+                Status = true,
+                IsForbidden = false,
+            },
+             new User
+             {
+                 Id = ObjectId.GenerateNewId().ToString(),
+                 PhoneNumber = "0869251053",
+                 Password = HashingExtension.HashWithSHA256("27122003"),
+                 RoleId    = role.Id, // Replace with actual role ID
+                 CreatedAt = DateTime.UtcNow,
+                 Status = true,
+                 IsForbidden = false,
+             }
+        };
+
+        await collection.InsertManyAsync(userList);
     }
 
     private static async Task<string> SeedSellingLink(IMongoDatabase database)

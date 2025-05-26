@@ -40,5 +40,5 @@ public interface IUserService
     Task<Pagination<User>> GetUsersAsync(UserSpecParams userSpecParams, CancellationToken cancellationToken = default);
     Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default);
     Task<AdminProfileResponse> GetProfileAdmin(string id, CancellationToken cancellationToken = default);
-
+    Task UpdateProfileAdmin(UpdateProfileAdminRequest request, CancellationToken cancellationToken = default);
 }

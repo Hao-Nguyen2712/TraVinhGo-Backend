@@ -2,6 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Net;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
@@ -152,13 +154,12 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
-    //[Authorize(Roles = "admin")]
-    //[Authorize(Roles = "super-admin")]
+    [Authorize(Roles = "admin, super-admin")]
     [HttpGet("get-profile-admin")]
     public async Task<IActionResult> GetProfileAdmin()
     {
-        // var sessionId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-        var sessionId = "60f7b3b3b3b3b3b3b3b3b3b3";
+        var sessionId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        // var sessionId = "6832ba4fbd35e0ad520794c8";
         if (string.IsNullOrEmpty(sessionId))
         {
             return this.ApiError("Session ID not found in token", HttpStatusCode.Unauthorized);
@@ -169,5 +170,16 @@ public class UsersController : ControllerBase
             return this.ApiError("User not found", HttpStatusCode.NotFound);
         }
         return this.ApiOk(result, "Get profile admin successfully");
+    }
+    [Authorize(Roles = "admin, super-admin")]
+    [HttpPost("update-profile-admin")]
+    public async Task<IActionResult> UpdateProfileAdmin([FromForm] UpdateProfileAdminRequest request)
+    {
+        if (request == null)
+        {
+            return this.ApiError("Update fail", HttpStatusCode.BadRequest);
+        }
+        await _userService.UpdateProfileAdmin(request);
+        return this.ApiOk("", "Update profile admin successfully");
     }
 }

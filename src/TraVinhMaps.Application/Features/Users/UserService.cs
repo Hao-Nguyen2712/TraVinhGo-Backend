@@ -3,6 +3,7 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Application.Common.Exceptions;
+using TraVinhMaps.Application.External;
 using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
@@ -14,11 +15,13 @@ public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly IRepository<Role> _roleRepository;
+    private readonly ICloudinaryService _cloudinaryService;
 
-    public UserService(IUserRepository userRepository, IRepository<Role> roleRepository)
+    public UserService(IUserRepository userRepository, IRepository<Role> roleRepository, ICloudinaryService cloudinaryService)
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
+        _cloudinaryService = cloudinaryService;
     }
 
     public async Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default)
@@ -104,5 +107,55 @@ public class UserService : IUserService
             Status = user.Status
         };
         return adminProfile;
+    }
+
+    public async Task UpdateProfileAdmin(UpdateProfileAdminRequest request, CancellationToken cancellationToken = default)
+    {
+        if (request == null)
+        {
+            return;
+        }
+        var user = await _userRepository.GetByIdAsync(request.Id, cancellationToken);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found!");
+        }
+        if (request.Email != null)
+        {
+            var existingUser = await _userRepository.GetAsyns(u => u.Email == request.Email && u.Id != request.Id, cancellationToken);
+            if (existingUser != null)
+            {
+                throw new BadRequestException("Email already exists!");
+            }
+            user.Email = request.Email;
+        }
+        if (request.PhoneNumber != null)
+        {
+            var existingUser = await _userRepository.GetAsyns(u => u.PhoneNumber == request.PhoneNumber && u.Id != request.Id, cancellationToken);
+            if (existingUser != null)
+            {
+                throw new BadRequestException("Phone number already exists!");
+            }
+            user.PhoneNumber = request.PhoneNumber;
+        }
+        if (request.UserName != null)
+        {
+            user.Username = request.UserName;
+        }
+        if (request.Avartar != null)
+        {
+            var result = await _cloudinaryService.UploadImageAsync(request.Avartar);
+            if (result == null || result.SecureUrl == null)
+            {
+                throw new BadRequestException("Failed to upload image!");
+            }
+            if (user.Profile == null)
+            {
+                user.Profile = new Profile(); // tạo mới nếu chưa có
+            }
+            user.Profile.Avatar = result.SecureUrl.ToString();
+        }
+        user.UpdatedAt = DateTime.UtcNow;
+        await _userRepository.UpdateAsync(user, cancellationToken);
     }
 }
