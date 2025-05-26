@@ -97,11 +97,15 @@ public class TouristDestinationController : ControllerBase
 
         if (linkImage == null) return this.ApiError("No valid image uploaded.");
 
-        if (touristDestination.HistoryStory.ImagesFile != null || touristDestination.HistoryStory.ImagesFile.Count > 0)
+        if (touristDestination.HistoryStory != null &&
+            touristDestination.HistoryStory.ImagesFile != null &&
+            touristDestination.HistoryStory.ImagesFile.Count > 0)
         {
             linkHistoryImage = await _imageManagementDestinationServices.AddImageDestination(touristDestination.HistoryStory.ImagesFile);
-            if (linkHistoryImage == null) return this.ApiError("No valid history image uploaded.");
+            if (linkHistoryImage == null)
+                return this.ApiError("No valid history image uploaded.");
         }
+
         var touristDestination1 = DestinationMapper.Mapper.Map<TouristDestination>(touristDestination);
         var newDestination = await this._touristDestinationService.AddAsync(touristDestination1);
         
@@ -150,7 +154,7 @@ public class TouristDestinationController : ControllerBase
         return this.ApiOk(linkImage);
     }
 
-    [HttpDelete]
+    [HttpPost]
     [Route("DeleteDestinationImage")]
     public async Task<IActionResult> DeleteDestinationImage([FromBody] DeleteDestinationImageRequest deleteDestinationImageRequest)
     {
@@ -168,7 +172,7 @@ public class TouristDestinationController : ControllerBase
         return this.ApiError("No valid images were removed.");
     }
 
-    [HttpDelete]
+    [HttpPost]
     [Route("DeleteDestinationHistoryStoryImage")]
     public async Task<IActionResult> DeleteDestinationHistoryStoryImage ([FromBody] DeleteDestinationImageRequest deleteDestinationImageRequest)
     {
@@ -199,6 +203,10 @@ public class TouristDestinationController : ControllerBase
         {
             throw new NotFoundException("No Destination was found");
         }
+        if (destination.HistoryStory == null)
+        {
+            destination.HistoryStory = new HistoryStory();
+        }
         destination.Name = updateDestinationRequest.Name;
         destination.Description = updateDestinationRequest.Description;
         destination.AvarageRating = updateDestinationRequest.AvarageRating;
@@ -212,7 +220,7 @@ public class TouristDestinationController : ControllerBase
         destination.TagId = updateDestinationRequest.TagId;
         destination.Ticket = updateDestinationRequest.Ticket;
         //destination.TicketCount = updateDestinationRequest.TicketCount;
-        destination.UpdateAt = DateTime.Now;
+        destination.UpdateAt = DateTime.Now.ToLocalTime();
         await this._touristDestinationService.UpdateAsync(destination);
         return CreatedAtRoute("GetDestinationById", new { id = updateDestinationRequest.Id }, this.ApiOk(updateDestinationRequest));
     }
@@ -244,9 +252,42 @@ public class TouristDestinationController : ControllerBase
         {
             throw new NotFoundException("No Destination was found");
         }
+        if (destination.status == false)
+        {
+            return this.ApiError("Destination is already inactive");
+        }
         destination.status = false;
+        destination.UpdateAt = DateTime.Now.ToLocalTime();
         await this._touristDestinationService.UpdateAsync(destination);
         //return NoContent();
         return this.ApiOk("Destination deleted successfully");
     }
+
+    [HttpPut]
+    [Route("RestoreDestination/{id}")]
+    public async Task<IActionResult> RestoreDestination(string id)
+    {
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            return this.ApiError("id can't be null or empty");
+        }
+
+        var destination = await _touristDestinationService.GetByIdAsync(id);
+        if (destination == null)
+        {
+            throw new NotFoundException("No Destination was found");
+        }
+
+        if (destination.status == true)
+        {
+            return this.ApiError("Destination is already active");
+        }
+
+        destination.status = true;
+        destination.UpdateAt = DateTime.Now.ToLocalTime();
+
+        await _touristDestinationService.UpdateAsync(destination);
+        return this.ApiOk("Destination restored successfully");
+    }
+
 }

@@ -102,7 +102,7 @@ public class EventAndFestivalController : ControllerBase
         return this.ApiOk(listUrlImage);
     }
 
-    [HttpDelete]
+    [HttpPost]
     [Route("DeleteEventAndFestivalImage")]
     public async Task<IActionResult> DeleteEventAndFestivalImage([FromBody]DeleteEventAndFestivalImage deleteEventAndFestivalImage)
     {
@@ -164,13 +164,49 @@ public class EventAndFestivalController : ControllerBase
     [Route("[action]/{id}", Name = "DeleteEventAndFestival")]
     public async Task<IActionResult> DeleteEventAndFestival(string id)
     {
+        if (id == null)
+        {
+            return this.ApiError("id can't be null");
+        }
         var eventAndFestival = await _eventAndFestivalService.GetByIdAsync(id);
         if(eventAndFestival == null)
         {
             throw new NotFoundException("Event or Festival not found");
         }
+        if (eventAndFestival.Status == false)
+        {
+            return this.ApiError("Event or Festival is already inactive");
+        }
         eventAndFestival.Status = false;
+
         await this._eventAndFestivalService.UpdateAsync(eventAndFestival);
         return CreatedAtRoute("GetEventAndFestivalById", new { id = eventAndFestival.Id }, this.ApiOk(eventAndFestival));
     }
+
+    [HttpPut]
+    [Route("RestoreEventAndFestival/{id}")]
+    public async Task<IActionResult> RestoreEventAndFestival(string id)
+    {
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            return this.ApiError("id can't be null or empty");
+        }
+
+        var eventAndFestival = await _eventAndFestivalService.GetByIdAsync(id);
+        if (eventAndFestival == null)
+        {
+            throw new NotFoundException("No event and festival was found");
+        }
+
+        if (eventAndFestival.Status == true)
+        {
+            return this.ApiError("event and festival is already active");
+        }
+
+        eventAndFestival.Status = true;
+
+        await _eventAndFestivalService.UpdateAsync(eventAndFestival);
+        return this.ApiOk("Event and festival restored successfully");
+    }
+
 }
