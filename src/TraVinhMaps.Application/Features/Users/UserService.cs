@@ -8,6 +8,7 @@ using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.Users;
 public class UserService : IUserService
@@ -146,5 +147,10 @@ public class UserService : IUserService
         }
         user.UpdatedAt = DateTime.UtcNow;
         await _userRepository.UpdateAsync(user, cancellationToken);
+    }
+
+    public Task<Pagination<User>> GetUsersAsync(UserSpecParams userSpecParams, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
     }
 }
