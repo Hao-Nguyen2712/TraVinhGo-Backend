@@ -1,7 +1,11 @@
-using CloudinaryDotNet;
-using FluentValidation;
-using Microsoft.AspNetCore.Http;
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+using System.Net;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.Features.Roles.Interface;
@@ -10,7 +14,6 @@ using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Mappers;
 using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Api.Controllers;
 
@@ -150,4 +153,32 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
+    [Authorize(Roles = "admin, super-admin")]
+    [HttpGet("get-profile-admin")]
+    public async Task<IActionResult> GetProfileAdmin()
+    {
+        var sessionId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        // var sessionId = "6832ba4fbd35e0ad520794c8";
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.ApiError("Session ID not found in token", HttpStatusCode.Unauthorized);
+        }
+        var result = await _userService.GetProfileAdmin(sessionId);
+        if (result == null)
+        {
+            return this.ApiError("User not found", HttpStatusCode.NotFound);
+        }
+        return this.ApiOk(result, "Get profile admin successfully");
+    }
+    [Authorize(Roles = "admin, super-admin")]
+    [HttpPost("update-profile-admin")]
+    public async Task<IActionResult> UpdateProfileAdmin([FromForm] UpdateProfileAdminRequest request)
+    {
+        if (request == null)
+        {
+            return this.ApiError("Update fail", HttpStatusCode.BadRequest);
+        }
+        await _userService.UpdateProfileAdmin(request);
+        return this.ApiOk("", "Update profile admin successfully");
+    }
 }

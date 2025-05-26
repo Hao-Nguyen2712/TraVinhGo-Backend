@@ -37,4 +37,8 @@ public interface IUserService
     Task<long> CountAsync(Expression<Func<User, bool>> predicate = null, CancellationToken cancellationToken = default);
     Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
+    Task<Pagination<User>> GetUsersAsync(UserSpecParams userSpecParams, CancellationToken cancellationToken = default);
+    //  Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default);
+    Task<AdminProfileResponse> GetProfileAdmin(string id, CancellationToken cancellationToken = default);
+    Task UpdateProfileAdmin(UpdateProfileAdminRequest request, CancellationToken cancellationToken = default);
 }

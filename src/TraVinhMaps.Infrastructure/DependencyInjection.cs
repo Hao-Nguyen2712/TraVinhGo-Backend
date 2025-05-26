@@ -3,33 +3,31 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using TraVinhMaps.Application.External;
+using TraVinhMaps.Application.Features.Admins;
+using TraVinhMaps.Application.Features.Admins.Interface;
 using TraVinhMaps.Application.Features.Auth;
 using TraVinhMaps.Application.Features.Auth.Interface;
+using TraVinhMaps.Application.Features.CommunityTips;
+using TraVinhMaps.Application.Features.CommunityTips.Interface;
 using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.EventAndFestivalFeature;
+using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
+using TraVinhMaps.Application.Features.Notifications;
+using TraVinhMaps.Application.Features.Notifications.Interface;
+using TraVinhMaps.Application.Features.OcopProduct;
+using TraVinhMaps.Application.Features.OcopProduct.Interface;
+using TraVinhMaps.Application.Features.Roles;
+using TraVinhMaps.Application.Features.Roles.Interface;
+using TraVinhMaps.Application.Features.Tags;
+using TraVinhMaps.Application.Features.Tags.Interface;
+using TraVinhMaps.Application.Features.Users;
+using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
+using TraVinhMaps.Infrastructure.CustomRepositories;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
 using TraVinhMaps.Infrastructure.UnitOfWork;
-using TraVinhMaps.Application.Features.Users;
-using TraVinhMaps.Infrastructure.CustomRepositories;
-using TraVinhMaps.Application.Features.Users.Interface;
-using FluentValidation;
-using TraVinhMaps.Application.Validators;
-using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
-using TraVinhMaps.Application.Features.EventAndFestivalFeature;
-using TraVinhMaps.Application.Features.Notifications.Interface;
-using TraVinhMaps.Application.Features.Notifications;
-using TraVinhMaps.Application.Features.OcopProduct.Interface;
-using TraVinhMaps.Application.Features.OcopProduct;
-using TraVinhMaps.Application.Features.CommunityTips.Interface;
-using TraVinhMaps.Application.Features.CommunityTips;
-using TraVinhMaps.Application.Features.Admins.Interface;
-using TraVinhMaps.Application.Features.Admins;
-using TraVinhMaps.Application.Features.Roles.Interface;
-using TraVinhMaps.Application.Features.Roles;
-using TraVinhMaps.Application.Features.Tags.Interface;
-using TraVinhMaps.Application.Features.Tags;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -54,7 +52,7 @@ public static class DependencyInjection
         services.AddScoped<ITouristDestinationService, TouristDestinationService>();
         services.AddScoped<ImageManagementDestinationServices>();
         //EventAndFestival
-        services.AddScoped<IEventAndFestivalRepository,EventAndFestivalRepository>();
+        services.AddScoped<IEventAndFestivalRepository, EventAndFestivalRepository>();
         services.AddScoped<IEventAndFestivalService, EventAndFestivalService>();
         services.AddScoped<ImageManagementEventAndFestivalServices>();
 

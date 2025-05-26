@@ -1,12 +1,9 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Tags.Interface;
-using TraVinhMaps.Application.UnitOfWorks;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]

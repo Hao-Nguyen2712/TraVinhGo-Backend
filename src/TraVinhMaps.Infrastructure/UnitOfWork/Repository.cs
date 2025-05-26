@@ -2,7 +2,6 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
@@ -42,14 +41,14 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
-          var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+        var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
         //var filter = Builders<T>.Filter.Eq("_id", entity.Id);
         await _collection.DeleteOneAsync(filter, cancellationToken);
     }
 
     public async Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
-         var filter = Builders<T>.Filter.Eq(e => e.Id, id);
+        var filter = Builders<T>.Filter.Eq(e => e.Id, id);
         //var filter = Builders<T>.Filter.Eq("_id", id);
         return await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
     }
@@ -66,7 +65,8 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 
     public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
     {
-         var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+        var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+        // var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
         //var filter = Builders<T>.Filter.Eq("_id", entity.Id); // Hoặc e => e.Id nếu dùng biểu thức
 
         var updateDefinition = BuildUpdateDefinition(entity);
