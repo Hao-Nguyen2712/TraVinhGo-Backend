@@ -14,7 +14,6 @@ using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Mappers;
 using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Api.Controllers;
 

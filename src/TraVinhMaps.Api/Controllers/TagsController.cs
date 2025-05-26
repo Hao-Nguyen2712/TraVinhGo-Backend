@@ -4,7 +4,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Tags.Interface;
-using TraVinhMaps.Application.UnitOfWorks;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]

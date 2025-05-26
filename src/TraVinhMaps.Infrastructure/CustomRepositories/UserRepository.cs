@@ -1,15 +1,11 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using MongoDB.Bson;
 using MongoDB.Driver;
-using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.UnitOfWork;
-using TraVinhMaps.Application.Common.Extensions;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
 public class UserRepository : Repository<User>, IUserRepository
