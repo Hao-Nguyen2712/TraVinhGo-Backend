@@ -25,20 +25,6 @@ public class OcopProductController : ControllerBase
         _service = service;
         _imageManagementOcopProductServices = imageManagementOcopProductServices;
     }
-    [HttpGet]
-    [Route("GetAllOcopProductPagination")]
-    public async Task<Pagination<OcopProduct>> GetAllOcopProductPagination([FromQuery] OcopProductSpecParams OcopProductSpecParams)
-    {
-        var getAllOcopProductPagination = await _service.GetAllOcopProductAsync(OcopProductSpecParams);
-        return getAllOcopProductPagination;
-    }
-    [HttpGet]
-    [Route("GetAllOcopProductActive")]
-    public async Task<IActionResult> GetAllOcopProductActive()
-    {
-        var getAllOcopProductActive = await _service.ListAsync(ocop => ocop.Status == true);
-        return this.ApiOk(getAllOcopProductActive);
-    }
 
     [HttpGet]
     [Route("GetAllOcopProduct")]

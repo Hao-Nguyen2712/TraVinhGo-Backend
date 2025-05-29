@@ -12,7 +12,6 @@ using TraVinhMaps.Domain.Specs;
 namespace TraVinhMaps.Application.UnitOfWorks;
 public interface IOcopProductRepository : IRepository<OcopProduct>
 {
-    Task<Pagination<OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams);
     Task<IEnumerable<OcopProduct>> GetOcopProductByCompanyId(string companyId, CancellationToken cancellationToken = default);
     Task<IEnumerable<OcopProduct>> GetOcopProductByOcopTypeId(string ocopTypeId, CancellationToken cancellationToken = default);
     Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default);
