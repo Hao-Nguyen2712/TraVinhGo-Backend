@@ -16,6 +16,7 @@ public interface IOcopProductRepository : IRepository<OcopProduct>
     Task<IEnumerable<OcopProduct>> GetOcopProductByCompanyId(string companyId, CancellationToken cancellationToken = default);
     Task<IEnumerable<OcopProduct>> GetOcopProductByOcopTypeId(string ocopTypeId, CancellationToken cancellationToken = default);
     Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default);
+    Task<bool> UpdateSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default);
     Task<bool> DeleteSellLocation(string ocopProductId, string sellLocationName, CancellationToken cancellationToken = default);
     Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreOcopProductAsync(string id, CancellationToken cancellationToken = default);

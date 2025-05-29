@@ -39,7 +39,7 @@ public class OcopProductService : IOcopProductService
     {
         return _ocopProductRepository.DeleteAsync(entity, cancellationToken);
     }
-    public Task DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default)
+    public Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.DeleteOcopProductAsync(id, cancellationToken);
     }
@@ -95,5 +95,10 @@ public class OcopProductService : IOcopProductService
     public Task<bool> DeleteSellLocation(string ocopProductId, string sellLocationName, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.DeleteSellLocation(ocopProductId, sellLocationName, cancellationToken);
+    }
+
+    public Task<bool> UpdateSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default)
+    {
+        return _ocopProductRepository.UpdateSellLocation(id, sellLocation, cancellationToken);
     }
 }

@@ -130,7 +130,6 @@ public class OcopProductRepository : Repository<OcopProduct>, IOcopProductReposi
         var updateResult = await _collection.UpdateOneAsync(filter, updateImage, cancellationToken: cancellationToken);
         return imageUrl;
     }
-
     public async Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default)
     {
         var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, id);
@@ -150,6 +149,19 @@ public class OcopProductRepository : Repository<OcopProduct>, IOcopProductReposi
     {
         var filter = Builders<OcopProduct>.Filter.And(Builders<OcopProduct>.Filter.Eq(o => o.Id, ocopProductId), Builders<OcopProduct>.Filter.ElemMatch(p => p.Sellocations, s => s.LocationName == sellLocationName));
         var update = Builders<OcopProduct>.Update.PullFilter(p => p.Sellocations, s => s.LocationName == sellLocationName);
+        var result = await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
+        return result.IsAcknowledged && result.ModifiedCount > 0;
+    }
+
+    public async Task<bool> UpdateSellLocation(string ocopProductId, SellLocation sellLocation, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, ocopProductId);
+        var ocopProduct = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (ocopProduct == null || ocopProduct.Sellocations == null) return false;
+        var index = ocopProduct.Sellocations.FindIndex(s => s.LocationName == sellLocation.LocationName);
+        if(index == -1) return false;
+        ocopProduct.Sellocations[index] = sellLocation;
+        var update = Builders<OcopProduct>.Update.Set(o => o.Sellocations, ocopProduct.Sellocations);
         var result = await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
         return result.IsAcknowledged && result.ModifiedCount > 0;
     }
