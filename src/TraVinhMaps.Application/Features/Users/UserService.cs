@@ -3,6 +3,7 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Application.Common.Exceptions;
+using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.External;
 using TraVinhMaps.Application.Features.Users.Interface;
 using TraVinhMaps.Application.Features.Users.Models;
@@ -26,6 +27,8 @@ public class UserService : IUserService
 
     public async Task<User> AddAsync(User entity, CancellationToken cancellationToken = default)
     {
+        entity.Password = HashingTokenExtension.HashToken(entity.Password);
+        entity.IsForbidden = false;
         return await _userRepository.AddAsync(entity, cancellationToken);
     }
 
@@ -56,12 +59,16 @@ public class UserService : IUserService
 
     public async Task<IEnumerable<User>> ListAllAsync(CancellationToken cancellationToken = default)
     {
-        return await _userRepository.ListAllAsync(cancellationToken);
+        var userRole = (await _roleRepository.ListAllAsync(cancellationToken))
+             .FirstOrDefault(r => r.RoleName.ToLower() == "user" && r.RoleStatus);
+        if (userRole == null)
+            throw new NotFoundException("User role not found.");
+        return await _userRepository.ListAsync(u => u.RoleId == userRole.Id, cancellationToken);
     }
 
     public async Task<IEnumerable<User>> ListAsync(Expression<Func<User, bool>> predicate, CancellationToken cancellationToken = default)
     {
-        return await _userRepository.ListAsync(predicate, cancellationToken);
+        return await _userRepository.ListAsync(u => u.Status == true, cancellationToken);
     }
 
     public async Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default)

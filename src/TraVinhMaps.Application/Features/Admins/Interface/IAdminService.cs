@@ -20,7 +20,7 @@ public interface IAdminService
     Task<IEnumerable<User>> ListAsync(Expression<Func<User, bool>> predicate, CancellationToken cancellationToken = default);
     Task<User> AddAsync(AdminRequest entity, CancellationToken cancellationToken = default);
     Task<IEnumerable<User>> AddRangeAsync(IEnumerable<User> entities, CancellationToken cancellationToken = default);
-    Task<User> UpdateAsync(UpdateAdminRequest entity, CancellationToken cancellationToken = default);
+    //Task<User> UpdateAsync(UpdateAdminRequest entity, CancellationToken cancellationToken = default);
     Task DeleteAsync(User entity, CancellationToken cancellationToken = default);
     Task<long> CountAsync(Expression<Func<User, bool>> predicate = null, CancellationToken cancellationToken = default);
     Task<bool> DeleteAdmin(string id, CancellationToken cancellationToken = default);

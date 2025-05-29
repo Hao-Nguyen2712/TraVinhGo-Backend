@@ -1,26 +1,28 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Roles.Interface;
-using TraVinhMaps.Application.Features.Roles.Models;
-using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Api.Controllers;
+
+// Controller responsible for handling Role-related API requests
 [Route("api/[controller]")]
 [ApiController]
 public class RoleController : ControllerBase
 {
     private readonly IRoleService _roleService;
 
+    // Constructor - injects the IRoleService dependency
     public RoleController(IRoleService roleService)
     {
         _roleService = roleService;
     }
 
+    // GET: api/Role
+    // Retrieves all roles
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -28,41 +30,19 @@ public class RoleController : ControllerBase
         return this.ApiOk(list);
     }
 
+    // GET: api/Role/{id}
+    // Retrieves a specific role by its ID
     [HttpGet("{id}", Name = "GetById")]
     public async Task<IActionResult> GetById(string id)
     {
         var role = await _roleService.GetByIdAsync(id);
+
+        // If the role is not found, throw a 404 Not Found exception
         if (role == null)
         {
             throw new NotFoundException($"Role with ID '{id}' not found.");
         }
+
         return Ok(role);
     }
-
-    [HttpPost]
-    public async Task<IActionResult> Create([FromBody] RoleRequest role)
-    {
-        var createdRole = await _roleService.AddAsync(role);
-        return CreatedAtRoute(nameof(GetById), new { id = createdRole.Id }, createdRole);
-    }
-
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(string id, [FromBody] RoleRequest roleRequest)
-    {
-        var result = await _roleService.UpdateAsync(id, roleRequest);
-        if (!result)
-        {
-            throw new NotFoundException($"No role found with ID: {id}");
-        }
-
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
-    {
-        await _roleService.DeleteAsync(id);
-        return NoContent();
-    }
-
 }

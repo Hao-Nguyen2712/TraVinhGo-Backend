@@ -19,6 +19,7 @@ public class NotificationsService : INotificationService
     private readonly ILogger<NotificationsService> _logger;
     private readonly INotificationsRepository _notificationsRepository;
 
+
     public NotificationsService(INotificationsRepository notificationsRepository, ILogger<NotificationsService> logger = null)
     {
         _notificationsRepository = notificationsRepository;

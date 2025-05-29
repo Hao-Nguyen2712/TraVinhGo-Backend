@@ -12,7 +12,4 @@ using TraVinhMaps.Domain.Entities;
 namespace TraVinhMaps.Application.UnitOfWorks;
 public interface IRoleRepository : IRepository<Role>
 {
-    Task<Role> AddAsync(RoleRequest entity, CancellationToken cancellationToken);
-    Task<bool> DeleteAsync(string id, CancellationToken cancellationToken = default);
-    Task<bool> UpdateAsync(string id, RoleRequest entity, CancellationToken cancellationToken = default);
 }

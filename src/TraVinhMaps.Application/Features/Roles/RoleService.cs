@@ -1,8 +1,8 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.Roles.Interface;
-using TraVinhMaps.Application.Features.Roles.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
@@ -15,17 +15,6 @@ public class RoleService : IRoleService
     {
         _roleRepository = roleRepository;
     }
-
-    public async Task<Role> AddAsync(RoleRequest entity, CancellationToken cancellationToken = default)
-    {
-        return await _roleRepository.AddAsync(entity, cancellationToken);
-    }
-
-    public async Task<bool> DeleteAsync(string id, CancellationToken cancellationToken = default)
-    {
-         return await _roleRepository.DeleteAsync(id, cancellationToken);
-    }
-
     public async Task<Role> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return await _roleRepository.GetByIdAsync(id, cancellationToken);
@@ -36,8 +25,8 @@ public class RoleService : IRoleService
         return await _roleRepository.ListAllAsync(cancellationToken);
     }
 
-    public async Task<bool> UpdateAsync(string id, RoleRequest entity, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Role>> ListAsync(Expression<Func<Role, bool>> predicate, CancellationToken cancellationToken = default)
     {
-        return await _roleRepository.UpdateAsync(id, entity, cancellationToken);
+        return await _roleRepository.ListAsync(predicate, cancellationToken);
     }
 }
