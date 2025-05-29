@@ -16,8 +16,6 @@ public class CreateOcopProductRequest
     public List<IFormFile> ProductImageFile { get; set; }
     public string? ProductPrice { get; set; }
     public required string OcopTypeId { get; set; }
-    public required bool Status { get; set; }
-    //public List<SellLocation>? Sellocations { get; set; }
     public required string CompanyId { get; set; }
     public required int OcopPoint { get; set; }
     public required int OcopYearRelease { get; set; }

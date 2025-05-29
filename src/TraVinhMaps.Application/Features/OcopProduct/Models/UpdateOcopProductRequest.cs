@@ -17,7 +17,6 @@ public class UpdateOcopProductRequest
     public string? ProductPrice { get; set; }
     public required string OcopTypeId { get; set; }
     public DateTime? UpdateAt { get; set; } = DateTime.UtcNow;
-    public List<SellLocation>? Sellocations { get; set; }
     public required string CompanyId { get; set; }
     public required int OcopPoint { get; set; }
     public required int OcopYearRelease { get; set; }

@@ -17,77 +17,6 @@ namespace TraVinhMaps.Infrastructure.UnitOfWork;
 public class OcopProductRepository : Repository<OcopProduct>, IOcopProductRepository
 {
     public OcopProductRepository(IDbContext dbContext) : base(dbContext) { }
-    public async Task<Pagination<OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams)
-    {
-        var builder = Builders<OcopProduct>.Filter;
-        var filter = builder.Eq(o => o.Status, true);
-        if (!string.IsNullOrEmpty(ocopProductSpecParams.Search))
-        {
-            var searchFilter = builder.Regex(x => x.ProductName, new BsonRegularExpression(ocopProductSpecParams.Search));
-            filter &= searchFilter;
-        }
-        if (!string.IsNullOrEmpty(ocopProductSpecParams.Sort))
-        {
-            return new Pagination<OcopProduct>
-            {
-                PageSize = ocopProductSpecParams.PageSize,
-                PageIndex = ocopProductSpecParams.PageIndex,
-                Data = await DataFilter(ocopProductSpecParams, filter),
-                Count = await _collection.CountDocumentsAsync(filter)
-            };
-        }
-        if (!string.IsNullOrEmpty(ocopProductSpecParams.TypeId))
-        {
-            var typeFilter = builder.Eq(o => o.Id, ocopProductSpecParams.TypeId);
-            filter &= typeFilter;
-        }
-        return new Pagination<OcopProduct>
-        {
-            PageSize = ocopProductSpecParams.PageSize,
-            PageIndex = ocopProductSpecParams.PageIndex,
-            Data = await _collection
-                    .Find(filter)
-                    .Sort(Builders<OcopProduct>.Sort.Ascending("ProductName"))
-                    .Skip(ocopProductSpecParams.PageSize * (ocopProductSpecParams.PageIndex - 1))
-                    .Limit(ocopProductSpecParams.PageSize)
-                    .ToListAsync(),
-            Count = await _collection.CountDocumentsAsync(filter)
-        };
-    }
-    private async Task<IReadOnlyList<OcopProduct>> DataFilter(OcopProductSpecParams ocopProductSpecParams, FilterDefinition<OcopProduct> filter)
-    {
-        switch (ocopProductSpecParams.Sort)
-        {
-            case "nameAsc":
-                return await _collection
-                    .Find(filter)
-                    .Sort(Builders<OcopProduct>.Sort.Ascending("ProductName"))
-                    .Skip(ocopProductSpecParams.PageSize * (ocopProductSpecParams.PageIndex - 1))
-                    .Limit(ocopProductSpecParams.PageSize)
-                    .ToListAsync();
-            case "nameDesc":
-                return await _collection
-                    .Find(filter)
-                    .Sort(Builders<OcopProduct>.Sort.Descending("ProductName"))
-                    .Skip(ocopProductSpecParams.PageSize * (ocopProductSpecParams.PageIndex - 1))
-                    .Limit(ocopProductSpecParams.PageSize)
-                    .ToListAsync();
-            default:
-                return await _collection
-                    .Find(filter)
-                    .Sort(Builders<OcopProduct>.Sort.Ascending("ProductName"))
-                    .Skip(ocopProductSpecParams.PageSize * (ocopProductSpecParams.PageIndex - 1))
-                    .Limit(ocopProductSpecParams.PageSize)
-                    .ToListAsync();
-        }
-    }
-    public async Task<IEnumerable<OcopProduct>> GetAllOcopProductActiveAsync(CancellationToken cancellationToken = default)
-    {
-        var filter = Builders<OcopProduct>.Filter.Eq(o => o.Status, true);
-        var listOcopProduct = await _collection.Find(filter).ToListAsync();
-        return listOcopProduct;
-    }
-
     public async Task<IEnumerable<OcopProduct>> GetOcopProductByCompanyId(string companyId, CancellationToken cancellationToken = default)
     {
         var filter = Builders<OcopProduct>.Filter.Eq(c => c.CompanyId, companyId) & Builders<OcopProduct>.Filter.Eq(s => s.Status, true);
@@ -130,7 +59,6 @@ public class OcopProductRepository : Repository<OcopProduct>, IOcopProductReposi
         var updateResult = await _collection.UpdateOneAsync(filter, updateImage, cancellationToken: cancellationToken);
         return imageUrl;
     }
-
     public async Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default)
     {
         var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, id);
@@ -150,6 +78,18 @@ public class OcopProductRepository : Repository<OcopProduct>, IOcopProductReposi
     {
         var filter = Builders<OcopProduct>.Filter.And(Builders<OcopProduct>.Filter.Eq(o => o.Id, ocopProductId), Builders<OcopProduct>.Filter.ElemMatch(p => p.Sellocations, s => s.LocationName == sellLocationName));
         var update = Builders<OcopProduct>.Update.PullFilter(p => p.Sellocations, s => s.LocationName == sellLocationName);
+        var result = await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
+        return result.IsAcknowledged && result.ModifiedCount > 0;
+    }
+
+    public async Task<bool> UpdateSellLocation(string ocopProductId, SellLocation sellLocation, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, ocopProductId);
+        var ocopProduct = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (ocopProduct == null || ocopProduct.Sellocations == null) return false;
+        var index = ocopProduct.Sellocations.FindIndex(s => s.LocationName == sellLocation.LocationName);
+        ocopProduct.Sellocations[index] = sellLocation;
+        var update = Builders<OcopProduct>.Update.Set(o => o.Sellocations, ocopProduct.Sellocations);
         var result = await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
         return result.IsAcknowledged && result.ModifiedCount > 0;
     }

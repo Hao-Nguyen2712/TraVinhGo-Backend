@@ -19,7 +19,7 @@ public interface IOcopProductService
     Task<IEnumerable<Domain.Entities.OcopProduct>> AddRangeAsync(IEnumerable<Domain.Entities.OcopProduct> entities, CancellationToken cancellationToken = default);
     Task UpdateAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
     Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
-    Task DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default);
+    Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreOcopProductAsync(string id, CancellationToken cancellationToken = default);
     Task<long> CountAsync(Expression<Func<Domain.Entities.OcopProduct, bool>> predicate = null, CancellationToken cancellationToken = default);
     Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams);
@@ -27,6 +27,7 @@ public interface IOcopProductService
     Task<IEnumerable<Domain.Entities.OcopProduct>> GetOcopProductByCompanyId(string companyId, CancellationToken cancellationToken = default);
     Task<String> AddImageOcopProduct(string id, string imageUrl, CancellationToken cancellationToken = default);
     Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default);
+    Task<bool> UpdateSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default);
     Task<bool> DeleteSellLocation(string ocopProductId, string sellLocationName, CancellationToken cancellationToken = default);
 
 }
