@@ -1,7 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
@@ -11,23 +10,32 @@ using TraVinhMaps.Application.Features.CommunityTips.Models;
 using TraVinhMaps.Application.Features.CommunityTips.Mappers;
 
 namespace TraVinhMaps.Api.Controllers;
+
+// Controller for managing community tips via API
 [Route("api/[controller]")]
 [ApiController]
 public class CommunityTipsController : ControllerBase
 {
     private readonly ICommunityTipsService _service;
+
+    // Constructor - injects the community tips service
     public CommunityTipsController(ICommunityTipsService service)
     {
         _service = service;
     }
+
+    // GET: api/CommunityTips/GetAllTipActive
+    // Retrieves all community tips that are marked as active (Status == true)
     [HttpGet]
     [Route("GetAllTipActive")]
     public async Task<IActionResult> GetAllTipActive()
     {
         var getAllTipActive = await _service.ListAsync(t => t.Status == true);
-        return this.ApiOk(getAllTipActive);
+        return this.ApiOk(getAllTipActive); // Custom extension method to return standardized API responses
     }
 
+    // GET: api/CommunityTips/GetAllTip
+    // Retrieves all community tips regardless of their status
     [HttpGet]
     [Route("GetAllTip")]
     public async Task<IActionResult> GetAllTip()
@@ -35,6 +43,9 @@ public class CommunityTipsController : ControllerBase
         var listTip = await _service.ListAllAsync();
         return Ok(listTip);
     }
+
+    // GET: api/CommunityTips/GetByIdTip/{id}
+    // Retrieves a specific tip by its ID
     [HttpGet]
     [Route("GetByIdTip/{id}", Name = "GetByIdTip")]
     public async Task<IActionResult> GetByIdTip(string id)
@@ -43,6 +54,8 @@ public class CommunityTipsController : ControllerBase
         return Ok(tip);
     }
 
+    // GET: api/CommunityTips/CountTips
+    // Returns the total number of community tips
     [HttpGet]
     [Route("CountTips")]
     public async Task<IActionResult> CountTips()
@@ -50,38 +63,38 @@ public class CommunityTipsController : ControllerBase
         var countTips = await _service.CountAsync();
         return this.ApiOk(countTips);
     }
+
+    // POST: api/CommunityTips/CreateTip
+    // Creates a new community tip
     [HttpPost]
     [Route("CreateTip")]
     public async Task<IActionResult> CreateTip([FromBody] CreateCommunityTipRequest createCommunityTipRequest)
     {
-        // check for existing tip with same title and tag
-        var existingTips = await _service.ListAsync(t => t.Title.ToLower().Trim() == createCommunityTipRequest.Title.ToLower().Trim() ||
-        t.TagId == createCommunityTipRequest.TagId);
-
-        if(existingTips.Any())
-        {
-            throw new BadRequestException("A tip with the same title and tag already exists.");
-        }
-
-        var createTip = CommunityTipsMapper.Mapper.Map<Tips>(createCommunityTipRequest);
-        var tip = await _service.AddAsync(createTip);
-        tip.Status = true;
-        return CreatedAtRoute("GetByIdTip", new { id = tip.Id }, tip);
+        var tip = await _service.AddAsync(createCommunityTipRequest);
+        return CreatedAtRoute("GetByIdTip", new { id = tip.Id }, tip); // Returns 201 Created with the route to the new tip
     }
+
+    // PUT: api/CommunityTips/UpdateTip
+    // Updates an existing community tip
     [HttpPut]
     [Route("UpdateTip")]
     public async Task<IActionResult> UpdateTip([FromBody] UpdateCommunityTipRequest updateCommunityTipRequest)
     {
+        // Check if the tip exists
         var oldTip = await _service.GetByIdAsync(updateCommunityTipRequest.Id);
-        if(oldTip == null)
+        if (oldTip == null)
             throw new NotFoundException("Tip not found.");
 
+        // Map updated data and retain the original status
         var updateTip = CommunityTipsMapper.Mapper.Map<Tips>(updateCommunityTipRequest);
         updateTip.Status = oldTip.Status;
 
         await _service.UpdateAsync(updateTip);
         return this.ApiOk("Updated tip successfully.");
     }
+
+    // DELETE: api/CommunityTips/DeleteTip/{id}
+    // Deletes a specific community tip by its ID
     [HttpDelete]
     [Route("DeleteTip/{id}")]
     public async Task<IActionResult> DeleteTip(string id)
@@ -95,6 +108,8 @@ public class CommunityTipsController : ControllerBase
         return this.ApiOk("Deleted tip successfully.");
     }
 
+    // PUT: api/CommunityTips/RestoreTip/{id}
+    // Restores a previously deleted or deactivated tip
     [HttpPut]
     [Route("RestoreTip/{id}")]
     public async Task<IActionResult> RestoreTip(string id)
@@ -105,6 +120,6 @@ public class CommunityTipsController : ControllerBase
             throw new NotFoundException("Tip not found.");
         }
         await _service.RestoreTipAsync(id);
-        return this.ApiOk("Restore tip successfully.");
+        return this.ApiOk("Restored tip successfully.");
     }
 }

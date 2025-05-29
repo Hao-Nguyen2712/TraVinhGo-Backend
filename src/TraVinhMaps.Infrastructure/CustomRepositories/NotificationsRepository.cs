@@ -15,16 +15,18 @@ public class NotificationsRepository : Repository<Notification>, INotificationsR
 {
     private readonly IMongoCollection<Notification> _notificationCollection;
     private readonly IUserRepository _userRepository;
-    public NotificationsRepository(IDbContext context, IUserRepository userRepository) : base(context)
+    private readonly IRoleRepository _roleRepository;
+    public NotificationsRepository(IDbContext context, IUserRepository userRepository, IRoleRepository roleRepository = null) : base(context)
     {
         _notificationCollection = context.GetCollection<Notification>();
         _userRepository = userRepository;
+        _roleRepository = roleRepository;
     }
 
     public async Task<IEnumerable<Notification>> GetNotificationsByUserIdAsync(string userId, bool? isRead = null, CancellationToken cancellationToken = default)
     {
         Expression<Func<Notification, bool>> predicate = n => n.UserId == userId;
-        if(isRead.HasValue)
+        if (isRead.HasValue)
         {
             predicate = n => n.UserId == userId && n.IsRead == isRead.Value;
         }
@@ -35,9 +37,9 @@ public class NotificationsRepository : Repository<Notification>, INotificationsR
     {
         var notifications = await _notificationCollection.Find(_ => true).ToListAsync(cancellationToken);
         return notifications
-            .GroupBy(n => new {n.Title, n.Content})
+            .GroupBy(n => new { n.Title, n.Content })
             .Select(g => g.First())
-            .OrderBy(n =>n.CreatedAt).ToList();
+            .OrderBy(n => n.CreatedAt).ToList();
     }
 
     public async Task<bool> MarkNotificationAsReadAsync(string notificationId, CancellationToken cancellationToken = default)
@@ -51,37 +53,6 @@ public class NotificationsRepository : Repository<Notification>, INotificationsR
         try
         {
             await UpdateAsync(notification, cancellationToken);
-            return true;    
-        }catch (Exception)
-        {
-            return false;
-        }
-    }
-
-    public async Task<bool> SendNotificationAsync(NotificationRequest notificationRequest, CancellationToken cancellation)
-    {
-        var users = await _userRepository.ListAllAsync(cancellation);
-        if (!users.Any())
-        {
-            return false; // Not found user, no create notification
-        }
-
-        string displayTitle = notificationRequest.IconCode.StartsWith("fa-")
-            ? $"<i class='fas {notificationRequest.IconCode}'></i> {notificationRequest.Title}"
-            : $"{GetEmojiFromCode(notificationRequest.IconCode)} {notificationRequest.Title ?? string.Empty}";
-
-        var notification = users.Select(user => new Notification
-        {
-            Id = ObjectId.GenerateNewId().ToString(),
-            UserId = user.Id,
-            Title = displayTitle, 
-            Content = notificationRequest.Content,
-            IsRead = notificationRequest.IsRead,
-            CreatedAt = DateTime.UtcNow
-        }).ToList();
-        try
-        {
-            await _notificationCollection.InsertManyAsync(notification, null, cancellation);
             return true;
         }
         catch (Exception)
@@ -89,6 +60,45 @@ public class NotificationsRepository : Repository<Notification>, INotificationsR
             return false;
         }
     }
+
+    public async Task<bool> SendNotificationAsync(NotificationRequest notificationRequest, CancellationToken cancellation)
+    {
+        var allUsers = await _userRepository.ListAllAsync(cancellation);
+        var allRoles = await _roleRepository.ListAllAsync(cancellation);
+
+        // Tìm role "User"
+        var userRole = allRoles.FirstOrDefault(r => r.RoleName.ToLower() == "user");
+        if (userRole == null) return false;
+
+        // Lọc user có RoleId = userRole.Id
+        var users = allUsers.Where(u => u.RoleId == userRole.Id).ToList();
+        if (!users.Any()) return false;
+
+        string displayTitle = notificationRequest.IconCode.StartsWith("fa-")
+            ? $"<i class='fas {notificationRequest.IconCode}'></i> {notificationRequest.Title}"
+            : $"{GetEmojiFromCode(notificationRequest.IconCode)} {notificationRequest.Title ?? string.Empty}";
+
+        var notifications = users.Select(user => new Notification
+        {
+            Id = ObjectId.GenerateNewId().ToString(),
+            UserId = user.Id,
+            Title = displayTitle,
+            Content = notificationRequest.Content,
+            IsRead = notificationRequest.IsRead,
+            CreatedAt = DateTime.UtcNow
+        }).ToList();
+
+        try
+        {
+            await _notificationCollection.InsertManyAsync(notifications, null, cancellation);
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
+
     private string GetEmojiFromCode(string code)
     {
         return code switch

@@ -7,7 +7,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using TraVinhMaps.Domain.Specs;
+using TraVinhMaps.Application.Features.CommunityTips.Models;
+using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Application.Features.CommunityTips.Interface;
 public interface ICommunityTipsService
@@ -21,7 +22,7 @@ public interface ICommunityTipsService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns></returns>
     Task<IEnumerable<Domain.Entities.Tips>> ListAsync(Expression<Func<Domain.Entities.Tips, bool>> predicate, CancellationToken cancellationToken = default);
-    Task<Domain.Entities.Tips> AddAsync(Domain.Entities.Tips entity, CancellationToken cancellationToken = default);
+    Task<Tips> AddAsync(CreateCommunityTipRequest entity, CancellationToken cancellationToken = default);
     /// <summary>
     /// Adds the range asynchronous with conditional
     /// </summary>

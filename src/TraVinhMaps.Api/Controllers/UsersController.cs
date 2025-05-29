@@ -38,14 +38,7 @@ public class UsersController : ControllerBase
     [HttpGet("all")]
     public async Task<IActionResult> GetAllUsers()
     {
-        // Get the user role from the role repository
-        var userRole = (await _roleService.ListAllAsync()).
-            FirstOrDefault(r => r.RoleName.ToLower() == "user" && r.RoleStatus);
-        if (userRole == null)
-        {
-            throw new NotFoundException("User role not found.");
-        }
-        var list = await _userService.ListAsync(u => u.RoleId == userRole.Id);
+        var list = await _userService.ListAllAsync();
         return Ok(list);
     }
 
@@ -106,9 +99,6 @@ public class UsersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] User user)
     {
-        // HASH PASSWORD
-        user.Password = HashingTokenExtension.HashToken(user.Password);
-        user.IsForbidden = false;
         var createUser = await _userService.AddAsync(user);
         return CreatedAtRoute(nameof(GetUserById), new { id = user.Id }, user);
     }

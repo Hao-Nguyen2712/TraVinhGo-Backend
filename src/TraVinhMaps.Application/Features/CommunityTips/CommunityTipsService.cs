@@ -2,7 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
+using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.CommunityTips.Interface;
+using TraVinhMaps.Application.Features.CommunityTips.Mappers;
+using TraVinhMaps.Application.Features.CommunityTips.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
@@ -14,9 +17,18 @@ public class CommunityTipsService : ICommunityTipsService
     {
         _communityTipsRepository = communityTipsRepository;
     }
-    public Task<Tips> AddAsync(Domain.Entities.Tips entity, CancellationToken cancellationToken = default)
+    public async Task<Tips> AddAsync(CreateCommunityTipRequest entity, CancellationToken cancellationToken = default)
     {
-        return _communityTipsRepository.AddAsync(entity, cancellationToken);
+        var existingTips = await _communityTipsRepository.ListAsync(
+            t => t.Title.ToLower().Trim() == entity.Title.ToLower().Trim()
+            && t.TagId == entity.TagId, cancellationToken);
+
+        if (existingTips.Any())
+            throw new BadRequestException("A tip with the same title and tag already exists.");
+
+        var tip = CommunityTipsMapper.Mapper.Map<Tips>(entity);
+        tip.Status = true;
+        return await _communityTipsRepository.AddAsync(tip, cancellationToken);
     }
 
     public Task<IEnumerable<Tips>> AddRangeAsync(IEnumerable<Domain.Entities.Tips> entities, CancellationToken cancellationToken = default)

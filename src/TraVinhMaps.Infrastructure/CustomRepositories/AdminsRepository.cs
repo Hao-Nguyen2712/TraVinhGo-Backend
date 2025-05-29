@@ -4,7 +4,6 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using TraVinhMaps.Application.Common.Extensions;
-using TraVinhMaps.Application.Features.Admins.Mappers;
 using TraVinhMaps.Application.Features.Admins.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
@@ -20,7 +19,7 @@ public class AdminsRepository : Repository<User>, IAdminRepository
 
     public async Task<User> AddAsync(AdminRequest entity, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrEmpty(entity.Email) || string.IsNullOrEmpty(entity.Password) || string.IsNullOrEmpty(entity.RoleId))
+        if (string.IsNullOrEmpty(entity.Email) || string.IsNullOrEmpty(entity.RoleId))
         {
             throw new ArgumentException("Username, Password, and RoleId are required.");
         }
@@ -28,30 +27,20 @@ public class AdminsRepository : Repository<User>, IAdminRepository
         var existingAdmin = await _collection.Find(x => x.Email == entity.Email).FirstOrDefaultAsync(cancellationToken);
         if (existingAdmin != null)
         {
-            throw new ArgumentException("Email already exists.");
+            throw new InvalidOperationException("An admin with the same email already exists.");
         }
-
-        // Check if phone number already exists (if provided)
-        //if (!string.IsNullOrEmpty(entity.PhoneNumber))
-        //{
-        //    var existingPhoneUser = await _collection.Find(x => x.PhoneNumber == entity.PhoneNumber).FirstOrDefaultAsync(cancellationToken);
-        //    if (existingPhoneUser != null)
-        //    {
-        //        throw new ArgumentException("Phone number already exists.");
-        //    }
-        //}
 
         var admin = new User
         {
             Id = ObjectId.GenerateNewId().ToString(),
-            Username = entity.Username,
-            Password = HashingTokenExtension.HashToken(entity.Password),
+            Username = "admin",
+            Password = HashingExtension.HashWithSHA256("admin123@"),
             RoleId = entity.RoleId,
             CreatedAt = DateTime.UtcNow,
             Status = true,
             IsForbidden = false,
             Email = entity.Email,
-            PhoneNumber = entity.PhoneNumber,
+            PhoneNumber = null,
             Profile = null,
             Favorites = null,
             UpdatedAt = null
@@ -86,33 +75,32 @@ public class AdminsRepository : Repository<User>, IAdminRepository
         return result.ModifiedCount > 0;
     }
 
-    public async Task<User> UpdateAsync(UpdateAdminRequest entity, CancellationToken cancellationToken = default)
-    {
-        var existingAdmin = await _collection.Find(x => x.Id == entity.Id).FirstOrDefaultAsync(cancellationToken);
-        if (existingAdmin == null)
-        {
-            throw new ArgumentException("Admin not found.");
-        }
+    //public async Task<User> UpdateAsync(UpdateAdminRequest entity, CancellationToken cancellationToken = default)
+    //{
+    //    var existingAdmin = await _collection.Find(x => x.Id == entity.Id).FirstOrDefaultAsync(cancellationToken);
+    //    if (existingAdmin == null)
+    //    {
+    //        throw new ArgumentException("Admin not found.");
+    //    }
 
-        // update info
-        var updateAdmin = AdminMapper.Mapper.Map<UpdateAdminRequest, User>(entity);
-        updateAdmin.Id = existingAdmin.Id;
-        updateAdmin.Email = existingAdmin.Email;
-        updateAdmin.RoleId = existingAdmin.RoleId;
-        updateAdmin.Status = existingAdmin.Status;
-        updateAdmin.IsForbidden = existingAdmin.IsForbidden;
-        updateAdmin.Password = string.IsNullOrEmpty(entity.Password)
-        ? existingAdmin.Password
-        : HashingTokenExtension.HashToken(entity.Password);
+    //    // update info
+    //    var updateAdmin = AdminMapper.Mapper.Map<UpdateAdminRequest, User>(entity);
+    //    updateAdmin.Id = existingAdmin.Id;
+    //    updateAdmin.Email = existingAdmin.Email;
+    //    updateAdmin.RoleId = existingAdmin.RoleId;
+    //    updateAdmin.Status = existingAdmin.Status;
+    //    updateAdmin.IsForbidden = existingAdmin.IsForbidden;
+    //    updateAdmin.Password = string.IsNullOrEmpty(entity.Password)
+    //    ? existingAdmin.Password
+    //    : HashingTokenExtension.HashToken(entity.Password);
 
-        existingAdmin.CreatedAt = existingAdmin.CreatedAt;
-        existingAdmin.UpdatedAt = DateTime.UtcNow;
+    //    existingAdmin.CreatedAt = existingAdmin.CreatedAt;
+    //    existingAdmin.UpdatedAt = DateTime.UtcNow;
 
+    //    // ReplaceOne
+    //    var filter = Builders<User>.Filter.Eq(u => u.Id, existingAdmin.Id);
+    //    await _collection.ReplaceOneAsync(filter, updateAdmin, cancellationToken: cancellationToken);
 
-        // ReplaceOne
-        var filter = Builders<User>.Filter.Eq(u => u.Id, existingAdmin.Id);
-        await _collection.ReplaceOneAsync(filter, updateAdmin, cancellationToken: cancellationToken);
-
-        return updateAdmin;
-    }
+    //    return updateAdmin;
+    //}
 }
