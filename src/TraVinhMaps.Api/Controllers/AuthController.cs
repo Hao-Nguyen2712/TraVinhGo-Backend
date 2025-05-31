@@ -223,6 +223,7 @@ public class AuthController : ControllerBase
     }
     #endregion
 
+    [HttpPost("refresh-token")]
     public Task<IActionResult> RefreshToken()
     {
         return Task.FromResult<IActionResult>(this.ApiError("Not implemented", HttpStatusCode.NotImplemented));

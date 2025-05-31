@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.OcopProduct;
 public class OcopProductService : IOcopProductService
@@ -43,10 +42,10 @@ public class OcopProductService : IOcopProductService
         return _ocopProductRepository.RestoreOcopProductAsync(id, cancellationToken);
     }
 
-    public Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams)
-    {
-        return _ocopProductRepository.GetAllOcopProductAsync(ocopProductSpecParams);
-    }
+    //public Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams)
+    //{
+    //    return _ocopProductRepository.GetAllOcopProductAsync(ocopProductSpecParams);
+    //}
     public Task<Domain.Entities.OcopProduct> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.GetByIdAsync(id, cancellationToken);
