@@ -222,5 +222,11 @@ public class AuthController : ControllerBase
         return this.ApiOk(JsonConvert.SerializeObject(response), "OTP refreshed successfully");
     }
     #endregion
+
+    [HttpPost("refresh-token")]
+    public Task<IActionResult> RefreshToken()
+    {
+        return Task.FromResult<IActionResult>(this.ApiError("Not implemented", HttpStatusCode.NotImplemented));
+    }
 }
 

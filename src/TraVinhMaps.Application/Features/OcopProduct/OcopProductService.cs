@@ -1,16 +1,10 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.OcopProduct;
 public class OcopProductService : IOcopProductService
@@ -48,10 +42,10 @@ public class OcopProductService : IOcopProductService
         return _ocopProductRepository.RestoreOcopProductAsync(id, cancellationToken);
     }
 
-    public Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams)
-    {
-        return _ocopProductRepository.GetAllOcopProductAsync(ocopProductSpecParams);
-    }
+    //public Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams)
+    //{
+    //    return _ocopProductRepository.GetAllOcopProductAsync(ocopProductSpecParams);
+    //}
     public Task<Domain.Entities.OcopProduct> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.GetByIdAsync(id, cancellationToken);
