@@ -36,27 +36,6 @@ public class ItineraryPlan : BaseEntity
     /// </value>
     [BsonElement("locations")]
     public List<string>? Locations { get; set; }
-
-    /// <summary>
-    /// Gets or sets the start date of the itinerary plan.
-    /// </summary>
-    /// <value>
-    /// The start date.
-    /// </value>
-    [BsonElement("startDate")]
-    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-    public required DateTime StartDate { get; set; }
-
-    /// <summary>
-    /// Gets or sets the end date of the itinerary plan.
-    /// </summary>
-    /// <value>
-    /// The end date.
-    /// </value>
-    [BsonElement("endDate")]
-    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-    public required DateTime EndDate { get; set; }
-
     /// <summary>
     /// Gets or sets the estimated cost of the itinerary plan.
     /// </summary>
@@ -73,7 +52,7 @@ public class ItineraryPlan : BaseEntity
     ///   <c>true</c> if status is active; otherwise, <c>false</c>.
     /// </value>
     [BsonElement("status")]
-    public required bool Status { get; set; }
+    public required bool Status { get; set; } = true;
 
     /// <summary>
     /// Gets or sets the update date.

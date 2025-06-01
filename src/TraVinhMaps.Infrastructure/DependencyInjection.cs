@@ -13,6 +13,8 @@ using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.Features.Destination.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
+using TraVinhMaps.Application.Features.ItineraryPlan;
+using TraVinhMaps.Application.Features.ItineraryPlan.Interface;
 using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
@@ -84,6 +86,10 @@ public static class DependencyInjection
         // Role Management
         services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<IRoleService, RoleService>();
+
+        // Itinerary Plan Management
+        services.AddScoped<IItineraryPlanRepository, ItineraryPlanRepository>();
+        services.AddScoped<IItineraryPlanService, ItineraryPlanService>();
 
         // Tags
         services.AddScoped<ITagService, TagService>();
