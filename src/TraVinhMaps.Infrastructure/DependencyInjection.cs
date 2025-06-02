@@ -15,6 +15,8 @@ using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.ItineraryPlan;
 using TraVinhMaps.Application.Features.ItineraryPlan.Interface;
+using TraVinhMaps.Application.Features.Markers;
+using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
@@ -90,6 +92,11 @@ public static class DependencyInjection
         // Itinerary Plan Management
         services.AddScoped<IItineraryPlanRepository, ItineraryPlanRepository>();
         services.AddScoped<IItineraryPlanService, ItineraryPlanService>();
+
+        // Markers Management
+        services.AddScoped<IMarkerRepository, MarkerRepository>();
+        services.AddScoped<IMarkerService, MarkerService>();
+        services.AddScoped<ImageManagementMarkerServices>();
 
         // Tags
         services.AddScoped<ITagService, TagService>();
