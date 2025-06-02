@@ -697,4 +697,47 @@ public class AuthService : IAuthServices
         // return
         return contextId;
     }
+
+    public async Task<AuthResponse> RefreshToken(string sessionId, string refreshToken, CancellationToken cancellationToken = default)
+    {
+        var hashedRefresh = HashingTokenExtension.HashToken(sessionId);
+        var user = await _sessionRepository.GetAsyns(x => x.RefreshToken == refreshToken, cancellationToken);
+        if (user == null)
+        {
+            throw new UnauthorizedException("Invalid session or refresh token");
+        }
+        if (user.RefreshTokenExpireAt < DateTime.UtcNow)
+        {
+            throw new UnauthorizedException("Refresh token is expired");
+        }
+        // kill the session
+        user.IsActive = false;
+        await _sessionRepository.UpdateAsync(user, cancellationToken);
+
+        // create new session
+        var newSessionId = Guid.NewGuid().ToString();
+        var newRefreshToken = Guid.NewGuid().ToString();
+        var newSession = new UserSession
+        {
+            Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+            UserId = user.UserId,
+            CreatedAt = DateTime.UtcNow,
+            ExpireAt = DateTime.UtcNow.AddDays(1),
+            SessionId = HashingTokenExtension.HashToken(newSessionId),
+            RefreshToken = HashingTokenExtension.HashToken(newRefreshToken),
+            RefreshTokenExpireAt = DateTime.UtcNow.AddDays(7),
+            IsActive = true,
+            DeviceInfo = "",
+            IpAddress = ""
+        };
+        await _sessionRepository.AddAsync(newSession, cancellationToken);
+        // Enforce session limit with 3 devices
+        await EnforceSessionLimitAsync(user.UserId, newSession, cancellationToken);
+        // Return new session and refresh token
+        return new AuthResponse
+        {
+            SessionId = newSessionId,
+            RefreshToken = newRefreshToken
+        };
+    }
 }
