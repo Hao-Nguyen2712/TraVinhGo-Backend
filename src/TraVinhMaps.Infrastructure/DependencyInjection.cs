@@ -11,6 +11,8 @@ using TraVinhMaps.Application.Features.CommunityTips;
 using TraVinhMaps.Application.Features.CommunityTips.Interface;
 using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.DestinationTypes;
+using TraVinhMaps.Application.Features.DestinationTypes.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.ItineraryPlan;
@@ -97,6 +99,10 @@ public static class DependencyInjection
         services.AddScoped<IMarkerRepository, MarkerRepository>();
         services.AddScoped<IMarkerService, MarkerService>();
         services.AddScoped<ImageManagementMarkerServices>();
+
+        // Destination Type Management
+        services.AddScoped<IDestinationTypeRepository, DestinationTypeRepository>();
+        services.AddScoped<IDestinationTypeService, DestinationTypeService>();
 
         // Tags
         services.AddScoped<ITagService, TagService>();
