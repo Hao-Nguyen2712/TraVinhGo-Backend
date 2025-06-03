@@ -223,16 +223,16 @@ public class AuthController : ControllerBase
     }
     #endregion
 
-    [Authorize]
+    // endpoint for handle refresh token
     [HttpPost("refresh-token")]
-    public async Task<IActionResult> RefreshToken([FromBody] string refreshToken)
+    public async Task<IActionResult> RefreshToken()
     {
-        var sessionId = User.Claims.FirstOrDefault(c => c.Type == "sessionId")?.Value;
-        if (string.IsNullOrEmpty(sessionId) || string.IsNullOrEmpty(refreshToken))
+        var refreshToken = Request.Headers["refreshToken"].FirstOrDefault();
+        if (string.IsNullOrEmpty(refreshToken))
         {
             return this.ApiError("Session ID and refresh token are required", HttpStatusCode.Unauthorized);
         }
-        var result = await _authServices.RefreshToken(sessionId, refreshToken);
+        var result = await _authServices.RefreshToken(refreshToken);
         if (result == null)
         {
             return this.ApiError("Invalid session or refresh token", HttpStatusCode.Unauthorized);
