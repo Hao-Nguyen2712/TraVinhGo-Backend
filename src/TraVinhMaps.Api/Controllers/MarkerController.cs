@@ -70,7 +70,7 @@ public class MarkerController : ControllerBase
 
     [HttpPut]
     [Route("UpdateMarker")]
-    public async Task<IActionResult> UpdateMarker([FromForm] UpdateMarkerRequest updateMarkerRequest)
+    public async Task<IActionResult> UpdateMarker(UpdateMarkerRequest updateMarkerRequest)
     {
         if (updateMarkerRequest == null)
         {
