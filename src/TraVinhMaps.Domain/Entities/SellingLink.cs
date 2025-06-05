@@ -10,6 +10,9 @@ namespace TraVinhMaps.Domain.Entities;
 /// <seealso cref="TraVinhMaps.Domain.Entities.BaseEntity" />
 public class SellingLink : BaseEntity
 {
+    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
+    [BsonElement("productId")]
+    public required string ProductId { get; set; }
     /// <summary>
     /// Gets or sets the tittle.
     /// </summary>

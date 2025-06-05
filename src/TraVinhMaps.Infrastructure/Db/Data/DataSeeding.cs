@@ -58,8 +58,6 @@ public static class DataSeeding
         var ocopTypeId = await SeedOcopType(database);
         var companyId = await SeedCompany(database);
         var tagId = await SeedTag(database);
-        var sellingLinkId = await SeedSellingLink(database);
-
         var product = new List<OcopProduct>
         {
           new OcopProduct
@@ -103,7 +101,6 @@ public static class DataSeeding
     },
     OcopPoint = 5,
     OcopYearRelease = 2022,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -156,7 +153,6 @@ new OcopProduct
     },
     OcopPoint = 3,
     OcopYearRelease = 2023,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -199,7 +195,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2021,
-    SellingLinkId = sellingLinkId,
 }, new OcopProduct
 {
     Id = ObjectId.GenerateNewId().ToString(),
@@ -227,7 +222,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2022,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -257,7 +251,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2021,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -287,7 +280,6 @@ new OcopProduct
     },
     OcopPoint = 5,
     OcopYearRelease = 2023,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -317,7 +309,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2022,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -347,7 +338,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2021,
-    SellingLinkId = sellingLinkId,
 },
 new OcopProduct
 {
@@ -376,7 +366,6 @@ new OcopProduct
     },
     OcopPoint = 3,
     OcopYearRelease = 2020,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -406,7 +395,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2021,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -436,7 +424,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2023,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -466,7 +453,6 @@ new OcopProduct
     },
     OcopPoint = 5,
     OcopYearRelease = 2022,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -496,7 +482,6 @@ new OcopProduct
     },
     OcopPoint = 3,
     OcopYearRelease = 2021,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -526,7 +511,6 @@ new OcopProduct
     },
     OcopPoint = 5,
     OcopYearRelease = 2023,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -556,7 +540,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2020,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -586,7 +569,6 @@ new OcopProduct
     },
     OcopPoint = 3,
     OcopYearRelease = 2021,
-    SellingLinkId = sellingLinkId,
 },
 
 new OcopProduct
@@ -615,8 +597,7 @@ new OcopProduct
         }
     },
     OcopPoint = 4,
-    OcopYearRelease = 2020,
-    SellingLinkId = sellingLinkId,
+    OcopYearRelease = 2020
 },
 
 new OcopProduct
@@ -646,7 +627,6 @@ new OcopProduct
     },
     OcopPoint = 4,
     OcopYearRelease = 2022,
-    SellingLinkId = sellingLinkId,
 },
 
             };
@@ -1230,7 +1210,7 @@ new OcopProduct
         Email = "nguyen.minh.tam@gmail.com",
         PhoneNumber = "0822233344",
         Password = HashingExtension.HashWithSHA256("NMTam1999"),
-        RoleId = role.Id,
+        RoleId = roleUser.Id,
         CreatedAt = DateTime.UtcNow,
         Status = true,
         IsForbidden = false,
@@ -1250,7 +1230,7 @@ new OcopProduct
         Email = "dang.thi.hoa@gmail.com",
         PhoneNumber = "0900111222",
         Password = HashingExtension.HashWithSHA256("DTHoa1997"),
-        RoleId = role.Id,
+        RoleId = roleUser.Id,
         CreatedAt = DateTime.UtcNow,
         Status = true,
         IsForbidden = false,
@@ -1809,12 +1789,6 @@ new User
 
         await collection.InsertManyAsync(userList);
     }
-
-    private static async Task<string> SeedSellingLink(IMongoDatabase database)
-    {
-        return ObjectId.GenerateNewId().ToString();
-    }
-
     private static async Task<string> SeedTag(IMongoDatabase database)
     {
         return ObjectId.GenerateNewId().ToString();
