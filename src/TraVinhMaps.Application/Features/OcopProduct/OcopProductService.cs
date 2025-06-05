@@ -19,19 +19,9 @@ public class OcopProductService : IOcopProductService
         return _ocopProductRepository.AddAsync(entity, cancellationToken);
     }
 
-    public Task<IEnumerable<Domain.Entities.OcopProduct>> AddRangeAsync(IEnumerable<Domain.Entities.OcopProduct> entities, CancellationToken cancellationToken = default)
-    {
-        return _ocopProductRepository.AddRangeAsync(entities, cancellationToken);
-    }
-
     public Task<long> CountAsync(Expression<Func<Domain.Entities.OcopProduct, bool>> predicate = null, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.CountAsync(predicate, cancellationToken);
-    }
-
-    public Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
-    {
-        return _ocopProductRepository.DeleteAsync(entity, cancellationToken);
     }
     public Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default)
     {
@@ -41,11 +31,6 @@ public class OcopProductService : IOcopProductService
     {
         return _ocopProductRepository.RestoreOcopProductAsync(id, cancellationToken);
     }
-
-    //public Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams)
-    //{
-    //    return _ocopProductRepository.GetAllOcopProductAsync(ocopProductSpecParams);
-    //}
     public Task<Domain.Entities.OcopProduct> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.GetByIdAsync(id, cancellationToken);
@@ -64,11 +49,6 @@ public class OcopProductService : IOcopProductService
     public Task<IEnumerable<Domain.Entities.OcopProduct>> ListAllAsync(CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.ListAllAsync(cancellationToken);
-    }
-
-    public Task<IEnumerable<Domain.Entities.OcopProduct>> ListAsync(Expression<Func<Domain.Entities.OcopProduct, bool>> predicate, CancellationToken cancellationToken = default)
-    {
-        return _ocopProductRepository.ListAsync(predicate, cancellationToken);
     }
 
     public Task UpdateAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)

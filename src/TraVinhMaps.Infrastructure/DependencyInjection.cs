@@ -25,8 +25,12 @@ using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
+using TraVinhMaps.Application.Features.OcopType;
+using TraVinhMaps.Application.Features.OcopType.Interface;
 using TraVinhMaps.Application.Features.Roles;
 using TraVinhMaps.Application.Features.Roles.Interface;
+using TraVinhMaps.Application.Features.SellingLink;
+using TraVinhMaps.Application.Features.SellingLink.Interface;
 using TraVinhMaps.Application.Features.Tags;
 using TraVinhMaps.Application.Features.Tags.Interface;
 using TraVinhMaps.Application.Features.Users;
@@ -73,6 +77,10 @@ public static class DependencyInjection
         services.AddScoped<IOcopProductRepository, OcopProductRepository>();
         services.AddScoped<IOcopProductService, OcopProductService>();
         services.AddScoped<ImageManagementOcopProductServices>();
+
+
+        //Selling Link
+        services.AddScoped<ISellingLinkService, SellingLinkService>();
 
         //CommunityTips
         services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
