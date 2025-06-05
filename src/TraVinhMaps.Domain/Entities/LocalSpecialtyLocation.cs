@@ -9,6 +9,10 @@ namespace TraVinhMaps.Domain.Entities;
 /// </summary>
 public class LocalSpecialtyLocation
 {
+    [BsonElement("locationId")]
+    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
+    public string LocationId { get; set; } = MongoDB.Bson.ObjectId.GenerateNewId().ToString();
+
     [BsonElement("name")]
     public required string Name { get; set; }
 

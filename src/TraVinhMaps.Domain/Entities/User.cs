@@ -80,7 +80,7 @@ public class User : BaseEntity
     /// <value>
     ///   <c>true</c> if this instance is forbidden; otherwise, <c>false</c>.
     /// </value>
-    [BsonElement("isForbiden")]
+    [BsonElement("isForbidden")]
     public bool IsForbidden { get; set; }
 
     /// <summary>
