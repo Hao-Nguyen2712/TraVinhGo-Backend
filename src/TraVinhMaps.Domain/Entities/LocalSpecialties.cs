@@ -8,7 +8,7 @@ namespace TraVinhMaps.Domain.Entities;
 /// Represents a local specialty entity in the system.
 /// </summary>
 /// <seealso cref="TraVinhMaps.Domain.Entities.BaseEntity" />
-public class LocalSpeacialties : BaseEntity
+public class LocalSpecialties : BaseEntity
 {
     /// <summary>
     /// Gets or sets the name of the food.
@@ -64,4 +64,14 @@ public class LocalSpeacialties : BaseEntity
     /// </value>
     [BsonElement("status")]
     public required bool Status { get; set; }
+
+    /// <summary>
+    /// Gets or sets the update date.
+    /// </summary>
+    /// <value>
+    /// The update date.
+    /// </value>
+    [BsonElement("updateAt")]
+    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+    public DateTime? UpdateAt { get; set; }
 }

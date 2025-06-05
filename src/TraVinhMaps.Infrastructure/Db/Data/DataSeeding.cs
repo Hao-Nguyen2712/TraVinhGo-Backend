@@ -309,6 +309,14 @@ new OcopProduct
                 Image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1747207304/park_fa2ttf.png",
                 Status = true,
                 CreatedAt = DateTime.UtcNow,
+            },
+            new Marker
+            {
+                Id= ObjectId.GenerateNewId().ToString(),
+                Name = "Local Specialties",
+                Image = "https://res.cloudinary.com/ddaj2hsk5/image/upload/v1748795520/food_1_zkhxsb.png",
+                Status = true,
+                CreatedAt = DateTime.UtcNow,
             }
         };
         await collection.InsertManyAsync(markers);

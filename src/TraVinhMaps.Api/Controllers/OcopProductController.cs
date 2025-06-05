@@ -9,7 +9,6 @@ using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.Features.OcopProduct.Mappers;
 using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]

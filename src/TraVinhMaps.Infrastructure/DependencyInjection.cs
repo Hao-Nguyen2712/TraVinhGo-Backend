@@ -13,6 +13,8 @@ using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.Features.Destination.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
+using TraVinhMaps.Application.Features.LocalSpecialties;
+using TraVinhMaps.Application.Features.LocalSpecialties.Interface;
 using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
@@ -87,6 +89,11 @@ public static class DependencyInjection
 
         // Tags
         services.AddScoped<ITagService, TagService>();
+
+        // LocalSpecialties Management
+        services.AddScoped<ILocalSpecialtiesRepository, LocalSpecialtiesRepository>();
+        services.AddScoped<ILocalSpecialtiesService,LocalSpecialtiesService>();
+        services.AddScoped<ImageLocalSpecialtiesService>();
 
         services.AddHttpClient();
 
