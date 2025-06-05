@@ -50,11 +50,11 @@ public class EventAndFestivalController : ControllerBase
         {
             return this.ApiError("Object can't be null");
         }
-        if (createEventAndFestivalRequest.StartDate <= DateTime.Now)
+        if (createEventAndFestivalRequest.StartDate.Date <= DateTime.Now.Date)
         {
             return this.ApiError("StartDate must be after the current time");
         }
-        if (createEventAndFestivalRequest.EndDate <= createEventAndFestivalRequest.StartDate)
+        if (createEventAndFestivalRequest.EndDate.Date <= createEventAndFestivalRequest.StartDate.Date)
         {
             return this.ApiError("EndDate must be after StartDate");
         }

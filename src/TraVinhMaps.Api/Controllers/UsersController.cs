@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
-using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.Features.Roles.Interface;
 using TraVinhMaps.Application.Features.Users;
 using TraVinhMaps.Application.Features.Users.Interface;
@@ -143,7 +142,7 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
-    [Authorize(Roles = "admin, super-admin")]
+    [Authorize]
     [HttpGet("get-profile-admin")]
     public async Task<IActionResult> GetProfileAdmin()
     {

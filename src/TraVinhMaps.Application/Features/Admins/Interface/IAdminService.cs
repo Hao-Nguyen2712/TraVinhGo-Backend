@@ -1,16 +1,9 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.Admins.Models;
-using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.Admins.Interface;
 public interface IAdminService
@@ -25,4 +18,12 @@ public interface IAdminService
     Task<long> CountAsync(Expression<Func<User, bool>> predicate = null, CancellationToken cancellationToken = default);
     Task<bool> DeleteAdmin(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreAdmin(string id, CancellationToken cancellationToken = default);
+
+    // step 1  :  fill the otp for this request
+    Task<string> RequestOtpForUpdate(string identifier, string authen, CancellationToken cancellationToken = default);
+    Task<bool> ConfirmOtpUpdate(string otp, string context, CancellationToken cancellationToken = default);
+    Task<bool> UpdateSetting(UpdateAdminSettingRequest request, string authen, CancellationToken cancellationToken = default);
+
+    Task<bool> UpdatePassword(UpdateAdminPasswordRequest request, string authen, CancellationToken cancellationToken = default);
+    Task<string> ResendOtpForUpdate(string identifier, string context, CancellationToken cancellationToken = default);
 }

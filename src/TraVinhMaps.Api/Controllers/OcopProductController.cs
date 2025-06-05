@@ -81,7 +81,7 @@ public class OcopProductController : ControllerBase
     [Route("AddImageOcopProduct")]
     public async Task<IActionResult> AddImageOcopProduct([FromForm] AddImageRequest addImageRequest)
     {
-        if(addImageRequest.imageFile == null && !addImageRequest.imageFile.Any())
+        if (addImageRequest.imageFile == null && !addImageRequest.imageFile.Any())
         {
             return this.ApiError("Please upload at least one image.");
         }
@@ -95,7 +95,7 @@ public class OcopProductController : ControllerBase
         {
             throw new NotFoundException("Ocop product not found.");
         }
-        if(ocopProduct.ProductImage == null)
+        if (ocopProduct.ProductImage == null)
         {
             ocopProduct.ProductImage = new List<string>();
         }
@@ -113,7 +113,8 @@ public class OcopProductController : ControllerBase
         {
             throw new NotFoundException("Ocop product not found.");
         }
-        if(ocopProduct.ProductImage == null || !ocopProduct.ProductImage.Contains(decodedImageUrl)) {
+        if (ocopProduct.ProductImage == null || !ocopProduct.ProductImage.Contains(decodedImageUrl))
+        {
             return this.ApiError("Image URL not found in product.");
         }
         ocopProduct.ProductImage.Remove(decodedImageUrl);
@@ -138,8 +139,6 @@ public class OcopProductController : ControllerBase
         existingProduct.OcopPoint = updateOcopProductRequest.OcopPoint;
         existingProduct.OcopYearRelease = updateOcopProductRequest.OcopYearRelease;
         existingProduct.TagId = updateOcopProductRequest.TagId;
-        existingProduct.SellingLinkId = updateOcopProductRequest.SellingLinkId;
-
         if (updateOcopProductRequest.UpdateAt.HasValue)
         {
             existingProduct.UpdateAt = updateOcopProductRequest.UpdateAt.Value;
@@ -153,9 +152,10 @@ public class OcopProductController : ControllerBase
     public async Task<IActionResult> DeleteOcopProduct(string id)
     {
         var ocopProduct = await _service.GetByIdAsync(id);
-        if (ocopProduct == null) { 
+        if (ocopProduct == null)
+        {
             throw new NotFoundException("Ocop product not found.");
-            }
+        }
         await _service.DeleteOcopProductAsync(id);
         return this.ApiOk("Ocop product deleted successfully.");
     }
@@ -207,7 +207,7 @@ public class OcopProductController : ControllerBase
         {
             throw new NotFoundException("Ocop product not found.");
         }
-        if(!ocopProduct.Sellocations.Any(n => n.LocationName == name))
+        if (!ocopProduct.Sellocations.Any(n => n.LocationName == name))
         {
             throw new NotFoundException("Sell location not found.");
         }

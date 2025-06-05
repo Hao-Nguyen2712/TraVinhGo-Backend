@@ -143,7 +143,7 @@ public class AuthService : IAuthServices
         await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
         await _cacheService.RemoveData(CacheKey + identifier);
 
-        // Authenticate or create user based on identifier type
+        // Authenticate or create session based on identifier type
         string userId;
         var type = otpEntity.IdentifierType;
 
@@ -453,7 +453,7 @@ public class AuthService : IAuthServices
         await _otpRepository.UpdateAsync(otpEntity, cancellationToken);
         await _cacheService.RemoveData(CacheKey + identifier);
 
-        // Authenticate or create user based on identifier type
+        // Authenticate or create session based on identifier type
         var user = await _userRepository.GetAsyns(x => x.Email == otpEntity.Identifier || x.PhoneNumber == otpEntity.Identifier, cancellationToken);
 
         if (user == null)
@@ -696,5 +696,44 @@ public class AuthService : IAuthServices
 
         // return
         return contextId;
+    }
+
+    public async Task<AuthResponse> RefreshToken(string refreshToken, CancellationToken cancellationToken = default)
+    {
+        var hashedRefresh = HashingTokenExtension.HashToken(refreshToken);
+        var session = await _sessionRepository.GetAsyns(x => x.RefreshToken == hashedRefresh && !x.IsActive, cancellationToken);
+        if (session == null)
+        {
+            throw new UnauthorizedException("Invalid session or refresh token");
+        }
+        if (session.RefreshTokenExpireAt < DateTime.UtcNow)
+        {
+            throw new UnauthorizedException("Refresh token is expired");
+        }
+        // create new session
+        var newSessionId = Guid.NewGuid().ToString();
+        var newRefreshToken = Guid.NewGuid().ToString();
+        var newSession = new UserSession
+        {
+            Id = MongoDB.Bson.ObjectId.GenerateNewId().ToString(),
+            UserId = session.UserId,
+            CreatedAt = DateTime.UtcNow,
+            ExpireAt = DateTime.UtcNow.AddDays(1),
+            SessionId = HashingTokenExtension.HashToken(newSessionId),
+            RefreshToken = HashingTokenExtension.HashToken(newRefreshToken),
+            RefreshTokenExpireAt = DateTime.UtcNow.AddDays(7),
+            IsActive = true,
+            DeviceInfo = "",
+            IpAddress = ""
+        };
+        await _sessionRepository.AddAsync(newSession, cancellationToken);
+        // Enforce session limit with 3 devices
+        await EnforceSessionLimitAsync(session.UserId, newSession, cancellationToken);
+        // Return new session and refresh token
+        return new AuthResponse
+        {
+            SessionId = newSessionId,
+            RefreshToken = newRefreshToken
+        };
     }
 }
