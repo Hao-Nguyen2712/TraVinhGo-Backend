@@ -11,8 +11,8 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
 
-namespace TraVinhMaps.Infrastructure.UnitOfWork;
-public class EventAndFestivalRepository : Repository<EventAndFestival>, IEventAndFestivalRepository
+namespace TraVinhMaps.Infrastructure.CustomRepositories;
+public class EventAndFestivalRepository : BaseRepository<EventAndFestival>, IEventAndFestivalRepository
 {
     public EventAndFestivalRepository(IDbContext context) : base(context)
     {
@@ -26,7 +26,7 @@ public class EventAndFestivalRepository : Repository<EventAndFestival>, IEventAn
         if (eventAndFestinal == null) return null;
         if (eventAndFestinal.Images == null)
         {
-            var setImagesUpdate = Builders<EventAndFestival>.Update.Set(p => p.Images, new List<String>());
+            var setImagesUpdate = Builders<EventAndFestival>.Update.Set(p => p.Images, new List<string>());
             await _collection.UpdateOneAsync(filter, setImagesUpdate);
         }
         var pushImageUpdate = Builders<EventAndFestival>.Update.Push(p => p.Images, imageUrl);

@@ -4,10 +4,9 @@
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
-public class RoleRepository : Repository<Role>, IRoleRepository
+public class RoleRepository : BaseRepository<Role>, IRoleRepository
 {
     public RoleRepository(IDbContext context) : base(context)
     {

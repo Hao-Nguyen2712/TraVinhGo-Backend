@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
-public class DestinationTypeRepository : Repository<DestinationType>, IDestinationTypeRepository
+public class DestinationTypeRepository : BaseRepository<DestinationType>, IDestinationTypeRepository
 {
     public DestinationTypeRepository(IDbContext context) : base(context)
     {

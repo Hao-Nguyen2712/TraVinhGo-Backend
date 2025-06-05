@@ -20,9 +20,9 @@ public class AdminService : IAdminService
     private const string CacheKey = "otp_context:";
     private readonly ICacheService _cacheService;
     private readonly ISpeedSmsService _speedSmsService;
-    private readonly IRepository<Otp> _otpRepository;
+    private readonly IBaseRepository<Otp> _otpRepository;
 
-    public AdminService(IAdminRepository adminRepository, IEmailSender emailSender, IRoleService roleService, ICacheService cacheService, ISpeedSmsService speedSmsService, IRepository<Otp> otpRepository)
+    public AdminService(IAdminRepository adminRepository, IEmailSender emailSender, IRoleService roleService, ICacheService cacheService, ISpeedSmsService speedSmsService, IBaseRepository<Otp> otpRepository)
     {
         _adminRepository = adminRepository;
         _emailSender = emailSender;

@@ -35,6 +35,7 @@ public static class DataSeeding
             }
             await SeedRole(database, logger);
             await SeedUserAccount(database, logger);
+            await SeedCompany(database, logger);
         }
         catch (Exception ex)
         {
@@ -1797,6 +1798,104 @@ new User
 
         await collection.InsertManyAsync(userList);
     }
+
+    private static async Task SeedCompany(IMongoDatabase database, ILogger<IHost> logger)
+    {
+        var collection = database.GetCollection<Company>("Company");
+        var count = await collection.CountDocumentsAsync(FilterDefinition<Company>.Empty);
+        if (count > 0)
+        {
+            logger.LogInformation("Role collection already contains data. Skipping seeding.");
+            return;
+        }
+
+        logger.LogInformation("Seeding Role collection...");
+
+        var companyList = new List<Company>
+        {
+            new Company
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Công ty TNHH ABC",
+                Address = "123 Đường ABC, Quận 1, TP. Hồ Chí Minh",
+                CreatedAt = DateTime.UtcNow,
+                Locations = new List<Location>
+                {
+                    new Location
+                    {
+                        Type = "Point",
+                        Coordinates = new List<double> { 106.6297, 10.7769 }, // Example coordinates for Ho Chi Minh City
+                    },
+                    new Location
+                    {
+                       Type = "Point",
+                        Coordinates = new List<double> { 106.6297, 10.7769 }, // Example coordinates for Ho Chi Minh City
+                    }
+                },
+                Contact = new Contact
+                {
+                    Email = "ABCFirm@gmail.com",
+                    Phone = "0123456789",
+                    Website = "https://www.example.com",
+                }
+            },
+            new Company
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Công ty TNHH XYZ",
+                Address = "456 Đường XYZ, Quận 2, TP. Hồ Chí Minh",
+                CreatedAt = DateTime.UtcNow,
+                Locations = new List<Location>
+                {
+                    new Location
+                    {
+                        Type = "Point",
+                        Coordinates = new List<double> { 106.6297, 10.7769 }, // Example coordinates for Ho Chi Minh City
+                    },
+                    new Location
+                    {
+                        Type = "Point",
+                        Coordinates = new List<double> { 106.6297, 10.7769 }, // Example coordinates for Ho Chi Minh City
+                    }
+                },
+                Contact = new Contact
+                {
+                    Email = "XyzFimr@gmail.com",
+                    Phone = "0987654321",
+                    Website = "https://www.example.com",
+                }
+        },
+            new Company{
+                Id = ObjectId.GenerateNewId().ToString(),
+                Name = "Công ty TNHH DEF",
+                Address = "789 Đường DEF, Quận 3, TP. Hồ Chí Minh",
+                CreatedAt = DateTime.UtcNow,
+                Locations = new List<Location>
+                {
+                    new Location
+                    {
+                        Type = "Point",
+                        Coordinates = new List<double> { 106.6297, 10.7769 }, // Example coordinates for Ho Chi Minh City
+                    },
+                    new Location
+                    {
+                        Type = "Point",
+                        Coordinates = new List<double> { 106.6297, 10.7769 }, // Example coordinates for Ho Chi Minh City
+                    }
+                },
+                Contact = new Contact
+                {
+                    Email = "DEFFim@gmail.com",
+                    Phone = "0987654321",
+                    Website = "https://www.example.com",
+
+        }
+            }
+
+        };
+        await collection.InsertManyAsync(companyList);
+    }
+
     private static async Task<string> SeedTag(IMongoDatabase database)
     {
         return ObjectId.GenerateNewId().ToString();
@@ -1811,7 +1910,6 @@ new User
     {
         return ObjectId.GenerateNewId().ToString();
     }
-
 
 }
 

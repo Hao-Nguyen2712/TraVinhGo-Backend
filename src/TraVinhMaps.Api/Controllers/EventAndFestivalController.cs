@@ -1,11 +1,9 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
-using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Mappers;
@@ -44,7 +42,7 @@ public class EventAndFestivalController : ControllerBase
 
     [HttpPost]
     [Route("CreateEventAndFestival")]
-    public async Task<IActionResult> CreateEventAndFestival([FromForm]CreateEventAndFestivalRequest createEventAndFestivalRequest)
+    public async Task<IActionResult> CreateEventAndFestival([FromForm] CreateEventAndFestivalRequest createEventAndFestivalRequest)
     {
         if (createEventAndFestivalRequest == null)
         {
@@ -64,7 +62,7 @@ public class EventAndFestivalController : ControllerBase
             return this.ApiError("Image file of event is null");
         }
         var listUrlImage = await _imageManagementEventAndFestivalServices.AddImageEventAndFestival(createEventAndFestivalRequest.ImagesFile);
-        if(listUrlImage == null)
+        if (listUrlImage == null)
         {
             return this.ApiError("Upload file image is fail");
         }
@@ -74,19 +72,19 @@ public class EventAndFestivalController : ControllerBase
         {
             await _eventAndFestivalService.AddEventAndFestivalImage(eventAndFestival.Id, item);
         }
-        return CreatedAtRoute("GetEventAndFestivalById", new {id = eventAndFestival.Id}, this.ApiOk(eventAndFestival));
+        return CreatedAtRoute("GetEventAndFestivalById", new { id = eventAndFestival.Id }, this.ApiOk(eventAndFestival));
     }
 
     [HttpPost]
     [Route("AddEventAndFestivalImage")]
-    public async Task<IActionResult> AddEventAndFestivalImage([FromForm]AddImageEventAndFestivalRequest addImageEventAndFestivalRequest)
+    public async Task<IActionResult> AddEventAndFestivalImage([FromForm] AddImageEventAndFestivalRequest addImageEventAndFestivalRequest)
     {
-        if(addImageEventAndFestivalRequest == null)
+        if (addImageEventAndFestivalRequest == null)
         {
             return this.ApiError("No image data was received. Please check your form submission.");
         }
         var eventAndFestival = await _eventAndFestivalService.GetByIdAsync(addImageEventAndFestivalRequest.id);
-        if(eventAndFestival == null)
+        if (eventAndFestival == null)
         {
             throw new NotFoundException("Event or Festival not found");
         }
@@ -104,9 +102,9 @@ public class EventAndFestivalController : ControllerBase
 
     [HttpPost]
     [Route("DeleteEventAndFestivalImage")]
-    public async Task<IActionResult> DeleteEventAndFestivalImage([FromBody]DeleteEventAndFestivalImage deleteEventAndFestivalImage)
+    public async Task<IActionResult> DeleteEventAndFestivalImage([FromBody] DeleteEventAndFestivalImage deleteEventAndFestivalImage)
     {
-        if(deleteEventAndFestivalImage == null)
+        if (deleteEventAndFestivalImage == null)
         {
             return this.ApiError("Object can't be null");
         }
@@ -130,9 +128,9 @@ public class EventAndFestivalController : ControllerBase
 
     [HttpPut]
     [Route("UpdateEventAndFestival")]
-    public async Task<IActionResult> UpdateEventAndFestival([FromBody]UpdateEventAndFestivalRequest updateEventAndFestivalRequest)
+    public async Task<IActionResult> UpdateEventAndFestival([FromBody] UpdateEventAndFestivalRequest updateEventAndFestivalRequest)
     {
-        if(updateEventAndFestivalRequest == null)
+        if (updateEventAndFestivalRequest == null)
         {
             return BadRequest("Object can't be null");
         }
@@ -169,7 +167,7 @@ public class EventAndFestivalController : ControllerBase
             return this.ApiError("id can't be null");
         }
         var eventAndFestival = await _eventAndFestivalService.GetByIdAsync(id);
-        if(eventAndFestival == null)
+        if (eventAndFestival == null)
         {
             throw new NotFoundException("Event or Festival not found");
         }

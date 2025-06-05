@@ -8,10 +8,9 @@ using TraVinhMaps.Application.Features.Admins.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
-public class AdminsRepository : Repository<User>, IAdminRepository
+public class AdminsRepository : BaseRepository<User>, IAdminRepository
 {
     public AdminsRepository(IDbContext context) : base(context)
     {

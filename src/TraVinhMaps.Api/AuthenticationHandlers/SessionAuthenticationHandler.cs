@@ -32,17 +32,17 @@ public class SessionAuthenticationSchemeOptions : AuthenticationSchemeOptions
 
 public class SessionAuthenticationHandler : AuthenticationHandler<SessionAuthenticationSchemeOptions>
 {
-    private readonly IRepository<UserSession> _sessionRepository;
-    private readonly IRepository<User> _userRepository;
-    private readonly IRepository<Role> _roleRepository;
+    private readonly IBaseRepository<UserSession> _sessionRepository;
+    private readonly IBaseRepository<User> _userRepository;
+    private readonly IBaseRepository<Role> _roleRepository;
 
     public SessionAuthenticationHandler(
         IOptionsMonitor<SessionAuthenticationSchemeOptions> options,
         ILoggerFactory logger,
         UrlEncoder encoder,
-        IRepository<UserSession> sessionRepository,
-        IRepository<User> userRepository,
-        IRepository<Role> roleRepository)
+        IBaseRepository<UserSession> sessionRepository,
+        IBaseRepository<User> userRepository,
+        IBaseRepository<Role> roleRepository)
         : base(options, logger, encoder)
     {
         _sessionRepository = sessionRepository;

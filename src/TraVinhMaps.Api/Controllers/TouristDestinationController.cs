@@ -1,17 +1,15 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Api.Extensions;
+using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Destination;
+using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.Destination.Mappers;
 using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Application.Features.Destination.Mappers;
 using TraVinhMaps.Domain.Specs;
-using TraVinhMaps.Api.Extensions;
-using System.Collections.Generic;
-using TraVinhMaps.Application.Common.Exceptions;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]
@@ -37,7 +35,7 @@ public class TouristDestinationController : ControllerBase
 
     [HttpGet]
     [Route("GetTouristDestinationPaging")]
-    public async Task<IActionResult> GetTouristDestinationPaging([FromQuery]TouristDestinationSpecParams touristDestinationSpecParams)
+    public async Task<IActionResult> GetTouristDestinationPaging([FromQuery] TouristDestinationSpecParams touristDestinationSpecParams)
     {
         var list = await this._touristDestinationService.GetTouristDestination(touristDestinationSpecParams);
         return this.ApiOk(list);
@@ -71,12 +69,12 @@ public class TouristDestinationController : ControllerBase
     [Route("[action]/{id}", Name = "GetDestinationById")]
     public async Task<IActionResult> GetDestinationById(string id)
     {
-        if(id == null)
+        if (id == null)
         {
             return BadRequest("id can't be null");
         }
         var destination = await this._touristDestinationService.GetByIdAsync(id);
-        if(destination == null)
+        if (destination == null)
         {
             return NotFound();
         }
@@ -87,7 +85,7 @@ public class TouristDestinationController : ControllerBase
     [Route("CreateDestination")]
     public async Task<IActionResult> CreateDestination([FromForm] TouristDestinationRequest touristDestination)
     {
-        List<String> linkHistoryImage= null;
+        List<String> linkHistoryImage = null;
 
         if (touristDestination.ImagesFile == null || touristDestination.ImagesFile.Count == 0)
         {
@@ -108,19 +106,19 @@ public class TouristDestinationController : ControllerBase
 
         var touristDestination1 = DestinationMapper.Mapper.Map<TouristDestination>(touristDestination);
         var newDestination = await this._touristDestinationService.AddAsync(touristDestination1);
-        
+
         foreach (var item in linkImage)
         {
             await this._touristDestinationService.AddDestinationImage(newDestination.Id, item);
         }
-        if(linkHistoryImage !=null)
+        if (linkHistoryImage != null)
         {
             foreach (var historyItem in linkHistoryImage)
             {
                 await this._touristDestinationService.AddDestinationHistoryStoryImage(newDestination.Id, historyItem);
             }
         }
-        return CreatedAtRoute("GetDestinationById", new {id = newDestination.Id }, this.ApiOk(newDestination));
+        return CreatedAtRoute("GetDestinationById", new { id = newDestination.Id }, this.ApiOk(newDestination));
     }
 
     //[HttpPost]
@@ -144,7 +142,7 @@ public class TouristDestinationController : ControllerBase
     }
     [HttpPost]
     [Route("AddDestinationHistoryStoryImage")]
-    public async Task<IActionResult> AddDestinationHistoryStoryImage ([FromForm] AddImageRequest addImageRequest)
+    public async Task<IActionResult> AddDestinationHistoryStoryImage([FromForm] AddImageRequest addImageRequest)
     {
         var linkImage = await _imageManagementDestinationServices.AddImageDestination(addImageRequest.imageFile);
         foreach (var item in linkImage)
@@ -159,7 +157,7 @@ public class TouristDestinationController : ControllerBase
     public async Task<IActionResult> DeleteDestinationImage([FromBody] DeleteDestinationImageRequest deleteDestinationImageRequest)
     {
         var isDeleteUrl = await this._imageManagementDestinationServices.DeleteImageDestination(deleteDestinationImageRequest.imageUrl);
-        if(!isDeleteUrl)
+        if (!isDeleteUrl)
         {
             return this.ApiError("No valid images url were removed.");
         }
@@ -174,7 +172,7 @@ public class TouristDestinationController : ControllerBase
 
     [HttpPost]
     [Route("DeleteDestinationHistoryStoryImage")]
-    public async Task<IActionResult> DeleteDestinationHistoryStoryImage ([FromBody] DeleteDestinationImageRequest deleteDestinationImageRequest)
+    public async Task<IActionResult> DeleteDestinationHistoryStoryImage([FromBody] DeleteDestinationImageRequest deleteDestinationImageRequest)
     {
         var isDeleteUrl = await this._imageManagementDestinationServices.DeleteImageDestination(deleteDestinationImageRequest.imageUrl);
         if (!isDeleteUrl)
@@ -192,7 +190,7 @@ public class TouristDestinationController : ControllerBase
 
     [HttpPut]
     [Route("UpdateDestination")]
-    public async Task<IActionResult> UpdateDestination([FromBody]UpdateDestinationRequest updateDestinationRequest)
+    public async Task<IActionResult> UpdateDestination([FromBody] UpdateDestinationRequest updateDestinationRequest)
     {
         if (updateDestinationRequest == null)
         {

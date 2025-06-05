@@ -215,4 +215,16 @@ public class OcopProductController : ControllerBase
         var deleteSellLocation = await _service.DeleteSellLocation(id, name);
         return this.ApiOk("Sell location deleted successfully.");
     }
+
+    [HttpGet("look-up-product")]
+    public IActionResult LooksUpForProduct()
+    {
+        var result = _service.LooksUpForProduct();
+        if (result == null)
+        {
+            return this.ApiError("No product found for lookup.");
+        }
+        return this.ApiOk(result);
+    }
+
 }

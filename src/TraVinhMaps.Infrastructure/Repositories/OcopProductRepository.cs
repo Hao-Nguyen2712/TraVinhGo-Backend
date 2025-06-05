@@ -6,8 +6,8 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
 
-namespace TraVinhMaps.Infrastructure.UnitOfWork;
-public class OcopProductRepository : Repository<OcopProduct>, IOcopProductRepository
+namespace TraVinhMaps.Infrastructure.CustomRepositories;
+public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRepository
 {
     public OcopProductRepository(IDbContext dbContext) : base(dbContext) { }
     public async Task<IEnumerable<OcopProduct>> GetOcopProductByCompanyId(string companyId, CancellationToken cancellationToken = default)
@@ -38,14 +38,14 @@ public class OcopProductRepository : Repository<OcopProduct>, IOcopProductReposi
         return restoreOcopProduct.IsAcknowledged && restoreOcopProduct.ModifiedCount < 0;
     }
 
-    public async Task<String> AddImageOcopProduct(string id, string imageUrl, CancellationToken cancellationToken = default)
+    public async Task<string> AddImageOcopProduct(string id, string imageUrl, CancellationToken cancellationToken = default)
     {
         var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, id);
         var ocopProduct = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
         if (ocopProduct == null) return null;
         if (ocopProduct.ProductImage == null)
         {
-            var newListImage = Builders<OcopProduct>.Update.Set(im => im.ProductImage, new List<String>());
+            var newListImage = Builders<OcopProduct>.Update.Set(im => im.ProductImage, new List<string>());
             await _collection.UpdateOneAsync(filter, newListImage);
         }
         var updateImage = Builders<OcopProduct>.Update.Push(p => p.ProductImage, imageUrl);

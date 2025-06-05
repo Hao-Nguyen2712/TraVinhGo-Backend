@@ -13,8 +13,8 @@ using TraVinhMaps.Application.UnitOfWorks;
 namespace TraVinhMaps.Application.Features.OcopType;
 public class OcopTypeService : IOcopTypeService
 {
-    private readonly IRepository<Domain.Entities.OcopType> _repository;
-    public OcopTypeService(IRepository<Domain.Entities.OcopType> repository)
+    private readonly IBaseRepository<Domain.Entities.OcopType> _repository;
+    public OcopTypeService(IBaseRepository<Domain.Entities.OcopType> repository)
     {
         _repository = repository;
     }

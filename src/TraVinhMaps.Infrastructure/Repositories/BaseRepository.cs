@@ -7,14 +7,14 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
 
-namespace TraVinhMaps.Infrastructure.UnitOfWork;
+namespace TraVinhMaps.Infrastructure.CustomRepositories;
 
-public class Repository<T> : IRepository<T> where T : BaseEntity
+public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 {
     private readonly IDbContext _context;
     protected readonly IMongoCollection<T> _collection;
 
-    public Repository(IDbContext context)
+    public BaseRepository(IDbContext context)
     {
         _context = context;
         _collection = _context.GetCollection<T>();

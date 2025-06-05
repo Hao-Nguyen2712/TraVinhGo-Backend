@@ -1,20 +1,15 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.SellingLink.Interface;
 using TraVinhMaps.Application.UnitOfWorks;
 
 namespace TraVinhMaps.Application.Features.SellingLink;
 public class SellingLinkService : ISellingLinkService
 {
-    private readonly IRepository<Domain.Entities.SellingLink> _repository;
-    public SellingLinkService(IRepository<Domain.Entities.SellingLink> repository)
+    private readonly IBaseRepository<Domain.Entities.SellingLink> _repository;
+    public SellingLinkService(IBaseRepository<Domain.Entities.SellingLink> repository)
     {
         _repository = repository;
     }

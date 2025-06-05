@@ -10,7 +10,7 @@ namespace TraVinhMaps.Application.UnitOfWorks;
 ///   <br The base of Repository Interface /> 
 /// </summary>
 /// <typeparam name="T" is the interface class></typeparam>
-public interface IRepository<T> where T : BaseEntity
+public interface IBaseRepository<T> where T : BaseEntity
 {
     Task<T> GetByIdAsync(string id, CancellationToken cancellationToken = default);
     Task<IEnumerable<T>> ListAllAsync(CancellationToken cancellationToken = default);

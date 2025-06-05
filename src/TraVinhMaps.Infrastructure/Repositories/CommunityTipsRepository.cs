@@ -6,8 +6,8 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
 
-namespace TraVinhMaps.Infrastructure.UnitOfWork;
-public class CommunityTipsRepository : Repository<Tips>, ICommunityTipsRepository
+namespace TraVinhMaps.Infrastructure.CustomRepositories;
+public class CommunityTipsRepository : BaseRepository<Tips>, ICommunityTipsRepository
 {
     public CommunityTipsRepository(IDbContext dbContext) : base(dbContext) { }
     public async Task<bool> DeleteTipAsync(string id, CancellationToken cancellationToken = default)

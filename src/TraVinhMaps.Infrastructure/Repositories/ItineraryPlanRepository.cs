@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories
 {
-    public class ItineraryPlanRepository : Repository<ItineraryPlan>, IItineraryPlanRepository
+    public class ItineraryPlanRepository : BaseRepository<ItineraryPlan>, IItineraryPlanRepository
     {
         public ItineraryPlanRepository(IDbContext context) : base(context)
         {

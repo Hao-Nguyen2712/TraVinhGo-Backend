@@ -8,10 +8,9 @@ using TraVinhMaps.Application.Features.Notifications.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
-public class NotificationsRepository : Repository<Notification>, INotificationsRepository
+public class NotificationsRepository : BaseRepository<Notification>, INotificationsRepository
 {
     private readonly IMongoCollection<Notification> _notificationCollection;
     private readonly IUserRepository _userRepository;
