@@ -15,14 +15,11 @@ public interface IOcopProductService
 {
     Task<Domain.Entities.OcopProduct> GetByIdAsync(string id, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.OcopProduct>> ListAllAsync(CancellationToken cancellationToken = default);
-    Task<IEnumerable<Domain.Entities.OcopProduct>> ListAsync(Expression<Func<Domain.Entities.OcopProduct, bool>> predicate, CancellationToken cancellationToken = default);    Task<Domain.Entities.OcopProduct> AddAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Domain.Entities.OcopProduct>> AddRangeAsync(IEnumerable<Domain.Entities.OcopProduct> entities, CancellationToken cancellationToken = default);
+    Task<Domain.Entities.OcopProduct> AddAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
     Task UpdateAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
-    Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
     Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreOcopProductAsync(string id, CancellationToken cancellationToken = default);
     Task<long> CountAsync(Expression<Func<Domain.Entities.OcopProduct, bool>> predicate = null, CancellationToken cancellationToken = default);
-    Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams);
     Task<IEnumerable<Domain.Entities.OcopProduct>> GetOcopProductByOcopTypeId(string ocopTypeId, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.OcopProduct>> GetOcopProductByCompanyId(string companyId, CancellationToken cancellationToken = default);
     Task<String> AddImageOcopProduct(string id, string imageUrl, CancellationToken cancellationToken = default);
