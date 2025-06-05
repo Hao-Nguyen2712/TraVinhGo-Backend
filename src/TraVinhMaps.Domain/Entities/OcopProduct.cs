@@ -123,7 +123,4 @@ public class OcopProduct : BaseEntity
     /// <value>
     /// The link identifier.
     /// </value>
-    [BsonElement("sellingLinkId")]
-    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-    public required string SellingLinkId { get; set; }
 }

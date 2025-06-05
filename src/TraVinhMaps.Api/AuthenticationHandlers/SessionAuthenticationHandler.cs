@@ -78,6 +78,8 @@ public class SessionAuthenticationHandler : AuthenticationHandler<SessionAuthent
 
         if (Options.ValidateExpiration && userSession.RefreshTokenExpireAt < DateTime.UtcNow)
         {
+            userSession.IsActive = false; // Mark session as inactive if expired
+            await _sessionRepository.UpdateAsync(userSession, System.Threading.CancellationToken.None);
             return AuthenticateResult.Fail("Session ID has expired.");
         }
 

@@ -222,5 +222,22 @@ public class AuthController : ControllerBase
         return this.ApiOk(JsonConvert.SerializeObject(response), "OTP refreshed successfully");
     }
     #endregion
+
+    // endpoint for handle refresh token
+    [HttpPost("refresh-token")]
+    public async Task<IActionResult> RefreshToken()
+    {
+        var refreshToken = Request.Headers["refreshToken"].FirstOrDefault();
+        if (string.IsNullOrEmpty(refreshToken))
+        {
+            return this.ApiError("Session ID and refresh token are required", HttpStatusCode.Unauthorized);
+        }
+        var result = await _authServices.RefreshToken(refreshToken);
+        if (result == null)
+        {
+            return this.ApiError("Invalid session or refresh token", HttpStatusCode.Unauthorized);
+        }
+        return this.ApiOk(JsonConvert.SerializeObject(result), "Token refreshed successfully");
+    }
 }
 

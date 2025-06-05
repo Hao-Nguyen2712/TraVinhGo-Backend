@@ -11,8 +11,16 @@ using TraVinhMaps.Application.Features.CommunityTips;
 using TraVinhMaps.Application.Features.CommunityTips.Interface;
 using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.DestinationTypes;
+using TraVinhMaps.Application.Features.DestinationTypes.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
+using TraVinhMaps.Application.Features.LocalSpecialties;
+using TraVinhMaps.Application.Features.LocalSpecialties.Interface;
+using TraVinhMaps.Application.Features.ItineraryPlan;
+using TraVinhMaps.Application.Features.ItineraryPlan.Interface;
+using TraVinhMaps.Application.Features.Markers;
+using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
@@ -93,8 +101,26 @@ public static class DependencyInjection
         services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddScoped<IRoleService, RoleService>();
 
+        // Itinerary Plan Management
+        services.AddScoped<IItineraryPlanRepository, ItineraryPlanRepository>();
+        services.AddScoped<IItineraryPlanService, ItineraryPlanService>();
+
+        // Markers Management
+        services.AddScoped<IMarkerRepository, MarkerRepository>();
+        services.AddScoped<IMarkerService, MarkerService>();
+        services.AddScoped<ImageManagementMarkerServices>();
+
+        // Destination Type Management
+        services.AddScoped<IDestinationTypeRepository, DestinationTypeRepository>();
+        services.AddScoped<IDestinationTypeService, DestinationTypeService>();
+
         // Tags
         services.AddScoped<ITagService, TagService>();
+
+        // LocalSpecialties Management
+        services.AddScoped<ILocalSpecialtiesRepository, LocalSpecialtiesRepository>();
+        services.AddScoped<ILocalSpecialtiesService,LocalSpecialtiesService>();
+        services.AddScoped<ImageLocalSpecialtiesService>();
 
         services.AddHttpClient();
 

@@ -37,4 +37,5 @@ public interface IAuthServices
     Task<string> ForgetPassword(string identifier);
     Task<bool> ResetPassword(string identifier, string newPassword);
     Task<bool> VerifyOtpForResetPassword(string identifier, string otp, CancellationToken cancellationToken = default);
+    Task<AuthResponse> RefreshToken(string refreshToken, CancellationToken cancellationToken = default);
 }
