@@ -10,10 +10,9 @@ using MongoDB.Driver;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
-public class MarkerRepository : Repository<Marker>, IMarkerRepository
+public class MarkerRepository : BaseRepository<Marker>, IMarkerRepository
 {
     public MarkerRepository(IDbContext context) : base(context)
     {

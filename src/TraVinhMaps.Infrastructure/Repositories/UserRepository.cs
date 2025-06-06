@@ -5,10 +5,9 @@ using MongoDB.Driver;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
-public class UserRepository : Repository<User>, IUserRepository
+public class UserRepository : BaseRepository<User>, IUserRepository
 {
     public UserRepository(IDbContext context) : base(context)
     {

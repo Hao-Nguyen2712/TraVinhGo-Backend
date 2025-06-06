@@ -1,13 +1,9 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
-using TraVinhMaps.Application.Features.OcopType.Interface;
-using TraVinhMaps.Application.Features.OcopType.Mappers;
-using TraVinhMaps.Application.Features.OcopType.Models;
 using TraVinhMaps.Application.Features.SellingLink.Interface;
 using TraVinhMaps.Application.Features.SellingLink.Mappers;
 using TraVinhMaps.Application.Features.SellingLink.Models;

@@ -3,6 +3,7 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
+using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
@@ -10,9 +11,18 @@ namespace TraVinhMaps.Application.Features.OcopProduct;
 public class OcopProductService : IOcopProductService
 {
     private readonly IOcopProductRepository _ocopProductRepository;
-    public OcopProductService(IOcopProductRepository ocopProductRepository)
+    private readonly IBaseRepository<Company> _companyRepository;
+    private readonly IBaseRepository<Domain.Entities.OcopType> _ocopTypeRepository;
+    private readonly IBaseRepository<Domain.Entities.Tags> _tagRepository;
+
+    public OcopProductService(IOcopProductRepository ocopProductRepository, IBaseRepository<Company> companyRepository,
+        IBaseRepository<Domain.Entities.OcopType> ocopTypeRepository,
+        IBaseRepository<Domain.Entities.Tags> tagRepository)
     {
         _ocopProductRepository = ocopProductRepository;
+        _companyRepository = companyRepository;
+        _ocopTypeRepository = ocopTypeRepository;
+        _tagRepository = tagRepository;
     }
     public Task<Domain.Entities.OcopProduct> AddAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
     {
@@ -74,5 +84,35 @@ public class OcopProductService : IOcopProductService
     public Task<bool> UpdateSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.UpdateSellLocation(id, sellLocation, cancellationToken);
+    }
+
+    public async Task<ProductLookUpsResponse> LooksUpForProduct()
+    {
+        var ocopTypes = await _ocopTypeRepository.ListAllAsync();
+        var companies = await _companyRepository.ListAllAsync();
+        var tags = await _tagRepository.GetAsyns(a => a.Name == "Ocop");
+
+        // Fetching data for lookups
+        var productLookUps = new ProductLookUpsResponse
+        {
+            Companies = companies.Select(c => new CompanyDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+
+            }).ToList(),
+            OcopTypes = ocopTypes.Select(o => new OcopTypeDto
+            {
+                Id = o.Id,
+                Name = o.OcopTypeName,
+            }).ToList(),
+            Tags = new TagDto
+            {
+                Id = tags.Id,
+                Name = tags.Name
+            }
+        };
+
+        return productLookUps;
     }
 }

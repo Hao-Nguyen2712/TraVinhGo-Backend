@@ -14,8 +14,8 @@ using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 using TraVinhMaps.Infrastructure.Db;
 
-namespace TraVinhMaps.Infrastructure.UnitOfWork;
-public class TouristDestinationRepository : Repository<TouristDestination>, ITouristDestinationRepository 
+namespace TraVinhMaps.Infrastructure.CustomRepositories;
+public class TouristDestinationRepository : BaseRepository<TouristDestination>, ITouristDestinationRepository 
 {
     public TouristDestinationRepository(IDbContext context) : base(context)
     {
@@ -32,7 +32,7 @@ public class TouristDestinationRepository : Repository<TouristDestination>, ITou
         }
         if (destination.HistoryStory.Images == null)
         {
-            var setImagesUpdate = Builders<TouristDestination>.Update.Set(p => p.HistoryStory.Images, new List<String>());
+            var setImagesUpdate = Builders<TouristDestination>.Update.Set(p => p.HistoryStory.Images, new List<string>());
             await _collection.UpdateOneAsync(filter, setImagesUpdate);
         }
         var pushImageUpdate = Builders<TouristDestination>.Update.Push(p => p.HistoryStory.Images, imageUrl);
@@ -48,7 +48,7 @@ public class TouristDestinationRepository : Repository<TouristDestination>, ITou
         if (destination == null) return null;
         if (destination.Images == null)
         {
-            var setImagesUpdate = Builders<TouristDestination>.Update.Set(p => p.Images, new List<String>());
+            var setImagesUpdate = Builders<TouristDestination>.Update.Set(p => p.Images, new List<string>());
             await _collection.UpdateOneAsync(filter, setImagesUpdate);
         }
         var pushImageUpdate = Builders<TouristDestination>.Update.Push(p => p.Images, imageUrl);
@@ -88,7 +88,7 @@ public class TouristDestinationRepository : Repository<TouristDestination>, ITou
 
     public async Task<IEnumerable<TouristDestination>> GetByTagIdAsync(string tagId, CancellationToken cancellationToken = default)
     {
-        FilterDefinition<TouristDestination> filter = Builders<TouristDestination>.Filter.Eq(p => p.TagId, tagId);
+        var filter = Builders<TouristDestination>.Filter.Eq(p => p.TagId, tagId);
         return await _collection.Find(filter).ToListAsync(cancellationToken);
     }
 

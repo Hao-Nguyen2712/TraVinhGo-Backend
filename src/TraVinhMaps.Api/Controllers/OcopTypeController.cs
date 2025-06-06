@@ -1,26 +1,21 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
-using TraVinhMaps.Application.Features.OcopProduct.Mappers;
-using TraVinhMaps.Application.Features.OcopProduct.Models;
-using TraVinhMaps.Application.Features.OcopProduct;
-using TraVinhMaps.Application.Features.OcopType.Interface;
-using TraVinhMaps.Domain.Entities;
-using TraVinhMaps.Application.Features.OcopType.Models;
 using TraVinhMaps.Application.Features.OcopType.Mappers;
+using TraVinhMaps.Application.Features.OcopType.Models;
 using TraVinhMaps.Application.UnitOfWorks;
+using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class OcopTypeController : ControllerBase
 {
-    private readonly IRepository<Domain.Entities.OcopType> _repository;
-    public OcopTypeController(IRepository<Domain.Entities.OcopType> repository)
+    private readonly IBaseRepository<Domain.Entities.OcopType> _repository;
+    public OcopTypeController(IBaseRepository<Domain.Entities.OcopType> repository)
     {
         _repository = repository;
     }

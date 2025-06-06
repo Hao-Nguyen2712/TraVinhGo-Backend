@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
+using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Application.Features.OcopProduct.Interface;
@@ -20,5 +21,5 @@ public interface IOcopProductService
     Task<SellLocation> AddSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default);
     Task<bool> UpdateSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default);
     Task<bool> DeleteSellLocation(string ocopProductId, string sellLocationName, CancellationToken cancellationToken = default);
-
+    Task<ProductLookUpsResponse> LooksUpForProduct();
 }

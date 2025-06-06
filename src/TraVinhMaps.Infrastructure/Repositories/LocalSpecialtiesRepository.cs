@@ -10,10 +10,9 @@ using MongoDB.Driver;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
-public class LocalSpecialtiesRepository : Repository<LocalSpecialties>, ILocalSpecialtiesRepository
+public class LocalSpecialtiesRepository : BaseRepository<LocalSpecialties>, ILocalSpecialtiesRepository
 {
     public LocalSpecialtiesRepository(IDbContext context) : base(context)
     {

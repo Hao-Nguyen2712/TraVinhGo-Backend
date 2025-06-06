@@ -14,8 +14,8 @@ using TraVinhMaps.Domain.Entities;
 namespace TraVinhMaps.Application.Features.DestinationTypes;
 public class DestinationTypeService : IDestinationTypeService
 {
-    private readonly IRepository<DestinationType> _repository;
-    public DestinationTypeService(IRepository<DestinationType> repository)
+    private readonly IBaseRepository<DestinationType> _repository;
+    public DestinationTypeService(IBaseRepository<DestinationType> repository)
     {
         _repository = repository;
     }

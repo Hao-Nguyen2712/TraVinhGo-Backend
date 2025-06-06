@@ -39,7 +39,6 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Infrastructure.CustomRepositories;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
-using TraVinhMaps.Infrastructure.UnitOfWork;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -49,7 +48,7 @@ public static class DependencyInjection
     {
         services.AddHostedService<DbInitializationService>();
         services.AddSingleton<IDbContext, DbContext>();
-        services.AddSingleton(typeof(IRepository<>), typeof(Infrastructure.UnitOfWork.Repository<>));
+        services.AddSingleton(typeof(IBaseRepository<>), typeof(BaseRepository<>));
         services.AddScoped<IAuthServices, AuthService>();
         // Cloudinary
         services.AddScoped<ICloudinaryService, CloudinaryService>();
