@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.OcopProduct;
@@ -216,10 +217,13 @@ public class OcopProductController : ControllerBase
         return this.ApiOk("Sell location deleted successfully.");
     }
 
-    [HttpGet("look-up-product")]
-    public IActionResult LooksUpForProduct()
+    /*
+     * Wrapping endpoint with tagId , ocoptypeId , companyId
+     */
+    [HttpGet("get-lookup-product")]
+    public async Task<IActionResult> LooksUpForProduct()
     {
-        var result = _service.LooksUpForProduct();
+        var result = await _service.LooksUpForProduct();
         if (result == null)
         {
             return this.ApiError("No product found for lookup.");
@@ -227,4 +231,57 @@ public class OcopProductController : ControllerBase
         return this.ApiOk(result);
     }
 
+    [HttpPost("import-product")]
+    public async Task<IActionResult> ImportOcopProduct()
+    {
+        var form = Request.Form;
+        var json = form["products"];
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            return this.ApiError("No products to import.");
+        }
+        var productDtos = JsonConvert.DeserializeObject<List<CreateOcopProductRequest>>(json);
+        if (productDtos == null || !productDtos.Any())
+        {
+            return this.ApiError("No products to import.");
+        }
+        foreach (var key in form.Files.Select(f => f.Name).Distinct())
+        {
+            // Key có dạng "productImages[0]", "productImages[1]", ...
+            if (key.StartsWith("productImages["))
+            {
+                var indexText = key.Replace("productImages[", "").Replace("]", "");
+                if (int.TryParse(indexText, out var index) && index < productDtos.Count)
+                {
+                    var files = form.Files.GetFiles(key);
+                    productDtos[index].ProductImageFile = files.ToList();
+                }
+            }
+        }
+
+        int result = 0;
+
+        foreach (var productDto in productDtos)
+        {
+            if (productDto.ProductImageFile == null || !productDto.ProductImageFile.Any())
+            {
+                return this.ApiError("Each product must have at least one image.");
+            }
+            var imageFiles = await _imageManagementOcopProductServices.AddImageOcopProduct(productDto.ProductImageFile);
+            if (imageFiles == null || !imageFiles.Any())
+            {
+                return this.ApiError("Failed to upload product images.");
+            }
+            productDto.ProductImageFile = null; // Clear the file list after processing
+            var ocopProduct = OcopProductMapper.Mapper.Map<OcopProduct>(productDto);
+            ocopProduct.Status = true;
+            var addedProduct = await _service.AddAsync(ocopProduct);
+            foreach (var imageUrl in imageFiles)
+            {
+                await _service.AddImageOcopProduct(addedProduct.Id, imageUrl);
+            }
+            result++;
+        }
+        return this.ApiOk($"Successfully imported {result} products.");
+    }
 }

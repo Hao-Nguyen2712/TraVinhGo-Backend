@@ -90,7 +90,7 @@ public class OcopProductService : IOcopProductService
     {
         var ocopTypes = await _ocopTypeRepository.ListAllAsync();
         var companies = await _companyRepository.ListAllAsync();
-        var tags = await _tagRepository.GetAsyns(a => a.Name == "ocop");
+        var tags = await _tagRepository.GetAsyns(a => a.Name == "Ocop");
 
         // Fetching data for lookups
         var productLookUps = new ProductLookUpsResponse

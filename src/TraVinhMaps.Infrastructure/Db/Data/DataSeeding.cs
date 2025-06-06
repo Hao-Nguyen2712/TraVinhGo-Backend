@@ -36,6 +36,7 @@ public static class DataSeeding
             await SeedRole(database, logger);
             await SeedUserAccount(database, logger);
             await SeedCompany(database, logger);
+            await SeedOcopType(database, logger);
         }
         catch (Exception ex)
         {
@@ -814,6 +815,58 @@ new OcopProduct
         };
 
         await collection.InsertManyAsync(role);
+    }
+
+    private static async Task SeedOcopType(IMongoDatabase database, ILogger<IHost> logger)
+    {
+        var collection = database.GetCollection<OcopType>("OcopType");
+        var count = await collection.CountDocumentsAsync(FilterDefinition<OcopType>.Empty);
+        if (count > 0)
+        {
+            logger.LogInformation("Role collection already contains data. Skipping seeding.");
+            return;
+        }
+        var ocopTypeList = new List<OcopType>()
+        {
+            new OcopType
+            {
+                Id =  ObjectId.GenerateNewId().ToString(),
+                OcopTypeStatus = true,
+                CreatedAt = DateTime.UtcNow,
+                OcopTypeName = "Thực Phẩm"
+            },
+            new OcopType
+            {
+                Id =  ObjectId.GenerateNewId().ToString(),
+                OcopTypeStatus = true,
+                CreatedAt = DateTime.UtcNow,
+                OcopTypeName = "Đồ Uống"
+            },
+            new OcopType
+            {
+                Id =  ObjectId.GenerateNewId().ToString(),
+                OcopTypeStatus = true,
+                CreatedAt = DateTime.UtcNow,
+                OcopTypeName = "Thảo Dược"
+            },
+            new OcopType
+            {
+                Id =  ObjectId.GenerateNewId().ToString(),
+                OcopTypeStatus = true,
+                CreatedAt = DateTime.UtcNow,
+                OcopTypeName = "Đồ Thủ Công"
+            },
+            new OcopType
+            {
+                Id =  ObjectId.GenerateNewId().ToString(),
+                OcopTypeStatus = true,
+                CreatedAt = DateTime.UtcNow,
+                OcopTypeName = "May Mặc"
+            }
+        };
+
+        logger.LogInformation("Seeding Role collection...");
+        await collection.InsertManyAsync(ocopTypeList);
     }
 
     // seeding method account user
