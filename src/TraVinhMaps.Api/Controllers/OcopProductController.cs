@@ -232,9 +232,9 @@ public class OcopProductController : ControllerBase
     }
 
     [HttpPost("import-product")]
-    public async Task<IActionResult> ImportOcopProduct()
+    [RequestFormLimits(MultipartBodyLengthLimit = 104857600)]
+    public async Task<IActionResult> ImportOcopProduct(IFormCollection form)
     {
-        var form = Request.Form;
         var json = form["products"];
         if (string.IsNullOrWhiteSpace(json))
         {

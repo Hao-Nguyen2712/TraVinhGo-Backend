@@ -2,7 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using TraVinhMaps.Api.AuthenticationHandlers;
 using TraVinhMaps.Api.Middlewares;
 using TraVinhMaps.Application;
@@ -172,6 +174,16 @@ builder.Services.AddStackExchangeRedisCache(options =>
         connectionString = envConnectionString;
     }
     options.Configuration = connectionString;
+});
+
+// config for the maximum request body size for file uploads
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 104857600; // 100MB
+});
+builder.Services.Configure<KestrelServerOptions>(options =>
+{
+    options.Limits.MaxRequestBodySize = 104857600; // 100MB
 });
 
 var app = builder.Build();
