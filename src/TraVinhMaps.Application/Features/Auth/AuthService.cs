@@ -14,15 +14,15 @@ namespace TraVinhMaps.Application.Features.Auth;
 public class AuthService : IAuthServices
 {
     private readonly ISpeedSmsService _speedSmsService;
-    private readonly IRepository<Otp> _otpRepository;
-    private readonly IRepository<User> _userRepository;
-    private readonly IRepository<Role> _roleRepository;
+    private readonly IBaseRepository<Otp> _otpRepository;
+    private readonly IBaseRepository<User> _userRepository;
+    private readonly IBaseRepository<Role> _roleRepository;
     private readonly ICacheService _cacheService;
-    private readonly IRepository<UserSession> _sessionRepository;
+    private readonly IBaseRepository<UserSession> _sessionRepository;
     private readonly IEmailSender _emailSender;
     private const string CacheKey = "otp_context:";
 
-    public AuthService(ISpeedSmsService speedSmsService, IRepository<Otp> repository, IRepository<User> userRepository, IRepository<Role> roleRepository, IRepository<UserSession> sessionRepository, ICacheService cacheService, IEmailSender emailSender)
+    public AuthService(ISpeedSmsService speedSmsService, IBaseRepository<Otp> repository, IBaseRepository<User> userRepository, IBaseRepository<Role> roleRepository, IBaseRepository<UserSession> sessionRepository, ICacheService cacheService, IEmailSender emailSender)
     {
         _speedSmsService = speedSmsService;
         _otpRepository = repository;

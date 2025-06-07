@@ -15,10 +15,10 @@ namespace TraVinhMaps.Application.Features.Users;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    private readonly IRepository<Role> _roleRepository;
+    private readonly IBaseRepository<Role> _roleRepository;
     private readonly ICloudinaryService _cloudinaryService;
 
-    public UserService(IUserRepository userRepository, IRepository<Role> roleRepository, ICloudinaryService cloudinaryService)
+    public UserService(IUserRepository userRepository, IBaseRepository<Role> roleRepository, ICloudinaryService cloudinaryService)
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
@@ -62,7 +62,9 @@ public class UserService : IUserService
         var userRole = (await _roleRepository.ListAllAsync(cancellationToken))
              .FirstOrDefault(r => r.RoleName.ToLower() == "user" && r.RoleStatus);
         if (userRole == null)
+        {
             throw new NotFoundException("User role not found.");
+        }
         return await _userRepository.ListAsync(u => u.RoleId == userRole.Id, cancellationToken);
     }
 

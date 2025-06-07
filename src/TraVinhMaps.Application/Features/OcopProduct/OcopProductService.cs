@@ -3,6 +3,7 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
+using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
@@ -10,28 +11,27 @@ namespace TraVinhMaps.Application.Features.OcopProduct;
 public class OcopProductService : IOcopProductService
 {
     private readonly IOcopProductRepository _ocopProductRepository;
-    public OcopProductService(IOcopProductRepository ocopProductRepository)
+    private readonly IBaseRepository<Company> _companyRepository;
+    private readonly IBaseRepository<Domain.Entities.OcopType> _ocopTypeRepository;
+    private readonly IBaseRepository<Domain.Entities.Tags> _tagRepository;
+
+    public OcopProductService(IOcopProductRepository ocopProductRepository, IBaseRepository<Company> companyRepository,
+        IBaseRepository<Domain.Entities.OcopType> ocopTypeRepository,
+        IBaseRepository<Domain.Entities.Tags> tagRepository)
     {
         _ocopProductRepository = ocopProductRepository;
+        _companyRepository = companyRepository;
+        _ocopTypeRepository = ocopTypeRepository;
+        _tagRepository = tagRepository;
     }
     public Task<Domain.Entities.OcopProduct> AddAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.AddAsync(entity, cancellationToken);
     }
 
-    public Task<IEnumerable<Domain.Entities.OcopProduct>> AddRangeAsync(IEnumerable<Domain.Entities.OcopProduct> entities, CancellationToken cancellationToken = default)
-    {
-        return _ocopProductRepository.AddRangeAsync(entities, cancellationToken);
-    }
-
     public Task<long> CountAsync(Expression<Func<Domain.Entities.OcopProduct, bool>> predicate = null, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.CountAsync(predicate, cancellationToken);
-    }
-
-    public Task DeleteAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
-    {
-        return _ocopProductRepository.DeleteAsync(entity, cancellationToken);
     }
     public Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default)
     {
@@ -41,11 +41,6 @@ public class OcopProductService : IOcopProductService
     {
         return _ocopProductRepository.RestoreOcopProductAsync(id, cancellationToken);
     }
-
-    //public Task<Pagination<Domain.Entities.OcopProduct>> GetAllOcopProductAsync(OcopProductSpecParams ocopProductSpecParams)
-    //{
-    //    return _ocopProductRepository.GetAllOcopProductAsync(ocopProductSpecParams);
-    //}
     public Task<Domain.Entities.OcopProduct> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.GetByIdAsync(id, cancellationToken);
@@ -64,11 +59,6 @@ public class OcopProductService : IOcopProductService
     public Task<IEnumerable<Domain.Entities.OcopProduct>> ListAllAsync(CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.ListAllAsync(cancellationToken);
-    }
-
-    public Task<IEnumerable<Domain.Entities.OcopProduct>> ListAsync(Expression<Func<Domain.Entities.OcopProduct, bool>> predicate, CancellationToken cancellationToken = default)
-    {
-        return _ocopProductRepository.ListAsync(predicate, cancellationToken);
     }
 
     public Task UpdateAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default)
@@ -94,5 +84,35 @@ public class OcopProductService : IOcopProductService
     public Task<bool> UpdateSellLocation(string id, SellLocation sellLocation, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.UpdateSellLocation(id, sellLocation, cancellationToken);
+    }
+
+    public async Task<ProductLookUpsResponse> LooksUpForProduct()
+    {
+        var ocopTypes = await _ocopTypeRepository.ListAllAsync();
+        var companies = await _companyRepository.ListAllAsync();
+        var tags = await _tagRepository.GetAsyns(a => a.Name == "Ocop");
+
+        // Fetching data for lookups
+        var productLookUps = new ProductLookUpsResponse
+        {
+            Companies = companies.Select(c => new CompanyDto
+            {
+                Id = c.Id,
+                Name = c.Name,
+
+            }).ToList(),
+            OcopTypes = ocopTypes.Select(o => new OcopTypeDto
+            {
+                Id = o.Id,
+                Name = o.OcopTypeName,
+            }).ToList(),
+            Tags = new TagDto
+            {
+                Id = tags.Id,
+                Name = tags.Name
+            }
+        };
+
+        return productLookUps;
     }
 }

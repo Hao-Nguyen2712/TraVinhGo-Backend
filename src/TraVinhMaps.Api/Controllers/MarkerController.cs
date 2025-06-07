@@ -1,7 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
@@ -49,12 +48,12 @@ public class MarkerController : ControllerBase
             return this.ApiError("Object can't be null");
         }
 
-        if(createMarkerRequest.ImageFile == null || createMarkerRequest.ImageFile.Length == 0)
+        if (createMarkerRequest.ImageFile == null || createMarkerRequest.ImageFile.Length == 0)
         {
             return this.ApiError("ImageFile is required");
         }
-        var urlImage = await _imageManagementMarkerServices.AddImageMarker(createMarkerRequest.ImageFile);   
-        if(urlImage == null)
+        var urlImage = await _imageManagementMarkerServices.AddImageMarker(createMarkerRequest.ImageFile);
+        if (urlImage == null)
         {
             return this.ApiError("Error uploading image");
         }

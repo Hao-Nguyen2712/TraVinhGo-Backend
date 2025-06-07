@@ -12,9 +12,9 @@ using TraVinhMaps.Application.UnitOfWorks;
 namespace TraVinhMaps.Application.Features.Tags;
 public class TagService : ITagService
 {
-    private readonly IRepository<Domain.Entities.Tags> _tagsRepository;
+    private readonly IBaseRepository<Domain.Entities.Tags> _tagsRepository;
 
-    public TagService(IRepository<Domain.Entities.Tags> tagRepository)
+    public TagService(IBaseRepository<Domain.Entities.Tags> tagRepository)
     {
         _tagsRepository = tagRepository;
     }

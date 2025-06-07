@@ -1,7 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
@@ -42,7 +41,7 @@ public class ItineraryPlanController : ControllerBase
     [Route("CreateItineraryPlan")]
     public async Task<IActionResult> CreateItineraryPlan(ItineraryPlanRequest itineraryPlanRequest)
     {
-        if(itineraryPlanRequest.Locations.Count< 2)
+        if (itineraryPlanRequest.Locations.Count < 2)
         {
             return this.ApiError("The itinerary must have at least 2 addresses.");
         }
@@ -55,12 +54,12 @@ public class ItineraryPlanController : ControllerBase
     [Route("UpdateItineraryPlan")]
     public async Task<IActionResult> UpdateItineraryPlan(UpdateItineraryPlanRequest updateItineraryPlanRequest)
     {
-        if(updateItineraryPlanRequest == null)
+        if (updateItineraryPlanRequest == null)
         {
             return this.ApiError("Object can't be null");
         }
         var itineraryPlan = await _itineraryPlanService.GetByIdAsync(updateItineraryPlanRequest.Id);
-        if(itineraryPlan == null)
+        if (itineraryPlan == null)
         {
             throw new NotFoundException("No itineraryPlan was found");
         }
