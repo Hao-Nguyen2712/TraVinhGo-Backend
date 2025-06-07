@@ -41,4 +41,7 @@ public interface IUserService
     //  Task<User> AddAdminAsync(AddAdminRequest request, CancellationToken cancellationToken = default);
     Task<AdminProfileResponse> GetProfileAdmin(string id, CancellationToken cancellationToken = default);
     Task UpdateProfileAdmin(UpdateProfileAdminRequest request, CancellationToken cancellationToken = default);
+
+    // chart
+    Task<Dictionary<string, object>> GetUserStatisticsAsync(string groupBy, string timeRange, CancellationToken cancellationToken = default);
 }

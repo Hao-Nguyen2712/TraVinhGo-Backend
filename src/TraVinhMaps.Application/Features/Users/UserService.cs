@@ -160,4 +160,9 @@ public class UserService : IUserService
     {
         throw new NotImplementedException();
     }
+
+    public async Task<Dictionary<string, object>> GetUserStatisticsAsync(string groupBy, string timeRange, CancellationToken cancellationToken = default)
+    {
+        return await _userRepository.GetUserStatisticsAsync(groupBy, timeRange, cancellationToken);
+    }
 }

@@ -170,4 +170,12 @@ public class UsersController : ControllerBase
         await _userService.UpdateProfileAdmin(request);
         return this.ApiOk("", "Update profile admin successfully");
     }
+
+    [HttpGet("stats")]
+    public async Task<IActionResult> GetUserStatistics([FromQuery] string groupBy = "all", [FromQuery] string timeRange = "day")
+    {
+        var stats = await _userService.GetUserStatisticsAsync(groupBy, timeRange);
+        return this.ApiOk(stats, "User statistics retrieved successfully");
+    }
+
 }
