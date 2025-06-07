@@ -10,4 +10,5 @@ public interface IUserRepository : IBaseRepository<User>
     Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
     Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
+    Task<Dictionary<string, object>> GetUserStatisticsAsync(string groupBy, string timeRange, CancellationToken cancellationToken = default);
 }
