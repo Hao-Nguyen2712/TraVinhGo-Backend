@@ -1,12 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Text;
-using System.Threading.Tasks;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
@@ -46,7 +40,15 @@ public class CloudinaryService : ICloudinaryService
             {
                 File = new FileDescription(file.FileName, stream)
             };
-            uploadResult = await _cloudinary.UploadAsync(uploadParams);
+            try
+            {
+                uploadResult = await _cloudinary.UploadAsync(uploadParams);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                throw new InvalidOperationException("Error uploading image to Cloudinary", ex);
+            }
         }
         return uploadResult;
     }
