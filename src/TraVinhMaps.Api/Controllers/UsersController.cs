@@ -24,14 +24,11 @@ public class UsersController : ControllerBase
     private readonly UploadImageUser _uploadImageUser;
     private readonly IRoleService _roleService;
 
-    // private readonly IValidator<User> _userValidator;
-
     public UsersController(IUserService userService, UploadImageUser uploadImageUser, IRoleService roleService)
     {
         _userService = userService;
         _uploadImageUser = uploadImageUser;
         _roleService = roleService;
-        // _userValidator = userValidator;
     }
 
     [HttpGet("all")]
@@ -172,7 +169,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("stats")]
-    public async Task<IActionResult> GetUserStatistics([FromQuery] string groupBy = "all", [FromQuery] string timeRange = "day")
+    public async Task<IActionResult> GetUserStatistics([FromQuery] string groupBy = "all", [FromQuery] string timeRange = "month")
     {
         var stats = await _userService.GetUserStatisticsAsync(groupBy, timeRange);
         return this.ApiOk(stats, "User statistics retrieved successfully");

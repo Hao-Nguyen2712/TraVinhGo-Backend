@@ -85,9 +85,6 @@ public static class DependencyInjection
         services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
         services.AddScoped<ICommunityTipsService, CommunityTipsService>();
 
-        // FluentValidation
-        // services.AddScoped<IValidator<User>, UserValidator>();
-
         // Notification
         services.AddScoped<INotificationsRepository, NotificationsRepository>();
         services.AddScoped<INotificationService, NotificationsService>();
