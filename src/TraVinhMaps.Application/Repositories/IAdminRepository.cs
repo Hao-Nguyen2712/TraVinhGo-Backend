@@ -8,7 +8,6 @@ namespace TraVinhMaps.Application.UnitOfWorks;
 public interface IAdminRepository : IBaseRepository<User>
 {
     Task<User> AddAsync(AdminRequest entity, CancellationToken cancellationToken);
-    //Task<User> UpdateAsync(UpdateAdminRequest entity, CancellationToken cancellationToken = default);
     Task<bool> DeleteAdmin(string id, CancellationToken cancellationToken = default);
     Task<bool> RestoreAdmin(string id, CancellationToken cancellationToken = default);
 }

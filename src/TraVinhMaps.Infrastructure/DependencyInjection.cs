@@ -25,8 +25,6 @@ using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
-using TraVinhMaps.Application.Features.OcopType;
-using TraVinhMaps.Application.Features.OcopType.Interface;
 using TraVinhMaps.Application.Features.Roles;
 using TraVinhMaps.Application.Features.Roles.Interface;
 using TraVinhMaps.Application.Features.SellingLink;
@@ -39,6 +37,8 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Infrastructure.CustomRepositories;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
+using TraVinhMaps.Application.Features.Feedback.Interface;
+using TraVinhMaps.Application.Features.Feedback;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -121,7 +121,16 @@ public static class DependencyInjection
         services.AddScoped<ILocalSpecialtiesService,LocalSpecialtiesService>();
         services.AddScoped<ImageLocalSpecialtiesService>();
 
+        // Feedback Management
+        services.AddScoped<IFeedbackService, FeedbackService>();
+        services.AddScoped<ImageFeedbackService>();
+
         services.AddHttpClient();
+
+        // Hubs
+        services.AddSignalR();
+
+        services.AddHttpContextAccessor();
 
         return services;
     }

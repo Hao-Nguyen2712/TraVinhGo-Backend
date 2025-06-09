@@ -71,15 +71,6 @@ public class AdminsController : ControllerBase
         }
     }
 
-    // PUT: api/Admins
-    // Updates an existing admin's information
-    //[HttpPut]
-    //public async Task<IActionResult> Update([FromBody] UpdateAdminRequest entity)
-    //{
-    //    var updatedAdmin = await _adminService.UpdateAsync(entity);
-    //    return Ok(updatedAdmin);
-    //}
-
     // DELETE: api/Admins/LockAdmin/{id}
     // Locks (or soft deletes) an admin user by ID
     [HttpDelete("LockAdmin/{id}")]
