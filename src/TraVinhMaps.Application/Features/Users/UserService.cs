@@ -39,7 +39,18 @@ public class UserService : IUserService
 
     public async Task<long> CountAsync(Expression<Func<User, bool>> predicate = null, CancellationToken cancellationToken = default)
     {
-        return await _userRepository.CountAsync(predicate, cancellationToken);
+        var userRole = (await _roleRepository.ListAllAsync(cancellationToken))
+            .FirstOrDefault(r => r.RoleName.ToLower() == "user" && r.RoleStatus);
+
+        if (userRole == null)
+        {
+            throw new NotFoundException("Role 'user' not found.");
+        }
+
+        return await _userRepository.CountAsync(
+            u => u.RoleId == userRole.Id && u.Status && !u.IsForbidden,
+            cancellationToken
+        );
     }
 
     public async Task DeleteAsync(User entity, CancellationToken cancellationToken = default)
