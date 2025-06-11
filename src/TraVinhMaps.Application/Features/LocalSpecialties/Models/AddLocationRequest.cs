@@ -8,7 +8,7 @@ public class AddLocationRequest
 {
     public string Name { get; set; } = default!;
     public string Address { get; set; } = default!;
-    public string MarkerId { get; set; } = default!;
+    public string? MarkerId { get; set; } = default!;
     public LocationRequest Location { get; set; } = default!;
 
     public LocalSpecialtyLocation ToLocationModel() => new LocalSpecialtyLocation

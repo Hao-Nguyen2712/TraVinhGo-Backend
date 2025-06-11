@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.LocalSpecialties.Interface;
 using TraVinhMaps.Application.Features.LocalSpecialties.Mapper;
 using TraVinhMaps.Application.Features.LocalSpecialties.Models;
+using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
@@ -12,15 +13,26 @@ namespace TraVinhMaps.Application.Features.LocalSpecialties;
 public class LocalSpecialtiesService : ILocalSpecialtiesService
 {
     private readonly ILocalSpecialtiesRepository _localSpecialtiesRepository;
+    private readonly ITagRepository _tagRepository;
+    private readonly IMarkerRepository _markerRepository;
 
-    public LocalSpecialtiesService(ILocalSpecialtiesRepository localSpecialtiesRepository)
+    public LocalSpecialtiesService(ILocalSpecialtiesRepository localSpecialtiesRepository, ITagRepository tagRepository, IMarkerRepository markerRepository)
     {
         _localSpecialtiesRepository = localSpecialtiesRepository;
+        _tagRepository = tagRepository;
+        _markerRepository = markerRepository;
     }
 
     public async Task<Domain.Entities.LocalSpecialties> AddAsync(CreateLocalSpecialtiesRequest entity, CancellationToken cancellationToken = default)
     {
-        var request = LocalSpecialtiesMapper.Mapper.Map<CreateLocalSpecialtiesRequest, Domain.Entities.LocalSpecialties>(entity); 
+        var tagId = await _tagRepository.GetTagIdByNameAsync("Local specialty", cancellationToken);
+        if (string.IsNullOrEmpty(tagId))
+        {
+            throw new InvalidOperationException("Required tag 'Local Specialty' not found.");
+        }
+        var request = LocalSpecialtiesMapper.Mapper.Map<CreateLocalSpecialtiesRequest, Domain.Entities.LocalSpecialties>(entity);
+        request.TagId = tagId;
+        request.Status = true;
         return await _localSpecialtiesRepository.AddAsync(request, cancellationToken);
     }
 
@@ -36,6 +48,12 @@ public class LocalSpecialtiesService : ILocalSpecialtiesService
 
     public async Task<LocalSpecialtyLocation> AddSellLocationAsync(string id, LocalSpecialtyLocation request, CancellationToken cancellationToken = default)
     {
+        var sellLocationMaker = await _markerRepository.GetAsyns(m => m.Name == "Sell Location", cancellationToken);
+        if (sellLocationMaker == null)
+        {
+            throw new InvalidOperationException("Marker 'Sell Location' not found.");
+        }
+        request.MarkerId = sellLocationMaker.Id;
         return await _localSpecialtiesRepository.AddSellLocationAsync(id, request, cancellationToken);
     }
 
@@ -115,6 +133,14 @@ public class LocalSpecialtiesService : ILocalSpecialtiesService
 
     public async Task<LocalSpecialtyLocation> UpdateSellLocationAsync(string id, LocalSpecialtyLocation request, CancellationToken cancellationToken = default)
     {
+        // fetch marker "Sell Location"
+        var sellLocationMarker = await _markerRepository.GetAsyns(m => m.Name == "Sell Location", cancellationToken);
+        if (sellLocationMarker == null)
+        {
+            throw new InvalidOperationException("Marker 'Sell Location' not found.");
+        }
+
+        request.MarkerId = sellLocationMarker.Id;
         return await _localSpecialtiesRepository.UpdateSellLocationAsync(id, request, cancellationToken);
     }
 }

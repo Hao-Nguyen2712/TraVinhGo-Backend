@@ -39,6 +39,8 @@ using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
 using TraVinhMaps.Application.Features.Feedback.Interface;
 using TraVinhMaps.Application.Features.Feedback;
+using TraVinhMaps.Application.Repositories;
+using TraVinhMaps.Infrastructure.Repositories;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -111,6 +113,7 @@ public static class DependencyInjection
         services.AddScoped<IDestinationTypeService, DestinationTypeService>();
 
         // Tags
+        services.AddScoped<ITagRepository, TagRepository>();
         services.AddScoped<ITagService, TagService>();
 
         // LocalSpecialties Management

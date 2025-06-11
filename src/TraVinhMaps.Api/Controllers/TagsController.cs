@@ -44,4 +44,20 @@ public class TagsController : ControllerBase
 
         return Ok(tag);
     }
+
+    // GET: api/Tags/GetTagIdByName/{tagName}
+    // Retrieves a specific tag by its tagName
+    [HttpGet("GetTagIdByName/{tagName}")]
+    public async Task<IActionResult> GetTagIdByName(string tagName)
+    {
+        var tag = await _tagService.GetTagIdByNameAsync(tagName);
+
+        // If the tag does not exist, throw a 404 Not Found
+        if (tag == null)
+        {
+            throw new NotFoundException("Tag not found!");
+        }
+
+        return Ok(tag);
+    }
 }

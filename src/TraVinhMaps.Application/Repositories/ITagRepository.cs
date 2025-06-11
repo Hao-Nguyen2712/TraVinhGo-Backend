@@ -6,11 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Driver;
+using TraVinhMaps.Application.UnitOfWorks;
 
-namespace TraVinhMaps.Application.Features.Tags.Interface;
-public interface ITagService
+namespace TraVinhMaps.Application.Repositories;
+public interface ITagRepository : IBaseRepository<Domain.Entities.Tags>
 {
-    Task<Domain.Entities.Tags> GetByIdAsync(string id, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Domain.Entities.Tags>> ListAllAsync(CancellationToken cancellationToken = default);
     Task<string> GetTagIdByNameAsync(string tagName, CancellationToken cancellationToken = default);
 }
