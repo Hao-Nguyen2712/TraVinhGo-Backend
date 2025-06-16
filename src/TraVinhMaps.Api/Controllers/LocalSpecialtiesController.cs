@@ -35,6 +35,15 @@ public class LocalSpecialtiesController : ControllerBase
         return this.ApiOk(response);
     }
 
+    // GET: api/LocalSpecialties/Active
+    // Returns a list of active local specialties
+    [HttpGet("active")]
+    public async Task<IActionResult> GetActiveLocalSpecialties()
+    {
+        var response = await _localSpecialtiesService.ListAsync(l => l.Status == true);
+        return this.ApiOk(response);
+    }
+
     // GET: api/LocalSpecialties/{id}
     // Returns a single local specialty by ID
     [HttpGet("{id}", Name = "GetLocalSpecialtiesById")]
