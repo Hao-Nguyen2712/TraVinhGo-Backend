@@ -3,9 +3,6 @@ using MongoDB.Driver;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
@@ -40,41 +37,60 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     {
         try
         {
-            var now = DateTime.UtcNow;
+            var now = DateTime.UtcNow; // Current time in UTC
             var result = new Dictionary<string, object>();
+
+            // Adjust for UTC+7 (Vietnam time zone)
+            var nowInVietnam = now.AddHours(7); // Convert UTC to UTC+7
 
             var ageGroups = new[] { 0, 18, 30, 50, 120 };
             var ageLabels = new[] { "0-18", "18-30", "30-50", "50+" };
 
-            DateTime startDate = timeRange.ToLower() switch
+            // Calculate startDate and endDate in UTC+7, then convert to UTC for MongoDB
+            DateTime startDate, endDate;
+            switch (timeRange.ToLower())
             {
-                "day" => now.Date,
-                "week" => now.Date.AddDays(-(int)now.DayOfWeek),
-                "month" => new DateTime(now.Year, now.Month, 1),
-                "year" => new DateTime(now.Year, 1, 1),
-                _ => DateTime.MinValue
-            };
+                case "day":
+                    startDate = nowInVietnam.Date; // Start of today in UTC+7
+                    endDate = startDate.AddDays(1).AddTicks(-1); // End of today in UTC+7
+                    break;
+                case "week":
+                    startDate = nowInVietnam.Date.AddDays(-(int)nowInVietnam.DayOfWeek);
+                    endDate = startDate.AddDays(7).AddTicks(-1);
+                    break;
+                case "month":
+                    startDate = new DateTime(nowInVietnam.Year, nowInVietnam.Month, 1);
+                    endDate = startDate.AddMonths(1).AddTicks(-1);
+                    break;
+                case "year":
+                    startDate = new DateTime(nowInVietnam.Year, 1, 1);
+                    endDate = startDate.AddYears(1).AddTicks(-1);
+                    break;
+                default:
+                    throw new ArgumentException($"Invalid timeRange: {timeRange}");
+            }
+
+            // Convert startDate and endDate to UTC for MongoDB query (assuming createdAt is stored in UTC)
+            var startDateUtc = startDate.AddHours(-7);
+            var endDateUtc = endDate.AddHours(-7);
+
+            _logger.LogInformation("Time range {TimeRange}: startDate={StartDate} (+07), endDate={EndDate} (+07), startDateUtc={StartDateUtc}, endDateUtc={EndDateUtc}",
+                timeRange, startDate, endDate, startDateUtc, endDateUtc);
+
+            // Common match stage for createdAt (used for age, hometown, gender, time)
+            var timeFilter = new BsonDocument("$match", new BsonDocument
+        {
+            { "createdAt", new BsonDocument
+                {
+                    { "$gte", new BsonDateTime(startDateUtc) },
+                    { "$lte", new BsonDateTime(endDateUtc) }
+                }
+            }
+        });
 
             // ==== 1. AGE ====
             if (groupBy.ToLower() is "all" or "age")
             {
-                // First check dateOfBirth field types in collection
-                var typeCheckPipeline = new List<BsonDocument>
-            {
-                new BsonDocument("$group", new BsonDocument
-                {
-                    { "_id", new BsonDocument("$type", "$profile.dateOfBirth") },
-                    { "count", new BsonDocument("$sum", 1) }
-                })
-            };
-
-                var typeResults = await _collection.Aggregate<BsonDocument>(typeCheckPipeline).ToListAsync(cancellationToken);
-                foreach (var typeResult in typeResults)
-                {
-                    _logger.LogInformation("Found {Count} documents with dateOfBirth type: {Type}",
-                        typeResult["count"], typeResult["_id"]);
-                }
-
                 var ageStats = new Dictionary<string, int>();
 
                 for (int i = 0; i < ageLabels.Length; i++)
@@ -82,18 +98,16 @@ public class UserRepository : BaseRepository<User>, IUserRepository
                     var minAge = ageGroups[i];
                     var maxAge = ageGroups[i + 1];
 
-                    var startDob = now.AddYears(-maxAge).Date;
-                    var endDob = now.AddYears(-minAge).Date.AddDays(1).AddTicks(-1);
+                    var startDob = nowInVietnam.AddYears(-maxAge).Date;
+                    var endDob = nowInVietnam.AddYears(-minAge).Date.AddDays(1).AddTicks(-1);
 
                     _logger.LogInformation("Processing age range {AgeRange}: startDob={StartDob}, endDob={EndDob}",
                         ageLabels[i], startDob, endDob);
 
                     var pipeline = new List<BsonDocument>
                 {
-                    // Match documents with dateOfBirth (any type)
+                    timeFilter,
                     new BsonDocument("$match", new BsonDocument("profile.dateOfBirth", new BsonDocument("$exists", true))),
-
-                    // Convert to unified date format
                     new BsonDocument("$addFields", new BsonDocument
                     {
                         { "parsedDob", new BsonDocument("$cond", new BsonArray
@@ -114,21 +128,15 @@ public class UserRepository : BaseRepository<User>, IUserRepository
                             })
                         }
                     }),
-
-                    // Filter valid dates only
                     new BsonDocument("$match", new BsonDocument("parsedDob", new BsonDocument
                     {
                         { "$ne", BsonNull.Value }
                     })),
-
-                    // Filter by age range
                     new BsonDocument("$match", new BsonDocument("parsedDob", new BsonDocument
                     {
                         { "$gte", new BsonDateTime(startDob) },
                         { "$lte", new BsonDateTime(endDob) }
                     })),
-
-                    // Count results
                     new BsonDocument("$count", "count")
                 };
 
@@ -151,11 +159,11 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             }
 
             // ==== 2. HOMETOWN ====
-            // (Keep original implementation as it doesn't depend on dateOfBirth)
             if (groupBy.ToLower() is "all" or "hometown")
             {
                 var pipeline = new List<BsonDocument>
             {
+                timeFilter,
                 new BsonDocument("$match", new BsonDocument("profile.address", new BsonDocument("$exists", true))),
                 new BsonDocument("$addFields", new BsonDocument
                 {
@@ -187,11 +195,11 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             }
 
             // ==== 3. GENDER ====
-            // (Keep original implementation)
             if (groupBy.ToLower() is "all" or "gender")
             {
                 var pipeline = new List<BsonDocument>
             {
+                timeFilter,
                 new BsonDocument("$match", new BsonDocument("profile.gender", new BsonDocument("$exists", true))),
                 new BsonDocument("$group", new BsonDocument
                 {
@@ -205,15 +213,14 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             }
 
             // ==== 4. STATUS ====
-            // (Keep original implementation)
             if (groupBy.ToLower() is "all" or "status")
             {
                 var activeCount = await _collection.CountDocumentsAsync(
-                    Builders<User>.Filter.Where(u => u.Status && !u.IsForbidden), cancellationToken: cancellationToken);
+                    Builders<User>.Filter.Where(u => u.Status && !u.IsForbidden && u.CreatedAt >= startDateUtc), cancellationToken: cancellationToken);
                 var inactiveCount = await _collection.CountDocumentsAsync(
-                    Builders<User>.Filter.Where(u => !u.Status && !u.IsForbidden), cancellationToken: cancellationToken);
+                    Builders<User>.Filter.Where(u => !u.Status && !u.IsForbidden && u.CreatedAt >= startDateUtc), cancellationToken: cancellationToken);
                 var forbiddenCount = await _collection.CountDocumentsAsync(
-                    Builders<User>.Filter.Where(u => u.IsForbidden), cancellationToken: cancellationToken);
+                    Builders<User>.Filter.Where(u => u.IsForbidden && u.UpdatedAt >= startDateUtc), cancellationToken: cancellationToken);
 
                 result["status"] = new Dictionary<string, int>
             {
@@ -224,12 +231,11 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             }
 
             // ==== 5. CREATED TIME ====
-            // (Keep original implementation)
             if (groupBy.ToLower() is "all" or "time")
             {
                 var dateFormat = timeRange.ToLower() switch
                 {
-                    "day" => "%Y-%m-%d %H:00",
+                    "day" => "%Y-%m-%d %H:00", // Group by hour for day
                     "week" or "month" => "%Y-%m-%d",
                     "year" => "%Y-%m",
                     _ => "%Y-%m-%d"
@@ -237,7 +243,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
 
                 var pipeline = new List<BsonDocument>
             {
-                new BsonDocument("$match", new BsonDocument("createdAt", new BsonDocument("$gte", new BsonDateTime(startDate)))),
+                timeFilter,
                 new BsonDocument("$group", new BsonDocument
                 {
                     { "_id", new BsonDocument("$dateToString", new BsonDocument
@@ -252,6 +258,8 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             };
 
                 var docs = await _collection.Aggregate<BsonDocument>(pipeline, cancellationToken: cancellationToken).ToListAsync(cancellationToken);
+                _logger.LogInformation("Time range {TimeRange}: {Count} users created between {StartDate} and {EndDate}",
+                    timeRange, docs.Sum(x => x["count"].AsInt32), startDate, endDate);
                 result["time"] = docs.ToDictionary(x => x["_id"].AsString, x => x["count"].AsInt32);
             }
 
