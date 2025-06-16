@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using TraVinhMaps.Api.AuthenticationHandlers;
+using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Api.Middlewares;
 using TraVinhMaps.Application;
 using TraVinhMaps.Application.External.Models;
@@ -139,6 +140,7 @@ builder.Services.Configure<EmailConfiguration>(options =>
     }
 });
 
+
 // SpeedSms configuration
 builder.Services.Configure<SpeedSmsSetting>(options =>
 {
@@ -214,6 +216,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
 
+app.MapHub<DashboardHub>("/dashboardHub");
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseAuthentication();

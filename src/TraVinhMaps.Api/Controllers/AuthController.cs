@@ -5,8 +5,10 @@ using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
+using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Features.Auth.Interface;
 using TraVinhMaps.Application.Features.Auth.Models;
 
@@ -17,14 +19,17 @@ namespace TraVinhMaps.Api.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IAuthServices _authServices;
-
-    public AuthController(IAuthServices authServices)
+    private readonly IHubContext<DashboardHub> _hubContext;
+    public AuthController(IAuthServices authServices, IHubContext<DashboardHub> hubContext)
     {
         _authServices = authServices;
+        _hubContext = hubContext;
     }
 
     #region Request Authentication for User endpoint
-
+    /*
+    * Endpoint for handle request authentication with Fluter App
+    */
     [HttpPost("request-email-authen")]
     public async Task<IActionResult> AuthenWithEmail(string email)
     {
@@ -39,7 +44,9 @@ public class AuthController : ControllerBase
         };
         return this.ApiOk(JsonConvert.SerializeObject(response), "Email authentication requested successfully");
     }
-
+    /*
+     * Endpoint for handle request authentication with Fluter App
+     */
     [HttpPost("request-phonenumber-authen")]
     public async Task<IActionResult> AuthenWithPhoneNumber(string phoneNumber)
     {
@@ -74,6 +81,12 @@ public class AuthController : ControllerBase
         if (result == null)
         {
             return this.ApiError("Invalid OTP", HttpStatusCode.Unauthorized);
+        }
+        // Send SignalR for dashboard
+        if (result != null)
+        {
+            await _hubContext.Clients.Group("admin").SendAsync("UpdateUserStats");
+            await _hubContext.Clients.Group("super-admin").SendAsync("UpdateUserStats");
         }
         return this.ApiOk(JsonConvert.SerializeObject(result), "OTP verified successfully");
     }

@@ -144,7 +144,6 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> GetProfileAdmin()
     {
         var sessionId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-        // var sessionId = "6832ba4fbd35e0ad520794c8";
         if (string.IsNullOrEmpty(sessionId))
         {
             return this.ApiError("Session ID not found in token", HttpStatusCode.Unauthorized);

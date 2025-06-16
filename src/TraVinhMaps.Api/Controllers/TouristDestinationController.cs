@@ -288,4 +288,15 @@ public class TouristDestinationController : ControllerBase
         return this.ApiOk("Destination restored successfully");
     }
 
+    [HttpGet("top-favorite-destination")]
+    public async Task<IActionResult> GetTop10FavoriteDestination()
+    {
+        var result = await _touristDestinationService.GetTop10FavoriteDestination();
+        if (result == null || !result.Any())
+        {
+            this.ApiError("No favorite destinations found.");
+        }
+        return this.ApiOk(result);
+    }
+
 }

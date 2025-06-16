@@ -5,11 +5,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using TraVinhMaps.Api.Extensions;
+using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Feedback.Interface;
 using TraVinhMaps.Application.Features.Feedback.Models;
-using TraVinhMaps.Infrastructure.Hubs;
-
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]
@@ -17,9 +16,11 @@ namespace TraVinhMaps.Api.Controllers;
 public class FeedbackController : ControllerBase
 {
     private readonly IFeedbackService _feedbackService;
-    public FeedbackController(IFeedbackService feedbackService)
+    private readonly IHubContext<DashboardHub> _hubContext;
+    public FeedbackController(IFeedbackService feedbackService, IHubContext<DashboardHub> hubContext)
     {
         _feedbackService = feedbackService;
+        _hubContext = hubContext;
     }
 
     // GET endpoint to retrieve all feedbacks
@@ -28,9 +29,7 @@ public class FeedbackController : ControllerBase
     [HttpGet("all")]
     public async Task<IActionResult> GetAllFeedbacks()
     {
-        // Call the service to retrieve the list of all feedbacks
         var feedbacks = await _feedbackService.ListAllAsync();
-        // Return a success response with the list of feedbacks
         return this.ApiOk(feedbacks);
     }
 
@@ -40,14 +39,11 @@ public class FeedbackController : ControllerBase
     [HttpGet("user/{id}", Name = "GetFeedBackByUserId")]
     public async Task<IActionResult> GetFeedBackByUserId(string id)
     {
-        // Call the service to retrieve feedback by userId
         var feedback = await _feedbackService.GetByIdAsync(id);
-        // If no feedback is found, throw a NotFoundException
         if (feedback == null)
         {
             throw new NotFoundException("Feedback by userId not found!");
         }
-        // Return a success response with the retrieved feedback
         return this.ApiOk(feedback);
     }
 
@@ -57,14 +53,11 @@ public class FeedbackController : ControllerBase
     [HttpGet("details/{id}", Name = "GetFeedBackByFeedbackId")]
     public async Task<IActionResult> GetFeedBackByFeedbackId(string id)
     {
-        // Call the service to retrieve feedback by userId
         var feedback = await _feedbackService.GetByIdAsync(id);
-        // If no feedback is found, throw a NotFoundException
         if (feedback == null)
         {
             throw new NotFoundException("Feedback by userId not found!");
         }
-        // Return a success response with the retrieved feedback
         return this.ApiOk(feedback);
     }
 
@@ -82,13 +75,8 @@ public class FeedbackController : ControllerBase
         {
             var feedback = await _feedbackService.AddAsync(request);
             // Get the SignalR hub context to notify admins
-            var hubContext = HttpContext.RequestServices.GetService<IHubContext<FeedbackHub>>();
-            if (hubContext != null)
-            {
-                // Notify the "admin" and "super-admin" groups about the new feedback
-                await hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", feedback.Id);
-                await hubContext.Clients.Group("super-admin").SendAsync("ReceiveFeedback", feedback.Id);
-            }
+            await _hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", feedback.Id);
+            await _hubContext.Clients.Group("super-admin").SendAsync("ReceiveFeedback", feedback.Id);
 
             return this.ApiOk(feedback);
         }

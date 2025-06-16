@@ -2,7 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
+using Microsoft.Extensions.Logging;
+using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
@@ -11,9 +14,11 @@ namespace TraVinhMaps.Application.Features.Destination;
 public class TouristDestinationService : ITouristDestinationService
 {
     private readonly ITouristDestinationRepository _repository;
-    public TouristDestinationService(ITouristDestinationRepository repository)
+    private readonly ILogger<TouristDestinationService> _logger;
+    public TouristDestinationService(ITouristDestinationRepository repository, ILogger<TouristDestinationService> logger)
     {
         _repository = repository;
+        _logger = logger;
     }
     public async Task<TouristDestination> AddAsync(TouristDestination entity, CancellationToken cancellationToken = default)
     {
@@ -88,5 +93,36 @@ public class TouristDestinationService : ITouristDestinationService
     public Task UpdateAsync(TouristDestination entity, CancellationToken cancellationToken = default)
     {
         return _repository.UpdateAsync(entity, cancellationToken);
+    }
+
+    public async Task<List<TopFavoriteRequest>> GetTop10FavoriteDestination(CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            var destinations = await _repository.ListAsync(x => x.FavoriteCount > 0, cancellationToken);
+
+            if (!destinations.Any())
+            {
+                throw new NotFoundException("No favorite destinations found.");
+            }
+
+            return destinations
+                .OrderByDescending(x => x.FavoriteCount)
+                .Take(10)
+                .Select(x => new TopFavoriteRequest
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Image = x.Images?.FirstOrDefault() ?? string.Empty,
+                    AverageRating = x.AvarageRating, // Fixed typo
+                    Description = x.Description,
+                })
+                .ToList();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error retrieving top 10 favorite destinations");
+            return new List<TopFavoriteRequest>(); // Ensure a return value in case of an exception
+        }
     }
 }
