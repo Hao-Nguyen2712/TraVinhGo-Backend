@@ -115,4 +115,24 @@ public class OcopProductService : IOcopProductService
 
         return productLookUps;
     }
+
+    public async Task<IEnumerable<OcopProductAnalytics>> GetProductAnalyticsAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if(!string.IsNullOrEmpty(timeRange) && !new[] {"day", "week", "month", "year"}.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range.Use: day, week, month, year.");
+
+        if(startDate.HasValue && endDate.HasValue)
+        {
+            if(startDate > endDate)
+                throw new ArgumentException("Start date must be before end date.");
+            if(startDate > DateTime.UtcNow)
+                throw new ArgumentException("Start date cannot be in the future.");
+        }
+
+        var analytics = await _ocopProductRepository.GetProductAnalyticsAsync(timeRange, startDate, endDate, cancellationToken);
+        // Chỉ trả về sản phẩm có ít nhất một chỉ số > 0
+        //return analytics.Where(a => a.ViewCount > 0 || a.InteractionCount > 0 || a.WishlistCount > 0);
+        return analytics.ToList();
+    }
 }

@@ -22,16 +22,6 @@ public class NotificationsRepository : BaseRepository<Notification>, INotificati
         _roleRepository = roleRepository;
     }
 
-    public async Task<IEnumerable<Notification>> GetNotificationsByUserIdAsync(string userId, bool? isRead = null, CancellationToken cancellationToken = default)
-    {
-        Expression<Func<Notification, bool>> predicate = n => n.UserId == userId;
-        if (isRead.HasValue)
-        {
-            predicate = n => n.UserId == userId && n.IsRead == isRead.Value;
-        }
-        return await _notificationCollection.Find(predicate).ToListAsync(cancellationToken);
-    }
-
     public async Task<IEnumerable<Notification>> GetUniqueNotificationsAsync(CancellationToken cancellationToken = default)
     {
         var notifications = await _notificationCollection.Find(_ => true).ToListAsync(cancellationToken);
@@ -41,55 +31,23 @@ public class NotificationsRepository : BaseRepository<Notification>, INotificati
             .OrderBy(n => n.CreatedAt).ToList();
     }
 
-    public async Task<bool> MarkNotificationAsReadAsync(string notificationId, CancellationToken cancellationToken = default)
-    {
-        var notification = await GetByIdAsync(notificationId, cancellationToken);
-        if (notification == null)
-        {
-            return false;
-        }
-        notification.IsRead = true;
-        try
-        {
-            await UpdateAsync(notification, cancellationToken);
-            return true;
-        }
-        catch (Exception)
-        {
-            return false;
-        }
-    }
-
     public async Task<bool> SendNotificationAsync(NotificationRequest notificationRequest, CancellationToken cancellation)
     {
-        var allUsers = await _userRepository.ListAllAsync(cancellation);
-        var allRoles = await _roleRepository.ListAllAsync(cancellation);
-
-        // Tìm role "User"
-        var userRole = allRoles.FirstOrDefault(r => r.RoleName.ToLower() == "user");
-        if (userRole == null) return false;
-
-        // Lọc user có RoleId = userRole.Id
-        var users = allUsers.Where(u => u.RoleId == userRole.Id).ToList();
-        if (!users.Any()) return false;
-
         string displayTitle = notificationRequest.IconCode.StartsWith("fa-")
             ? $"<i class='fas {notificationRequest.IconCode}'></i> {notificationRequest.Title}"
             : $"{GetEmojiFromCode(notificationRequest.IconCode)} {notificationRequest.Title ?? string.Empty}";
 
-        var notifications = users.Select(user => new Notification
+        var notification = new Notification
         {
             Id = ObjectId.GenerateNewId().ToString(),
-            UserId = user.Id,
             Title = displayTitle,
             Content = notificationRequest.Content,
-            IsRead = notificationRequest.IsRead,
             CreatedAt = DateTime.UtcNow
-        }).ToList();
+        };
 
         try
         {
-            await _notificationCollection.InsertManyAsync(notifications, null, cancellation);
+            await _notificationCollection.InsertOneAsync(notification, null, cancellation);
             return true;
         }
         catch (Exception)
