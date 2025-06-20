@@ -284,4 +284,34 @@ public class OcopProductController : ControllerBase
         }
         return this.ApiOk($"Successfully imported {result} products.");
     }
+
+    // Analytics
+    // format date: yyyy-mm-dd
+    [HttpGet("analytics")]
+    public async Task<IActionResult> GetProductAnalytics(
+    [FromQuery] string timeRange = "month",
+    [FromQuery] DateTime? startDate = null,
+    [FromQuery] DateTime? endDate = null)
+    {
+        try
+        {
+            var analytics = await _service.GetProductAnalyticsAsync(timeRange, startDate, endDate);
+            if (!analytics.Any()) return NotFound("No analytics data available.");
+            return this.ApiOk(analytics);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+
+        }
+    }
 }

@@ -75,17 +75,6 @@ public class NotificationsService : INotificationService
         return await _notificationsRepository.SendNotificationAsync(notificationRequest, cancellation);
     }
 
-    public async Task<bool> MarkNotificationAsReadAsync(string notificationId, CancellationToken cancellationToken = default)
-    {
-        var result = await _notificationsRepository.MarkNotificationAsReadAsync(notificationId, cancellationToken);
-        return result;
-    }
-
-    public async Task<IEnumerable<Notification>> GetNotificationsByUserIdAsync(string userId, bool? isRead = null, CancellationToken cancellationToken = default)
-    {
-        return await _notificationsRepository.GetNotificationsByUserIdAsync(userId, isRead, cancellationToken);
-    }
-
     public async Task<IEnumerable<Notification>> GetUniqueNotificationsAsync(CancellationToken cancellationToken = default)
     {
         return await _notificationsRepository.GetUniqueNotificationsAsync(cancellationToken);

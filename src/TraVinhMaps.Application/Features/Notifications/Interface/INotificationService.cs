@@ -30,7 +30,5 @@ public interface INotificationService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>Task indicating success.</returns>
     Task<bool> SendNotificationAsync(NotificationRequest notificationRequest, CancellationToken cancellation = default);
-    Task<bool> MarkNotificationAsReadAsync(string notificationId, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Notification>> GetNotificationsByUserIdAsync(string userId, bool? isRead = null, CancellationToken cancellationToken = default);
     Task<IEnumerable<Notification>> GetUniqueNotificationsAsync(CancellationToken cancellationToken = default);
 }
