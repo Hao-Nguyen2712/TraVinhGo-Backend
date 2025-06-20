@@ -188,7 +188,7 @@ public class OcopProductController : ControllerBase
     }
     [HttpPut]
     [Route("UpdateSellLocation")]
-    public async Task<IActionResult> UpdateSellLocation([FromBody] CreateSellLocationRequest sellLocation)
+    public async Task<IActionResult> UpdateSellLocation([FromBody] UpdateSellLocationRequest sellLocation)
     {
         var ocopProduct = await _service.GetByIdAsync(sellLocation.Id);
         if (ocopProduct == null)
