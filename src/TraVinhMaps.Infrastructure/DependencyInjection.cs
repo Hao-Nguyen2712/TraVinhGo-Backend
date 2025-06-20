@@ -89,9 +89,6 @@ public static class DependencyInjection
         services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
         services.AddScoped<ICommunityTipsService, CommunityTipsService>();
 
-        // FluentValidation
-        // services.AddScoped<IValidator<User>, UserValidator>();
-
         // Notification
         services.AddScoped<INotificationsRepository, NotificationsRepository>();
         services.AddScoped<INotificationService, NotificationsService>();
@@ -118,6 +115,7 @@ public static class DependencyInjection
         services.AddScoped<IDestinationTypeService, DestinationTypeService>();
 
         // Tags
+        services.AddScoped<ITagRepository, TagRepository>();
         services.AddScoped<ITagService, TagService>();
 
         // LocalSpecialties Management

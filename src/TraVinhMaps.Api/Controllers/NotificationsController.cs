@@ -60,24 +60,4 @@ public class NotificationsController : ControllerBase
             ? this.ApiOk("Send Notification successfully!")
             : throw new BadRequestException("Failed to send notification.");
     }
-
-    // POST: api/Notifications/mark-as-read
-    // Marks a specific notification as read by its ID
-    [HttpPost("mark-as-read")]
-    public async Task<IActionResult> MarkNotificationAsRead([FromBody] string notificationId, CancellationToken cancellationToken = default)
-    {
-        var result = await _notificationService.MarkNotificationAsReadAsync(notificationId, cancellationToken);
-        return result
-            ? this.ApiOk()
-            : throw new BadRequestException("Failed to mark notification as read.");
-    }
-
-    // GET: api/Notifications/usser/{userId}?isRead=true/false
-    // Retrieves notifications for a specific user, optionally filtered by read status
-    [HttpGet("usser/{userId}")]
-    public async Task<ActionResult<IEnumerable<Notification>>> GetNotificationsByUserId(string userId, [FromQuery] bool? isRead = null, CancellationToken cancellationToken = default)
-    {
-        var notifications = await _notificationService.GetNotificationsByUserIdAsync(userId, isRead, cancellationToken);
-        return Ok(notifications);
-    }
 }

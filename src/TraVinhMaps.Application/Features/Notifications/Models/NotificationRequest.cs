@@ -20,8 +20,6 @@ public class NotificationRequest
     [StringLength(1000, MinimumLength = 10, ErrorMessage = "Content must be between 10 and 1000 characters.")]
     public string Content { get; set; }
 
-    public bool IsRead { get; set; } = false;
-
     public string IconCode { get; set; }
 
 }

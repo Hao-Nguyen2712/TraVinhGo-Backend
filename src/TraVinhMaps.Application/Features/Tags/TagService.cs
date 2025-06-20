@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.Tags.Interface;
-using TraVinhMaps.Application.UnitOfWorks;
+using TraVinhMaps.Application.Repositories;
 
 namespace TraVinhMaps.Application.Features.Tags;
 public class TagService : ITagService
 {
-    private readonly IBaseRepository<Domain.Entities.Tags> _tagsRepository;
+    private readonly ITagRepository _tagsRepository;
 
-    public TagService(IBaseRepository<Domain.Entities.Tags> tagRepository)
+    public TagService(ITagRepository tagRepository)
     {
         _tagsRepository = tagRepository;
     }
@@ -22,6 +22,11 @@ public class TagService : ITagService
     public async Task<Domain.Entities.Tags> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return await _tagsRepository.GetByIdAsync(id, cancellationToken);
+    }
+
+    public async Task<string> GetTagIdByNameAsync(string tagName, CancellationToken cancellationToken = default)
+    {
+        return await _tagsRepository.GetTagIdByNameAsync(tagName, cancellationToken);
     }
 
     public async Task<IEnumerable<Domain.Entities.Tags>> ListAllAsync(CancellationToken cancellationToken = default)

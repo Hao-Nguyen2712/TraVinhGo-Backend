@@ -1,6 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using Microsoft.AspNetCore.SignalR;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.External;
@@ -21,7 +22,6 @@ public class AuthService : IAuthServices
     private readonly IBaseRepository<UserSession> _sessionRepository;
     private readonly IEmailSender _emailSender;
     private const string CacheKey = "otp_context:";
-
     public AuthService(ISpeedSmsService speedSmsService, IBaseRepository<Otp> repository, IBaseRepository<User> userRepository, IBaseRepository<Role> roleRepository, IBaseRepository<UserSession> sessionRepository, ICacheService cacheService, IEmailSender emailSender)
     {
         _speedSmsService = speedSmsService;
