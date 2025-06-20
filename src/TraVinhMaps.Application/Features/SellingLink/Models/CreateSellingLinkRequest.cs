@@ -4,6 +4,7 @@
 namespace TraVinhMaps.Application.Features.SellingLink.Models;
 public class CreateSellingLinkRequest
 {
-    public required string Tittle { get; set; }
+    public required string ProductId { get; set; }
+    public required string Title { get; set; }
     public required string Link { get; set; }
 }

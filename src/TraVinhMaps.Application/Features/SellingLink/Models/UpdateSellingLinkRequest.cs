@@ -5,7 +5,8 @@ namespace TraVinhMaps.Application.Features.SellingLink.Models;
 public class UpdateSellingLinkRequest
 {
     public required string Id { get; set; }
-    public required string Tittle { get; set; }
+    public required string ProductId { get; set; }
+    public required string Title { get; set; }
     public required string Link { get; set; }
     public DateTime? UpdateAt { get; set; } = DateTime.UtcNow;
 }

@@ -1,6 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
@@ -34,6 +35,13 @@ public class SellingLinkController : ControllerBase
         return this.ApiOk(sellingLink);
     }
     [HttpGet]
+    [Route("GetSellingLinkByProductId/{id}", Name = "GetSellingLinkByProductId")]
+    public async Task<IActionResult> GetSellingLinkByProductId(string id)
+    {
+        var sellingLink = await _service.GetSellingLinkByProductId(id);
+        return this.ApiOk(sellingLink);
+    }
+    [HttpGet]
     [Route("CountSellingLinks")]
     public async Task<IActionResult> CountSellingLinks()
     {
@@ -44,9 +52,14 @@ public class SellingLinkController : ControllerBase
     [Route("AddSellingLink")]
     public async Task<IActionResult> AddSellingLink([FromForm] CreateSellingLinkRequest createSellingLinkRequest)
     {
+        var exitingLink = await _service.GetSellingLinkByProductId(createSellingLinkRequest.ProductId);
+        if(exitingLink != null && exitingLink.Any(l => l.Link == createSellingLinkRequest.Link))
+        {
+            return this.ApiError("This link already exists with this ocop product.");
+        }
         var createSellingLink = SellingLinkMapper.Mapper.Map<SellingLink>(createSellingLinkRequest);
         var sellingLink = await _service.AddAsync(createSellingLink);
-        return CreatedAtRoute("GetSellingLinkById", new { id = sellingLink.Id }, this.ApiOk(sellingLink));
+        return this.ApiOk(sellingLink);
     }
     [HttpPut]
     [Route("UpdateSellingLink")]
@@ -57,8 +70,8 @@ public class SellingLinkController : ControllerBase
         {
             throw new NotFoundException("Selling link not found.");
         }
-
-        existingSellingLink.Tittle = updateSellingLinkRequest.Tittle;
+        existingSellingLink.ProductId = updateSellingLinkRequest.ProductId;
+        existingSellingLink.Title = updateSellingLinkRequest.Title;
         existingSellingLink.Link = updateSellingLinkRequest.Link;
 
         if (updateSellingLinkRequest.UpdateAt.HasValue)
@@ -70,14 +83,14 @@ public class SellingLinkController : ControllerBase
     }
     [HttpDelete]
     [Route("DeleteSellingLink/{id}")]
-    public async Task<IActionResult> DeleteSellingLink(SellingLink sellingLink)
+    public async Task<IActionResult> DeleteSellingLink(string id)
     {
-        var ocopProduct = await _service.GetByIdAsync(sellingLink.Id);
-        if (ocopProduct == null)
+        var sellingLink = await _service.GetByIdAsync(id);
+        if (sellingLink == null)
         {
             throw new NotFoundException("Selling link not found.");
         }
-        await _service.DeleteAsync(ocopProduct);
+        await _service.DeleteAsync(sellingLink);
         return this.ApiOk("Selling link deleted successfully.");
     }
 }

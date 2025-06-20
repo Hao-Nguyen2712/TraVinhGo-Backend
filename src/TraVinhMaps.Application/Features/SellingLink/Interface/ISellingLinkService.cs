@@ -7,6 +7,7 @@ namespace TraVinhMaps.Application.Features.SellingLink.Interface;
 public interface ISellingLinkService
 {
     Task<Domain.Entities.SellingLink> GetByIdAsync(string id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Domain.Entities.SellingLink>> GetSellingLinkByProductId(string productId, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.SellingLink>> ListAllAsync(CancellationToken cancellationToken = default);
     Task<Domain.Entities.SellingLink> AddAsync(Domain.Entities.SellingLink entity, CancellationToken cancellationToken = default);
     Task UpdateAsync(Domain.Entities.SellingLink entity, CancellationToken cancellationToken = default);

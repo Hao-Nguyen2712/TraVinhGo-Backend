@@ -17,5 +17,6 @@ public class OcopProductMappingProfile : Profile
         CreateMap<Domain.Entities.OcopProduct, CreateOcopProductRequest>().ReverseMap();
         CreateMap<Domain.Entities.OcopProduct, UpdateOcopProductRequest>().ReverseMap();
         CreateMap<Domain.Entities.SellLocation, CreateSellLocationRequest>().ReverseMap();
+        CreateMap<Domain.Entities.SellLocation, UpdateSellLocationRequest>().ReverseMap();
     }
 }

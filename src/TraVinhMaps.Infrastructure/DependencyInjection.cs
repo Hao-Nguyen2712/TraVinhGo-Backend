@@ -39,6 +39,8 @@ using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
 using TraVinhMaps.Application.Features.Feedback.Interface;
 using TraVinhMaps.Application.Features.Feedback;
+using TraVinhMaps.Application.Repositories;
+using TraVinhMaps.Infrastructure.Repositories;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -79,7 +81,9 @@ public static class DependencyInjection
 
 
         //Selling Link
+        services.AddScoped<ISellingLinkRepository, SellingLinkRepository>();
         services.AddScoped<ISellingLinkService, SellingLinkService>();
+
 
         //CommunityTips
         services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
