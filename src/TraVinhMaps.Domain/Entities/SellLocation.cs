@@ -13,6 +13,9 @@ public class SellLocation
     public string? LocationName { get; set; }
     [BsonElement("locationAddress")]
     public string? LocationAddress { get; set; }
+    [BsonElement("markerId")]
+    [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
+    public required string MarkerId { get; set; }
     [BsonElement("location")]
     public Location? Location { get; set; }
 }

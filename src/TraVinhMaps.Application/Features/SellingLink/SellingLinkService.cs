@@ -3,15 +3,18 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.SellingLink.Interface;
+using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Application.UnitOfWorks;
 
 namespace TraVinhMaps.Application.Features.SellingLink;
 public class SellingLinkService : ISellingLinkService
 {
     private readonly IBaseRepository<Domain.Entities.SellingLink> _repository;
-    public SellingLinkService(IBaseRepository<Domain.Entities.SellingLink> repository)
+    private readonly ISellingLinkRepository _sellingLinkRepository;
+    public SellingLinkService(IBaseRepository<Domain.Entities.SellingLink> repository, ISellingLinkRepository sellingLinkRepository)
     {
         _repository = repository;
+        _sellingLinkRepository = sellingLinkRepository;
     }
 
     public Task<Domain.Entities.SellingLink> AddAsync(Domain.Entities.SellingLink entity, CancellationToken cancellationToken = default)
@@ -32,6 +35,11 @@ public class SellingLinkService : ISellingLinkService
     public Task<Domain.Entities.SellingLink> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return _repository.GetByIdAsync(id, cancellationToken);
+    }
+
+    public Task<IEnumerable<Domain.Entities.SellingLink>> GetSellingLinkByProductId(string productId, CancellationToken cancellationToken = default)
+    {
+        return _sellingLinkRepository.GetSellingLinkByProductId(productId, cancellationToken);
     }
 
     public Task<IEnumerable<Domain.Entities.SellingLink>> ListAllAsync(CancellationToken cancellationToken = default)

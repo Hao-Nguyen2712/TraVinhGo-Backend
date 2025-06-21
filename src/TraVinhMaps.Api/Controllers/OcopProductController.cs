@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
+using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.Features.OcopProduct.Mappers;
@@ -17,11 +18,13 @@ namespace TraVinhMaps.Api.Controllers;
 public class OcopProductController : ControllerBase
 {
     private readonly IOcopProductService _service;
+    private readonly IMarkerService _markerService;
     private readonly ImageManagementOcopProductServices _imageManagementOcopProductServices;
-    public OcopProductController(IOcopProductService service, ImageManagementOcopProductServices imageManagementOcopProductServices)
+    public OcopProductController(IOcopProductService service, ImageManagementOcopProductServices imageManagementOcopProductServices, IMarkerService markerService)
     {
         _service = service;
         _imageManagementOcopProductServices = imageManagementOcopProductServices;
+        _markerService = markerService;
     }
 
     [HttpGet]
@@ -70,6 +73,7 @@ public class OcopProductController : ControllerBase
         var imageFile = await _imageManagementOcopProductServices.AddImageOcopProduct(createOcopProductRequest.ProductImageFile);
         if (imageFile == null) { throw new NotFoundException("No valid image uploaded."); }
         var createOcopProduct = OcopProductMapper.Mapper.Map<OcopProduct>(createOcopProductRequest);
+        
         createOcopProduct.Status = true;
         var ocopProducts = await _service.AddAsync(createOcopProduct);
         foreach (var item in imageFile)
@@ -183,6 +187,12 @@ public class OcopProductController : ControllerBase
             throw new NotFoundException("Ocop product not found.");
         }
         var mapSellLocation = OcopProductMapper.Mapper.Map<SellLocation>(sellLocation);
+        var maker = await _markerService.GetAsyns(p => p.Name == "Sell Location");
+        if (maker == null)
+        {
+            throw new NotFoundException("Maker is not found.");
+        }
+        mapSellLocation.MarkerId = maker.Id;
         var addSellLocation = await _service.AddSellLocation(sellLocation.Id, mapSellLocation);
         return this.ApiOk(addSellLocation);
     }

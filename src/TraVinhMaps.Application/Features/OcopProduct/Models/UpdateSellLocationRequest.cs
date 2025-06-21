@@ -14,6 +14,6 @@ public class UpdateSellLocationRequest
     public string Id { get; set; }
     public string? LocationName { get; set; }
     public string? LocationAddress { get; set; }
-    public string? MakerId { get; set; }
+    public string? MarkerId { get; set; }
     public Location? Location { get; set; }
 }
