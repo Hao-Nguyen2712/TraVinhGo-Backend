@@ -82,7 +82,9 @@ public static class DependencyInjection
         services.AddScoped<ImageManagementOcopProductServices>();
 
         //Selling Link
+        services.AddScoped<ISellingLinkRepository, SellingLinkRepository>();
         services.AddScoped<ISellingLinkService, SellingLinkService>();
+
 
         //CommunityTips
         services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
