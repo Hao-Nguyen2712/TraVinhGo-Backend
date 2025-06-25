@@ -11,11 +11,11 @@ namespace TraVinhMaps.Application.Features.OcopProduct;
 public class OcopProductService : IOcopProductService
 {
     private readonly IOcopProductRepository _ocopProductRepository;
-    private readonly IBaseRepository<Company> _companyRepository;
+    private readonly IBaseRepository<Domain.Entities.Company> _companyRepository;
     private readonly IBaseRepository<Domain.Entities.OcopType> _ocopTypeRepository;
     private readonly IBaseRepository<Domain.Entities.Tags> _tagRepository;
 
-    public OcopProductService(IOcopProductRepository ocopProductRepository, IBaseRepository<Company> companyRepository,
+    public OcopProductService(IOcopProductRepository ocopProductRepository, IBaseRepository<Domain.Entities.Company> companyRepository,
         IBaseRepository<Domain.Entities.OcopType> ocopTypeRepository,
         IBaseRepository<Domain.Entities.Tags> tagRepository)
     {

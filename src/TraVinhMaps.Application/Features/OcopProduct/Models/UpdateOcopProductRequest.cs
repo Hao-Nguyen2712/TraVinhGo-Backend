@@ -21,5 +21,4 @@ public class UpdateOcopProductRequest
     public required int OcopPoint { get; set; }
     public required int OcopYearRelease { get; set; }
     public required string TagId { get; set; }
-    public required string SellingLinkId { get; set; }
 }

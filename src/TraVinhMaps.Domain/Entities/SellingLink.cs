@@ -20,7 +20,7 @@ public class SellingLink : BaseEntity
     /// The tittle.
     /// </value>
     [BsonElement("tittle")]
-    public required string Tittle { get; set; }
+    public required string Title { get; set; }
 
     /// <summary>
     /// Gets or sets the link.

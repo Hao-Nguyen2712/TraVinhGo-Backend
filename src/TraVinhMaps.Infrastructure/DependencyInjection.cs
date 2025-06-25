@@ -41,6 +41,10 @@ using TraVinhMaps.Application.Features.Feedback.Interface;
 using TraVinhMaps.Application.Features.Feedback;
 using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Infrastructure.Repositories;
+using TraVinhMaps.Application.Features.Company.Interface;
+using TraVinhMaps.Application.Features.Company;
+using TraVinhMaps.Application.Features.OcopType.Interface;
+using TraVinhMaps.Application.Features.OcopType;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -79,9 +83,16 @@ public static class DependencyInjection
         services.AddScoped<IOcopProductService, OcopProductService>();
         services.AddScoped<ImageManagementOcopProductServices>();
 
+        //Ocop Type
+        services.AddScoped<IOcopTypeService, OcopTypeService>();
+
+        //Company
+        services.AddScoped<ICompanyService, CompanyService>();
 
         //Selling Link
+        services.AddScoped<ISellingLinkRepository, SellingLinkRepository>();
         services.AddScoped<ISellingLinkService, SellingLinkService>();
+
 
         //CommunityTips
         services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
@@ -90,6 +101,7 @@ public static class DependencyInjection
         // Notification
         services.AddScoped<INotificationsRepository, NotificationsRepository>();
         services.AddScoped<INotificationService, NotificationsService>();
+        services.AddScoped<IFirebaseNotificationService, FirebaseNotificationService>();
 
         // Admin Management
         services.AddScoped<IAdminRepository, AdminsRepository>();
