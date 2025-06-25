@@ -90,6 +90,7 @@ public static class DependencyInjection
         // Notification
         services.AddScoped<INotificationsRepository, NotificationsRepository>();
         services.AddScoped<INotificationService, NotificationsService>();
+        services.AddScoped<IFirebaseNotificationService, FirebaseNotificationService>();
 
         // Admin Management
         services.AddScoped<IAdminRepository, AdminsRepository>();
