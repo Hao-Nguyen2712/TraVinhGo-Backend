@@ -79,4 +79,13 @@ public class NotificationsService : INotificationService
     {
         return await _notificationsRepository.GetUniqueNotificationsAsync(cancellationToken);
     }
+
+    public async Task<IEnumerable<Notification>> GetRecentNotificationsAsync(CancellationToken cancellationToken = default)
+    {
+        var notifications = await _notificationsRepository.ListAllAsync(cancellationToken);
+        return notifications
+       .OrderByDescending(n => n.CreatedAt)
+       .Take(20)
+       .ToList();
+    }
 }

@@ -1,6 +1,9 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using FirebaseAdmin;
+using FirebaseAdmin.Messaging;
+using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
@@ -16,11 +19,13 @@ namespace TraVinhMaps.Api.Controllers;
 public class NotificationsController : ControllerBase
 {
     private readonly INotificationService _notificationService;
+    private readonly IFirebaseNotificationService _firebaseNotificationService;
 
     // Constructor - injects the NotificationService
-    public NotificationsController(INotificationService notificationService)
+    public NotificationsController(INotificationService notificationService, IFirebaseNotificationService firebaseNotificationService)
     {
         _notificationService = notificationService;
+        _firebaseNotificationService = firebaseNotificationService;
     }
 
     // GET: api/Notifications/all
@@ -31,6 +36,14 @@ public class NotificationsController : ControllerBase
         var notifications = await _notificationService.ListAllAsync();
         return Ok(notifications);
     }
+
+    [HttpGet("recent")]
+    public async Task<IActionResult> GetRecentNotifications(CancellationToken cancellationToken = default)
+    {
+        var notifications = await _notificationService.GetRecentNotificationsAsync(cancellationToken);
+        return this.ApiOk(notifications);
+    }
+
 
     // GET: api/Notifications/{id}
     // Retrieves a specific notification by its ID
@@ -44,7 +57,7 @@ public class NotificationsController : ControllerBase
     // GET: api/Notifications/unique
     // Retrieves only unique notifications (e.g., deduplicated list)
     [HttpGet("unique")]
-    public async Task<ActionResult<IEnumerable<Notification>>> GetUniqueNotifications(CancellationToken cancellationToken = default)
+    public async Task<ActionResult<IEnumerable<Domain.Entities.Notification>>> GetUniqueNotifications(CancellationToken cancellationToken = default)
     {
         var notifications = await _notificationService.GetUniqueNotificationsAsync(cancellationToken);
         return Ok(notifications);
@@ -56,8 +69,16 @@ public class NotificationsController : ControllerBase
     public async Task<IActionResult> SendNotification([FromBody] NotificationRequest request, CancellationToken cancellationToken)
     {
         var result = await _notificationService.SendNotificationAsync(request, cancellationToken);
+        if (!result)
+        {
+            throw new BadRequestException("Failed to send notification.");
+        }
+
+        var response = await _firebaseNotificationService.PushNotificationAsync(request);
+
         return result
             ? this.ApiOk("Send Notification successfully!")
             : throw new BadRequestException("Failed to send notification.");
     }
+
 }
