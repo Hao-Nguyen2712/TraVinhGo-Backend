@@ -72,7 +72,7 @@ public class OcopProduct : BaseEntity
     /// </value>
     [BsonElement("updateAt")]
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-    public DateTime? UpdateAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdateAt { get; set; }
     /// <summary>
     /// Gets or sets the sellocations.
     /// </summary>
