@@ -44,4 +44,6 @@ public interface IUserService
 
     // chart
     Task<Dictionary<string, object>> GetUserStatisticsAsync(string groupBy, string timeRange, CancellationToken cancellationToken = default);
+
+    Task<UserProfileResponse> GetUserProfile(string id, CancellationToken cancellationToken = default);
 }

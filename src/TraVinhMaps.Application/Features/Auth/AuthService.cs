@@ -1,7 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using Microsoft.AspNetCore.SignalR;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.External;
@@ -218,7 +217,7 @@ public class AuthService : IAuthServices
         return new AuthResponse
         {
             SessionId = sessionID,
-            RefreshToken = refreshToken
+            RefreshToken = refreshToken,
         };
     }
 
@@ -485,7 +484,7 @@ public class AuthService : IAuthServices
         return new AuthResponse
         {
             SessionId = sessionID,
-            RefreshToken = refreshToken
+            RefreshToken = refreshToken,
         };
     }
 
