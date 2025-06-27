@@ -31,4 +31,6 @@ public interface INotificationService
     /// <returns>Task indicating success.</returns>
     Task<bool> SendNotificationAsync(NotificationRequest notificationRequest, CancellationToken cancellation = default);
     Task<IEnumerable<Notification>> GetUniqueNotificationsAsync(CancellationToken cancellationToken = default);
+    Task<IEnumerable<Notification>> GetRecentNotificationsAsync(CancellationToken cancellationToken = default);
+
 }

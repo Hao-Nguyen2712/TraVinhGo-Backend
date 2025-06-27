@@ -11,11 +11,11 @@ namespace TraVinhMaps.Application.Features.OcopProduct;
 public class OcopProductService : IOcopProductService
 {
     private readonly IOcopProductRepository _ocopProductRepository;
-    private readonly IBaseRepository<Company> _companyRepository;
+    private readonly IBaseRepository<Domain.Entities.Company> _companyRepository;
     private readonly IBaseRepository<Domain.Entities.OcopType> _ocopTypeRepository;
     private readonly IBaseRepository<Domain.Entities.Tags> _tagRepository;
 
-    public OcopProductService(IOcopProductRepository ocopProductRepository, IBaseRepository<Company> companyRepository,
+    public OcopProductService(IOcopProductRepository ocopProductRepository, IBaseRepository<Domain.Entities.Company> companyRepository,
         IBaseRepository<Domain.Entities.OcopType> ocopTypeRepository,
         IBaseRepository<Domain.Entities.Tags> tagRepository)
     {
@@ -46,6 +46,10 @@ public class OcopProductService : IOcopProductService
         return _ocopProductRepository.GetByIdAsync(id, cancellationToken);
     }
 
+    public Task<Domain.Entities.OcopProduct> GetOcopProductByName(string name, CancellationToken cancellationToken = default)
+    {
+        return _ocopProductRepository.GetOcopProductByName(name, cancellationToken);
+    }
     public Task<IEnumerable<Domain.Entities.OcopProduct>> GetOcopProductByCompanyId(string companyId, CancellationToken cancellationToken = default)
     {
         return _ocopProductRepository.GetOcopProductByCompanyId(companyId, cancellationToken);
@@ -119,14 +123,14 @@ public class OcopProductService : IOcopProductService
     public async Task<IEnumerable<OcopProductAnalytics>> GetProductAnalyticsAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
         // Validation
-        if(!string.IsNullOrEmpty(timeRange) && !new[] {"day", "week", "month", "year"}.Contains(timeRange.ToLower()))
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
             throw new ArgumentException("Invalid time range.Use: day, week, month, year.");
 
-        if(startDate.HasValue && endDate.HasValue)
+        if (startDate.HasValue && endDate.HasValue)
         {
-            if(startDate > endDate)
+            if (startDate > endDate)
                 throw new ArgumentException("Start date must be before end date.");
-            if(startDate > DateTime.UtcNow)
+            if (startDate > DateTime.UtcNow)
                 throw new ArgumentException("Start date cannot be in the future.");
         }
 
@@ -134,5 +138,51 @@ public class OcopProductService : IOcopProductService
         // Chỉ trả về sản phẩm có ít nhất một chỉ số > 0
         //return analytics.Where(a => a.ViewCount > 0 || a.InteractionCount > 0 || a.WishlistCount > 0);
         return analytics.ToList();
+    }
+
+    public async Task<IEnumerable<OcopProductUserDemographics>> GetUserDemographicsAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range. Use: day, week, month, year.");
+
+        if (startDate.HasValue && endDate.HasValue)
+        {
+            if (startDate > endDate)
+                throw new ArgumentException("Start date must be before end date.");
+            if (startDate > DateTime.UtcNow)
+                throw new ArgumentException("Start date cannot be in the future.");
+        }
+
+        return await _ocopProductRepository.GetUserDemographicsAsync(timeRange, startDate, endDate, cancellationToken);
+    }
+
+    // GetTopProductsByInteractionsAsync
+    public async Task<IEnumerable<OcopProductAnalytics>> GetTopProductsByInteractionsAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range.Use: day, week, month, year.");
+
+        return await _ocopProductRepository.GetTopProductsByInteractionsAsync(top, timeRange, startDate, endDate, cancellationToken);
+    }
+
+    // GetTopProductsByFavoritesAsync
+    public async Task<IEnumerable<OcopProductAnalytics>> GetTopProductsByFavoritesAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range.Use: day, week, month, year.");
+
+        return await _ocopProductRepository.GetTopProductsByFavoritesAsync(top, timeRange, startDate, endDate, cancellationToken);
+    }
+
+    // CompareProductsAsync
+    public async Task<IEnumerable<OcopProductAnalytics>> CompareProductsAsync(IEnumerable<string> productIds, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null,  CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range.Use: day, week, month, year.");
+
+        return await _ocopProductRepository.CompareProductsAsync(productIds, timeRange, startDate, endDate, cancellationToken);
     }
 }

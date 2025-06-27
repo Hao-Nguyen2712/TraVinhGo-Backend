@@ -10,6 +10,7 @@ using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.Features.OcopProduct.Mappers;
 using TraVinhMaps.Application.Features.OcopProduct.Models;
+using TraVinhMaps.Application.Features.SellingLink.Models;
 using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Api.Controllers;
@@ -70,8 +71,14 @@ public class OcopProductController : ControllerBase
         {
             return this.ApiError("Ocop product attractions must have at least 1 photo");
         }
+        var exitingOcopProduct = await _service.GetOcopProductByName(createOcopProductRequest.ProductName);
+        if (exitingOcopProduct != null)
+        {
+            return this.ApiError("Ocop product name already exists.");
+        }
         var imageFile = await _imageManagementOcopProductServices.AddImageOcopProduct(createOcopProductRequest.ProductImageFile);
         if (imageFile == null) { throw new NotFoundException("No valid image uploaded."); }
+
         var createOcopProduct = OcopProductMapper.Mapper.Map<OcopProduct>(createOcopProductRequest);
         
         createOcopProduct.Status = true;
@@ -322,6 +329,118 @@ public class OcopProductController : ControllerBase
             };
             return StatusCode(500, errorDetails);
 
+        }
+    }
+
+    // format date: yyyy-mm-dd
+    [HttpGet("analytics-userdemographics")]
+    public async Task<IActionResult> GetUserDemographics(
+    [FromQuery] string timeRange = "month",
+    [FromQuery] DateTime? startDate = null,
+    [FromQuery] DateTime? endDate = null)
+    {
+        try
+        {
+            var analytics = await _service.GetUserDemographicsAsync(timeRange, startDate, endDate);
+            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(analytics);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+
+        }
+    }
+
+    // format date: yyyy-mm-dd
+    [HttpGet("analytics-getTopProductsByInteractions")]
+    public async Task<IActionResult> GetTopProductsByInteractions(int top = 5,
+    string timeRange = "month",
+    DateTime? startDate = null,
+    DateTime? endDate = null)
+    {
+        try
+        {
+            var analytics = await _service.GetTopProductsByInteractionsAsync(top, timeRange, startDate, endDate);
+            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(analytics);
+        }catch(Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+        }
+    }
+
+    // format date: yyyy-mm-dd
+    [HttpGet("analytics-getTopProductsByFavorites")]
+    public async Task<IActionResult> GetTopProductsByFavorites(int top = 5,
+    string timeRange = "month",
+    DateTime? startDate = null,
+    DateTime? endDate = null)
+    {
+        try
+        {
+            var analytics = await _service.GetTopProductsByFavoritesAsync(top, timeRange, startDate, endDate);
+            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(analytics);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+        }
+    }
+
+    // format date: yyyy-mm-dd
+    [HttpGet("analytics-compareproducts")]
+    public async Task<IActionResult> CompareProducts([FromQuery] IEnumerable<string> productIds,
+    [FromQuery] string timeRange = "month",
+    [FromQuery] DateTime? startDate = null,
+    [FromQuery] DateTime? endDate = null)
+    {
+        try
+        {
+            var analytics = await _service.CompareProductsAsync(productIds, timeRange, startDate, endDate);
+            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(analytics);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
         }
     }
 }

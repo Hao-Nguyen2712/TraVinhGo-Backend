@@ -1,21 +1,19 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using MongoDB.Bson.Serialization.Attributes;
+using TraVinhMaps.Domain.Entities;
 
-namespace TraVinhMaps.Domain.Entities;
-public class Company : BaseEntity
+namespace TraVinhMaps.Application.Features.Company.Models;
+public class CreateCompanyRequest
 {
-    [BsonElement("name")]
     public required string Name { get; set; }
-    [BsonElement("address")]
     public required string Address { get; set; }
-    [BsonElement("location")]
     public required List<Location> Locations { get; set; }
-    [BsonElement("contact")]
     public Contact? Contact { get; set; }
-    [BsonElement("updateAt")]
-    [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-    public DateTime? UpdateAt { get; set; }
-
 }
