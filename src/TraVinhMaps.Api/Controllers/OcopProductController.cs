@@ -10,7 +10,6 @@ using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
 using TraVinhMaps.Application.Features.OcopProduct.Mappers;
 using TraVinhMaps.Application.Features.OcopProduct.Models;
-using TraVinhMaps.Application.Features.SellingLink.Models;
 using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Api.Controllers;
@@ -313,7 +312,7 @@ public class OcopProductController : ControllerBase
         try
         {
             var analytics = await _service.GetProductAnalyticsAsync(timeRange, startDate, endDate);
-            if (!analytics.Any()) return NotFound("No analytics data available.");
+            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
             return this.ApiOk(analytics);
         }
         catch (Exception ex)
@@ -328,7 +327,6 @@ public class OcopProductController : ControllerBase
                 endDate
             };
             return StatusCode(500, errorDetails);
-
         }
     }
 
