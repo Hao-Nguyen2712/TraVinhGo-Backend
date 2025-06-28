@@ -11,7 +11,6 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace TraVinhMaps.Application.Features.InteractionLogs.Models;
 public class CreateInteractionLogsRequest
 {
-    public required string UserId { get; set; }
     public required string ItemId { get; set; }
     public string? ItemType { get; set; }
     public int? Duration { get; set; }

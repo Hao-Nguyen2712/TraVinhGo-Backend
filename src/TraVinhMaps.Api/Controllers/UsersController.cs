@@ -174,4 +174,22 @@ public class UsersController : ControllerBase
         return this.ApiOk(stats, "User statistics retrieved successfully");
     }
 
+    [Authorize]
+    [HttpGet("user-profile")]
+    public async Task<IActionResult> Profile()
+    {
+        var sessionId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.ApiError("Session ID not found in token", HttpStatusCode.Unauthorized);
+        }
+        var result = await _userService.GetUserProfile(sessionId);
+        if (result == null)
+        {
+            return this.ApiError("User not found", HttpStatusCode.NotFound);
+        }
+
+        return this.ApiOk(result, "Return User succesfully");
+    }
+
 }

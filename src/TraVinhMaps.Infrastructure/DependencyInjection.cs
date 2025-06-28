@@ -15,10 +15,12 @@ using TraVinhMaps.Application.Features.DestinationTypes;
 using TraVinhMaps.Application.Features.DestinationTypes.Interface;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
-using TraVinhMaps.Application.Features.LocalSpecialties;
-using TraVinhMaps.Application.Features.LocalSpecialties.Interface;
+using TraVinhMaps.Application.Features.Feedback;
+using TraVinhMaps.Application.Features.Feedback.Interface;
 using TraVinhMaps.Application.Features.ItineraryPlan;
 using TraVinhMaps.Application.Features.ItineraryPlan.Interface;
+using TraVinhMaps.Application.Features.LocalSpecialties;
+using TraVinhMaps.Application.Features.LocalSpecialties.Interface;
 using TraVinhMaps.Application.Features.Markers;
 using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.Notifications;
@@ -141,7 +143,7 @@ public static class DependencyInjection
 
         // LocalSpecialties Management
         services.AddScoped<ILocalSpecialtiesRepository, LocalSpecialtiesRepository>();
-        services.AddScoped<ILocalSpecialtiesService,LocalSpecialtiesService>();
+        services.AddScoped<ILocalSpecialtiesService, LocalSpecialtiesService>();
         services.AddScoped<ImageLocalSpecialtiesService>();
 
         // Feedback Management

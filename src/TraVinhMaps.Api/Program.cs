@@ -54,6 +54,8 @@ builder.Services.Configure<MongoDbSetting>(options =>
     Console.WriteLine(options.DatabaseName + "/n" + options.ConnectionString);
 });
 
+builder.Services.AddHealthChecks();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
