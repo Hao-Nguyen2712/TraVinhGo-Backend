@@ -12,6 +12,7 @@ using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Api.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class TouristDestinationController : ControllerBase
@@ -301,7 +302,8 @@ public class TouristDestinationController : ControllerBase
             if (stats == null)
                 throw new NotFoundException("No analytics data available.");
             return this.ApiOk(stats);
-        }catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             var errorDetails = new
             {
@@ -396,7 +398,7 @@ public class TouristDestinationController : ControllerBase
 
     // Compare
     [HttpGet("stats-compare")]
-    public async Task<IActionResult> CompareDestinations([FromQuery]IEnumerable<string> destinationIds, [FromQuery] string timeRange = "month", [FromQuery] DateTime? startDate = null, [FromQuery] DateTime? endDate = null)
+    public async Task<IActionResult> CompareDestinations([FromQuery] IEnumerable<string> destinationIds, [FromQuery] string timeRange = "month", [FromQuery] DateTime? startDate = null, [FromQuery] DateTime? endDate = null)
     {
         try
         {
@@ -418,6 +420,17 @@ public class TouristDestinationController : ControllerBase
             };
             return StatusCode(500, errorDetails);
         }
+    }
+
+    [HttpGet("top-favorite-destination")]
+    public async Task<IActionResult> GetTop10FavoriteDestination()
+    {
+        var result = await _touristDestinationService.GetTop10FavoriteDestination();
+        if (result == null || !result.Any())
+        {
+            this.ApiError("No favorite destinations found.");
+        }
+        return this.ApiOk(result);
     }
 
 }

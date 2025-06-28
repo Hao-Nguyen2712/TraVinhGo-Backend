@@ -27,7 +27,9 @@ public class AuthController : ControllerBase
     }
 
     #region Request Authentication for User endpoint
-
+    /*
+    * Endpoint for handle request authentication with Fluter App
+    */
     [HttpPost("request-email-authen")]
     public async Task<IActionResult> AuthenWithEmail(string email)
     {
@@ -42,7 +44,9 @@ public class AuthController : ControllerBase
         };
         return this.ApiOk(JsonConvert.SerializeObject(response), "Email authentication requested successfully");
     }
-
+    /*
+     * Endpoint for handle request authentication with Fluter App
+     */
     [HttpPost("request-phonenumber-authen")]
     public async Task<IActionResult> AuthenWithPhoneNumber(string phoneNumber)
     {
