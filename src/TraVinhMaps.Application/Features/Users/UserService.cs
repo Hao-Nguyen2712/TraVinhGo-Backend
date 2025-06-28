@@ -178,4 +178,39 @@ public class UserService : IUserService
     {
         return await _userRepository.GetUserStatisticsAsync(groupBy, timeRange, cancellationToken);
     }
+
+    public async Task<UserProfileResponse> GetUserProfile(string id, CancellationToken cancellationToken = default)
+    {
+        var result = await _userRepository.GetByIdAsync(id, cancellationToken);
+        if (result == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        if (result.Profile == null)
+        {
+            result.Profile = new Profile();
+            return new UserProfileResponse
+            {
+                Fullname = result.Profile.FullName ?? "",
+                Avatar = result.Profile.Avatar ?? "",
+                Email = result.Email ?? "",
+                Address = result.Profile.Address ?? "",
+                Gender = result.Profile.Gender ?? "",
+                HassedPassword = result.Password ?? "",
+                Phone = result.PhoneNumber ?? "",
+                DateOfBirth = result.Profile.DateOfBirth
+            };
+        }
+        return new UserProfileResponse
+        {
+            Fullname = result.Profile.FullName ?? "",
+            Avatar = result.Profile.Avatar ?? "",
+            Email = result.Email ?? "",
+            Address = result.Profile.Address ?? "",
+            Gender = result.Profile.Gender ?? "",
+            HassedPassword = result.Password ?? "",
+            Phone = result.PhoneNumber ?? "",
+            DateOfBirth = result.Profile.DateOfBirth
+        };
+    }
 }
