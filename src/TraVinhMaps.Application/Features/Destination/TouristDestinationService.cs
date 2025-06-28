@@ -3,6 +3,7 @@
 
 using System.Linq.Expressions;
 using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
@@ -35,6 +36,22 @@ public class TouristDestinationService : ITouristDestinationService
         return await _repository.AddRangeAsync(entities, cancellationToken);
     }
 
+    public async Task<IEnumerable<DestinationAnalytics>> CompareDestinationsAsync(IEnumerable<string> productIds, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range. Use: day, week, month, year");
+
+        if (startDate.HasValue && endDate.HasValue)
+        {
+            if (startDate > endDate)
+                throw new ArgumentException("Start date must be before end date");
+            if (startDate > DateTime.UtcNow)
+                throw new ArgumentException("Start date cannot be in the future.");
+        }
+        return await _repository.CompareDestinationsAsync(productIds, timeRange, startDate, endDate, cancellationToken);  
+    }
+
     public async Task<long> CountAsync(Expression<Func<TouristDestination, bool>> predicate = null, CancellationToken cancellationToken = default)
     {
         return await _repository.CountAsync(predicate, cancellationToken);
@@ -65,9 +82,76 @@ public class TouristDestinationService : ITouristDestinationService
         return await _repository.GetByTagIdAsync(tagId, cancellationToken);
     }
 
+    public async Task<DestinationStatsOverview> GetDestinationStatsOverviewAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range. Use: day, week, month, year");
+
+        if(startDate.HasValue && endDate.HasValue)
+        {
+            if (startDate > endDate)
+                throw new ArgumentException("Start date must be before end date");
+            if (startDate > DateTime.UtcNow)
+                throw new ArgumentException("Start date cannot be in the future.");
+        }
+
+        return await _repository.GetDestinationStatsOverviewAsync(timeRange, startDate, endDate, cancellationToken);
+    }
+
+    public async Task<IEnumerable<DestinationAnalytics>> GetTopDestinationsByFavoritesAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range. Use: day, week, month, day");
+
+        if(startDate.HasValue && endDate.HasValue)
+        {
+            if (startDate > endDate)
+                throw new ArgumentException("Start date must be before end date");
+            if (startDate > DateTime.UtcNow)
+                throw new ArgumentException("Start date cannot be in the future");
+        }
+
+        return await _repository.GetTopDestinationsByFavoritesAsync(top, timeRange, startDate, endDate, cancellationToken);
+    }
+
+    public async Task<IEnumerable<DestinationAnalytics>> GetTopDestinationsByViewsAsync(int topCount = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range. Use: day, week, month, day");
+
+        if (startDate.HasValue && endDate.HasValue)
+        {
+            if (startDate > endDate)
+                throw new ArgumentException("Start date must be before end date");
+            if (startDate > DateTime.UtcNow)
+                throw new ArgumentException("Start date cannot be in the future");
+        }
+        return await _repository.GetTopDestinationsByViewsAsync(topCount,timeRange, startDate, endDate, cancellationToken);
+    }
+
     public async Task<Pagination<TouristDestination>> GetTouristDestination(TouristDestinationSpecParams touristDestinationSpecParams, CancellationToken cancellationToken = default)
     {
         return await _repository.GetTouristDestination(touristDestinationSpecParams, cancellationToken);
+    }
+
+    public async Task<IEnumerable<DestinationUserDemographics>> GetUserDemographicsAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
+    {
+        // Validation
+        if (!string.IsNullOrEmpty(timeRange) && !new[] { "day", "week", "month", "year" }.Contains(timeRange.ToLower()))
+            throw new ArgumentException("Invalid time range. Use: day, week, month, day");
+
+        if (startDate.HasValue && endDate.HasValue)
+        {
+            if (startDate > endDate)
+                throw new ArgumentException("Start date must be before end date");
+            if (startDate > DateTime.UtcNow)
+                throw new ArgumentException("Start date cannot be in the future");
+        }
+        return await _repository.GetUserDemographicsAsync(timeRange, startDate, endDate, cancellationToken);
     }
 
     public async Task<IEnumerable<TouristDestination>> ListAllAsync(CancellationToken cancellationToken = default)
