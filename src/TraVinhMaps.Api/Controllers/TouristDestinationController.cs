@@ -12,6 +12,7 @@ using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Api.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class TouristDestinationController : ControllerBase
@@ -286,6 +287,139 @@ public class TouristDestinationController : ControllerBase
 
         await _touristDestinationService.UpdateAsync(destination);
         return this.ApiOk("Destination restored successfully");
+    }
+
+
+    // Analytics
+    // Format date: yyyy-mm-dd
+
+    [HttpGet("stats-overview")]
+    public async Task<IActionResult> GetStatsOverview([FromQuery] string timeRange = "month", [FromQuery] DateTime? startDate = null, [FromQuery] DateTime? endDate = null)
+    {
+        try
+        {
+            var stats = await _touristDestinationService.GetDestinationStatsOverviewAsync(timeRange, startDate, endDate);
+            if (stats == null)
+                throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(stats);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+        }
+    }
+
+    // Top 5 Favorite Destinations
+    [HttpGet("stats-getTopFavoritesDestinations")]
+    public async Task<IActionResult> GetTopDestinationsByFavorites(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null)
+    {
+        try
+        {
+            var getTop = await _touristDestinationService.GetTopDestinationsByFavoritesAsync(5, timeRange, startDate, endDate);
+            if (getTop == null)
+                throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(getTop);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+        }
+    }
+
+    // Top 5 View Destinations
+    [HttpGet("stats-getTopViewsDestinations")]
+    public async Task<IActionResult> GetTopDestinationsByViews(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null)
+    {
+        try
+        {
+            var getTop = await _touristDestinationService.GetTopDestinationsByViewsAsync(5, timeRange, startDate, endDate);
+            if (getTop == null)
+                throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(getTop);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+        }
+    }
+
+    // UserDemographicsAsync
+    [HttpGet("stats-getUserDemographics")]
+    public async Task<IActionResult> GetUserDemographics(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null)
+    {
+        try
+        {
+            var getTop = await _touristDestinationService.GetUserDemographicsAsync(timeRange, startDate, endDate);
+            if (getTop == null)
+                throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(getTop);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+        }
+    }
+
+    // Compare
+    [HttpGet("stats-compare")]
+    public async Task<IActionResult> CompareDestinations([FromQuery] IEnumerable<string> destinationIds, [FromQuery] string timeRange = "month", [FromQuery] DateTime? startDate = null, [FromQuery] DateTime? endDate = null)
+    {
+        try
+        {
+            var getTop = await _touristDestinationService.CompareDestinationsAsync(destinationIds, timeRange, startDate, endDate);
+            if (getTop == null)
+                throw new NotFoundException("No analytics data available.");
+            return this.ApiOk(getTop);
+        }
+        catch (Exception ex)
+        {
+            var errorDetails = new
+            {
+                message = ex.Message,
+                stackTrace = ex.StackTrace,
+                innerException = ex.InnerException?.ToString(),
+                timeRange,
+                startDate,
+                endDate
+            };
+            return StatusCode(500, errorDetails);
+        }
     }
 
     [HttpGet("top-favorite-destination")]
