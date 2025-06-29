@@ -148,7 +148,7 @@ public class AuthService : IAuthServices
 
         if (type == "phone-number")
         {
-            var user = await _userRepository.GetAsyns(x => x.PhoneNumber == actualIdentifier, cancellationToken);
+            var user = await _userRepository.GetAsyns(x => x.PhoneNumber == otpEntity.Identifier, cancellationToken);
             if (user == null)
             {
                 var role = await _roleRepository.GetAsyns(x => x.RoleName == "user", cancellationToken);
@@ -170,7 +170,7 @@ public class AuthService : IAuthServices
         }
         else
         {
-            var user = await _userRepository.GetAsyns(x => x.Email == actualIdentifier, cancellationToken);
+            var user = await _userRepository.GetAsyns(x => x.Email == otpEntity.Identifier, cancellationToken);
             if (user == null)
             {
                 var role = await _roleRepository.GetAsyns(x => x.RoleName == "user", cancellationToken);

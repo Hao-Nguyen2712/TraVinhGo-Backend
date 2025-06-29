@@ -192,4 +192,50 @@ public class UsersController : ControllerBase
         return this.ApiOk(result, "Return User succesfully");
     }
 
+    [Authorize]
+    [HttpPut("update-user-profile")]
+    public async Task<IActionResult> UpdateProfile([FromForm] UpdateUserProfileRequest request, IFormFile? imageFile)
+    {
+        var sessionId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(sessionId))
+        {
+            return this.ApiError("Session ID not found in token", HttpStatusCode.Unauthorized);
+        }
+        var existingUser = await _userService.GetByIdAsync(sessionId);
+        if (existingUser == null)
+        {
+            return this.ApiError("User not found", HttpStatusCode.NotFound);
+        }
+        if (existingUser.Profile == null)
+        {
+            existingUser.Profile = new Profile();
+        }
+        existingUser.Profile.FullName = request.FullName;
+        existingUser.Profile.DateOfBirth = DateOnly.Parse(request.DateOfBirth);
+        existingUser.Profile.PhoneNumber = request.PhoneNumber;
+        existingUser.Profile.Address = request.Address;
+        existingUser.Profile.Gender = request.Gender;
+        existingUser.Email = request.Email;
+
+        if (imageFile != null)
+        {
+            var avatarUrl = await _uploadImageUser.UploadImage(imageFile);
+            // existingUser.Profile = existingUser.Profile ?? new Profile();
+            existingUser.Profile.Avatar = avatarUrl;
+        }
+        await _userService.UpdateAsync(existingUser);
+        var result = new UserProfileResponse
+        {
+            Fullname = existingUser.Profile?.FullName,
+            DateOfBirth = existingUser.Profile?.DateOfBirth,
+            Phone = existingUser.Profile?.PhoneNumber,
+            Address = existingUser.Profile?.Address,
+            Avatar = existingUser.Profile?.Avatar,
+            Email = existingUser.Email,
+            Gender = existingUser.Profile?.Gender,
+            HassedPassword = existingUser.Password,
+        };
+        return this.ApiOk(result, "Update profile successfully");
+    }
+
 }
