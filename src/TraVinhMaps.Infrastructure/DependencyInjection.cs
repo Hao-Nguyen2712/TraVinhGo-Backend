@@ -51,6 +51,8 @@ using TraVinhMaps.Application.Features.Interaction.Interface;
 using TraVinhMaps.Application.Features.Interaction;
 using TraVinhMaps.Application.Features.InteractionLogs.Interface;
 using TraVinhMaps.Application.Features.InteractionLogs;
+using TraVinhMaps.Application.Features.Review.Interface;
+using TraVinhMaps.Application.Features.Review;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -95,6 +97,11 @@ public static class DependencyInjection
 
         //Company
         services.AddScoped<ICompanyService, CompanyService>();
+
+        //Review
+        services.AddScoped<IReviewRepository, ReviewRepository>();
+        services.AddScoped<IReviewService, ReviewService>();
+        services.AddScoped<ImageManagementReviewServices>();
 
         //Interaction
         services.AddScoped<IInteractionService, InteractionService>();

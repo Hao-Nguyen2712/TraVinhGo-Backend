@@ -1,9 +1,12 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using TraVinhMaps.Api.Extensions;
+using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Interaction.Mappers;
 using TraVinhMaps.Application.Features.Interaction.Models;
@@ -19,9 +22,11 @@ namespace TraVinhMaps.Api.Controllers;
 public class InteractionLogsController : ControllerBase
 {
     private readonly IInteractionLogsService _interactionLogsService;
-    public InteractionLogsController(IInteractionLogsService interactionLogsService)
+    private readonly IHubContext<DashboardHub> _hubContext;
+    public InteractionLogsController(IInteractionLogsService interactionLogsService, IHubContext<DashboardHub> hubContext)
     {
         _interactionLogsService = interactionLogsService;
+        _hubContext = hubContext;
     }
     [HttpGet]
     [Route("GetAllInteractionLogs")]
@@ -44,30 +49,25 @@ public class InteractionLogsController : ControllerBase
         var countInteractionLogs = await _interactionLogsService.CountAsync();
         return this.ApiOk(countInteractionLogs);
     }
-    [HttpPost]
-    [Route("AddInteractionLogs")]
-    public async Task<IActionResult> AddInteractionLogs([FromBody] CreateInteractionLogsRequest createInteractionLogsRequest)
+    [Authorize]
+    [HttpPost("AddInteractionLog")]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> AddInteractionLog([FromForm] CreateInteractionLogsRequest createInteractionLogsRequest)
     {
-        //var createInteractionLogs = InteractionLogsMapper.Mapper.Map<InteractionLogs>(createInteractionLogsRequest);
-        var interactionLogs = await _interactionLogsService.AddAsync(createInteractionLogsRequest);
-        return CreatedAtRoute("GetInteractionLogsById", new { id = interactionLogs.Id }, this.ApiOk(interactionLogs));
-    }
-    [HttpPut]
-    [Route("UpdateInteractionLogs")]
-    public async Task<IActionResult> UpdateInteractionLogs([FromBody] UpdateInteractionLogsRequest updateInteractionLogsRequest)
-    {
-        var existingInteractionLogs = await _interactionLogsService.GetByIdAsync(updateInteractionLogsRequest.Id);
-        if (existingInteractionLogs == null)
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+        try
         {
-            throw new NotFoundException("InteractionLogs not found.");
-        }
+            var interactionLogs = await _interactionLogsService.AddAsync(createInteractionLogsRequest);
+            await _hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", interactionLogs.Id);
+            await _hubContext.Clients.Group("super-admin").SendAsync("ReceiveFeedback", interactionLogs.Id);
 
-        existingInteractionLogs.UserId = updateInteractionLogsRequest.UserId;
-        existingInteractionLogs.ItemId = updateInteractionLogsRequest.ItemId;
-        existingInteractionLogs.ItemType = updateInteractionLogsRequest.ItemType;
-        existingInteractionLogs.Duration = updateInteractionLogsRequest.Duration;
-        await _interactionLogsService.UpdateAsync(existingInteractionLogs);
-        return this.ApiOk("InteractionLogs updated successfully.");
+            return this.ApiOk(interactionLogs);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = "An error occurred while processing interaction logs", Error = ex.Message });
+        }
     }
     [HttpDelete]
     [Route("DeleteInteractionLogs/{id}")]
