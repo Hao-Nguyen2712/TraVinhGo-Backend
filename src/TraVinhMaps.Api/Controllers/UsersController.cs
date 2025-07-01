@@ -237,5 +237,4 @@ public class UsersController : ControllerBase
         };
         return this.ApiOk(result, "Update profile successfully");
     }
-
 }

@@ -9,6 +9,8 @@ using TraVinhMaps.Application.Features.Auth;
 using TraVinhMaps.Application.Features.Auth.Interface;
 using TraVinhMaps.Application.Features.CommunityTips;
 using TraVinhMaps.Application.Features.CommunityTips.Interface;
+using TraVinhMaps.Application.Features.Company;
+using TraVinhMaps.Application.Features.Company.Interface;
 using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.Features.Destination.Interface;
 using TraVinhMaps.Application.Features.DestinationTypes;
@@ -17,6 +19,10 @@ using TraVinhMaps.Application.Features.EventAndFestivalFeature;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Features.Feedback;
 using TraVinhMaps.Application.Features.Feedback.Interface;
+using TraVinhMaps.Application.Features.Interaction;
+using TraVinhMaps.Application.Features.Interaction.Interface;
+using TraVinhMaps.Application.Features.InteractionLogs;
+using TraVinhMaps.Application.Features.InteractionLogs.Interface;
 using TraVinhMaps.Application.Features.ItineraryPlan;
 using TraVinhMaps.Application.Features.ItineraryPlan.Interface;
 using TraVinhMaps.Application.Features.LocalSpecialties;
@@ -27,6 +33,8 @@ using TraVinhMaps.Application.Features.Notifications;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
+using TraVinhMaps.Application.Features.OcopType;
+using TraVinhMaps.Application.Features.OcopType.Interface;
 using TraVinhMaps.Application.Features.Roles;
 using TraVinhMaps.Application.Features.Roles.Interface;
 using TraVinhMaps.Application.Features.SellingLink;
@@ -35,22 +43,12 @@ using TraVinhMaps.Application.Features.Tags;
 using TraVinhMaps.Application.Features.Tags.Interface;
 using TraVinhMaps.Application.Features.Users;
 using TraVinhMaps.Application.Features.Users.Interface;
+using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Infrastructure.CustomRepositories;
 using TraVinhMaps.Infrastructure.Db;
 using TraVinhMaps.Infrastructure.External;
-using TraVinhMaps.Application.Features.Feedback.Interface;
-using TraVinhMaps.Application.Features.Feedback;
-using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Infrastructure.Repositories;
-using TraVinhMaps.Application.Features.Company.Interface;
-using TraVinhMaps.Application.Features.Company;
-using TraVinhMaps.Application.Features.OcopType.Interface;
-using TraVinhMaps.Application.Features.OcopType;
-using TraVinhMaps.Application.Features.Interaction.Interface;
-using TraVinhMaps.Application.Features.Interaction;
-using TraVinhMaps.Application.Features.InteractionLogs.Interface;
-using TraVinhMaps.Application.Features.InteractionLogs;
 
 namespace TraVinhMaps.Infrastructure;
 
@@ -105,7 +103,6 @@ public static class DependencyInjection
         //Selling Link
         services.AddScoped<ISellingLinkRepository, SellingLinkRepository>();
         services.AddScoped<ISellingLinkService, SellingLinkService>();
-
 
         //CommunityTips
         services.AddScoped<ICommunityTipsRepository, CommunityTipsRepository>();
