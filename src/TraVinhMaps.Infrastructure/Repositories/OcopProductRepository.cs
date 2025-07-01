@@ -112,16 +112,14 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
         return result.IsAcknowledged && result.ModifiedCount > 0;
     }
 
-    // ViewCount: Số lượt xem(từ bảng InteractionLogs)
-
-    // InteractionCount: Số lượng tương tác(từ bảng Interaction)
-
-    // WishlistCount: Số lượt sản phẩm được thêm vào yêu thích(từ bảng User.favorites)
+    // ViewCount: Số lượt xem (từ bảng InteractionLogs)
+    // InteractionCount: Số lượng tương tác (từ bảng Interaction)
+    // FavoriteCount: Số lượt sản phẩm được thêm vào yêu thích (từ bảng User.favorites)
     public async Task<IEnumerable<OcopProductAnalytics>> GetProductAnalyticsAsync(
-    string timeRange = "month",
-    DateTime? startDate = null,
-    DateTime? endDate = null,
-    CancellationToken cancellationToken = default)
+        string timeRange = "month",
+        DateTime? startDate = null,
+        DateTime? endDate = null,
+        CancellationToken cancellationToken = default)
     {
         // Get the current UTC time
         var now = DateTime.UtcNow;
@@ -177,83 +175,83 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
 
         // MongoDB aggregation pipeline to gather analytics
         var pipeline = new List<BsonDocument>
+    {
+        new("$match", new BsonDocument("status", true)),
+        new("$project", new BsonDocument
         {
-            new("$match", new BsonDocument("status", true)),
-            new("$project", new BsonDocument
+            { "_id", 1 },
+            { "productName", 1 }
+        }),
+        new("$lookup", new BsonDocument
+        {
+            { "from", "Interaction" },
+            { "localField", "_id" },
+            { "foreignField", "itemId" },
+            { "as", "interactionsMed" }
+        }),
+        new("$addFields", new BsonDocument("interactions",
+            new BsonDocument("$filter", new BsonDocument
             {
-                { "_id", 1 },
-                { "productName", 1 }
-            }),
-            new("$lookup", new BsonDocument
-            {
-                { "from", "Interaction" },
-                { "localField", "_id" },
-                { "foreignField", "itemId" },
-                { "as", "interactionsMed" }
-            }),
-            new("$addFields", new BsonDocument("interactions",
-                new BsonDocument("$filter", new BsonDocument
-                {
-                    { "input", "$interactionsMed" },
-                    { "as", "interaction" },
-                    { "cond", new BsonDocument("$and", interactionCond) }
-                })
-            )),
-            new("$lookup", new BsonDocument
-            {
-                { "from", "InteractionLogs" },
-                { "localField", "_id" },
-                { "foreignField", "itemId" },
-                { "as", "interactionLogsMed" }
-            }),
-            new("$addFields", new BsonDocument("interactionLogs",
-                new BsonDocument("$filter", new BsonDocument
-                {
-                    { "input", "$interactionLogsMed" },
-                    { "as", "log" },
-                    { "cond", new BsonDocument("$and", logCond) }
-                })
-            )),
-            new("$lookup", new BsonDocument
-            {
-                { "from", "User" },
-                { "localField", "_id" },
-                { "foreignField", "favorites.itemId" },
-                { "as", "users" }
-            }),
-            new("$project", new BsonDocument
-            {
-                { "Id", new BsonDocument("$toString", "$_id") },
-                { "ProductName", "$productName" },
-                { "ViewCount", new BsonDocument("$size", "$interactionLogs") },
-                { "InteractionCount", new BsonDocument("$sum", "$interactions.totalCount") },
-                { "WishlistCount", new BsonDocument("$size",
-                    new BsonDocument("$reduce",
-                        new BsonDocument
-                        {
-                            { "input", "$users" },
-                            { "initialValue", new BsonArray() },
-                            { "in", new BsonDocument("$concatArrays",
-                                new BsonArray
-                                {
-                                    "$$value",
-                                    new BsonDocument("$filter",
-                                        new BsonDocument
-                                        {
-                                            { "input", "$$this.favorites" },
-                                            { "as", "fav" },
-                                            { "cond", new BsonDocument("$eq",
-                                                new BsonArray { "$$fav.itemId", "$_id" })
-                                            }
-                                        }
-                                    )
-                                }
-                            )}
-                        }
-                    )
-                )}
+                { "input", "$interactionsMed" },
+                { "as", "interaction" },
+                { "cond", new BsonDocument("$and", interactionCond) }
             })
-        };
+        )),
+        new("$lookup", new BsonDocument
+        {
+            { "from", "InteractionLogs" },
+            { "localField", "_id" },
+            { "foreignField", "itemId" },
+            { "as", "interactionLogsMed" }
+        }),
+        new("$addFields", new BsonDocument("interactionLogs",
+            new BsonDocument("$filter", new BsonDocument
+            {
+                { "input", "$interactionLogsMed" },
+                { "as", "log" },
+                { "cond", new BsonDocument("$and", logCond) }
+            })
+        )),
+        new("$lookup", new BsonDocument
+        {
+            { "from", "User" },
+            { "localField", "_id" },
+            { "foreignField", "favorites.itemId" },
+            { "as", "users" }
+        }),
+        new("$project", new BsonDocument
+        {
+            { "Id", new BsonDocument("$toString", "$_id") },
+            { "ProductName", "$productName" },
+            { "ViewCount", new BsonDocument("$size", "$interactionLogs") },
+            { "InteractionCount", new BsonDocument("$sum", "$interactions.totalCount") },
+            { "FavoriteCount", new BsonDocument("$size",
+                new BsonDocument("$reduce",
+                    new BsonDocument
+                    {
+                        { "input", "$users" },
+                        { "initialValue", new BsonArray() },
+                        { "in", new BsonDocument("$concatArrays",
+                            new BsonArray
+                            {
+                                "$$value",
+                                new BsonDocument("$filter",
+                                    new BsonDocument
+                                    {
+                                        { "input", "$$this.favorites" },
+                                        { "as", "fav" },
+                                        { "cond", new BsonDocument("$eq",
+                                            new BsonArray { "$$fav.itemId", "$_id" })
+                                        }
+                                    }
+                                )
+                            }
+                        )}
+                    }
+                )
+            )}
+        })
+    };
 
         // Execute pipeline and retrieve results
         var rawAnalytics = await _collection.Aggregate<BsonDocument>(pipeline, null, cancellationToken).ToListAsync();
@@ -265,15 +263,15 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             ProductName = b.GetValue("ProductName", "").AsString,
             ViewCount = b.GetValue("ViewCount", 0).ToInt64(),
             InteractionCount = b.GetValue("InteractionCount", 0).ToInt64(),
-            WishlistCount = b.GetValue("WishlistCount", 0).ToInt64()
+            FavoriteCount = b.GetValue("FavoriteCount", 0).ToInt64()
         });
     }
 
     public async Task<IEnumerable<OcopProductUserDemographics>> GetUserDemographicsAsync(
-    string timeRange = "month",
-    DateTime? startDate = null,
-    DateTime? endDate = null,
-    CancellationToken cancellationToken = default)
+        string timeRange = "month",
+        DateTime? startDate = null,
+        DateTime? endDate = null,
+        CancellationToken cancellationToken = default)
     {
         var now = DateTime.UtcNow;
 
@@ -302,21 +300,21 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
         var bsonEndDate = BsonValue.Create(filterEndDate.Value);
 
         var interactionCond = new BsonArray
-        {
-            new BsonDocument("$eq", new BsonArray { "$$interaction.itemType", "Ocop Product" }),
-            new BsonDocument("$gte", new BsonArray { "$$interaction.createdAt", bsonStartDate }),
-            new BsonDocument("$lte", new BsonArray { "$$interaction.createdAt", bsonEndDate })
-        };
+    {
+        new BsonDocument("$eq", new BsonArray { "$$interaction.itemType", "Ocop Product" }),
+        new BsonDocument("$gte", new BsonArray { "$$interaction.createdAt", bsonStartDate }),
+        new BsonDocument("$lte", new BsonArray { "$$interaction.createdAt", bsonEndDate })
+    };
 
-            var logCond = new BsonArray
-        {
-            new BsonDocument("$eq", new BsonArray { "$$log.itemType", "Ocop Product" }),
-            new BsonDocument("$gte", new BsonArray { "$$log.createdAt", bsonStartDate }),
-            new BsonDocument("$lte", new BsonArray { "$$log.createdAt", bsonEndDate })
-        };
+        var logCond = new BsonArray
+    {
+        new BsonDocument("$eq", new BsonArray { "$$log.itemType", "Ocop Product" }),
+        new BsonDocument("$gte", new BsonArray { "$$log.createdAt", bsonStartDate }),
+        new BsonDocument("$lte", new BsonArray { "$$log.createdAt", bsonEndDate })
+    };
 
-            var pipeline = new List<BsonDocument>
-        {
+        var pipeline = new List<BsonDocument>
+    {
         // Step 1: Match active products
         new BsonDocument("$match", new BsonDocument("status", true)),
 
@@ -393,13 +391,13 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             { "as", "logUsers" }
         }),
 
-        // Step 9: Lookup users for wishlist
+        // Step 9: Lookup users for favorites
         new BsonDocument("$lookup", new BsonDocument
         {
             { "from", "User" },
             { "localField", "_id" },
             { "foreignField", "favorites.itemId" },
-            { "as", "wishlistUsers" }
+            { "as", "favoriteUsers" }
         }),
 
         // Step 10: Combine all users
@@ -409,7 +407,7 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             {
                 new BsonDocument("$ifNull", new BsonArray { "$interactionUsers", new BsonArray() }),
                 new BsonDocument("$ifNull", new BsonArray { "$logUsers", new BsonArray() }),
-                new BsonDocument("$ifNull", new BsonArray { "$wishlistUsers", new BsonArray() })
+                new BsonDocument("$ifNull", new BsonArray { "$favoriteUsers", new BsonArray() })
             })
             }
         }),
@@ -421,7 +419,7 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             {
                 { "interactionsCount", new BsonDocument("$size", "$interactions") },
                 { "interactionLogsCount", new BsonDocument("$size", "$interactionLogs") },
-                { "wishlistUsersCount", new BsonDocument("$size", "$wishlistUsers") },
+                { "favoriteUsersCount", new BsonDocument("$size", "$favoriteUsers") },
                 { "allUsersCount", new BsonDocument("$size", "$allUsers") }
             }
             }
@@ -536,16 +534,16 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             { "userCount", new BsonDocument("$sum", 1) }
         }),
 
-            // Step 16: Final projection
-            new BsonDocument("$project", new BsonDocument
-            {
-                { "Id", new BsonDocument("$toString", "$_id.productId") },
-                { "ProductName", "$_id.productName" },
-                { "AgeGroup", "$_id.ageGroup" },
-                { "Hometown", "$_id.hometown" },
-                { "UserCount", "$userCount" }
-            })
-        };
+        // Step 16: Final projection
+        new BsonDocument("$project", new BsonDocument
+        {
+            { "Id", new BsonDocument("$toString", "$_id.productId") },
+            { "ProductName", "$_id.productName" },
+            { "AgeGroup", "$_id.ageGroup" },
+            { "Hometown", "$_id.hometown" },
+            { "UserCount", "$userCount" }
+        })
+    };
 
         try
         {
@@ -554,7 +552,7 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             Console.WriteLine($"Debug - Products after step 11: {debugResult.Count}");
             foreach (var doc in debugResult)
             {
-                Console.WriteLine($"Product: {doc["_id"]}, Interactions: {doc["debug"]["interactionsCount"]}, Logs: {doc["debug"]["interactionLogsCount"]}, Wishlist: {doc["debug"]["wishlistUsersCount"]}, AllUsers: {doc["debug"]["allUsersCount"]}");
+                Console.WriteLine($"Product: {doc["_id"]}, Interactions: {doc["debug"]["interactionsCount"]}, Logs: {doc["debug"]["interactionLogsCount"]}, Favorites: {doc["debug"]["favoriteUsersCount"]}, AllUsers: {doc["debug"]["allUsersCount"]}");
             }
 
             var rawAnalytics = await _collection.Aggregate<BsonDocument>(pipeline, null, cancellationToken).ToListAsync();
@@ -593,7 +591,7 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
     {
         var analytics = await GetProductAnalyticsAsync(timeRange, startDate, endDate, cancellationToken);
         // sort desc by WishlistCount, get top
-        return analytics.OrderByDescending(p => p.WishlistCount)
+        return analytics.OrderByDescending(p => p.FavoriteCount)
             .ThenByDescending(p => p.ViewCount)
             .ThenBy(p => p.ProductName)
             .Take(top)

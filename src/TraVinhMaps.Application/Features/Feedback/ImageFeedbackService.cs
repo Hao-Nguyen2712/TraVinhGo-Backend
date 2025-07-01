@@ -41,12 +41,16 @@ public class ImageFeedbackService
             if (fileItem == null || fileItem.Length == 0)
             {
                 continue; // continue file empty
-            } 
+            }
             // Only PNG and JPG files are allowed.
-            var allowedContentTypes = new[] { "image/png", "image/jpeg" };
+            var contentType = fileItem.ContentType.ToLower().Split(';')[0].Trim();
+            var isValidExtension = fileItem.FileName.ToLower().EndsWith(".jpg") ||
+                                  fileItem.FileName.ToLower().EndsWith(".jpeg") ||
+                                  fileItem.FileName.ToLower().EndsWith(".png");
+            var allowedContentTypes = new[] { "image/png", "image/jpg", "image/jpeg", "application/octet-stream" };
             if (!allowedContentTypes.Contains(fileItem.ContentType.ToLower()))
             {
-                throw new ArgumentException("Only PNG and JPG images are allowed.");
+                throw new ArgumentException($"Invalid file type for {fileItem.FileName}. Only PNG and JPG images are allowed.");
             }
 
             using (var stream = fileItem.OpenReadStream())
