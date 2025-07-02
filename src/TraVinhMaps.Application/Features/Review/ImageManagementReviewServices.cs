@@ -25,11 +25,35 @@ public class ImageManagementReviewServices
         {
             return images;
         }
+        if (files.Count > 5)
+        {
+            throw new InvalidOperationException("You can upload a maximum of 5 images.");
+        }
+        var allowedContentTypes = new[]
+        {
+            "image/png",
+            "image/jpg",
+            "image/jpeg",
+            "application/octet-stream"
+        };
+
         foreach (IFormFile file in files)
         {
             if (file == null || file.Length == 0)
             {
                 continue;
+            }
+            var contentType = file.ContentType.ToLower().Split(';')[0].Trim();
+            var fileName = file.FileName.ToLower();
+
+            var isValidExtension =
+                fileName.EndsWith(".jpg") ||
+                fileName.EndsWith(".jpeg") ||
+                fileName.EndsWith(".png");
+
+            if (!isValidExtension || !allowedContentTypes.Contains(contentType))
+            {
+                throw new InvalidOperationException($"File '{file.FileName}' has invalid format.");
             }
             using (var stream = file.OpenReadStream())
             {

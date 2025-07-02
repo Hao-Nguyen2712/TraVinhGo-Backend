@@ -26,9 +26,9 @@ public class ReviewRepository : BaseRepository<Review>, IReviewRepository
     public async Task<string> AddImageReview(string id, string imageUrl, CancellationToken cancellationToken = default)
     {
         var filter = Builders<Review>.Filter.Eq(o => o.Id, id);
-        var ocopProduct = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
-        if (ocopProduct == null) return null;
-        if (ocopProduct.Images == null)
+        var reviewImage = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (reviewImage == null) return null;
+        if (reviewImage.Images == null)
         {
             var newListImage = Builders<Review>.Update.Set(im => im.Images, new List<string>());
             await _collection.UpdateOneAsync(filter, newListImage);
