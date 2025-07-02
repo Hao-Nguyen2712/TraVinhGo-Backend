@@ -2,13 +2,15 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Application.Features.Destination.Interface;
 /// <summary>
-/// 
+///
 /// </summary>
 public interface ITouristDestinationService
 {
@@ -120,6 +122,18 @@ public interface ITouristDestinationService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns></returns>
     Task<bool> PlusFavorite(string id, CancellationToken cancellationToken = default);
+
+    // Overview Statistics for All Destinations
+    Task<DestinationStatsOverview> GetDestinationStatsOverviewAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
+    // Top Destinations by Number of Likes
+    Task<IEnumerable<DestinationAnalytics>> GetTopDestinationsByFavoritesAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
+    // Top Destinations by Number of Views
+    Task<IEnumerable<DestinationAnalytics>> GetTopDestinationsByViewsAsync(int topCount = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
+
+    // User Analysis by Age Group and Hometown
+    Task<IEnumerable<DestinationUserDemographics>> GetUserDemographicsAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
+    // Destination Comparison
+    Task<IEnumerable<DestinationAnalytics>> CompareDestinationsAsync(IEnumerable<string> destinationIds, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
     /// <summary>
     /// Gets the top10 favorite destination.
     /// </summary>

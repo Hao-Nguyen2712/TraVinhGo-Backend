@@ -302,21 +302,21 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
         var bsonEndDate = BsonValue.Create(filterEndDate.Value);
 
         var interactionCond = new BsonArray
-    {
-        new BsonDocument("$eq", new BsonArray { "$$interaction.itemType", "Ocop Product" }),
-        new BsonDocument("$gte", new BsonArray { "$$interaction.createdAt", bsonStartDate }),
-        new BsonDocument("$lte", new BsonArray { "$$interaction.createdAt", bsonEndDate })
-    };
+        {
+            new BsonDocument("$eq", new BsonArray { "$$interaction.itemType", "Ocop Product" }),
+            new BsonDocument("$gte", new BsonArray { "$$interaction.createdAt", bsonStartDate }),
+            new BsonDocument("$lte", new BsonArray { "$$interaction.createdAt", bsonEndDate })
+        };
 
-        var logCond = new BsonArray
-    {
-        new BsonDocument("$eq", new BsonArray { "$$log.itemType", "Ocop Product" }),
-        new BsonDocument("$gte", new BsonArray { "$$log.createdAt", bsonStartDate }),
-        new BsonDocument("$lte", new BsonArray { "$$log.createdAt", bsonEndDate })
-    };
+            var logCond = new BsonArray
+        {
+            new BsonDocument("$eq", new BsonArray { "$$log.itemType", "Ocop Product" }),
+            new BsonDocument("$gte", new BsonArray { "$$log.createdAt", bsonStartDate }),
+            new BsonDocument("$lte", new BsonArray { "$$log.createdAt", bsonEndDate })
+        };
 
-        var pipeline = new List<BsonDocument>
-    {
+            var pipeline = new List<BsonDocument>
+        {
         // Step 1: Match active products
         new BsonDocument("$match", new BsonDocument("status", true)),
 
@@ -536,16 +536,16 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             { "userCount", new BsonDocument("$sum", 1) }
         }),
 
-        // Step 16: Final projection
-        new BsonDocument("$project", new BsonDocument
-        {
-            { "Id", new BsonDocument("$toString", "$_id.productId") },
-            { "ProductName", "$_id.productName" },
-            { "AgeGroup", "$_id.ageGroup" },
-            { "Hometown", "$_id.hometown" },
-            { "UserCount", "$userCount" }
-        })
-    };
+            // Step 16: Final projection
+            new BsonDocument("$project", new BsonDocument
+            {
+                { "Id", new BsonDocument("$toString", "$_id.productId") },
+                { "ProductName", "$_id.productName" },
+                { "AgeGroup", "$_id.ageGroup" },
+                { "Hometown", "$_id.hometown" },
+                { "UserCount", "$userCount" }
+            })
+        };
 
         try
         {
@@ -560,7 +560,7 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
             var rawAnalytics = await _collection.Aggregate<BsonDocument>(pipeline, null, cancellationToken).ToListAsync();
             if (!rawAnalytics.Any())
             {
-                Console.WriteLine("NoėjusNo analytics data found after full pipeline.");
+                Console.WriteLine("No analytics data found after full pipeline.");
             }
 
             return rawAnalytics.Select(b => new OcopProductUserDemographics
@@ -602,7 +602,7 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
 
     public async Task<IEnumerable<OcopProductAnalytics>> CompareProductsAsync(IEnumerable<string> productIds, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
-        var analytics = await GetProductAnalyticsAsync(timeRange,startDate,endDate, cancellationToken);
+        var analytics = await GetProductAnalyticsAsync(timeRange, startDate, endDate, cancellationToken);
         // Retrieve only the list of products to compare, preserving the input order.
         var idSet = productIds.ToHashSet() ?? new HashSet<string>();
         var result = analytics.Where(p => idSet.Contains(p.Id)).ToList();
