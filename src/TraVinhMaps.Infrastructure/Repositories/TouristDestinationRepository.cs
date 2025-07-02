@@ -1,12 +1,6 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using TraVinhMaps.Application.Features.Destination.Models;
@@ -318,7 +312,7 @@ public class TouristDestinationRepository : BaseRepository<TouristDestination>, 
 
     public async Task<IEnumerable<DestinationAnalytics>> GetTopDestinationsByFavoritesAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
-        var analytics  = await GetDestinationStatsOverviewAsync(timeRange, startDate, endDate, cancellationToken);
+        var analytics = await GetDestinationStatsOverviewAsync(timeRange, startDate, endDate, cancellationToken);
         return analytics.DestinationDetails.OrderByDescending(d => d.FavoriteCount)
             .ThenByDescending(d => d.LocationName)
             .Take(top)
@@ -341,7 +335,8 @@ public class TouristDestinationRepository : BaseRepository<TouristDestination>, 
         DateTime filterStartDate;
         DateTime? filterEndDate = null;
 
-        if (startDate.HasValue && endDate.HasValue) {
+        if (startDate.HasValue && endDate.HasValue)
+        {
             filterStartDate = startDate.Value;
             filterEndDate = endDate.Value;
         }
@@ -368,14 +363,14 @@ public class TouristDestinationRepository : BaseRepository<TouristDestination>, 
             new BsonDocument("$lte", new BsonArray { "$$interaction.createdAt", bsonEndDate })
         };
 
-                var logCond = new BsonArray
+        var logCond = new BsonArray
         {
             new BsonDocument("$eq", new BsonArray { "$$log.itemType", "Destination" }),
             new BsonDocument("$gte", new BsonArray { "$$log.createdAt", bsonStartDate }),
             new BsonDocument("$lte", new BsonArray { "$$log.createdAt", bsonEndDate })
         };
 
-                var pipeline = new List<BsonDocument>
+        var pipeline = new List<BsonDocument>
         {
             new BsonDocument("$match", new BsonDocument("status", true)),
             new BsonDocument("$project", new BsonDocument
