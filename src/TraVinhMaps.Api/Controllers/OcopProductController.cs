@@ -441,4 +441,11 @@ public class OcopProductController : ControllerBase
             return StatusCode(500, errorDetails);
         }
     }
+
+    [HttpPost]
+    [Route("GetOcopProductsByIds")]
+    public async Task<IActionResult> GetOcopProductsByIds([FromBody] List<string> listId)
+    {
+        return this.ApiOk(await _service.GetOcopProductsByIds(listId));
+    }
 }

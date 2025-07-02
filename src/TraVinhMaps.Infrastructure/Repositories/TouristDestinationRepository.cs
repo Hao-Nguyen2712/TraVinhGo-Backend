@@ -700,4 +700,14 @@ public class TouristDestinationRepository : BaseRepository<TouristDestination>, 
 
         return result;
     }
+
+    public async Task<IEnumerable<TouristDestination>> GetDestinationsByIds(List<string> idList, CancellationToken cancellationToken = default)
+    {
+        if (idList == null || idList.Count == 0)
+            return Enumerable.Empty<TouristDestination>();
+
+        var filter = Builders<TouristDestination>.Filter.In(d => d.Id, idList);
+        var destinations = await _collection.Find(filter).ToListAsync(cancellationToken);
+        return destinations;
+    }
 }

@@ -4,6 +4,7 @@ using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.Db;
 using Microsoft.Extensions.Logging;
+using TraVinhMaps.Application.Common.Exceptions;
 
 namespace TraVinhMaps.Infrastructure.CustomRepositories;
 
@@ -16,6 +17,25 @@ public class UserRepository : BaseRepository<User>, IUserRepository
         _logger = logger;
     }
 
+    public async Task<bool> addItemToFavoriteList(string id, Favorite favorite, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<User>.Filter.Eq(u => u.Id, id);
+        var user = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (user == null)
+        {
+            throw new NotFoundException($"User with id {id} not found.");
+        }
+
+        if (user.Favorites == null)
+        {
+            var setfavoriteUpdate = Builders<User>.Update.Set(p => p.Favorites, new List<Favorite>());
+            await _collection.UpdateOneAsync(filter, setfavoriteUpdate);
+        }
+        var pushFavoriteUpdate = Builders<User>.Update.Push(p => p.Favorites, favorite);
+        var updateResult = await _collection.UpdateOneAsync(filter, pushFavoriteUpdate, cancellationToken: cancellationToken);
+        return true;
+    }
+
     public async Task<bool> DeleteUser(string id, CancellationToken cancellationToken = default)
     {
         var filter = Builders<User>.Filter.Eq(u => u.Id, id);
@@ -26,6 +46,17 @@ public class UserRepository : BaseRepository<User>, IUserRepository
 
         var result = await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
         return result.ModifiedCount > 0;
+    }
+
+    public async Task<List<Favorite>> getFavoriteUserList(string id, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<User>.Filter.Eq(u => u.Id, id);
+        var user = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (user == null)
+        {
+            throw new NotFoundException($"User with id {id} not found.");
+        }
+        return user.Favorites ?? new List<Favorite>();
     }
 
     public Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default)
@@ -270,6 +301,21 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             _logger.LogError(ex, "Error fetching user statistics with groupBy={GroupBy} and timeRange={TimeRange}", groupBy, timeRange);
             throw;
         }
+    }
+
+    public async Task<bool> removeItemToFavoriteList(string id, string itemId, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<User>.Filter.Eq(u => u.Id, id);
+        var user = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (user == null)
+        {
+            throw new NotFoundException($"User with id {id} not found.");
+        }
+        var update = Builders<User>.Update.PullFilter(u => u.Favorites,
+        Builders<Favorite>.Filter.Eq(f => f.ItemId, itemId));
+
+        var updateResult = await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
+        return true;
     }
 
     public async Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default)
