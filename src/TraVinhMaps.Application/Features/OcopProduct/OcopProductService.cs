@@ -185,4 +185,9 @@ public class OcopProductService : IOcopProductService
 
         return await _ocopProductRepository.CompareProductsAsync(productIds, timeRange, startDate, endDate, cancellationToken);
     }
+
+    public async Task<IEnumerable<Domain.Entities.OcopProduct>> GetOcopProductsByIds(List<string> idList, CancellationToken cancellationToken = default)
+    {
+        return await _ocopProductRepository.GetOcopProductsByIds(idList, cancellationToken);
+    }
 }

@@ -140,4 +140,6 @@ public interface ITouristDestinationService
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns></returns>
     Task<List<TopFavoriteRequest>> GetTop10FavoriteDestination(CancellationToken cancellationToken = default);
+    Task<IEnumerable<TouristDestination>> GetDestinationsByIds(List<string> idList, CancellationToken cancellationToken = default);
+
 }

@@ -611,4 +611,14 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
         // return result.OrderBy(p => orderMap.TryGetValue(p.Id, out var idx) ? idx : int.MaxValue).ToList();
         return result;
     }
+
+    public async Task<IEnumerable<OcopProduct>> GetOcopProductsByIds(List<string> idList, CancellationToken cancellationToken = default)
+    {
+        if (idList == null || idList.Count == 0)
+            return Enumerable.Empty<OcopProduct>();
+
+        var filter = Builders<OcopProduct>.Filter.In(d => d.Id, idList);
+        var ocops = await _collection.Find(filter).ToListAsync(cancellationToken);
+        return ocops;
+    }
 }

@@ -46,4 +46,8 @@ public interface IUserService
     Task<Dictionary<string, object>> GetUserStatisticsAsync(string groupBy, string timeRange, CancellationToken cancellationToken = default);
 
     Task<UserProfileResponse> GetUserProfile(string id, CancellationToken cancellationToken = default);
+
+    Task<List<Favorite>> getFavoriteUserList(CancellationToken cancellationToken = default);
+    Task<bool> addItemToFavoriteList(FavoriteRequest favoriteRequest, CancellationToken cancellationToken = default);
+    Task<bool> removeItemToFavoriteList(string itemId, CancellationToken cancellationToken = default);
 }

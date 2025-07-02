@@ -80,6 +80,16 @@ public class LocalSpecialtiesRepository : BaseRepository<LocalSpecialties>, ILoc
         return result.ModifiedCount > 0;
     }
 
+    public async Task<IEnumerable<LocalSpecialties>> GetDestinationsByIds(List<string> idList, CancellationToken cancellationToken = default)
+    {
+        if (idList == null || idList.Count == 0)
+            return Enumerable.Empty<LocalSpecialties>();
+
+        var filter = Builders<LocalSpecialties>.Filter.In(d => d.Id, idList);
+        var localSpecialties = await _collection.Find(filter).ToListAsync(cancellationToken);
+        return localSpecialties;
+    }
+
     public async Task<bool> RemoveSellLocationAsync(string id, string locationId, CancellationToken cancellationToken = default)
     {
         var filter = Builders<LocalSpecialties>.Filter.Eq(p => p.Id, id);
