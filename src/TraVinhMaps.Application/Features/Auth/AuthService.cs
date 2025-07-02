@@ -34,6 +34,16 @@ public class AuthService : IAuthServices
 
     public async Task<string> AuthenWithPhoneNumber(string phoneNumber, CancellationToken cancellationToken)
     {
+        if (phoneNumber == null)
+        {
+            throw new ArgumentNullException("phoneNumber is null");
+        }
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^(\+\d{1,3}[- ]?)?\d{10,15}$"))
+        {
+            throw new FormatException("Invalid phone number format. Must be a valid phone number.");
+        }
+
         var otp = GenarateOtpExtension.GenerateOtp();
 
         // send sms
@@ -148,7 +158,7 @@ public class AuthService : IAuthServices
 
         if (type == "phone-number")
         {
-            var user = await _userRepository.GetAsyns(x => x.PhoneNumber == actualIdentifier, cancellationToken);
+            var user = await _userRepository.GetAsyns(x => x.PhoneNumber == otpEntity.Identifier, cancellationToken);
             if (user == null)
             {
                 var role = await _roleRepository.GetAsyns(x => x.RoleName == "user", cancellationToken);
@@ -170,7 +180,7 @@ public class AuthService : IAuthServices
         }
         else
         {
-            var user = await _userRepository.GetAsyns(x => x.Email == actualIdentifier, cancellationToken);
+            var user = await _userRepository.GetAsyns(x => x.Email == otpEntity.Identifier, cancellationToken);
             if (user == null)
             {
                 var role = await _roleRepository.GetAsyns(x => x.RoleName == "user", cancellationToken);
