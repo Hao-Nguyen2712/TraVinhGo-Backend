@@ -190,4 +190,13 @@ public class OcopProductService : IOcopProductService
     {
         return await _ocopProductRepository.GetOcopProductsByIds(idList, cancellationToken);
     }
+
+    public async Task<IEnumerable<Domain.Entities.OcopProduct>> GetCurrentOcopProduct(CancellationToken cancellationToken = default)
+    {
+        var ocops = await _ocopProductRepository.ListAllAsync(cancellationToken);
+        return ocops
+        .OrderByDescending(p => p.OcopYearRelease)
+        .Take(10);
+
+    }
 }
