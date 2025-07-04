@@ -1,6 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -50,16 +51,39 @@ public class InteractionController : ControllerBase
         var countInteractions = await _interactionService.CountAsync();
         return this.ApiOk(countInteractions);
     }
+
     [Authorize]
     [HttpPost("AddInteraction")]
-    [Consumes("multipart/form-data")]
-    public async Task<IActionResult> AddInteraction([FromForm] CreateInteractionRequest createInteractionRequest)
+    public async Task<IActionResult> AddInteraction([FromBody] List<CreateInteractionRequest> createInteractionRequests)
+    {
+        //if (!ModelState.IsValid)
+        //    return BadRequest(ModelState);
+        if (createInteractionRequests == null || !createInteractionRequests.Any())
+            return this.ApiError("No interaction data provided.");
+        List<Interaction> interactions = [];
+        try
+        {
+            foreach(var createInteractionRequest in createInteractionRequests)
+            {
+                var interaction = await _interactionService.AddAsync(createInteractionRequest);
+                interactions.Add(interaction);
+            }
+            return this.ApiOk(interactions);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { Message = "An error occurred while processing interaction", Error = ex.Message });
+        }
+    }
+
+    [HttpPost("AddInteractionText{userId}")]
+    public async Task<IActionResult> AddInteractionText(String userId,[FromBody] CreateInteractionRequest createInteractionRequest)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
         try
         {
-            var interaction = await _interactionService.AddAsync(createInteractionRequest);
+            var interaction = await _interactionService.AddTextAsync(userId, createInteractionRequest);
             await _hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", interaction.Id);
             await _hubContext.Clients.Group("super-admin").SendAsync("ReceiveFeedback", interaction.Id);
 
@@ -67,9 +91,11 @@ public class InteractionController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "An error occurred while processing interaction", Error = ex.Message });
+            return this.ApiError("An error occurred while processing interaction: " + ex.Message);
         }
     }
+
+
 
     [HttpDelete]
     [Route("DeleteInteraction/{id}")]

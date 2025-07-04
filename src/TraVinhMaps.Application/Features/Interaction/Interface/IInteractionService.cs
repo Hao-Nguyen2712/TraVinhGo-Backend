@@ -15,6 +15,7 @@ public interface IInteractionService
     Task<Domain.Entities.Interaction> GetByIdAsync(string id, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.Interaction>> ListAllAsync(CancellationToken cancellationToken = default);
     Task<Domain.Entities.Interaction> AddAsync(CreateInteractionRequest entity, CancellationToken cancellationToken = default);
+    Task<Domain.Entities.Interaction> AddTextAsync(string userId,CreateInteractionRequest entity, CancellationToken cancellationToken = default);
     Task UpdateAsync(UpdateInteractionRequest updateInteractionRequest, CancellationToken cancellationToken = default);
     Task DeleteAsync(Domain.Entities.Interaction entity, CancellationToken cancellationToken = default);
     Task<long> CountAsync(Expression<Func<Domain.Entities.Interaction, bool>> predicate = null, CancellationToken cancellationToken = default);
