@@ -42,10 +42,89 @@ public class InteractionService : IInteractionService
         if (string.IsNullOrEmpty(userId))
             throw new UnauthorizedAccessException("User not authenticated.");
 
-        var interaction = InteractionMapper.Mapper.Map<CreateInteractionRequest, Domain.Entities.Interaction>(createInteractionRequest);
-        interaction.UserId = userId;
+        var itemId = createInteractionRequest.ItemId;
+        var today = DateTime.UtcNow.Date;
 
-        return await _baseRepository.AddAsync(interaction, cancellationToken);
+        // Tìm interaction gần nhất với userId và itemId
+        var existingInteraction = (await _baseRepository.ListAllAsync(cancellationToken))
+            .Where(x => x.UserId == userId && x.ItemId == itemId)
+            .OrderByDescending(x => x.LastInteractionAt ?? x.CreatedAt)
+            .FirstOrDefault();
+
+        if (existingInteraction == null)
+        {
+            // Không có: tạo mới
+            var interaction = InteractionMapper.Mapper.Map<CreateInteractionRequest, Domain.Entities.Interaction>(createInteractionRequest);
+            interaction.UserId = userId;
+            interaction.LastInteractionAt = DateTime.UtcNow;
+            return await _baseRepository.AddAsync(interaction, cancellationToken);
+        }
+        else
+        {
+            // Đã có: kiểm tra ngày
+            var lastDate = (existingInteraction.LastInteractionAt ?? existingInteraction.CreatedAt).Date;
+            if (lastDate != today)
+            {
+                // Nếu khác ngày/tháng/năm: tạo interaction mới
+                var interaction = InteractionMapper.Mapper.Map<CreateInteractionRequest, Domain.Entities.Interaction>(createInteractionRequest);
+                interaction.UserId = userId;
+                interaction.LastInteractionAt = DateTime.UtcNow;
+                return await _baseRepository.AddAsync(interaction, cancellationToken);
+            }
+            else
+            {
+                // Nếu cùng ngày: update interaction cũ
+                existingInteraction.TotalCount += createInteractionRequest.TotalCount;
+                existingInteraction.LastInteractionAt = DateTime.UtcNow;
+                await _baseRepository.UpdateAsync(existingInteraction, cancellationToken);
+                return existingInteraction;
+            }
+        }
+    }
+
+    public async Task<Domain.Entities.Interaction> AddTextAsync(string userId, CreateInteractionRequest createInteractionRequest, CancellationToken cancellationToken = default)
+    {
+        if (createInteractionRequest == null)
+            throw new ArgumentNullException(nameof(createInteractionRequest));
+
+        var itemId = createInteractionRequest.ItemId;
+        var today = DateTime.UtcNow.Date;
+
+        // Tìm interaction gần nhất với userId và itemId
+        var existingInteraction = (await _baseRepository.ListAllAsync(cancellationToken))
+            .Where(x => x.UserId == userId && x.ItemId == itemId)
+            .OrderByDescending(x => x.LastInteractionAt ?? x.CreatedAt)
+            .FirstOrDefault();
+
+        if (existingInteraction == null)
+        {
+            // Không có: tạo mới
+            var interaction = InteractionMapper.Mapper.Map<CreateInteractionRequest, Domain.Entities.Interaction>(createInteractionRequest);
+            interaction.UserId = userId;
+            interaction.LastInteractionAt = DateTime.UtcNow;
+            return await _baseRepository.AddAsync(interaction, cancellationToken);
+        }
+        else
+        {
+            // Đã có: kiểm tra ngày
+            var lastDate = (existingInteraction.LastInteractionAt ?? existingInteraction.CreatedAt).Date;
+            if (lastDate != today)
+            {
+                // Nếu khác ngày/tháng/năm: tạo interaction mới
+                var interaction = InteractionMapper.Mapper.Map<CreateInteractionRequest, Domain.Entities.Interaction>(createInteractionRequest);
+                interaction.UserId = userId;
+                interaction.LastInteractionAt = DateTime.UtcNow;
+                return await _baseRepository.AddAsync(interaction, cancellationToken);
+            }
+            else
+            {
+                // Nếu cùng ngày: update interaction cũ
+                existingInteraction.TotalCount += createInteractionRequest.TotalCount;
+                existingInteraction.LastInteractionAt = DateTime.UtcNow;
+                await _baseRepository.UpdateAsync(existingInteraction, cancellationToken);
+                return existingInteraction;
+            }
+        }
     }
 
     public Task<long> CountAsync(Expression<Func<Domain.Entities.Interaction, bool>> predicate = null, CancellationToken cancellationToken = default)
