@@ -441,4 +441,23 @@ public class OcopProductController : ControllerBase
             return StatusCode(500, errorDetails);
         }
     }
+
+    [HttpPost]
+    [Route("GetOcopProductsByIds")]
+    public async Task<IActionResult> GetOcopProductsByIds([FromBody] List<string> listId)
+    {
+        return this.ApiOk(await _service.GetOcopProductsByIds(listId));
+    }
+
+    [HttpGet]
+    [Route("GetCurrentOcopProduct")]
+    public async Task<IActionResult> GetCurrentOcopProduct()
+    {
+        var ocopProducts = await _service.GetCurrentOcopProduct();
+        if (ocopProducts == null || !ocopProducts.Any())
+        {
+            return this.ApiError("No current OCOP products found.");
+        }
+        return this.ApiOk(ocopProducts);
+    }
 }

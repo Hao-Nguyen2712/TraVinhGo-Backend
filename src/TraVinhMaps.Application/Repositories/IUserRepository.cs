@@ -11,4 +11,7 @@ public interface IUserRepository : IBaseRepository<User>
     Task<bool> RestoreUser(string id, CancellationToken cancellationToken = default);
     Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
     Task<Dictionary<string, object>> GetUserStatisticsAsync(string groupBy, string timeRange, CancellationToken cancellationToken = default);
+    Task<List<Favorite>> getFavoriteUserList(string id, CancellationToken cancellationToken = default);
+    Task<bool> addItemToFavoriteList(string id,Favorite favorite, CancellationToken cancellationToken = default);
+    Task<bool> removeItemToFavoriteList(string id,string itemId, CancellationToken cancellationToken = default);
 }

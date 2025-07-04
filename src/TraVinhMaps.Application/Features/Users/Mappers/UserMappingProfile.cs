@@ -15,5 +15,6 @@ public class UserMappingProfile : AutoMapper.Profile
         CreateMap<UpdateUserProfileRequest, User>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
             .ReverseMap();
+        CreateMap<FavoriteRequest, Favorite>().ReverseMap();
     }
 }

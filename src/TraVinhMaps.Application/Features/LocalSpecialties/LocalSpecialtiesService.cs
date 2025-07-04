@@ -88,6 +88,11 @@ public class LocalSpecialtiesService : ILocalSpecialtiesService
         return await _localSpecialtiesRepository.GetByIdAsync(id, cancellationToken);
     }
 
+    public async Task<IEnumerable<Domain.Entities.LocalSpecialties>> GetDestinationsByIds(List<string> idList, CancellationToken cancellationToken = default)
+    {
+        return await _localSpecialtiesRepository.GetDestinationsByIds(idList, cancellationToken);
+    }
+
     public async Task<IEnumerable<Domain.Entities.LocalSpecialties>> ListAllAsync(CancellationToken cancellationToken = default)
     {
         return await _localSpecialtiesRepository.ListAllAsync(cancellationToken);

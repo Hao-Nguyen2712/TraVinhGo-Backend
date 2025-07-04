@@ -422,6 +422,13 @@ public class TouristDestinationController : ControllerBase
         }
     }
 
+    [HttpPost]
+    [Route("GetDestinationsByIds")]
+    public async Task<IActionResult> GetDestinationsByIds([FromBody] List<string> listId)
+    {
+        return this.ApiOk(await _touristDestinationService.GetDestinationsByIds(listId));
+    }
+
     [HttpGet("top-favorite-destination")]
     public async Task<IActionResult> GetTop10FavoriteDestination()
     {

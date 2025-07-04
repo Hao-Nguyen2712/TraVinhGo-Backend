@@ -258,4 +258,11 @@ public class LocalSpecialtiesController : ControllerBase
 
         return this.ApiError("Failed to delete location");
     }
+
+    [HttpPost]
+    [Route("GetLocalSpecialtiByIds")]
+    public async Task<IActionResult> GetLocalSpecialtiByIds([FromBody] List<string> listId)
+    {
+        return this.ApiOk(await _localSpecialtiesService.GetDestinationsByIds(listId));
+    }
 }

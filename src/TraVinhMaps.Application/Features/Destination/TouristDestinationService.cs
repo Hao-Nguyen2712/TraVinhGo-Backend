@@ -208,4 +208,14 @@ public class TouristDestinationService : ITouristDestinationService
             return new List<TopFavoriteRequest>(); // Ensure a return value in case of an exception
         }
     }
+
+    public async Task<IEnumerable<TouristDestination>> GetDestinationsByIds(List<string> idList, CancellationToken cancellationToken = default)
+    {
+        return await _repository.GetDestinationsByIds(idList, cancellationToken);
+    }
+
+    public async Task<bool> MinusFavorite(string id, CancellationToken cancellationToken = default)
+    {
+        return await _repository.MinusFavorite(id, cancellationToken);
+    }
 }

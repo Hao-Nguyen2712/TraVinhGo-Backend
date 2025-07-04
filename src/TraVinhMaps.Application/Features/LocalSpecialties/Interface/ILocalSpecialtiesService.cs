@@ -22,6 +22,8 @@ public interface ILocalSpecialtiesService
     Task<string> DeleteLocalSpecialtiesImage(string id, string imageUrl, CancellationToken cancellationToken = default);
     Task<bool> RestoreLocalSpecialtiesAsync(string id, CancellationToken cancellationToken = default);
     Task<bool> DeleteLocalSpecialtiesAsync(string id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Domain.Entities.LocalSpecialties>> GetDestinationsByIds(List<string> idList, CancellationToken cancellationToken = default);
+
 
     // (Sell Location)
     Task<LocalSpecialtyLocation> AddSellLocationAsync(string id, LocalSpecialtyLocation request, CancellationToken cancellationToken = default);

@@ -51,22 +51,28 @@ public class InteractionLogsController : ControllerBase
     }
     [Authorize]
     [HttpPost("AddInteractionLog")]
-    [Consumes("multipart/form-data")]
-    public async Task<IActionResult> AddInteractionLog([FromForm] CreateInteractionLogsRequest createInteractionLogsRequest)
+    public async Task<IActionResult> AddInteractionLog([FromBody] List<CreateInteractionLogsRequest> createInteractionLogsRequests)
     {
-        if (!ModelState.IsValid)
-            return BadRequest(ModelState);
+        //if (!ModelState.IsValid)
+        //    return BadRequest(ModelState);
+        if(createInteractionLogsRequests == null || !createInteractionLogsRequests.Any())
+        {
+            return this.ApiError("No interaction log data provided.");
+        }
+        List<InteractionLogs> InteractionLogs = [];
         try
         {
-            var interactionLogs = await _interactionLogsService.AddAsync(createInteractionLogsRequest);
-            await _hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", interactionLogs.Id);
-            await _hubContext.Clients.Group("super-admin").SendAsync("ReceiveFeedback", interactionLogs.Id);
+            foreach(var createInteractionLogsRequest in createInteractionLogsRequests)
+            {
+                var interactionLogs = await _interactionLogsService.AddAsync(createInteractionLogsRequest);
+                InteractionLogs.Add(interactionLogs);
+            }
 
-            return this.ApiOk(interactionLogs);
+            return this.ApiOk(InteractionLogs);
         }
         catch (Exception ex)
         {
-            return StatusCode(500, new { Message = "An error occurred while processing interaction logs", Error = ex.Message });
+            return this.ApiError("An error occurred while adding interaction logs: "+ ex.Message);
         }
     }
     [HttpDelete]
