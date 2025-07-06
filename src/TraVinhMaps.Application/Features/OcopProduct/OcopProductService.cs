@@ -199,4 +199,10 @@ public class OcopProductService : IOcopProductService
         .Take(10);
 
     }
+
+    public async Task<IEnumerable<Domain.Entities.OcopProduct>> ListActiveAsync(CancellationToken cancellationToken = default)
+    {
+        var ocops = await _ocopProductRepository.ListAllAsync(cancellationToken);
+        return ocops.Where(p => p.Status == true);
+    }
 }

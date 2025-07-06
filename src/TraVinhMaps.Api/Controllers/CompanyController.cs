@@ -26,6 +26,7 @@ public class CompanyController : ControllerBase
     public async Task<IActionResult> GetAllCompany()
     {
         var listOcopType = await _companyService.ListAllAsync();
+
         return this.ApiOk(listOcopType);
     }
     [HttpGet]
