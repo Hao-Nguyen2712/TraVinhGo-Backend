@@ -2,6 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.Linq.Expressions;
+using SharpCompress.Common;
+using System.Security.Claims;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Common.Extensions;
 using TraVinhMaps.Application.External;
@@ -10,19 +12,29 @@ using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
+using Microsoft.AspNetCore.Http;
+using TraVinhMaps.Application.Features.Feedback.Mapper;
+using TraVinhMaps.Application.Features.Feedback.Models;
+using TraVinhMaps.Application.Features.Users.Mappers;
+using TraVinhMaps.Application.Features.Destination.Interface;
+using TraVinhMaps.Application.Features.Destination;
 
 namespace TraVinhMaps.Application.Features.Users;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly ITouristDestinationService _touristDestinationService;
     private readonly IBaseRepository<Role> _roleRepository;
     private readonly ICloudinaryService _cloudinaryService;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public UserService(IUserRepository userRepository, IBaseRepository<Role> roleRepository, ICloudinaryService cloudinaryService)
+    public UserService(IUserRepository userRepository, ITouristDestinationService touristDestinationService, IBaseRepository<Role> roleRepository, ICloudinaryService cloudinaryService, IHttpContextAccessor httpContextAccessor)
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
         _cloudinaryService = cloudinaryService;
+        _httpContextAccessor = httpContextAccessor;
+        _touristDestinationService = touristDestinationService;
     }
 
     public async Task<User> AddAsync(User entity, CancellationToken cancellationToken = default)
@@ -235,5 +247,60 @@ public class UserService : IUserService
             endDate,
             cancellationToken
         );
+    }
+    
+    public async Task<List<Favorite>> getFavoriteUserList(CancellationToken cancellationToken = default)
+    {
+        var userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+            throw new UnauthorizedAccessException("User not authenticated.");
+        return await _userRepository.getFavoriteUserList(userId, cancellationToken);
+    }
+
+    public async Task<bool> addItemToFavoriteList(FavoriteRequest favoriteRequest, CancellationToken cancellationToken = default)
+    {
+        if (favoriteRequest == null)
+            throw new ArgumentNullException(nameof(favoriteRequest));
+
+        // Lấy userId từ ClaimsPrincipal (được gán bởi SessionAuthenticationHandler) qua IHttpContextAccessor
+        var userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+            throw new UnauthorizedAccessException("User not authenticated.");
+        var favorite = UserMapper.Mapper.Map<FavoriteRequest, Favorite>(favoriteRequest);
+        favorite.UpdateAt = DateTime.UtcNow;
+
+        if(favorite.ItemType == "Destination")
+        {
+            var addFavoriteToDestination = await _touristDestinationService.PlusFavorite(favorite.ItemId);
+            if(!addFavoriteToDestination)
+            {
+                throw new BadRequestException("Failed to add favorite to destination.");
+            }
+        }
+
+        return await _userRepository.addItemToFavoriteList(userId, favorite, cancellationToken);
+    }
+
+    public async Task<bool> removeItemToFavoriteList(string itemId, CancellationToken cancellationToken = default)
+    {
+        if (itemId == null)
+            throw new ArgumentNullException(nameof(itemId));
+
+        // Lấy userId từ ClaimsPrincipal (được gán bởi SessionAuthenticationHandler) qua IHttpContextAccessor
+        var userId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+            throw new UnauthorizedAccessException("User not authenticated.");
+
+        var destination = await _touristDestinationService.GetByIdAsync(itemId, cancellationToken);
+        if (destination != null)
+        {
+            var minusFavoriteToDestination = await _touristDestinationService.MinusFavorite(destination.Id);
+            if (!minusFavoriteToDestination)
+            {
+                throw new BadRequestException("Failed to remove favorite to destination.");
+            }
+        }
+
+        return await _userRepository.removeItemToFavoriteList(userId, itemId, cancellationToken);
     }
 }

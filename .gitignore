@@ -9,6 +9,9 @@ nupkg/
 .env
 .env.*
 
+# FCM json
+travinhgo-ba688-firebase-adminsdk-fbsvc-5ffd0fa4a9.json
+
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json

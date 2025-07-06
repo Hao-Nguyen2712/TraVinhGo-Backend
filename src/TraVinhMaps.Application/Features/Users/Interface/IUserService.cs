@@ -46,4 +46,8 @@ public interface IUserService
     // chart performance
     Task<Dictionary<string, Dictionary<string, int>>> GetPerformanceByTagAsync(IEnumerable<string>? tagNames, bool includeOcop, bool includeDestination, bool includeLocalSpecialty, bool includeTips, bool includeFestivals, DateTime? startDate, DateTime? endDate, CancellationToken cancellationToken = default);
     Task<UserProfileResponse> GetUserProfile(string id, CancellationToken cancellationToken = default);
+
+    Task<List<Favorite>> getFavoriteUserList(CancellationToken cancellationToken = default);
+    Task<bool> addItemToFavoriteList(FavoriteRequest favoriteRequest, CancellationToken cancellationToken = default);
+    Task<bool> removeItemToFavoriteList(string itemId, CancellationToken cancellationToken = default);
 }

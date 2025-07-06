@@ -283,4 +283,37 @@ public class UsersController : ControllerBase
         return this.ApiOk(result, "Update profile successfully");
     }
 
+    [Authorize]
+    [HttpGet]
+    [Route("GetFavoriteList")]
+    public async Task<IActionResult> getFavoriteList()
+    {
+        return await _userService.getFavoriteUserList() is List<Favorite> favoriteList
+            ? this.ApiOk(favoriteList, "Get favorite list successfully")
+            : this.ApiError("Failed to get favorite list", HttpStatusCode.NotFound);
+    }
+
+    [Authorize]
+    [HttpPost]
+    [Route("AddItemToFavoriteList")]
+    public async Task<IActionResult> addItemToFavoriteList([FromBody] FavoriteRequest favoriteRequest)
+    {
+        if (await _userService.addItemToFavoriteList(favoriteRequest))
+        {
+            return this.ApiOk("", "Add item to favorite list successfully");
+        }
+        return this.ApiError("Failed to add item to favorite list", HttpStatusCode.BadRequest);
+    }
+
+    [Authorize]
+    [HttpDelete]
+    [Route("RemoveItemToFavoriteList/{id}")]
+    public async Task<IActionResult> removeItemToFavoriteList(string id)
+    {
+        if (await _userService.removeItemToFavoriteList(id))
+        {
+            return this.ApiOk("", "Remove item to favorite list successfully");
+        }
+        return this.ApiError("Failed to remove item from favorite list", HttpStatusCode.BadRequest);
+    }
 }

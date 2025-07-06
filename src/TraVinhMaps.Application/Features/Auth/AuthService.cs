@@ -34,6 +34,16 @@ public class AuthService : IAuthServices
 
     public async Task<string> AuthenWithPhoneNumber(string phoneNumber, CancellationToken cancellationToken)
     {
+        if (phoneNumber == null)
+        {
+            throw new ArgumentNullException("phoneNumber is null");
+        }
+
+        if (!System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^(\+\d{1,3}[- ]?)?\d{10,15}$"))
+        {
+            throw new FormatException("Invalid phone number format. Must be a valid phone number.");
+        }
+
         var otp = GenarateOtpExtension.GenerateOtp();
 
         // send sms

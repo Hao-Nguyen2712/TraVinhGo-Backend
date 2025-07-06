@@ -42,6 +42,8 @@ public class ImageFeedbackService
             {
                 continue; // continue file empty
             }
+
+            Console.WriteLine($"Processing file: {fileItem.FileName}, Content-Type: {fileItem.ContentType}");
             // Only PNG and JPG files are allowed.
             var contentType = fileItem.ContentType.ToLower().Split(';')[0].Trim();
             var isValidExtension = fileItem.FileName.ToLower().EndsWith(".jpg") ||
