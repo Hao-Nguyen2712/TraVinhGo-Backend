@@ -223,11 +223,13 @@ public class AuthService : IAuthServices
         await _sessionRepository.AddAsync(session, cancellationToken);
         // Enforce session limit with 3 devices
         await EnforceSessionLimitAsync(userId, session, cancellationToken);
+        var roleName = await _roleRepository.GetByIdAsync(session.UserId, cancellationToken);
         // Return response
         return new AuthResponse
         {
             SessionId = sessionID,
             RefreshToken = refreshToken,
+            Role = roleName.RoleName // Include role in the response
         };
     }
 
@@ -490,11 +492,14 @@ public class AuthService : IAuthServices
         await _sessionRepository.AddAsync(session, cancellationToken);
         // Enforce session limit with 3 devices
         await EnforceSessionLimitAsync(user.Id, session, cancellationToken);
+
+        var role = await _roleRepository.GetByIdAsync(user.RoleId, cancellationToken);
         // Return response
         return new AuthResponse
         {
             SessionId = sessionID,
             RefreshToken = refreshToken,
+            Role = role.RoleName // Include role in the response
         };
     }
 
@@ -738,11 +743,13 @@ public class AuthService : IAuthServices
         await _sessionRepository.AddAsync(newSession, cancellationToken);
         // Enforce session limit with 3 devices
         await EnforceSessionLimitAsync(session.UserId, newSession, cancellationToken);
+        var roleName = await _roleRepository.GetByIdAsync(session.UserId, cancellationToken);
         // Return new session and refresh token
         return new AuthResponse
         {
             SessionId = newSessionId,
-            RefreshToken = newRefreshToken
+            RefreshToken = newRefreshToken,
+            Role = roleName.RoleName // Include role in the response
         };
     }
 }

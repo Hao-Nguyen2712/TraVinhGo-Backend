@@ -76,16 +76,16 @@ public class SessionAuthenticationHandler : AuthenticationHandler<SessionAuthent
             return AuthenticateResult.Fail("Invalid or expired session ID.");
         }
 
+        if (!userSession.IsActive)
+        {
+            return AuthenticateResult.Fail("Session ID is not active.");
+        }
+
         if (Options.ValidateExpiration && userSession.RefreshTokenExpireAt < DateTime.UtcNow)
         {
             userSession.IsActive = false; // Mark session as inactive if expired
             await _sessionRepository.UpdateAsync(userSession, System.Threading.CancellationToken.None);
             return AuthenticateResult.Fail("Session ID has expired.");
-        }
-
-        if (!userSession.IsActive)
-        {
-            return AuthenticateResult.Fail("Session ID is not active.");
         }
 
         var user = await _userRepository.GetByIdAsync(userSession.UserId, System.Threading.CancellationToken.None);
@@ -99,7 +99,7 @@ public class SessionAuthenticationHandler : AuthenticationHandler<SessionAuthent
 
         var claims = new[] {
             new Claim(ClaimTypes.NameIdentifier, user.Id),
-            new Claim(ClaimTypes.Name, user.Email ?? user.PhoneNumber ?? "N/A"), // Use email or phone as name
+            new Claim(ClaimTypes.Name, user.Email ?? user.PhoneNumber ?? ""), // Use email or phone as name
             new Claim(ClaimTypes.Role, roleName),
             new Claim("sessionId", sessionId) // Optionally include the original session ID as a claim
         };
