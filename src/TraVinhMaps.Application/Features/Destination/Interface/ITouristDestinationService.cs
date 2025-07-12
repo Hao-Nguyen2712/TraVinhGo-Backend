@@ -123,7 +123,7 @@ public interface ITouristDestinationService
     /// <returns></returns>
     Task<bool> PlusFavorite(string id, CancellationToken cancellationToken = default);
     Task<bool> MinusFavorite(string id, CancellationToken cancellationToken = default);
-
+    Task UpdateAverageRatingAsync(string destinationId, double newAverageRating, CancellationToken cancellationToken = default);
 
     // Overview Statistics for All Destinations
     Task<DestinationStatsOverview> GetDestinationStatsOverviewAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);

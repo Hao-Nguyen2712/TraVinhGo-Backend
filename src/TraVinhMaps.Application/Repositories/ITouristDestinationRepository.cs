@@ -13,6 +13,7 @@ public interface ITouristDestinationRepository : IBaseRepository<TouristDestinat
     Task<String> DeleteDestinationImage(string id, string imageUrl, CancellationToken cancellationToken = default);
     Task<String> AddDestinationHistoryStoryImage(string id, string imageUrl, CancellationToken cancellationToken = default);
     Task<String> DeleteDestinationHistoryStoryImage(string id, string imageUrl, CancellationToken cancellationToken = default);
+    Task UpdateAverageRatingAsync(string destinationId, double newAverageRating, CancellationToken cancellationToken = default);
     Task<Pagination<TouristDestination>> GetTouristDestination(TouristDestinationSpecParams touristDestinationSpecParams, CancellationToken cancellationToken = default);
     Task<bool> PlusFavorite(string id, CancellationToken cancellationToken = default);
     Task<bool> MinusFavorite(string id, CancellationToken cancellationToken = default);

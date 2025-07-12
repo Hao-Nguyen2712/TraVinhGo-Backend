@@ -218,4 +218,9 @@ public class TouristDestinationService : ITouristDestinationService
     {
         return await _repository.MinusFavorite(id, cancellationToken);
     }
+
+    public async Task UpdateAverageRatingAsync(string destinationId, double newAverageRating, CancellationToken cancellationToken = default)
+    {
+        await _repository.UpdateAverageRatingAsync(destinationId, newAverageRating, cancellationToken);
+    }
 }
