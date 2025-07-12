@@ -68,6 +68,25 @@ public class ReviewController : ControllerBase
     }
 
     [HttpGet]
+    [Route("FilterReviewsMobileAsync", Name = "FilterReviewsMobileAsync")]
+    public async Task<IActionResult> FilterReviewsMobileAsync(string? destinationId, int? rating, DateTime? startAt, DateTime? endAt)
+    {
+        try
+        {
+            var review = await _reviewService.FilterReviewsMobileAsync(destinationId, rating, startAt, endAt);
+            return this.ApiOk(review);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new
+            {
+                message = "Fail detail",
+                error = ex.ToString()
+            });
+        }
+    }
+
+    [HttpGet]
     [Route("CountReviews")]
     public async Task<IActionResult> CountReviews()
     {
@@ -92,7 +111,7 @@ public class ReviewController : ControllerBase
         {
             var imageFile = await _imageManagementReviewServices.AddImageReview(createReviewRequest.Images);
             if (imageFile == null) { throw new NotFoundException("No valid image uploaded."); }
-            var review = await _reviewService.AddAsync(createReviewRequest, imageFile);
+            var review = await _reviewService.AddMobileAsync(createReviewRequest, imageFile);
             await _hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", review.Id);
             await _hubContext.Clients.Group("super-admin").SendAsync("ReceiveFeedback", review.Id);
             return this.ApiOk(review);
@@ -129,7 +148,7 @@ public class ReviewController : ControllerBase
             if (review == null)
                 throw new NotFoundException("Review not found.");
 
-            var addedReply = await _reviewService.AddReply(replyRequest.Id, replyRequest);
+            var addedReply = await _reviewService.AddMobileReply(replyRequest.Id, replyRequest);
 
             await _hubContext.Clients.Group("admin").SendAsync("ReceiveReply", replyRequest.Id);
             await _hubContext.Clients.Group("super-admin").SendAsync("ReceiveReply", replyRequest.Id);

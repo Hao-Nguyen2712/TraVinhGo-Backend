@@ -917,4 +917,11 @@ public class TouristDestinationRepository : BaseRepository<TouristDestination>, 
 
         return result.ModifiedCount > 0;
     }
+
+    public async Task UpdateAverageRatingAsync(string destinationId, double newAverageRating, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<TouristDestination>.Filter.Eq(x => x.Id, destinationId);
+        var update = Builders<TouristDestination>.Update.Set(x => x.AvarageRating, newAverageRating);
+        await _collection.UpdateOneAsync(filter, update, cancellationToken: cancellationToken);
+    }
 }
