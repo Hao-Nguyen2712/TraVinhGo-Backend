@@ -13,7 +13,6 @@ using TraVinhMaps.Application.Features.OcopProduct.Mappers;
 using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Application.Features.OcopType.Interface;
 using TraVinhMaps.Domain.Entities;
-using static StackExchange.Redis.Role;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]
@@ -132,7 +131,7 @@ public class OcopProductController : ControllerBase
         if (imageFile == null) { throw new NotFoundException("No valid image uploaded."); }
 
         var createOcopProduct = OcopProductMapper.Mapper.Map<OcopProduct>(createOcopProductRequest);
-        
+
         createOcopProduct.Status = true;
         var ocopProducts = await _service.AddAsync(createOcopProduct);
         foreach (var item in imageFile)
@@ -424,7 +423,8 @@ public class OcopProductController : ControllerBase
             var analytics = await _service.GetTopProductsByInteractionsAsync(top, timeRange, startDate, endDate);
             if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
             return this.ApiOk(analytics);
-        }catch(Exception ex)
+        }
+        catch (Exception ex)
         {
             var errorDetails = new
             {

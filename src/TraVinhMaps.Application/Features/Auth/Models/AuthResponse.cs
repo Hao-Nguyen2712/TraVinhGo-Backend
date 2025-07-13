@@ -22,4 +22,6 @@ public class AuthResponse
     /// The refresh token.
     /// </value>
     public required string RefreshToken { get; set; }
+
+    public required string Role { get; set; }
 }
