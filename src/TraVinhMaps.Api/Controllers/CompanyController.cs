@@ -8,6 +8,7 @@ using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Company.Interface;
 using TraVinhMaps.Application.Features.Company.Mappers;
 using TraVinhMaps.Application.Features.Company.Models;
+using TraVinhMaps.Application.Features.OcopType.Models;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
@@ -47,6 +48,11 @@ public class CompanyController : ControllerBase
     [Route("AddCompany")]
     public async Task<IActionResult> AddCompany([FromBody] CreateCompanyRequest createCompanyRequest)
     {
+        var allCompany = await _companyService.ListAllAsync();
+        if (allCompany != null && allCompany.Any(c => c.Name == createCompanyRequest.Name))
+        {
+            return this.ApiError("Company already exists.");
+        }
         var createCompany = CompanyMapper.Mapper.Map<Company>(createCompanyRequest);
         var company = await _companyService.AddAsync(createCompany);
         return CreatedAtRoute("GetCompanyById", new { id = company.Id }, this.ApiOk(company));
@@ -59,6 +65,11 @@ public class CompanyController : ControllerBase
         if (existingCompany == null)
         {
             throw new NotFoundException("Company not found.");
+        }
+        var allCompany = await _companyService.ListAllAsync();
+        if (allCompany != null && allCompany.Any(c => c.Name == updateCompanyRequest.Name && c.Id != updateCompanyRequest.Id))
+        {
+            return this.ApiError("Company already exists.");
         }
 
         existingCompany.Name = updateCompanyRequest.Name;

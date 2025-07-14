@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
+using TraVinhMaps.Application.Features.Company.Models;
 using TraVinhMaps.Application.Features.Company.Interface;
 using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
@@ -108,6 +109,13 @@ public class OcopProductController : ControllerBase
         return this.ApiOk(listOcopProduct);
     }
     [HttpGet]
+    [Route("GetOcopProductByName")]
+    public async Task<IActionResult> GetOcopProductByName(string name)
+    {
+        var listOcopProduct = await _service.GetOcopProductByName(name);
+        return this.ApiOk(listOcopProduct);
+    }
+    [HttpGet]
     [Route("CountOcopProducts")]
     public async Task<IActionResult> CountOcopProducts()
     {
@@ -193,6 +201,11 @@ public class OcopProductController : ControllerBase
         {
             throw new NotFoundException("Ocop product not found.");
         }
+        var allOcopProduct = await _service.ListAllAsync();
+        if (allOcopProduct != null && allOcopProduct.Any(o => o.ProductName == updateOcopProductRequest.ProductName && o.Id != updateOcopProductRequest.Id))
+        {
+            return this.ApiError("Ocop product name already exists.");
+        }
 
         existingProduct.ProductName = updateOcopProductRequest.ProductName;
         existingProduct.ProductDescription = updateOcopProductRequest.ProductDescription;
@@ -243,6 +256,11 @@ public class OcopProductController : ControllerBase
         if (ocopProduct == null)
         {
             throw new NotFoundException("Ocop product not found.");
+        }
+        var exitingSellLocation = await _service.GetSellLocationByName(ocopProduct.Id, sellLocation.LocationName);
+        if (exitingSellLocation != null)
+        {
+            return this.ApiError("Sell location name already exists with this ocop product.");
         }
         var mapSellLocation = OcopProductMapper.Mapper.Map<SellLocation>(sellLocation);
         var maker = await _markerService.GetAsyns(p => p.Name == "Sell Location");

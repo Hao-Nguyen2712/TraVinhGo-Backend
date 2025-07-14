@@ -12,6 +12,7 @@ namespace TraVinhMaps.Application.Features.Company.Interface;
 public interface ICompanyService
 {
     Task<Domain.Entities.Company> GetByIdAsync(string id, CancellationToken cancellationToken = default);
+    Task<Domain.Entities.Company> GetCompanyByName(string name, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.Company>> ListAllAsync(CancellationToken cancellationToken = default);
     Task<Domain.Entities.Company> AddAsync(Domain.Entities.Company entity, CancellationToken cancellationToken = default);
     Task UpdateAsync(Domain.Entities.Company entity, CancellationToken cancellationToken = default);

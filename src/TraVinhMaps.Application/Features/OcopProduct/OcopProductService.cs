@@ -200,6 +200,10 @@ public class OcopProductService : IOcopProductService
 
     }
 
+    public Task<SellLocation> GetSellLocationByName(string id, string name, CancellationToken cancellationToken = default)
+    {
+        return _ocopProductRepository.GetSellLocationByName(id, name, cancellationToken);
+    }
     public async Task<IEnumerable<Domain.Entities.OcopProduct>> ListActiveAsync(CancellationToken cancellationToken = default)
     {
         var ocops = await _ocopProductRepository.ListAllAsync(cancellationToken);

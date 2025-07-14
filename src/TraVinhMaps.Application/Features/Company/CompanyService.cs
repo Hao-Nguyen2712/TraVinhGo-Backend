@@ -8,15 +8,18 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.Company.Interface;
+using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Application.UnitOfWorks;
 
 namespace TraVinhMaps.Application.Features.Company;
 public class CompanyService : ICompanyService
 {
     private readonly IBaseRepository<Domain.Entities.Company> _repository;
-    public CompanyService(IBaseRepository<Domain.Entities.Company> repository)
+    private readonly ICompanyRepository _companyRepository;
+    public CompanyService(IBaseRepository<Domain.Entities.Company> repository, ICompanyRepository companyRepository)
     {
         _repository = repository;
+        _companyRepository = companyRepository;
     }
 
     public Task<Domain.Entities.Company> AddAsync(Domain.Entities.Company entity, CancellationToken cancellationToken = default)
@@ -32,6 +35,11 @@ public class CompanyService : ICompanyService
     public Task<Domain.Entities.Company> GetByIdAsync(string id, CancellationToken cancellationToken = default)
     {
         return _repository.GetByIdAsync(id, cancellationToken);
+    }
+
+    public Task<Domain.Entities.Company> GetCompanyByName(string name, CancellationToken cancellationToken = default)
+    {
+        return _companyRepository.GetCompanyByName(name, cancellationToken);
     }
 
     public Task<IEnumerable<Domain.Entities.Company>> ListAllAsync(CancellationToken cancellationToken = default)

@@ -29,7 +29,7 @@ public class SellingLink : BaseEntity
     /// The link.
     /// </value>
     [BsonElement("link")]
-    public required string Link { get; set; }
+    public string Link { get; set; }
     /// <summary>
     /// Gets or sets the update at.
     /// </summary>
