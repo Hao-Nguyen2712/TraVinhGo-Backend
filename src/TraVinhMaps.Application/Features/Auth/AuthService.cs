@@ -251,13 +251,18 @@ public class AuthService : IAuthServices
         await _sessionRepository.AddAsync(session, cancellationToken);
         // Enforce session limit with 3 devices
         await EnforceSessionLimitAsync(userId, session, cancellationToken);
-        var roleName = await _roleRepository.GetAsyns(x => x.Id == userId, cancellationToken);
+        var curentUser = await _userRepository.GetByIdAsync(userId, cancellationToken);
+        if (curentUser == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        var currentRole = await _roleRepository.GetByIdAsync(curentUser.RoleId, cancellationToken);
         // Return response
         return new AuthResponse
         {
             SessionId = sessionID,
             RefreshToken = refreshToken,
-            Role = roleName.RoleName // Include role in the response
+            Role = currentRole.RoleName // Include role in the response
         };
     }
 
