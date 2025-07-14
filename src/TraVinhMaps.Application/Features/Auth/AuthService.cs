@@ -44,6 +44,20 @@ public class AuthService : IAuthServices
             throw new FormatException("Invalid phone number format. Must be a valid phone number.");
         }
 
+        var exits = await _userRepository.GetAsyns(x => x.PhoneNumber == phoneNumber, cancellationToken);
+        if (exits != null)
+        {
+            if (!exits.Status || exits.IsForbidden)
+            {
+                throw new BadRequestException("This account is locked");
+            }
+            var currentRole = await _roleRepository.GetByIdAsync(exits.RoleId, cancellationToken);
+            if (currentRole == null || (currentRole.RoleName != "user"))
+            {
+                throw new BadRequestException("this account not admin");
+            }
+        }
+
         var otp = GenarateOtpExtension.GenerateOtp();
 
         // send sms
@@ -76,6 +90,20 @@ public class AuthService : IAuthServices
 
     public async Task<string> AuthenWithEmail(string email, CancellationToken cancellationToken)
     {
+        var user = await _userRepository.GetAsyns(x => x.Email == email, cancellationToken);
+        if (user != null)
+        {
+            if (!user.Status || user.IsForbidden)
+            {
+                throw new BadRequestException("This account is locked");
+            }
+
+            var currentRole = _roleRepository.GetByIdAsync(user.RoleId, cancellationToken);
+            if (currentRole == null || (currentRole.Result.RoleName != "user"))
+            {
+                throw new BadRequestException("this account not admin");
+            }
+        }
         var otp = GenarateOtpExtension.GenerateOtp();
 
         // send otp via email
@@ -223,7 +251,7 @@ public class AuthService : IAuthServices
         await _sessionRepository.AddAsync(session, cancellationToken);
         // Enforce session limit with 3 devices
         await EnforceSessionLimitAsync(userId, session, cancellationToken);
-        var roleName = await _roleRepository.GetByIdAsync(session.UserId, cancellationToken);
+        var roleName = await _roleRepository.GetAsyns(x => x.Id == userId, cancellationToken);
         // Return response
         return new AuthResponse
         {
