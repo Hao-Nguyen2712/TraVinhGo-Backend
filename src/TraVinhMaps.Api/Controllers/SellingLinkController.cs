@@ -53,7 +53,7 @@ public class SellingLinkController : ControllerBase
     public async Task<IActionResult> AddSellingLink([FromBody] CreateSellingLinkRequest createSellingLinkRequest)
     {
         var exitingLink = await _service.GetSellingLinkByProductId(createSellingLinkRequest.ProductId);
-        if(exitingLink != null && exitingLink.Any(l => l.Link == createSellingLinkRequest.Link))
+        if(exitingLink != null && exitingLink.Any(l => l.Link == createSellingLinkRequest.Link && l.Title == createSellingLinkRequest.Title))
         {
             return this.ApiError("This link already exists with this ocop product.");
         }
@@ -69,6 +69,11 @@ public class SellingLinkController : ControllerBase
         if (existingSellingLink == null)
         {
             throw new NotFoundException("Selling link not found.");
+        }
+        var exitingLink = await _service.GetSellingLinkByProductId(updateSellingLinkRequest.ProductId);
+        if (exitingLink != null && exitingLink.Any(l => l.Link == updateSellingLinkRequest.Link && l.Title == updateSellingLinkRequest.Title))
+        {
+            return this.ApiError("This link already exists with this ocop product.");
         }
         existingSellingLink.ProductId = updateSellingLinkRequest.ProductId;
         existingSellingLink.Title = updateSellingLinkRequest.Title;

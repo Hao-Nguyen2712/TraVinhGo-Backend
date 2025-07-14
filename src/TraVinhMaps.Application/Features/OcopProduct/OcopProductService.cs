@@ -199,4 +199,9 @@ public class OcopProductService : IOcopProductService
         .Take(10);
 
     }
+
+    public Task<SellLocation> GetSellLocationByName(string id, string name, CancellationToken cancellationToken = default)
+    {
+        return _ocopProductRepository.GetSellLocationByName(id, name, cancellationToken);
+    }
 }

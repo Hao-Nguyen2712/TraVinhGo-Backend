@@ -4,11 +4,9 @@
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
-using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Application.Features.OcopType.Interface;
 using TraVinhMaps.Application.Features.OcopType.Mappers;
 using TraVinhMaps.Application.Features.OcopType.Models;
-using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Application.UnitOfWorks;
 using TraVinhMaps.Domain.Entities;
 
@@ -47,10 +45,10 @@ public class OcopTypeController : ControllerBase
     [Route("AddOcopType")]
     public async Task<IActionResult> AddOcopType([FromBody] CreateOcopTypeRequest createOcopTypeRequest)
     {
-        var exitingOcopType = await _typeService.GetOcopTypeByName(createOcopTypeRequest.OcopTypeName);
-        if (exitingOcopType != null)
+        var allOcopTypes = await _typeService.ListAllAsync();
+        if (allOcopTypes != null && allOcopTypes.Any(ot => ot.OcopTypeName == createOcopTypeRequest.OcopTypeName))
         {
-            return this.ApiError("Ocop type name already exists.");
+            return this.ApiError("Ocop type already exists.");
         }
         var createOcopType = OcopTypeMapper.Mapper.Map<OcopType>(createOcopTypeRequest);
         createOcopType.OcopTypeStatus = true;
@@ -66,7 +64,11 @@ public class OcopTypeController : ControllerBase
         {
             throw new NotFoundException("Ocop type not found.");
         }
-
+        var allOcopTypes = await _typeService.ListAllAsync();
+        if (allOcopTypes != null && allOcopTypes.Any(ot => ot.OcopTypeName == updateOcopTypeRequest.OcopTypeName && ot.Id != updateOcopTypeRequest.Id))
+        {
+            return this.ApiError("Ocop type already exists.");
+        }
         existingOcopType.OcopTypeName = updateOcopTypeRequest.OcopTypeName;
 
         if (updateOcopTypeRequest.UpdateAt.HasValue)

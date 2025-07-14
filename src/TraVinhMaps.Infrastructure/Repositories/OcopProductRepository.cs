@@ -621,4 +621,15 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
         var ocops = await _collection.Find(filter).ToListAsync(cancellationToken);
         return ocops;
     }
+
+    public async Task<SellLocation> GetSellLocationByName(string id, string name, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<OcopProduct>.Filter.Eq(o => o.Id, id);
+        var ocopProduct = await _collection.Find(filter).FirstOrDefaultAsync(cancellationToken);
+        if (ocopProduct == null) return null;
+        if (ocopProduct.Sellocations == null || !ocopProduct.Sellocations.Any())
+            return null;
+        var sellLocation = ocopProduct.Sellocations.FirstOrDefault(s => s.LocationName != null && s.LocationName.Equals(name, StringComparison.OrdinalIgnoreCase));
+        return sellLocation;
+    }
 }

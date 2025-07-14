@@ -104,6 +104,7 @@ public static class DependencyInjection
 
         //Company
         services.AddScoped<ICompanyService, CompanyService>();
+        services.AddScoped<ICompanyRepository, CompanyRepository>();
 
         //Review
         services.AddScoped<IReviewRepository, ReviewRepository>();
