@@ -190,6 +190,7 @@ public class UsersController : ControllerBase
     [FromQuery] bool includeLocalSpecialty = true,
     [FromQuery] bool includeTips = true,
     [FromQuery] bool includeFestivals = true,
+    [FromQuery] string timeRange = "month",
     [FromQuery] DateTime? startDate = null,
     [FromQuery] DateTime? endDate = null,
     CancellationToken cancellationToken = default)
@@ -203,6 +204,7 @@ public class UsersController : ControllerBase
                 includeLocalSpecialty,
                 includeTips,
                 includeFestivals,
+                timeRange,
                 startDate,
                 endDate,
                 cancellationToken);

@@ -15,4 +15,5 @@ public interface ITranslationService
     /// Translate <paramref name="text"/> from <paramref name="sourceLang"/> to <paramref name="targetLang"/>.
     /// </summary>
     Task<TranslationResult> TranslateAsync(string text, string sourceLang = "en", string targetLang = "vi", CancellationToken cancellationToken = default);
+    Task<Dictionary<string, string>> TranslateBatchAsync(IEnumerable<string> texts, string sourceLang, string targetLang, CancellationToken ct);
 }

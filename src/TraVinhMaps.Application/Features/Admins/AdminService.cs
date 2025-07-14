@@ -53,18 +53,13 @@ public class AdminService : IAdminService
         }
 
         //  Send email notification with the password
-        await _emailSender.SendEmailAsync(
-    admin.Email,
-    "Welcome to TraVinhMaps - Admin Account Created",
-    $"Hello {admin.Username ?? "Admin"},\n\n" +
-    $"Your administrator account has been created.\n" +
-    $"Email: {admin.Email}\n" +
-    $"Temporary Password: admin123@\n\n" +
-    $"\n\nPlease log in and change your password as soon as possible for security.\n\n" +
-    $"Thank you,\nTraVinhMaps Team"
-);
-        return admin;
-    }
+        await _emailSender.SendEmailPasswordAsync(
+        admin.Email,
+        "Welcome to TraVinhMaps - Admin Account Created",
+        $"{admin.Username}|{admin.Email}|admin123@"
+    );
+            return admin;
+        }
 
     public async Task<IEnumerable<User>> AddRangeAsync(IEnumerable<User> entities, CancellationToken cancellationToken = default)
     {
@@ -298,9 +293,4 @@ public class AdminService : IAdminService
         await _cacheService.SetData(CacheKey + newContextId, newOtp.Id);
         return newContextId;
     }
-
-    //public async Task<User> UpdateAsync(UpdateAdminRequest entity, CancellationToken cancellationToken = default)
-    //{
-    //    return await _adminRepository.UpdateAsync(entity, cancellationToken);
-    //}
 }

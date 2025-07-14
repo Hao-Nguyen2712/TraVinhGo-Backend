@@ -74,32 +74,4 @@ public class AdminsRepository : BaseRepository<User>, IAdminRepository
         return result.ModifiedCount > 0;
     }
 
-    //public async Task<User> UpdateAsync(UpdateAdminRequest entity, CancellationToken cancellationToken = default)
-    //{
-    //    var existingAdmin = await _collection.Find(x => x.Id == entity.Id).FirstOrDefaultAsync(cancellationToken);
-    //    if (existingAdmin == null)
-    //    {
-    //        throw new ArgumentException("Admin not found.");
-    //    }
-
-    //    // update info
-    //    var updateAdmin = AdminMapper.Mapper.Map<UpdateAdminRequest, User>(entity);
-    //    updateAdmin.Id = existingAdmin.Id;
-    //    updateAdmin.Email = existingAdmin.Email;
-    //    updateAdmin.RoleId = existingAdmin.RoleId;
-    //    updateAdmin.Status = existingAdmin.Status;
-    //    updateAdmin.IsForbidden = existingAdmin.IsForbidden;
-    //    updateAdmin.Password = string.IsNullOrEmpty(entity.Password)
-    //    ? existingAdmin.Password
-    //    : HashingTokenExtension.HashToken(entity.Password);
-
-    //    existingAdmin.CreatedAt = existingAdmin.CreatedAt;
-    //    existingAdmin.UpdatedAt = DateTime.UtcNow;
-
-    //    // ReplaceOne
-    //    var filter = Builders<User>.Filter.Eq(u => u.Id, existingAdmin.Id);
-    //    await _collection.ReplaceOneAsync(filter, updateAdmin, cancellationToken: cancellationToken);
-
-    //    return updateAdmin;
-    //}
 }
