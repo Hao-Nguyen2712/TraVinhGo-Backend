@@ -13,6 +13,7 @@ public interface IOcopProductService
 {
     Task<Domain.Entities.OcopProduct> GetByIdAsync(string id, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.OcopProduct>> ListAllAsync(CancellationToken cancellationToken = default);
+    Task<IEnumerable<Domain.Entities.OcopProduct>> ListActiveAsync(CancellationToken cancellationToken = default);
     Task<Domain.Entities.OcopProduct> AddAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
     Task UpdateAsync(Domain.Entities.OcopProduct entity, CancellationToken cancellationToken = default);
     Task<bool> DeleteOcopProductAsync(string id, CancellationToken cancellationToken = default);

@@ -17,9 +17,12 @@ public interface IReviewService
     Task<ReviewResponse> GetReviewByIdAsync(string id, CancellationToken cancellationToken = default);
     Task<IEnumerable<ReviewResponse>> GetLatestReviewsAsync(int count = 5, CancellationToken cancellationToken = default);
     Task<IEnumerable<ReviewResponse>> FilterReviewsAsync(string? destinationId, int? rating, DateTime? startAt, DateTime? endAt, CancellationToken cancellationToken = default);
+    Task<ReviewMobileListResponse> FilterReviewsMobileAsync(string? destinationId, int? rating, DateTime? startAt, DateTime? endAt, CancellationToken cancellationToken = default);
+    Task<ReviewMobileResponse> AddMobileAsync(CreateReviewRequest createReviewRequest, List<string> imageUrl, CancellationToken cancellationToken = default);
     Task<IEnumerable<ReviewResponse>> ListAllAsync(CancellationToken cancellationToken = default);
     Task<Domain.Entities.Review> AddAsync(CreateReviewRequest createReviewRequest, List<string> imageUrl, CancellationToken cancellationToken = default);
     Task<Domain.Entities.Reply> AddReply(string id, CreateReplyRequest createReplyRequest, CancellationToken cancellationToken = default);
+    Task<RelyResponse> AddMobileReply(string id, CreateReplyRequest createReplyRequest, CancellationToken cancellationToken = default);
     Task<String> AddImageReview(string id, string imageUrl, CancellationToken cancellationToken = default);
     Task DeleteAsync(Domain.Entities.Review entity, CancellationToken cancellationToken = default);
     Task<long> CountAsync(Expression<Func<Domain.Entities.Review, bool>> predicate = null, CancellationToken cancellationToken = default);
