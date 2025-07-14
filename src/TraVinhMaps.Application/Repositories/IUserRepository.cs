@@ -13,7 +13,7 @@ public interface IUserRepository : IBaseRepository<User>
     Task<User> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
     Task<Dictionary<string, object>> GetUserStatisticsAsync(string groupBy, string timeRange, CancellationToken cancellationToken = default);
     // chart performance
-    Task<Dictionary<string, Dictionary<string, int>>> GetPerformanceByTagAsync(IEnumerable<string>? tagNames, bool includeOcop, bool includeDestination, bool includeLocalSpecialty, bool includeTips, bool includeFestivals, DateTime? startDate, DateTime? endDate, CancellationToken cancellationToken = default);
+    Task<Dictionary<string, Dictionary<string, int>>> GetPerformanceByTagAsync(IEnumerable<string>? tagNames, bool includeOcop, bool includeDestination, bool includeLocalSpecialty, bool includeTips, bool includeFestivals, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
     Task<List<Favorite>> getFavoriteUserList(string id, CancellationToken cancellationToken = default);
     Task<bool> addItemToFavoriteList(string id, Favorite favorite, CancellationToken cancellationToken = default);
     Task<bool> removeItemToFavoriteList(string id, string itemId, CancellationToken cancellationToken = default);

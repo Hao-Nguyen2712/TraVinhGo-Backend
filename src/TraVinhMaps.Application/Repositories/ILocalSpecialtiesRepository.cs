@@ -15,5 +15,4 @@ public interface ILocalSpecialtiesRepository : IBaseRepository<LocalSpecialties>
     Task<LocalSpecialtyLocation> UpdateSellLocationAsync(string id, LocalSpecialtyLocation request, CancellationToken cancellationToken = default);
     Task<IEnumerable<LocalSpecialties>> GetDestinationsByIds(List<string> idList, CancellationToken cancellationToken = default);
 
-
 }

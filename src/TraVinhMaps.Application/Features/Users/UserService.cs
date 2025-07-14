@@ -226,7 +226,7 @@ public class UserService : IUserService
         };
     }
 
-    public async Task<Dictionary<string, Dictionary<string, int>>> GetPerformanceByTagAsync(IEnumerable<string>? tagNames, bool includeOcop, bool includeDestination, bool includeLocalSpecialty, bool includeTips, bool includeFestivals, DateTime? startDate, DateTime? endDate, CancellationToken cancellationToken = default)
+    public async Task<Dictionary<string, Dictionary<string, int>>> GetPerformanceByTagAsync(IEnumerable<string>? tagNames, bool includeOcop, bool includeDestination, bool includeLocalSpecialty, bool includeTips, bool includeFestivals, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
     {
         if (startDate.HasValue && endDate.HasValue)
         {
@@ -243,6 +243,7 @@ public class UserService : IUserService
             includeLocalSpecialty,
             includeTips,
             includeFestivals,
+            timeRange,
             startDate,
             endDate,
             cancellationToken

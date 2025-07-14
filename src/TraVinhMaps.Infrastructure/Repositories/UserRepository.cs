@@ -58,8 +58,9 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     bool includeLocalSpecialty,
     bool includeTips,
     bool includeFestivals,
-    DateTime? startDate,
-    DateTime? endDate,
+    string timeRange = "month",
+    DateTime? startDate = null,
+    DateTime? endDate = null,
     CancellationToken cancellationToken = default)
     {
         try
@@ -67,58 +68,45 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             startDate ??= DateTime.UtcNow.AddHours(7).AddDays(-30).Date;
             endDate ??= DateTime.UtcNow.AddHours(7).Date.AddDays(1);
 
-            // ────────────────────────────────────────────────────────
-            // 1. Retrieve the list of tags to analyze
-            // ────────────────────────────────────────────────────────
             var tagCol = _database.GetCollection<Tags>("Tags");
-
             var tagFilter = tagNames == null || !tagNames.Any()
                 ? FilterDefinition<Tags>.Empty
                 : Builders<Tags>.Filter.In(t => t.Name, tagNames);
-
             var tagDocs = await tagCol.Find(tagFilter).ToListAsync(cancellationToken);
 
-            // Convenient mapping: tagId → tagName
             var tagIdToName = tagDocs.ToDictionary(
                 t => ObjectId.Parse(t.Id),
                 t => t.Name);
 
-            // If no tags found, still continue using the provided tagNames
             if (!tagDocs.Any() && tagNames != null && tagNames.Any())
             {
-                tagIdToName = tagNames.ToDictionary(
-                    t => ObjectId.GenerateNewId(),
-                    t => t);
-                _logger.LogWarning("⚠ No tags found in the database, using provided tagNames.");
+                tagIdToName = tagNames.ToDictionary(t => ObjectId.GenerateNewId(), t => t);
+                _logger.LogWarning("No tags found in the database, using provided tagNames.");
             }
             else if (!tagDocs.Any())
             {
-                _logger.LogWarning("⚠ No tags found, returning empty result.");
+                _logger.LogWarning("No tags found, returning empty result.");
                 return new Dictionary<string, Dictionary<string, int>>();
             }
 
             _logger.LogDebug("⮞ Processing {Count} tag(s)", tagIdToName.Count);
 
-            // ────────────────────────────────────────────────────────
-            // 2. Retrieve itemId from each collection for all tags
-            // ────────────────────────────────────────────────────────
             var config = new[]
             {
-                (IsIncluded: includeOcop,           Collection: "OcopProduct",         ItemType: "OcopProduct"),
-                (IsIncluded: includeDestination,    Collection: "TouristDestination",  ItemType: "Destination"),
-                (IsIncluded: includeLocalSpecialty, Collection: "LocalSpecialties",    ItemType: "LocalSpecialties"),
-                (IsIncluded: includeTips,           Collection: "Tips",                ItemType: "TipTravel"),
-                (IsIncluded: includeFestivals,      Collection: "EventAndFestival",    ItemType: "Festivals")
-            };
+            (includeOcop, "OcopProduct"),
+            (includeDestination, "TouristDestination"),
+            (includeLocalSpecialty, "LocalSpecialties"),
+            (includeTips, "Tips"),
+            (includeFestivals, "EventAndFestival")
+        };
 
-            var itemMap = new Dictionary<ObjectId, string>(); // itemId → tagName
+            var itemMap = new Dictionary<ObjectId, string>();
 
-            foreach (var (isOn, colName, _) in config)
+            foreach (var (isOn, colName) in config)
             {
                 if (!isOn) continue;
 
                 var col = _database.GetCollection<BsonDocument>(colName);
-
                 var tagIdArray = new BsonArray(tagIdToName.Keys.Select(id => (BsonValue)id));
                 var tagIdStrArray = new BsonArray(tagIdToName.Keys.Select(id => (BsonValue)id.ToString()));
 
@@ -129,16 +117,13 @@ public class UserRepository : BaseRepository<User>, IUserRepository
                     Builders<BsonDocument>.Filter.AnyIn("tags", tagIdStrArray)
                 );
 
-                var ids = await col.Find(filter)
-                                   .Project(Builders<BsonDocument>.Projection
-                                       .Include("_id")
-                                       .Include("tagId")
-                                       .Include("tags"))
-                                   .ToListAsync(cancellationToken);
+                var logDocs = await col.Find(filter)
+                    .Project(Builders<BsonDocument>.Projection.Include("_id").Include("tagId").Include("tags"))
+                    .ToListAsync(cancellationToken);
 
-                _logger.LogDebug("▶ {Collection}: {Count} items matched", colName, ids.Count);
+                _logger.LogDebug("▶ {Collection}: {Count} items matched", colName, logDocs.Count);
 
-                foreach (var doc in ids)
+                foreach (var doc in logDocs)
                 {
                     var itemId = doc["_id"].AsObjectId;
                     ObjectId? matchedTagId = null;
@@ -175,60 +160,98 @@ public class UserRepository : BaseRepository<User>, IUserRepository
                 }
             }
 
-            // ─────────────────────────────────────
-            // 3. Retrieve InteractionLogs
-            // ─────────────────────────────────────
             var logs = _database.GetCollection<BsonDocument>("InteractionLogs");
 
             var match = new BsonDocument("$match", new BsonDocument
-            {
+        {
             { "itemId", new BsonDocument("$in", new BsonArray(itemMap.Keys)) },
             { "createdAt", new BsonDocument {
                 { "$gte", new BsonDateTime(startDate.Value) },
                 { "$lte", new BsonDateTime(endDate.Value) }
-                }}
-            });
+            }}
+        });
+
+            string format = timeRange.ToLower() switch
+            {
+                "week" => "%G-%V",
+                "month" => "%Y-%m",
+                "year" => "%Y",
+                _ => "%Y-%m-%d"
+            };
 
             var project = new BsonDocument("$project", new BsonDocument
-            {
-                { "itemId", 1 },
-                { "dayOfWeek", new BsonDocument("$dayOfWeek", "$createdAt") }
-            });
+        {
+            { "itemId", 1 },
+            { "period", new BsonDocument("$dateToString", new BsonDocument
+                {
+                    { "format", format },
+                    { "date", "$createdAt" },
+                    { "timezone", "Asia/Ho_Chi_Minh" }
+                })
+            }
+        });
 
             var docs = await logs.Aggregate<BsonDocument>(new[] { match, project }).ToListAsync(cancellationToken);
 
             _logger.LogDebug("⮞ InteractionLogs matched: {Count}", docs.Count);
 
-            // ─────────────────────────────────────
-            // 4. Aggregate results in C#
-            // ─────────────────────────────────────
-            var dayMap = new[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
             var result = new Dictionary<string, Dictionary<string, int>>();
 
             foreach (var doc in docs)
             {
                 var itemId = doc["itemId"].AsObjectId;
-                var day = dayMap[(doc["dayOfWeek"].AsInt32 + 6) % 7];
+                var period = doc["period"].AsString;
 
                 if (!itemMap.TryGetValue(itemId, out var tagName)) continue;
 
                 if (!result.ContainsKey(tagName)) result[tagName] = new();
-                if (!result[tagName].ContainsKey(day)) result[tagName][day] = 0;
+                if (!result[tagName].ContainsKey(period)) result[tagName][period] = 0;
 
-                result[tagName][day] += 1;
+                result[tagName][period] += 1;
             }
 
-            // ─────────────────────────────────────
-            // 5. Fill in zero values for all tags and days
-            // ─────────────────────────────────────
             var targetTags = tagNames != null && tagNames.Any() ? tagNames : tagIdToName.Values;
+
+            var tz = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+            var localStart = TimeZoneInfo.ConvertTimeFromUtc(startDate.Value, tz);
+            var localEnd = TimeZoneInfo.ConvertTimeFromUtc(endDate.Value, tz);
+
+            var expectedPeriods = new List<string>();
+
+            switch (timeRange.ToLower())
+            {
+                case "week":
+                    for (var dt = localStart.Date; dt <= localEnd.Date; dt = dt.AddDays(7))
+                    {
+                        var isoWeek = System.Globalization.ISOWeek.GetWeekOfYear(dt);
+                        var year = System.Globalization.ISOWeek.GetYear(dt);
+                        expectedPeriods.Add($"{year}-{isoWeek:D2}");
+                    }
+                    break;
+                case "month":
+                    for (var dt = new DateTime(localStart.Year, localStart.Month, 1); dt <= localEnd; dt = dt.AddMonths(1))
+                    {
+                        expectedPeriods.Add(dt.ToString("yyyy-MM"));
+                    }
+                    break;
+                case "year":
+                    for (var y = localStart.Year; y <= localEnd.Year; y++)
+                    {
+                        expectedPeriods.Add(y.ToString());
+                    }
+                    break;
+                case "day":
+                default:
+                    expectedPeriods.Add(localStart.ToString("yyyy-MM-dd"));
+                    break;
+            }
 
             foreach (var tag in targetTags)
             {
                 if (!result.ContainsKey(tag)) result[tag] = new();
-                foreach (var d in dayMap)
+                foreach (var period in expectedPeriods)
                 {
-                    if (!result[tag].ContainsKey(d)) result[tag][d] = 0;
+                    if (!result[tag].ContainsKey(period)) result[tag][period] = 0;
                 }
             }
 
@@ -241,6 +264,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             throw;
         }
     }
+
     public async Task<List<Favorite>> getFavoriteUserList(string id, CancellationToken cancellationToken = default)
     {
         var filter = Builders<User>.Filter.Eq(u => u.Id, id);
@@ -268,7 +292,6 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             var ageGroups = new[] { 0, 18, 30, 50, 120 };
             var ageLabels = new[] { "0-18", "18-30", "30-50", "50+" };
 
-            // Calculate startDate and endDate (corrected)
             DateTime startDate, endDate;
             switch (timeRange.ToLower())
             {
@@ -299,16 +322,11 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             _logger.LogInformation("Time range {TimeRange}: startDate={StartDate} (+07), endDate={EndDate} (+07), startDateUtc={StartDateUtc}, endDateUtc={EndDateUtc}",
                 timeRange, startDate, endDate, startDateUtc, endDateUtc);
 
-            // Only apply timeFilter to time & status
-            var timeFilter = new BsonDocument("$match", new BsonDocument
-            {
-                { "createdAt", new BsonDocument
-                    {
-                        { "$gte", new BsonDateTime(startDateUtc) },
-                        { "$lt", new BsonDateTime(endDateUtc) }
-                    }
-                }
-            });
+            var createdAtFilter = new BsonDocument("createdAt", new BsonDocument
+        {
+            { "$gte", new BsonDateTime(startDateUtc) },
+            { "$lt", new BsonDateTime(endDateUtc) }
+        });
 
             // ==== 1. AGE ====
             if (groupBy.ToLower() is "all" or "age")
@@ -351,6 +369,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
                         { "$gte", new BsonDateTime(startDob) },
                         { "$lte", new BsonDateTime(endDob) }
                     })),
+                    new BsonDocument("$match", createdAtFilter),
                     new BsonDocument("$count", "count")
                 };
 
@@ -375,7 +394,10 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             {
                 var pipeline = new List<BsonDocument>
             {
-                new BsonDocument("$match", new BsonDocument("profile.address", new BsonDocument("$exists", true))),
+                new BsonDocument("$match", new BsonDocument {
+                    { "profile.address", new BsonDocument("$exists", true) },
+                    { "createdAt", createdAtFilter["createdAt"] }
+                }),
                 new BsonDocument("$addFields", new BsonDocument
                 {
                     { "province", new BsonDocument("$arrayElemAt", new BsonArray
@@ -410,7 +432,10 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             {
                 var pipeline = new List<BsonDocument>
             {
-                new BsonDocument("$match", new BsonDocument("profile.gender", new BsonDocument("$exists", true))),
+                new BsonDocument("$match", new BsonDocument {
+                    { "profile.gender", new BsonDocument("$exists", true) },
+                    { "createdAt", createdAtFilter["createdAt"] }
+                }),
                 new BsonDocument("$group", new BsonDocument
                 {
                     { "_id", "$profile.gender" },
@@ -426,13 +451,13 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             if (groupBy.ToLower() is "all" or "status")
             {
                 var activeCount = await _collection.CountDocumentsAsync(
-                    Builders<User>.Filter.Where(u => u.Status && !u.IsForbidden && u.CreatedAt >= startDateUtc && u.CreatedAt <= endDateUtc),
+                    Builders<User>.Filter.Where(u => u.Status && !u.IsForbidden && u.CreatedAt >= startDateUtc && u.CreatedAt < endDateUtc),
                     cancellationToken: cancellationToken);
                 var inactiveCount = await _collection.CountDocumentsAsync(
-                    Builders<User>.Filter.Where(u => !u.Status && !u.IsForbidden && u.CreatedAt >= startDateUtc && u.CreatedAt <= endDateUtc),
+                    Builders<User>.Filter.Where(u => !u.Status && !u.IsForbidden && u.CreatedAt >= startDateUtc && u.CreatedAt < endDateUtc),
                     cancellationToken: cancellationToken);
                 var forbiddenCount = await _collection.CountDocumentsAsync(
-                    Builders<User>.Filter.Where(u => u.IsForbidden && u.UpdatedAt >= startDateUtc && u.UpdatedAt <= endDateUtc),
+                    Builders<User>.Filter.Where(u => u.IsForbidden && u.UpdatedAt >= startDateUtc && u.UpdatedAt < endDateUtc),
                     cancellationToken: cancellationToken);
 
                 result["status"] = new Dictionary<string, int>
@@ -456,7 +481,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
 
                 var pipeline = new List<BsonDocument>
             {
-                timeFilter,
+                new BsonDocument("$match", createdAtFilter),
                 new BsonDocument("$group", new BsonDocument
                 {
                     { "_id", new BsonDocument("$dateToString", new BsonDocument
