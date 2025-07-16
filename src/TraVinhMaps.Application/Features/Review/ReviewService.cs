@@ -379,8 +379,9 @@ public class ReviewService : IReviewService
         var addedReview = await _baseRepository.AddAsync(review, cancellationToken);
 
         var reviews = await _reviewRepository.FilterReviewsAsync(addedReview.DestinationId, null, null, null, cancellationToken);
-        var average = reviews.Average(r => r.Rating);
-        await _touristDestinationService.UpdateAverageRatingAsync(addedReview.DestinationId, average);
+        var rawAverage = reviews.Average(r => r.Rating);
+        var roundedAverage = Math.Round(rawAverage, 1);
+        await _touristDestinationService.UpdateAverageRatingAsync(addedReview.DestinationId, roundedAverage);
 
         // Lấy thông tin người dùng
         var user = await _userService.GetByIdAsync(userId);
