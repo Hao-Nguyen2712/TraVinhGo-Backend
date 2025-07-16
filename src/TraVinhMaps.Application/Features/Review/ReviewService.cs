@@ -31,17 +31,15 @@ public class ReviewService : IReviewService
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IUserService _userService;
     private readonly IReviewRepository _reviewRepository;
-    private readonly IDestinationTypeRepository _destinationTypeRepository;
     private readonly ITouristDestinationService _touristDestinationService;
 
-    public ReviewService(IBaseRepository<Domain.Entities.Review> baseRepository, ImageManagementReviewServices imageManagementReviewServices, IHttpContextAccessor httpContextAccessor, IUserService userService, IReviewRepository reviewRepository, IDestinationTypeRepository destinationTypeRepository, ITouristDestinationService touristDestinationService)
+    public ReviewService(IBaseRepository<Domain.Entities.Review> baseRepository, ImageManagementReviewServices imageManagementReviewServices, IHttpContextAccessor httpContextAccessor, IUserService userService, IReviewRepository reviewRepository, ITouristDestinationService touristDestinationService)
     {
         _baseRepository = baseRepository;
         _imageManagementReviewServices = imageManagementReviewServices;
         _httpContextAccessor = httpContextAccessor;
         _userService = userService;
         _reviewRepository = reviewRepository;
-        _destinationTypeRepository = destinationTypeRepository;
         _touristDestinationService = touristDestinationService;
     }
 
@@ -123,7 +121,7 @@ public class ReviewService : IReviewService
         foreach (var reviewResponse in reviews)
         {
             var user = await _userService.GetByIdAsync(reviewResponse.UserId);
-            var destination = await _destinationTypeRepository.GetByIdAsync(reviewResponse.DestinationId);
+            var destination = await _touristDestinationService.GetByIdAsync(reviewResponse.DestinationId);
 
             var response = new ReviewResponse
             {
@@ -158,7 +156,7 @@ public class ReviewService : IReviewService
         foreach (var reviewResponse in review)
         {
             var user = await _userService.GetByIdAsync(reviewResponse.UserId);
-            var destination = await _destinationTypeRepository.GetByIdAsync(reviewResponse.DestinationId);
+            var destination = await _touristDestinationService.GetByIdAsync(reviewResponse.DestinationId);
 
             var response = new ReviewResponse
             {
@@ -188,7 +186,7 @@ public class ReviewService : IReviewService
     {
         var review = await _reviewRepository.GetReviewByIdAsync(id);
         var user = await _userService.GetByIdAsync(review.UserId);
-        var destination = await _destinationTypeRepository.GetByIdAsync(review.DestinationId);
+        var destination = await _touristDestinationService.GetByIdAsync(review.DestinationId);
 
         var response = new ReviewResponse
         {
@@ -221,7 +219,7 @@ public class ReviewService : IReviewService
         foreach (var reviewResponse in reviews)
         {
             var user = await _userService.GetByIdAsync(reviewResponse.UserId);
-            var destination = await _destinationTypeRepository.GetByIdAsync(reviewResponse.DestinationId);
+            var destination = await _touristDestinationService.GetByIdAsync(reviewResponse.DestinationId);
 
             var response = new ReviewResponse
             {
@@ -461,5 +459,20 @@ public class ReviewService : IReviewService
             UserName = userFullName,
             Avatar = userAvatar
         };
+    }
+
+    public Task<long> GetTotalUsersReviewedAsync(CancellationToken cancellationToken = default)
+    {
+        return _reviewRepository.GetTotalUsersReviewedAsync(cancellationToken);
+    }
+
+    public Task<long> GetTotalFiveStarReviewsAsync(CancellationToken cancellationToken = default)
+    {
+        return _reviewRepository.GetTotalFiveStarReviewsAsync(cancellationToken);
+    }
+
+    public Task<(string UserId, long ReviewCount)> GetTopReviewerAsync(CancellationToken cancellationToken = default)
+    {
+        return _reviewRepository.GetTopReviewerAsync(cancellationToken);
     }
 }

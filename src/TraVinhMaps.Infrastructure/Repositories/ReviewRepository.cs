@@ -15,11 +15,17 @@ using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Infrastructure.CustomRepositories;
 using TraVinhMaps.Infrastructure.Db;
 using static System.Net.Mime.MediaTypeNames;
+using MongoDB.Bson;
 
 namespace TraVinhMaps.Infrastructure.Repositories;
 public class ReviewRepository : BaseRepository<Review>, IReviewRepository
 {
-    public ReviewRepository(IDbContext dbContext) : base(dbContext) { }
+    private readonly IMongoCollection<User> _userCollection;
+    public ReviewRepository(IDbContext dbContext) : base(dbContext)
+    {
+
+        _userCollection = dbContext.GetCollection<User>();
+    }
     public async Task<IEnumerable<ReviewResponse>> FilterReviewsAsync(string? destinationId, int? rating, DateTime? startAt, DateTime? endAt, CancellationToken cancellationToken = default)
     {
         var filters = new List<FilterDefinition<Review>>();
@@ -137,4 +143,74 @@ public class ReviewRepository : BaseRepository<Review>, IReviewRepository
         });
         return responses;
     }
+
+    public async Task<long> GetTotalUsersReviewedAsync(CancellationToken cancellationToken = default)
+    {
+        var totalUser = await _collection.Distinct<string>(
+            nameof(Review.UserId),
+            Builders<Review>.Filter.Empty,
+            options: null,
+            cancellationToken
+        ).ToListAsync(cancellationToken);
+        return totalUser.LongCount();
+    }
+
+    public async Task<long> GetTotalFiveStarReviewsAsync(CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<Review>.Filter.Eq(r => r.Rating, 5);
+        var count = await _collection.CountDocumentsAsync(filter, cancellationToken: cancellationToken);
+        return count;
+    }
+
+    public async Task<(string UserId, long ReviewCount)> GetTopReviewerAsync(CancellationToken cancellationToken = default)
+    {
+        var currentDate = DateTime.UtcNow;
+        var year = currentDate.Year;
+        var month = currentDate.Month;
+
+        Console.WriteLine($"Debug: Target Year: {year}, Month: {month}");
+
+        var matchExpr = new BsonDocument
+    {
+        {
+            "$expr", new BsonDocument("$and", new BsonArray
+            {
+                new BsonDocument("$eq", new BsonArray { new BsonDocument("$year", "$createdAt"), year }),
+                new BsonDocument("$eq", new BsonArray { new BsonDocument("$month", "$createdAt"), month })
+            })
+        }
+    };
+
+        var pipeline = new[]
+        {
+        new BsonDocument("$match", matchExpr),
+        new BsonDocument("$group", new BsonDocument
+        {
+            { "_id", "$userId" },
+            { "count", new BsonDocument("$sum", 1) }
+        }),
+        new BsonDocument("$sort", new BsonDocument("count", -1)),
+        new BsonDocument("$limit", 1)
+    };
+
+        var results = await _collection.Aggregate<BsonDocument>(pipeline).ToListAsync(cancellationToken);
+        var result = results.FirstOrDefault();
+
+        if (result == null)
+        {
+            Console.WriteLine("Debug: No results found.");
+            return (null, 0);
+        }
+
+        var userId = result["_id"].AsObjectId.ToString();
+        var reviewCount = result["count"].ToInt64();
+        var userFilter = Builders<User>.Filter.Eq(u => u.Id, userId);
+        var userDoc = await _userCollection.Find(userFilter).FirstOrDefaultAsync(cancellationToken);
+
+        string userName = userDoc?.Username ?? "Unknown";
+
+        return (userName, reviewCount);
+    }
+
+
 }
