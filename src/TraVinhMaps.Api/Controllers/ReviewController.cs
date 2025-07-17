@@ -94,6 +94,34 @@ public class ReviewController : ControllerBase
         return this.ApiOk(countReviews);
     }
     [HttpGet]
+    [Route("GetTotalUsersReviewedAsync")]
+    public async Task<IActionResult> GetTotalUsersReviewedAsync()
+    {
+        var countReviews = await _reviewService.GetTotalUsersReviewedAsync();
+        return this.ApiOk(countReviews);
+    }
+    [HttpGet]
+    [Route("GetTotalFiveStarReviewsAsync")]
+    public async Task<IActionResult> GetTotalFiveStarReviewsAsync()
+    {
+        var countReviews = await _reviewService.GetTotalFiveStarReviewsAsync();
+        return this.ApiOk(countReviews);
+    }
+    [HttpGet("GetTopReviewerAsync")]
+    public async Task<IActionResult> GetTopReviewerAsync(CancellationToken cancellationToken = default)
+    {
+        (string username, long reviewCount) = await _reviewService.GetTopReviewerAsync(cancellationToken);
+
+        if (username == null)
+            return NotFound("No reviews found for the current month.");
+
+        return Ok(new
+        {
+            UserName = username,
+            ReviewCount = reviewCount
+        });
+    }
+    [HttpGet]
     [Route("GetLatestReviews")]
     public async Task<IActionResult> GetLatestReviews()
     {
