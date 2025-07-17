@@ -207,11 +207,11 @@ public class EmailSender : IEmailSender
                     <p><strong>Email:</strong> {email}</p>
                     <p><strong>Temporary Password:</strong></p>
                     <div class='password-box'>{tempPassword}</div>
-                    <p>For your security, please log in and change your password immediately.</p>
-                    <p>Thank you,<br/>TraVinhMaps Team</p>
+                    <p><strong>Note: ⚠️ For your security, please log in and change your password immediately.⚠️</strong></p>
+                    <p>Thank you,<br/>TraVinhGo Team</p>
                 </div>
                 <div class='footer'>
-                    &copy; {DateTime.Now.Year} TraVinhMaps. All rights reserved.
+                    &copy; {DateTime.Now.Year} TraVinhGo. All rights reserved.
                 </div>
             </div>
         </body>
