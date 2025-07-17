@@ -136,8 +136,8 @@ public class OcopProductService : IOcopProductService
 
         var analytics = await _ocopProductRepository.GetProductAnalyticsAsync(timeRange, startDate, endDate, cancellationToken);
         // Chỉ trả về sản phẩm có ít nhất một chỉ số > 0
-        //return analytics.Where(a => a.ViewCount > 0 || a.InteractionCount > 0 || a.WishlistCount > 0);
-        return analytics.ToList();
+        return analytics.Where(a => a.ViewCount > 0 || a.InteractionCount > 0 || a.FavoriteCount > 0);
+        //return analytics.ToList();
     }
 
     public async Task<IEnumerable<OcopProductUserDemographics>> GetUserDemographicsAsync(string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)
