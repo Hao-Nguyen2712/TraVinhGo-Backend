@@ -100,7 +100,12 @@ public class TouristDestinationService : ITouristDestinationService
                 throw new ArgumentException("Start date cannot be in the future.");
         }
 
-        return await _repository.GetDestinationStatsOverviewAsync(timeRange, startDate, endDate, cancellationToken);
+        var analytics = await _repository.GetDestinationStatsOverviewAsync(timeRange, startDate, endDate, cancellationToken);
+        // Return only those with non-zero counts
+        analytics.DestinationDetails = analytics.DestinationDetails
+            .Where(d => d.ViewCount > 0 || d.FavoriteCount > 0 || d.InteractionCount > 0)
+            .ToList();
+        return analytics;
     }
 
     public async Task<IEnumerable<DestinationAnalytics>> GetTopDestinationsByFavoritesAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default)

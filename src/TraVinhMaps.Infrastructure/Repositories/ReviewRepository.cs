@@ -212,5 +212,11 @@ public class ReviewRepository : BaseRepository<Review>, IReviewRepository
         return (userName, reviewCount);
     }
 
+    public async Task<IEnumerable<Review>> GetListReviewByUserId(string id, CancellationToken cancellationToken = default)
+    {
+        var filter = Builders<Review>.Filter.Eq(r => r.UserId, id);
+        var reviews = await _collection.Find(filter).ToListAsync();
+        return reviews;
+    }
 
 }

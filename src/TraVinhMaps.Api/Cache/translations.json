@@ -35,28 +35,34 @@
   "vi:phản hồi": {
     "en": "Feedback"
   },
+  "en:duong tan dat": {
+    "vi": "Dương Tấn Đạt"
+  },
+  "vi:dương tấn đạt": {
+    "en": "Duong Tan Dat"
+  },
   "en:registered": {
     "vi": "Đã đăng ký"
   },
   "vi:đã đăng ký": {
     "en": "Registered"
   },
-  "en:6 days ago": {
-    "vi": "6 ngày trước"
+  "en:9 days ago": {
+    "vi": "9 ngày trước"
   },
-  "vi:6 ngày trước": {
-    "en": "6 days ago"
+  "vi:9 ngày trước": {
+    "en": "9 days ago"
   },
-  "en:27 days ago": {
-    "vi": "27 ngày trước"
+  "en:30 days ago": {
+    "vi": "30 ngày trước"
   },
-  "vi:27 ngày trước": {
-    "en": "27 days ago"
+  "vi:30 ngày trước": {
+    "en": "30 days ago"
   },
   "en:check all": {
-    "vi": "Chọn tất cả"
+    "vi": "Kiểm tra tất cả"
   },
-  "vi:chọn tất cả": {
+  "vi:kiểm tra tất cả": {
     "en": "Check all"
   },
   "en:vietnamese": {
@@ -81,7 +87,7 @@
     "vi": "Cài đặt"
   },
   "vi:cài đặt": {
-    "en": "Setting"
+    "en": "Settings"
   },
   "en:log                                             out": {
     "vi": "Đăng xuất"
@@ -93,13 +99,13 @@
     "vi": "Quay lại"
   },
   "vi:quay lại": {
-    "en": "Back"
+    "en": "\">Back"
   },
   "en:dashboards": {
     "vi": "Bảng điều khiển"
   },
   "vi:bảng điều khiển": {
-    "en": "Dashboard"
+    "en": "Dashboards"
   },
   "en:account management": {
     "vi": "Quản lý tài khoản"
@@ -120,13 +126,13 @@
     "en": "Destinations"
   },
   "en:ocop product": {
-    "vi": "Sản phẩm Ocop"
+    "vi": "Sản phẩm OCOP"
   },
   "vi:sản phẩm ocop": {
     "en": "Ocop Product"
   },
   "en:ocop type": {
-    "vi": "Loại Ocop"
+    "vi": "Loại OCOP"
   },
   "vi:loại ocop": {
     "en": "Ocop Type"
@@ -156,27 +162,27 @@
     "en": "Event And Festival"
   },
   "en:tips managment": {
-    "vi": "Quản lý mẹo"
+    "vi": "Quản lý Mẹo"
   },
   "vi:quản lý mẹo": {
     "en": "Tips Management"
   },
   "en:send notifications": {
-    "vi": "Gửi thông báo"
+    "vi": "Gửi Thông báo"
   },
   "vi:gửi thông báo": {
-    "en": "Send Notifications"
+    "en": "Send Notification"
   },
   "en:marker managment": {
-    "vi": "Quản lý đánh dấu"
+    "vi": "Quản lý Điểm đánh dấu"
   },
-  "vi:quản lý đánh dấu": {
+  "vi:quản lý điểm đánh dấu": {
     "en": "Marker Managment"
   },
   "en:itineraries": {
-    "vi": "Lịch trình"
+    "vi": "Hành trình"
   },
-  "vi:lịch trình": {
+  "vi:hành trình": {
     "en": "Itineraries"
   },
   "en:analytics": {
@@ -186,7 +192,10 @@
     "en": "Analytics"
   },
   "en:dashboard": {
-    "vi": "Bảng điều khiển"
+    "vi": "Trang tổng quan"
+  },
+  "vi:trang tổng quan": {
+    "en": "Dashboard"
   },
   "en:default": {
     "vi": "Mặc định"
@@ -201,9 +210,9 @@
     "en": "Total Users"
   },
   "en:active users": {
-    "vi": "Người dùng hoạt động"
+    "vi": "Người dùng đang hoạt động"
   },
-  "vi:người dùng hoạt động": {
+  "vi:người dùng đang hoạt động": {
     "en": "Active Users"
   },
   "en:total reviews": {
@@ -225,7 +234,7 @@
     "en": "Upcoming"
   },
   "en:performance by tag": {
-    "vi": "Hiệu suất theo thẻ"
+    "vi": "Hiệu suất theo Thẻ"
   },
   "vi:hiệu suất theo thẻ": {
     "en": "Performance by Tag"
@@ -243,7 +252,7 @@
     "vi": "Lễ hội"
   },
   "vi:lễ hội": {
-    "en": "Festivals"
+    "en": "Festival"
   },
   "en:all": {
     "vi": "Tất cả"
@@ -276,9 +285,9 @@
     "en": "Last Month"
   },
   "en:last year": {
-    "vi": "Năm trước"
+    "vi": "Năm ngoái"
   },
-  "vi:năm trước": {
+  "vi:năm ngoái": {
     "en": "Last Year"
   },
   "en:download                                 chart": {
@@ -287,53 +296,65 @@
   "vi:tải biểu đồ": {
     "en": "Download Chart"
   },
-  "en:no data available": {
-    "vi": "Không có dữ liệu"
+  "en:no user data                                 available": {
+    "vi": "Không có dữ liệu người dùng"
   },
-  "vi:không có dữ liệu": {
-    "en": "No data                                                 available"
+  "vi:không có dữ liệu người dùng": {
+    "en": "No user                                                 data                                                 available"
   },
-  "en:user creation over time": {
-    "vi": "Lịch sử tạo người dùng"
+  "en:new users over time": {
+    "vi": "Người dùng mới theo thời gian"
   },
-  "vi:lịch sử tạo người dùng": {
-    "en": "User Creation Over Time"
+  "vi:người dùng mới theo thời gian": {
+    "en": "New Users Over Time"
   },
-  "en:user statistics overview": {
-    "vi": "Tổng quan thống kê người dùng"
+  "en:no user data available": {
+    "vi": "Không có dữ liệu người dùng"
   },
-  "vi:tổng quan thống kê người dùng": {
-    "en": "User Statistics Overview"
+  "en:user demographics overview": {
+    "vi": "Tổng quan nhân khẩu học người dùng"
   },
-  "en:age distribution": {
-    "vi": "Phân bố độ tuổi"
+  "vi:tổng quan nhân khẩu học người dùng": {
+    "en": "User Demographics Overview"
   },
-  "vi:phân bố độ tuổi": {
-    "en": "Age Distribution"
+  "en:user age distribution": {
+    "vi": "Phân bố tuổi người dùng"
   },
-  "en:gender distribution": {
-    "vi": "Phân bố giới tính"
+  "vi:phân bố tuổi người dùng": {
+    "en": "User Age Distribution"
   },
-  "vi:phân bố giới tính": {
-    "en": "Gender Distribution"
+  "en:user gender distribution": {
+    "vi": "Phân bố giới tính người dùng"
   },
-  "en:status distribution": {
-    "vi": "Phân bố trạng thái"
+  "vi:phân bố giới tính người dùng": {
+    "en": "User Gender Distribution"
   },
-  "vi:phân bố trạng thái": {
-    "en": "Status Distribution"
+  "en:user status distribution": {
+    "vi": "Phân bố trạng thái người dùng"
+  },
+  "vi:phân bố trạng thái người dùng": {
+    "en": "User Status Distribution"
   },
   "en:download                                     chart": {
     "vi": "Tải biểu đồ"
   },
-  "en:no data                                                 available": {
-    "vi": "Không có dữ liệu"
+  "en:no user data                                                 available": {
+    "vi": "Không có dữ liệu người dùng"
   },
-  "en:hometown distribution": {
-    "vi": "Phân bố quê quán"
+  "en:no user                                                 data                                                 available": {
+    "vi": "Không có dữ liệu người dùng"
   },
-  "vi:phân bố quê quán": {
-    "en": "Hometown Distribution"
+  "en:user account status": {
+    "vi": "Trạng thái tài khoản người dùng"
+  },
+  "vi:trạng thái tài khoản người dùng": {
+    "en": "User Account Status"
+  },
+  "en:user hometown distribution": {
+    "vi": "Phân bố quê quán người dùng"
+  },
+  "vi:phân bố quê quán người dùng": {
+    "en": "User Hometown Distribution"
   },
   "en:download chart": {
     "vi": "Tải biểu đồ"
@@ -344,11 +365,11 @@
   "vi:5 đánh giá hàng đầu": {
     "en": "Top 5 Reviews"
   },
-  "en:tag": {
-    "vi": "Thẻ"
+  "en:no.": {
+    "vi": "STT"
   },
-  "vi:thẻ": {
-    "en": "Tag"
+  "vi:stt": {
+    "en": "No. &nbsp;"
   },
   "en:customer": {
     "vi": "Khách hàng"
@@ -357,10 +378,10 @@
     "en": "Customer"
   },
   "en:destination name": {
-    "vi": "Tên địa điểm"
+    "vi": "Tên điểm đến"
   },
-  "vi:tên địa điểm": {
-    "en": "Location Name"
+  "vi:tên điểm đến": {
+    "en": "Name Of Destination"
   },
   "en:rate": {
     "vi": "Xếp hạng"
@@ -372,25 +393,19 @@
     "vi": "Đánh giá"
   },
   "vi:đánh giá": {
-    "en": "Review"
+    "en": "Rating"
   },
-  "en:ba om pond": {
-    "vi": "Ao Bà Om"
+  "en:no reviews found.": {
+    "vi": "Không tìm thấy đánh giá nào."
   },
-  "vi:ao bà om": {
-    "en": "Ba Om Pond"
+  "vi:không tìm thấy đánh giá nào.": {
+    "en": "No reviews found."
   },
-  "en:no": {
-    "vi": "Không"
+  "en:đang tìm kiếm ...": {
+    "vi": "Đang tìm kiếm..."
   },
-  "vi:không": {
-    "en": "No"
-  },
-  "en:cancel": {
-    "vi": "Hủy"
-  },
-  "vi:hủy": {
-    "en": "Cancel"
+  "vi:đang tìm kiếm...": {
+    "en": "Đang tìm kiếm ..."
   },
   "en:user": {
     "vi": "người dùng"
@@ -405,70 +420,22 @@
     "en": "btn btn-primary"
   },
   "en:logo-icon": {
-    "vi": "Biểu tượng logo"
+    "vi": "biểu tượng logo"
   },
   "vi:biểu tượng logo": {
     "en": "logo-icon"
   },
   "en:search": {
-    "vi": "tìm kiếm"
+    "vi": "Tìm kiếm"
   },
   "vi:tìm kiếm": {
-    "en": "search"
-  },
-  "en:day": {
-    "vi": "ngày"
-  },
-  "vi:ngày": {
-    "en": "day"
-  },
-  "en:week": {
-    "vi": "tuần"
-  },
-  "vi:tuần": {
-    "en": "week"
-  },
-  "en:month": {
-    "vi": "tháng"
-  },
-  "vi:tháng": {
-    "en": "month"
-  },
-  "en:year": {
-    "vi": "năm"
-  },
-  "vi:năm": {
-    "en": "year"
-  },
-  "en:agechart": {
-    "vi": "Biểu đồ tuổi"
-  },
-  "vi:biểu đồ tuổi": {
-    "en": "ageChart"
-  },
-  "en:genderchart": {
-    "vi": "Biểu đồ giới tính"
-  },
-  "vi:biểu đồ giới tính": {
-    "en": "genderChart"
-  },
-  "en:statuschart": {
-    "vi": "Biểu đồ trạng thái"
-  },
-  "vi:biểu đồ trạng thái": {
-    "en": "statusChart"
+    "en": "Find"
   },
   "en:close": {
     "vi": "Đóng"
   },
   "vi:đóng": {
     "en": "Close"
-  },
-  "en:close this dialog": {
-    "vi": "Đóng hộp thoại này"
-  },
-  "vi:đóng hộp thoại này": {
-    "en": "Close this dialog"
   },
   "en:no text": {
     "vi": "Không có văn bản"
@@ -489,9 +456,9 @@
     "en": "Translation Error"
   },
   "en:failed to translate text. please try again later.": {
-    "vi": "Không dịch được văn bản. Vui lòng thử lại sau."
+    "vi": "Không thể dịch văn bản. Vui lòng thử lại sau."
   },
-  "vi:không dịch được văn bản. vui lòng thử lại sau.": {
+  "vi:không thể dịch văn bản. vui lòng thử lại sau.": {
     "en": "Failed to translate text. Please try again later."
   },
   "en:retry": {
@@ -505,831 +472,6 @@
   },
   "vi:đang dịch...": {
     "en": "Translating..."
-  },
-  "en:log out": {
-    "vi": "Đăng xuất"
-  },
-  "en:tips management": {
-    "vi": "Quản lý mẹo"
-  },
-  "en:marker management": {
-    "vi": "Quản lý điểm đánh dấu"
-  },
-  "vi:quản lý điểm đánh dấu": {
-    "en": "Marker Management"
-  },
-  "en:admin": {
-    "vi": "Quản trị viên"
-  },
-  "vi:quản trị viên": {
-    "en": "Admin"
-  },
-  "en:account list": {
-    "vi": "Danh sách tài khoản"
-  },
-  "vi:danh sách tài khoản": {
-    "en": "Account List"
-  },
-  "en:export": {
-    "vi": "Xuất"
-  },
-  "vi:xuất": {
-    "en": "Export"
-  },
-  "en:active": {
-    "vi": "Hoạt động"
-  },
-  "vi:hoạt động": {
-    "en": "Active"
-  },
-  "en:ban (inactive)": {
-    "vi": "Cấm (Không hoạt động)"
-  },
-  "vi:cấm (không hoạt động)": {
-    "en": "Ban (Inactive)"
-  },
-  "en:show  entries": {
-    "vi": "Hiển thị mục"
-  },
-  "vi:hiển thị mục": {
-    "en": "Show  entries"
-  },
-  "en:search:": {
-    "vi": "Tìm kiếm:"
-  },
-  "vi:tìm kiếm:": {
-    "en": "Search:"
-  },
-  "en:no.": {
-    "vi": "STT"
-  },
-  "vi:stt": {
-    "en": "No."
-  },
-  "en:full name": {
-    "vi": "Tên đầy đủ"
-  },
-  "vi:tên đầy đủ": {
-    "en": "Full Name"
-  },
-  "en:phone": {
-    "vi": "Điện thoại"
-  },
-  "vi:điện thoại": {
-    "en": "Phone"
-  },
-  "en:status": {
-    "vi": "Trạng thái"
-  },
-  "vi:trạng thái": {
-    "en": "Status"
-  },
-  "en:created at": {
-    "vi": "Ngày tạo"
-  },
-  "vi:ngày tạo": {
-    "en": "Create At"
-  },
-  "en:action": {
-    "vi": "Hành động"
-  },
-  "vi:hành động": {
-    "en": "Action"
-  },
-  "en:showing 1 to 10 of 107 entries": {
-    "vi": "Hiển thị 1 đến 10 trong 107 mục"
-  },
-  "vi:hiển thị 1 đến 10 trong 107 mục": {
-    "en": "Showing 1 to 10 of 107 entries"
-  },
-  "en:previous": {
-    "vi": "Trước"
-  },
-  "vi:trước": {
-    "en": "Previous"
-  },
-  "en:next": {
-    "vi": "Tiếp theo"
-  },
-  "vi:tiếp theo": {
-    "en": "Next"
-  },
-  "en:export account list": {
-    "vi": "Xuất danh sách tài khoản"
-  },
-  "vi:xuất danh sách tài khoản": {
-    "en": "Export Account List"
-  },
-  "en:inactive": {
-    "vi": "không hoạt động"
-  },
-  "vi:không hoạt động": {
-    "en": "inactive"
-  },
-  "en:no.: activate to sort column descending": {
-    "vi": "Số: nhấp để sắp xếp cột giảm dần"
-  },
-  "vi:số: nhấp để sắp xếp cột giảm dần": {
-    "en": "No.: activate to sort column descending"
-  },
-  "en:full name: activate to sort column ascending": {
-    "vi": "Họ và tên: nhấp để sắp xếp cột tăng dần"
-  },
-  "vi:họ và tên: nhấp để sắp xếp cột tăng dần": {
-    "en": "Full Name: activate to sort column ascending"
-  },
-  "en:email: activate to sort column ascending": {
-    "vi": "Email: nhấp để sắp xếp cột tăng dần"
-  },
-  "vi:email: nhấp để sắp xếp cột tăng dần": {
-    "en": "Email: activate to sort column ascending"
-  },
-  "en:phone: activate to sort column ascending": {
-    "vi": "Điện thoại: nhấp để sắp xếp cột tăng dần"
-  },
-  "vi:điện thoại: nhấp để sắp xếp cột tăng dần": {
-    "en": "Phone: activate to sort column ascending"
-  },
-  "en:status: activate to sort column ascending": {
-    "vi": "Trạng thái: nhấp để sắp xếp cột tăng dần"
-  },
-  "vi:trạng thái: nhấp để sắp xếp cột tăng dần": {
-    "en": "Status: activate to sort column ascending"
-  },
-  "en:created at: activate to sort column ascending": {
-    "vi": "Ngày tạo: nhấp để sắp xếp cột tăng dần"
-  },
-  "vi:ngày tạo: nhấp để sắp xếp cột tăng dần": {
-    "en": "Create At: activate to sort column ascending"
-  },
-  "en:action: activate to sort column ascending": {
-    "vi": "Thao tác: nhấp để sắp xếp cột tăng dần"
-  },
-  "vi:thao tác: nhấp để sắp xếp cột tăng dần": {
-    "en": "Action: activate to sort column ascending"
-  },
-  "en:avatar": {
-    "vi": "Ảnh đại diện"
-  },
-  "vi:ảnh đại diện": {
-    "en": "avatar"
-  },
-  "en:details": {
-    "vi": "Chi tiết"
-  },
-  "vi:chi tiết": {
-    "en": "Details"
-  },
-  "en:ban": {
-    "vi": "Khóa"
-  },
-  "vi:khóa": {
-    "en": "Ban"
-  },
-  "en:đang tìm kiếm ...": {
-    "vi": "Đang tìm kiếm..."
-  },
-  "vi:đang tìm kiếm...": {
-    "en": "Đang tìm kiếm ..."
-  },
-  "en:duong tan dat": {
-    "vi": "Dương Tấn Đạt"
-  },
-  "vi:dương tấn đạt": {
-    "en": "Duong Tan Dat"
-  },
-  "en:28 days ago": {
-    "vi": "28 ngày trước"
-  },
-  "vi:28 ngày trước": {
-    "en": "28 days ago"
-  },
-  "en:ocop statistics": {
-    "vi": "Thống kê OCOP"
-  },
-  "vi:thống kê ocop": {
-    "en": "OCOP Statistics"
-  },
-  "en:ocop product analytics": {
-    "vi": "Phân tích sản phẩm OCOP"
-  },
-  "vi:phân tích sản phẩm ocop": {
-    "en": "Ocop Product Analytics"
-  },
-  "en:ocop analytics": {
-    "vi": "Phân tích OCOP"
-  },
-  "vi:phân tích ocop": {
-    "en": "Ocop Analytics"
-  },
-  "en:ocop products – views, interactions, favorites": {
-    "vi": "Sản phẩm OCOP – Lượt xem, tương tác, yêu thích"
-  },
-  "vi:sản phẩm ocop – lượt xem, tương tác, yêu thích": {
-    "en": "OCOP Products – Views, Interactions, Favorites"
-  },
-  "en:quick filter": {
-    "vi": "Bộ lọc nhanh"
-  },
-  "vi:bộ lọc nhanh": {
-    "en": "Quick Filter"
-  },
-  "en:this week": {
-    "vi": "Tuần này"
-  },
-  "vi:tuần này": {
-    "en": "This Week"
-  },
-  "en:this month": {
-    "vi": "Tháng này"
-  },
-  "vi:tháng này": {
-    "en": "This Month"
-  },
-  "en:this year": {
-    "vi": "Năm nay"
-  },
-  "vi:năm nay": {
-    "en": "This Year"
-  },
-  "en:start date": {
-    "vi": "Ngày bắt đầu"
-  },
-  "vi:ngày bắt đầu": {
-    "en": "Start Date"
-  },
-  "en:end date": {
-    "vi": "Ngày kết thúc"
-  },
-  "vi:ngày kết thúc": {
-    "en": "End Date"
-  },
-  "en:filter": {
-    "vi": "Lọc"
-  },
-  "vi:lọc": {
-    "en": "Filter"
-  },
-  "en:reset": {
-    "vi": "Đặt lại"
-  },
-  "vi:đặt lại": {
-    "en": "Reset"
-  },
-  "en:download png": {
-    "vi": "Tải xuống PNG"
-  },
-  "vi:tải xuống png": {
-    "en": "Download PNG"
-  },
-  "en:download csv": {
-    "vi": "Tải xuống CSV"
-  },
-  "vi:tải xuống csv": {
-    "en": "Download CSV"
-  },
-  "en:download": {
-    "vi": "Tải xuống"
-  },
-  "vi:tải xuống": {
-    "en": "Download"
-  },
-  "en:demographic analysis": {
-    "vi": "Phân tích nhân khẩu học"
-  },
-  "vi:phân tích nhân khẩu học": {
-    "en": "Demographic Analysis"
-  },
-  "en:top interacted ocop products": {
-    "vi": "Top sản phẩm OCOP được tương tác"
-  },
-  "vi:top sản phẩm ocop được tương tác": {
-    "en": "Top Interacted OCOP Products"
-  },
-  "en:top favorited ocop products": {
-    "vi": "Top sản phẩm OCOP được yêu thích"
-  },
-  "vi:top sản phẩm ocop được yêu thích": {
-    "en": "Top Favorited OCOP Products"
-  },
-  "en:ocop product comparison": {
-    "vi": "So sánh sản phẩm OCOP"
-  },
-  "vi:so sánh sản phẩm ocop": {
-    "en": "OCOP Product Comparison"
-  },
-  "en:compare": {
-    "vi": "So sánh"
-  },
-  "vi:so sánh": {
-    "en": "Compare"
-  },
-  "en:product name": {
-    "vi": "Tên sản phẩm"
-  },
-  "vi:tên sản phẩm": {
-    "en": "Product Name"
-  },
-  "en:tra vinh coconut candy": {
-    "vi": "Kẹo dừa Trà Vinh"
-  },
-  "vi:kẹo dừa trà vinh": {
-    "en": "Tra Vinh Coconut Candy"
-  },
-  "en:tra vinh palm sugar": {
-    "vi": "Đường thốt nốt Trà Vinh"
-  },
-  "vi:đường thốt nốt trà vinh": {
-    "en": "Tra Vinh Palm Sugar"
-  },
-  "en:tra vinh dried fish": {
-    "vi": "Cá khô Trà Vinh"
-  },
-  "vi:cá khô trà vinh": {
-    "en": "Tra Vinh Dried Fish"
-  },
-  "en:tra vinh honey": {
-    "vi": "Mật ong Trà Vinh"
-  },
-  "vi:mật ong trà vinh": {
-    "en": "Tra Vinh Honey"
-  },
-  "en:virgin coconut oil": {
-    "vi": "Dầu dừa nguyên chất"
-  },
-  "vi:dầu dừa nguyên chất": {
-    "en": "Virgin Coconut Oil"
-  },
-  "en:purple sticky rice wine": {
-    "vi": "Rượu nếp cẩm"
-  },
-  "vi:rượu nếp cẩm": {
-    "en": "Purple Sticky Rice Wine"
-  },
-  "en:banana wine": {
-    "vi": "Rượu chuối"
-  },
-  "vi:rượu chuối": {
-    "en": "Banana Wine"
-  },
-  "en:mangrove pickled fish": {
-    "vi": "Mắm cá lóc rừng đước"
-  },
-  "vi:mắm cá lóc rừng đước": {
-    "en": "Mangrove Pickled Fish"
-  },
-  "en:honey": {
-    "vi": "Mật ong"
-  },
-  "vi:mật ong": {
-    "en": "Honey"
-  },
-  "en:select products": {
-    "vi": "Chọn sản phẩm"
-  },
-  "vi:chọn sản phẩm": {
-    "en": "Select products"
-  },
-  "en:location name": {
-    "vi": "Tên địa điểm"
-  },
-  "en:views": {
-    "vi": "Lượt xem"
-  },
-  "vi:lượt xem": {
-    "en": "View Count"
-  },
-  "en:interactions": {
-    "vi": "Tương tác"
-  },
-  "vi:tương tác": {
-    "en": "Interactions"
-  },
-  "en:favorites": {
-    "vi": "Yêu thích"
-  },
-  "vi:yêu thích": {
-    "en": "Favorites"
-  },
-  "en:edit profile": {
-    "vi": "Chỉnh sửa hồ sơ"
-  },
-  "vi:chỉnh sửa hồ sơ": {
-    "en": "Edit Profile"
-  },
-  "en:change                                                         avatar": {
-    "vi": "Thay đổi ảnh đại diện"
-  },
-  "vi:thay đổi ảnh đại diện": {
-    "en": "Change                                                         Avatar"
-  },
-  "en:please select a valid image file (jpeg, png, gif, etc.)": {
-    "vi": "Vui lòng chọn một tệp hình ảnh hợp lệ (JPEG, PNG, GIF, v.v.)"
-  },
-  "vi:vui lòng chọn một tệp hình ảnh hợp lệ (jpeg, png, gif, v.v.)": {
-    "en": "Please select a valid image file (JPEG, PNG, GIF, etc.)"
-  },
-  "en:user id": {
-    "vi": "ID người dùng"
-  },
-  "vi:id người dùng": {
-    "en": "User ID"
-  },
-  "en:security settings": {
-    "vi": "Cài đặt bảo mật"
-  },
-  "vi:cài đặt bảo mật": {
-    "en": "Security Settings"
-  },
-  "en:account details": {
-    "vi": "Chi tiết tài khoản"
-  },
-  "vi:chi tiết tài khoản": {
-    "en": "Account Details"
-  },
-  "en:username": {
-    "vi": "Tên người dùng"
-  },
-  "vi:tên người dùng": {
-    "en": "Username"
-  },
-  "en:role": {
-    "vi": "Vai trò"
-  },
-  "vi:vai trò": {
-    "en": "Role"
-  },
-  "en:last updated": {
-    "vi": "Cập nhật lần cuối"
-  },
-  "vi:cập nhật lần cuối": {
-    "en": "Last Updated"
-  },
-  "en:forbidden status": {
-    "vi": "Trạng thái cấm"
-  },
-  "vi:trạng thái cấm": {
-    "en": "Forbidden Status"
-  },
-  "en:save changes": {
-    "vi": "Lưu thay đổi"
-  },
-  "vi:lưu thay đổi": {
-    "en": "Save Changes"
-  },
-  "en:profile image": {
-    "vi": "Ảnh hồ sơ"
-  },
-  "vi:ảnh hồ sơ": {
-    "en": "Profile Image"
-  },
-  "en:not forbidden": {
-    "vi": "Không bị cấm"
-  },
-  "vi:không bị cấm": {
-    "en": "Not Forbidden"
-  },
-  "en:setting": {
-    "vi": "Cài đặt"
-  },
-  "en:security information": {
-    "vi": "Thông tin bảo mật"
-  },
-  "vi:thông tin bảo mật": {
-    "en": "Security Information"
-  },
-  "en:change email": {
-    "vi": "Thay đổi Email"
-  },
-  "vi:thay đổi email": {
-    "en": "Change Email"
-  },
-  "en:phone number": {
-    "vi": "Số điện thoại"
-  },
-  "vi:số điện thoại": {
-    "en": "Number Phone"
-  },
-  "en:no phone number yet.": {
-    "vi": "Chưa có số điện thoại"
-  },
-  "vi:chưa có số điện thoại": {
-    "en": "No phone number yet."
-  },
-  "en:change phone number": {
-    "vi": "Thay đổi số điện thoại"
-  },
-  "vi:thay đổi số điện thoại": {
-    "en": "Change Phone Number"
-  },
-  "en:password": {
-    "vi": "Mật khẩu"
-  },
-  "vi:mật khẩu": {
-    "en": "Password"
-  },
-  "en:password has been set.": {
-    "vi": "Mật khẩu đã được đặt."
-  },
-  "vi:mật khẩu đã được đặt.": {
-    "en": "Password has been set."
-  },
-  "en:change password": {
-    "vi": "Thay đổi mật khẩu"
-  },
-  "vi:thay đổi mật khẩu": {
-    "en": "Change Password"
-  },
-  "en:verify                     current email": {
-    "vi": "Xác minh                     Email hiện tại"
-  },
-  "vi:xác minh                     email hiện tại": {
-    "en": "Verify                     Current Email"
-  },
-  "en:your otp is                     sent to joongnguyen2712@gmail.com now": {
-    "vi": "Mã OTP của bạn đã được                     gửi đến joongnguyen2712@gmail.com bây giờ"
-  },
-  "vi:mã otp của bạn đã được                     gửi đến joongnguyen2712@gmail.com bây giờ": {
-    "en": "Your OTP is                     sent to joongnguyen2712@gmail.com now"
-  },
-  "en:confirm otp": {
-    "vi": "Xác nhận mã OTP"
-  },
-  "vi:xác nhận mã otp": {
-    "en": "Confirm OTP"
-  },
-  "en:verify": {
-    "vi": "Xác minh"
-  },
-  "vi:xác minh": {
-    "en": "Verify"
-  },
-  "en:resend otp after": {
-    "vi": "Gửi lại mã OTP sau"
-  },
-  "vi:gửi lại mã otp sau": {
-    "en": "Resend OTP after"
-  },
-  "en:update email": {
-    "vi": "Cập nhật Email"
-  },
-  "vi:cập nhật email": {
-    "en": "Update Email"
-  },
-  "en:new email                             address": {
-    "vi": "Địa chỉ Email                     mới"
-  },
-  "vi:địa chỉ email                     mới": {
-    "en": "New Email                             Address"
-  },
-  "en:please enter a valid email address.": {
-    "vi": "Vui lòng nhập địa chỉ email hợp lệ."
-  },
-  "vi:vui lòng nhập địa chỉ email hợp lệ.": {
-    "en": "Please enter a valid email address."
-  },
-  "en:update phone number": {
-    "vi": "Cập nhật số điện thoại"
-  },
-  "vi:cập nhật số điện thoại": {
-    "en": "Update Phone Number"
-  },
-  "en:new phone                             number": {
-    "vi": "Số điện thoại                     mới"
-  },
-  "vi:số điện thoại                     mới": {
-    "en": "New Phone                             Number"
-  },
-  "en:please enter a valid phone number.": {
-    "vi": "Vui lòng nhập số điện thoại hợp lệ."
-  },
-  "vi:vui lòng nhập số điện thoại hợp lệ.": {
-    "en": "Please enter a valid phone number."
-  },
-  "en:update password": {
-    "vi": "Cập nhật mật khẩu"
-  },
-  "vi:cập nhật mật khẩu": {
-    "en": "Update Password"
-  },
-  "en:current                             password": {
-    "vi": "Mật khẩu                     hiện tại"
-  },
-  "vi:mật khẩu                     hiện tại": {
-    "en": "Current                             Password"
-  },
-  "en:please enter your current password.": {
-    "vi": "Vui lòng nhập mật khẩu hiện tại của bạn."
-  },
-  "vi:vui lòng nhập mật khẩu hiện tại của bạn.": {
-    "en": "Please enter your current password."
-  },
-  "en:new                             password": {
-    "vi": "Mật khẩu                     mới"
-  },
-  "vi:mật khẩu                     mới": {
-    "en": "New                             Password"
-  },
-  "en:password must be at least 8 characters.": {
-    "vi": "Mật khẩu phải có ít nhất 8 ký tự."
-  },
-  "vi:mật khẩu phải có ít nhất 8 ký tự.": {
-    "en": "Password must be at least 8 characters."
-  },
-  "en:confirm new                             password": {
-    "vi": "Xác nhận mật khẩu                     mới"
-  },
-  "vi:xác nhận mật khẩu                     mới": {
-    "en": "Confirm New                             Password"
-  },
-  "en:passwords must match.": {
-    "vi": "Mật khẩu phải trùng khớp."
-  },
-  "vi:mật khẩu phải trùng khớp.": {
-    "en": "Passwords must match."
-  },
-  "en:loading...": {
-    "vi": "Đang tải..."
-  },
-  "vi:đang tải...": {
-    "en": "Loading..."
-  },
-  "en:processing...": {
-    "vi": "Đang xử lý..."
-  },
-  "vi:đang xử lý...": {
-    "en": "Processing..."
-  },
-  "en:enter your new email": {
-    "vi": "Nhập email mới của bạn"
-  },
-  "vi:nhập email mới của bạn": {
-    "en": "Enter your new email"
-  },
-  "en:enter your new phone number": {
-    "vi": "Nhập số điện thoại mới của bạn"
-  },
-  "vi:nhập số điện thoại mới của bạn": {
-    "en": "Enter your new phone number"
-  },
-  "en:enter your current password": {
-    "vi": "Nhập mật khẩu hiện tại của bạn"
-  },
-  "vi:nhập mật khẩu hiện tại của bạn": {
-    "en": "Enter your current password"
-  },
-  "en:enter your new password": {
-    "vi": "Nhập mật khẩu mới của bạn"
-  },
-  "vi:nhập mật khẩu mới của bạn": {
-    "en": "Enter your new password"
-  },
-  "en:confirm your new password": {
-    "vi": "Xác nhận mật khẩu mới của bạn"
-  },
-  "vi:xác nhận mật khẩu mới của bạn": {
-    "en": "Confirm your new password"
-  },
-  "en:profile": {
-    "vi": "Hồ sơ"
-  },
-  "vi:hồ sơ": {
-    "en": "Profile"
-  },
-  "en:number phone": {
-    "vi": "Số điện thoại"
-  },
-  "en:dateofbirth": {
-    "vi": "Ngày sinh"
-  },
-  "vi:ngày sinh": {
-    "en": "DateOfBirth"
-  },
-  "en:gender": {
-    "vi": "Giới tính"
-  },
-  "vi:giới tính": {
-    "en": "Gender"
-  },
-  "en:address": {
-    "vi": "Địa chỉ"
-  },
-  "vi:địa chỉ": {
-    "en": "Address"
-  },
-  "en:create at": {
-    "vi": "Ngày tạo"
-  },
-  "en:female": {
-    "vi": "Nữ"
-  },
-  "vi:nữ": {
-    "en": "Female"
-  },
-  "en:6/3/2025 5:24:00 am": {
-    "vi": "6/3/2025 5:24:00 SA"
-  },
-  "vi:6/3/2025 5:24:00 sa": {
-    "en": "6/3/2025 5:24:00 AM"
-  },
-  "en:ok": {
-    "vi": "Đồng ý"
-  },
-  "vi:đồng ý": {
-    "en": "OK"
-  },
-  "en:admin list": {
-    "vi": "Danh sách Admin"
-  },
-  "vi:danh sách admin": {
-    "en": "Admin List"
-  },
-  "en:add administrator": {
-    "vi": "Thêm quản trị viên"
-  },
-  "vi:thêm quản trị viên": {
-    "en": "Add Administrator"
-  },
-  "en:showing 1 to 2 of 2 entries": {
-    "vi": "Hiển thị 1 đến 2 trong tổng số 2 mục"
-  },
-  "vi:hiển thị 1 đến 2 trong tổng số 2 mục": {
-    "en": "Showing 1 to 2 of 2 entries"
-  },
-  "en:export admin list": {
-    "vi": "Xuất danh sách Admin"
-  },
-  "vi:xuất danh sách admin": {
-    "en": "Export Admin List"
-  },
-  "en:username: activate to sort column ascending": {
-    "vi": "Tên người dùng: nhấp để sắp xếp cột tăng dần"
-  },
-  "vi:tên người dùng: nhấp để sắp xếp cột tăng dần": {
-    "en": "Username: activate to sort column ascending"
-  },
-  "en:create at: activate to sort column ascending": {
-    "vi": "Ngày tạo: nhấp để sắp xếp cột tăng dần"
-  },
-  "en:delete": {
-    "vi": "Xóa"
-  },
-  "vi:xóa": {
-    "en": "Delete"
-  },
-  "en:restore": {
-    "vi": "Khôi phục"
-  },
-  "vi:khôi phục": {
-    "en": "Restore"
-  },
-  "en:không dịch được văn bản. vui lòng thử lại sau.": {
-    "vi": "Unable to translate text. Please try again later."
-  },
-  "vi:unable to translate text. please try again later.": {
-    "en": "Không dịch được văn bản. Vui lòng thử lại sau."
-  },
-  "en:thử lại": {
-    "vi": "Retry"
-  },
-  "vi:retry": {
-    "en": "Thử lại"
-  },
-  "en:đang dịch...": {
-    "vi": "Translating..."
-  },
-  "vi:translating...": {
-    "en": "Đang dịch..."
-  },
-  "en:quản lý điểm đánh dấu": {
-    "vi": "Manage bookmarks"
-  },
-  "vi:manage bookmarks": {
-    "en": "Quản lý điểm đánh dấu"
-  },
-  "en:đồng ý": {
-    "vi": "OK"
-  },
-  "vi:ok": {
-    "en": "Đồng ý"
-  },
-  "en:không": {
-    "vi": "No"
-  },
-  "vi:no": {
-    "en": "Không"
-  },
-  "en:hủy": {
-    "vi": "Cancel"
-  },
-  "vi:cancel": {
-    "en": "Hủy"
-  },
-  "en:please wait...": {
-    "vi": "Vui lòng đợi..."
-  },
-  "vi:vui lòng đợi...": {
-    "en": "Please wait..."
   },
   "en:translation successful!": {
     "vi": "Dịch thành công!"
@@ -1349,35 +491,77 @@
   "vi:quá nhanh!": {
     "en": "Too fast!"
   },
-  "en:show entries": {
-    "vi": "Hiển thị các mục"
+  "en:log out": {
+    "vi": "Đăng xuất"
   },
-  "vi:hiển thị các mục": {
-    "en": "Show entries"
+  "en:tips management": {
+    "vi": "Quản lý mẹo"
   },
-  "en:logo": {
-    "vi": "Biểu trưng"
+  "en:marker management": {
+    "vi": "Quản lý đánh dấu"
   },
-  "vi:biểu trưng": {
-    "en": "Logo"
+  "vi:quản lý đánh dấu": {
+    "en": "Marker Management"
   },
-  "en:(png & csv)": {
-    "vi": "PNG và CSV"
+  "en:user creation over time": {
+    "vi": "Số người dùng tạo theo thời gian"
   },
-  "vi:png và csv": {
-    "en": "(PNG & CSV)"
+  "vi:số người dùng tạo theo thời gian": {
+    "en": "User Creation Over Time"
   },
-  "en:email": {
-    "vi": "Thư điện tử"
+  "en:user statistics overview": {
+    "vi": "Tổng quan thống kê người dùng"
   },
-  "vi:thư điện tử": {
-    "en": "Email"
+  "vi:tổng quan thống kê người dùng": {
+    "en": "User Statistics Overview"
   },
-  "en:envi": {
-    "vi": "Môi trường"
+  "en:age distribution": {
+    "vi": "Phân bố tuổi"
   },
-  "vi:môi trường": {
-    "en": "ENVI"
+  "vi:phân bố tuổi": {
+    "en": "Age Distribution"
+  },
+  "en:gender distribution": {
+    "vi": "Phân bố giới tính"
+  },
+  "vi:phân bố giới tính": {
+    "en": "Gender Distribution"
+  },
+  "en:status distribution": {
+    "vi": "Phân bố trạng thái"
+  },
+  "vi:phân bố trạng thái": {
+    "en": "Status Distribution"
+  },
+  "en:hometown distribution": {
+    "vi": "Phân bố quê quán"
+  },
+  "vi:phân bố quê quán": {
+    "en": "Hometown Distribution"
+  },
+  "en:tag": {
+    "vi": "Thẻ"
+  },
+  "vi:thẻ": {
+    "en": "Tag"
+  },
+  "en:ok": {
+    "vi": "Đồng ý"
+  },
+  "vi:đồng ý": {
+    "en": "OK"
+  },
+  "en:no": {
+    "vi": "Không"
+  },
+  "vi:không": {
+    "en": "No"
+  },
+  "en:cancel": {
+    "vi": "Hủy"
+  },
+  "vi:hủy": {
+    "en": "Cancel"
   },
   "en:number of users": {
     "vi": "Số lượng người dùng"
@@ -1391,11 +575,17 @@
   "vi:nhóm tuổi": {
     "en": "Age Group"
   },
-  "en:number of interactions": {
-    "vi": "Số lượng tương tác"
+  "en:gender": {
+    "vi": "Giới tính"
   },
-  "vi:số lượng tương tác": {
-    "en": "Number of Interactions"
+  "vi:giới tính": {
+    "en": "Gender"
+  },
+  "en:status": {
+    "vi": "Trạng thái"
+  },
+  "vi:trạng thái": {
+    "en": "Status"
   },
   "en:day of week": {
     "vi": "Ngày trong tuần"
@@ -1403,32 +593,371 @@
   "vi:ngày trong tuần": {
     "en": "Day of Week"
   },
-  "en:bánh tét trà cuốn lá cẩm": {
-    "vi": "Bánh Tét Trà Cuôn Lá Cẩm"
-  },
-  "vi:bánh tét trà cuôn lá cẩm": {
-    "en": "Bánh Tét Trà Cuốn Lá Cẩm"
-  },
-  "en:7 days ago": {
-    "vi": "7 ngày trước"
-  },
-  "vi:7 ngày trước": {
-    "en": "7 days ago"
-  },
   "en:view count": {
-    "vi": "Lượt xem"
+    "vi": "Số lượt xem"
+  },
+  "vi:số lượt xem": {
+    "en": "View Count"
   },
   "en:interaction count": {
-    "vi": "Lượt tương tác"
+    "vi": "Số lượt tương tác"
   },
-  "vi:lượt tương tác": {
-    "en": "Interaction Count"
+  "vi:số lượt tương tác": {
+    "en": "Number of Interactions"
   },
   "en:favorite count": {
-    "vi": "Lượt yêu thích"
+    "vi": "Số lượt yêu thích"
   },
-  "vi:lượt yêu thích": {
+  "vi:số lượt yêu thích": {
     "en": "Favorite Count"
+  },
+  "en:admin": {
+    "vi": "Quản trị viên"
+  },
+  "vi:quản trị viên": {
+    "en": "Admin"
+  },
+  "en:ocop product management": {
+    "vi": "Quản lý sản phẩm Ocop"
+  },
+  "vi:quản lý sản phẩm ocop": {
+    "en": "Ocop Product Management"
+  },
+  "en:ocop product list": {
+    "vi": "Danh sách sản phẩm Ocop"
+  },
+  "vi:danh sách sản phẩm ocop": {
+    "en": "Ocop Product List"
+  },
+  "en:create ocop product": {
+    "vi": "Tạo sản phẩm Ocop"
+  },
+  "vi:tạo sản phẩm ocop": {
+    "en": "Create Ocop Product"
+  },
+  "en:create single product": {
+    "vi": "Tạo sản phẩm đơn lẻ"
+  },
+  "vi:tạo sản phẩm đơn lẻ": {
+    "en": "Create Single Product"
+  },
+  "en:import products": {
+    "vi": "Nhập sản phẩm"
+  },
+  "vi:nhập sản phẩm": {
+    "en": "Import Products"
+  },
+  "en:export": {
+    "vi": "Xuất"
+  },
+  "vi:xuất": {
+    "en": "Export"
+  },
+  "en:active": {
+    "vi": "Hoạt động"
+  },
+  "vi:hoạt động": {
+    "en": "Active"
+  },
+  "en:inactive": {
+    "vi": "Không hoạt động"
+  },
+  "vi:không hoạt động": {
+    "en": "Inactive"
+  },
+  "en:show entries": {
+    "vi": "Hiển thị mục"
+  },
+  "vi:hiển thị mục": {
+    "en": "Show entries"
+  },
+  "en:search:": {
+    "vi": "Tìm kiếm:"
+  },
+  "vi:tìm kiếm:": {
+    "en": "Search:"
+  },
+  "en:product name": {
+    "vi": "Tên sản phẩm"
+  },
+  "vi:tên sản phẩm": {
+    "en": "Name of product"
+  },
+  "en:reference price": {
+    "vi": "Giá tham khảo"
+  },
+  "vi:giá tham khảo": {
+    "en": "Reference Price"
+  },
+  "en:year release": {
+    "vi": "Năm phát hành"
+  },
+  "vi:năm phát hành": {
+    "en": "Year Release"
+  },
+  "en:created at": {
+    "vi": "Ngày tạo"
+  },
+  "vi:ngày tạo": {
+    "en": "Creat At"
+  },
+  "en:action": {
+    "vi": "Hành động"
+  },
+  "vi:hành động": {
+    "en": "Action"
+  },
+  "en:ocop product detail": {
+    "vi": "Chi tiết sản phẩm Ocop"
+  },
+  "vi:chi tiết sản phẩm ocop": {
+    "en": "Ocop Product Detail"
+  },
+  "en:reference price:": {
+    "vi": "Giá tham khảo:"
+  },
+  "vi:giá tham khảo:": {
+    "en": "Reference Price:"
+  },
+  "en:ocop type:": {
+    "vi": "Loại Ocop:"
+  },
+  "vi:loại ocop:": {
+    "en": "Ocop Type:"
+  },
+  "en:company:": {
+    "vi": "Công ty:"
+  },
+  "vi:công ty:": {
+    "en": "Company:"
+  },
+  "en:ocop year release:": {
+    "vi": "Năm phát hành Ocop:"
+  },
+  "vi:năm phát hành ocop:": {
+    "en": "Ocop Year Release:"
+  },
+  "en:tag:": {
+    "vi": "Thẻ:"
+  },
+  "vi:thẻ:": {
+    "en": "Tag:"
+  },
+  "en:created at:": {
+    "vi": "Ngày tạo:"
+  },
+  "vi:ngày tạo:": {
+    "en": "Created At:"
+  },
+  "en:update at:": {
+    "vi": "Ngày cập nhật:"
+  },
+  "vi:ngày cập nhật:": {
+    "en": "Update At:"
+  },
+  "en:no update": {
+    "vi": "Chưa cập nhật"
+  },
+  "vi:chưa cập nhật": {
+    "en": "No update"
+  },
+  "en:ocop star": {
+    "vi": "Sao Ocop"
+  },
+  "vi:sao ocop": {
+    "en": "Ocop Star"
+  },
+  "en:description": {
+    "vi": "Mô tả"
+  },
+  "vi:mô tả": {
+    "en": "Description"
+  },
+  "en:edit ocop product": {
+    "vi": "Chỉnh sửa sản phẩm Ocop"
+  },
+  "vi:chỉnh sửa sản phẩm ocop": {
+    "en": "Edit Ocop Product"
+  },
+  "en:store of sell": {
+    "vi": "Cửa hàng bán"
+  },
+  "vi:cửa hàng bán": {
+    "en": "Store of sell"
+  },
+  "en:no location name.": {
+    "vi": "Không có tên địa điểm."
+  },
+  "vi:không có tên địa điểm.": {
+    "en": "No Location Name."
+  },
+  "en:no location address.": {
+    "vi": "Không có địa chỉ."
+  },
+  "vi:không có địa chỉ.": {
+    "en": "No Location Address."
+  },
+  "en:\uD83D\uDCCC store of selling link": {
+    "vi": "\uD83D\uDCCC Liên kết cửa hàng bán"
+  },
+  "vi:\uD83D\uDCCC liên kết cửa hàng bán": {
+    "en": "\uD83D\uDCCC Store of selling link"
+  },
+  "en:no selling link.": {
+    "vi": "Không có liên kết bán hàng."
+  },
+  "vi:không có liên kết bán hàng.": {
+    "en": "No Selling Link."
+  },
+  "en:add new location": {
+    "vi": "Thêm địa điểm mới"
+  },
+  "vi:thêm địa điểm mới": {
+    "en": "Add New Location"
+  },
+  "en:name of location": {
+    "vi": "Tên địa điểm"
+  },
+  "vi:tên địa điểm": {
+    "en": "Location Name"
+  },
+  "en:address": {
+    "vi": "Địa chỉ"
+  },
+  "vi:địa chỉ": {
+    "en": "Address"
+  },
+  "en:location type": {
+    "vi": "Loại địa điểm"
+  },
+  "vi:loại địa điểm": {
+    "en": "Location Type"
+  },
+  "en:longitude": {
+    "vi": "Kinh độ"
+  },
+  "vi:kinh độ": {
+    "en": "Longitude"
+  },
+  "en:latitude": {
+    "vi": "Vĩ độ"
+  },
+  "vi:vĩ độ": {
+    "en": "Latitude"
+  },
+  "en:save location": {
+    "vi": "Lưu địa điểm"
+  },
+  "vi:lưu địa điểm": {
+    "en": "Save Location"
+  },
+  "en:edit location": {
+    "vi": "Chỉnh sửa địa điểm"
+  },
+  "vi:chỉnh sửa địa điểm": {
+    "en": "Edit Location"
+  },
+  "en:*not editable": {
+    "vi": "*Không thể chỉnh sửa"
+  },
+  "vi:*không thể chỉnh sửa": {
+    "en": "*Not editable"
+  },
+  "en:save changes": {
+    "vi": "Lưu thay đổi"
+  },
+  "vi:lưu thay đổi": {
+    "en": "Save Changes"
+  },
+  "en:title of selling link": {
+    "vi": "Tiêu đề liên kết bán hàng"
+  },
+  "vi:tiêu đề liên kết bán hàng": {
+    "en": "Title Of Selling Link"
+  },
+  "en:-- select a title --": {
+    "vi": "-- Chọn một tiêu đề --"
+  },
+  "vi:-- chọn một tiêu đề --": {
+    "en": "-- Select a title --"
+  },
+  "en:name of selling link": {
+    "vi": "Tên liên kết bán hàng"
+  },
+  "vi:tên liên kết bán hàng": {
+    "en": "Name Of Selling Link"
+  },
+  "en:edit selling link": {
+    "vi": "Chỉnh sửa liên kết bán hàng"
+  },
+  "vi:chỉnh sửa liên kết bán hàng": {
+    "en": "Edit Selling Link"
+  },
+  "en:image ocop product": {
+    "vi": "ảnh sản phẩm ocop"
+  },
+  "vi:ảnh sản phẩm ocop": {
+    "en": "image ocop product"
+  },
+  "en:previous": {
+    "vi": "Trước"
+  },
+  "vi:trước": {
+    "en": "Previous"
+  },
+  "en:next": {
+    "vi": "Tiếp theo"
+  },
+  "vi:tiếp theo": {
+    "en": "Next"
+  },
+  "en:create point of sell": {
+    "vi": "Tạo điểm bán hàng"
+  },
+  "vi:tạo điểm bán hàng": {
+    "en": "Create Point of Sell"
+  },
+  "en:create point of selling link": {
+    "vi": "Tạo liên kết điểm bán hàng"
+  },
+  "vi:tạo liên kết điểm bán hàng": {
+    "en": "Create Point of Selling Link"
+  },
+  "en:enter location name": {
+    "vi": "Nhập tên địa điểm"
+  },
+  "vi:nhập tên địa điểm": {
+    "en": "Enter location name"
+  },
+  "en:enter address": {
+    "vi": "Nhập địa chỉ"
+  },
+  "vi:nhập địa chỉ": {
+    "en": "Enter address"
+  },
+  "en:enter longitude": {
+    "vi": "Nhập kinh độ"
+  },
+  "vi:nhập kinh độ": {
+    "en": "Enter longitude"
+  },
+  "en:enter latitude": {
+    "vi": "Nhập vĩ độ"
+  },
+  "vi:nhập vĩ độ": {
+    "en": "Enter latitude"
+  },
+  "en:enter": {
+    "vi": "Nhập"
+  },
+  "vi:nhập": {
+    "en": "Enter"
+  },
+  "en:ocop product analytics": {
+    "vi": "Phân tích sản phẩm OCOP"
+  },
+  "vi:phân tích sản phẩm ocop": {
+    "en": "OCOP Product Analytics"
   },
   "en:count": {
     "vi": "Số lượng"
@@ -1466,6 +995,24 @@
   "vi:sản phẩm": {
     "en": "Product"
   },
+  "en:top interacted ocop products": {
+    "vi": "Sản phẩm OCOP được tương tác nhiều nhất"
+  },
+  "vi:sản phẩm ocop được tương tác nhiều nhất": {
+    "en": "Top Interacted OCOP Products"
+  },
+  "en:top favorited ocop products": {
+    "vi": "Sản phẩm OCOP được yêu thích nhất"
+  },
+  "vi:sản phẩm ocop được yêu thích nhất": {
+    "en": "Top Favorited OCOP Products"
+  },
+  "en:ocop product comparison": {
+    "vi": "So sánh sản phẩm OCOP"
+  },
+  "vi:so sánh sản phẩm ocop": {
+    "en": "OCOP Product Comparison"
+  },
   "en:invalid input": {
     "vi": "Đầu vào không hợp lệ"
   },
@@ -1473,21 +1020,21 @@
     "en": "Invalid Input"
   },
   "en:start date cannot be in the future.": {
-    "vi": "Ngày bắt đầu không được trong tương lai."
+    "vi": "Ngày bắt đầu không thể ở trong tương lai."
   },
-  "vi:ngày bắt đầu không được trong tương lai.": {
+  "vi:ngày bắt đầu không thể ở trong tương lai.": {
     "en": "Start date cannot be in the future."
   },
   "en:end date cannot be in the future.": {
-    "vi": "Ngày kết thúc không được trong tương lai."
+    "vi": "Ngày kết thúc không thể ở trong tương lai."
   },
-  "vi:ngày kết thúc không được trong tương lai.": {
+  "vi:ngày kết thúc không thể ở trong tương lai.": {
     "en": "End date cannot be in the future."
   },
   "en:end date cannot be earlier than start date.": {
-    "vi": "Ngày kết thúc không được sớm hơn ngày bắt đầu."
+    "vi": "Ngày kết thúc không thể sớm hơn ngày bắt đầu."
   },
-  "vi:ngày kết thúc không được sớm hơn ngày bắt đầu.": {
+  "vi:ngày kết thúc không thể sớm hơn ngày bắt đầu.": {
     "en": "End date cannot be earlier than start date."
   },
   "en:error": {
@@ -1569,10 +1116,10 @@
     "en": "Failed to refresh top interaction"
   },
   "en:top favorite refreshed": {
-    "vi": "Mục yêu thích hàng đầu đã được làm mới"
+    "vi": "Yêu thích hàng đầu đã được làm mới"
   },
-  "vi:mục yêu thích hàng đầu đã được làm mới": {
-    "en": "Top Favorites refreshed"
+  "vi:yêu thích hàng đầu đã được làm mới": {
+    "en": "Top Favorite refreshed"
   },
   "en:failed to refresh top favorites": {
     "vi": "Không thể làm mới mục yêu thích hàng đầu"
@@ -1598,6 +1145,24 @@
   "vi:bộ lọc đã được đặt lại": {
     "en": "Filters have been reset"
   },
+  "en:views": {
+    "vi": "Lượt xem"
+  },
+  "vi:lượt xem": {
+    "en": "Views"
+  },
+  "en:interactions": {
+    "vi": "Tương tác"
+  },
+  "vi:tương tác": {
+    "en": "Interactions"
+  },
+  "en:favorites": {
+    "vi": "Mục yêu thích"
+  },
+  "vi:mục yêu thích": {
+    "en": "Favorites"
+  },
   "en:destination analytics": {
     "vi": "Phân tích điểm đến"
   },
@@ -1608,9 +1173,9 @@
     "vi": "Điểm đến"
   },
   "en:user demographics (location – hometown – age group)": {
-    "vi": "Thông tin nhân khẩu học người dùng (Vị trí – Quê quán – Nhóm tuổi)"
+    "vi": "Nhân khẩu học người dùng (Vị trí – Quê quán – Nhóm tuổi)"
   },
-  "vi:thông tin nhân khẩu học người dùng (vị trí – quê quán – nhóm tuổi)": {
+  "vi:nhân khẩu học người dùng (vị trí – quê quán – nhóm tuổi)": {
     "en": "User Demographics (Location – Hometown – Age Group)"
   },
   "en:location": {
@@ -1694,6 +1259,9 @@
   "en:top favorites refreshed": {
     "vi": "Mục yêu thích hàng đầu đã được làm mới"
   },
+  "vi:mục yêu thích hàng đầu đã được làm mới": {
+    "en": "Top Favorites refreshed"
+  },
   "en:please choose at least one destination": {
     "vi": "Vui lòng chọn ít nhất một điểm đến"
   },
@@ -1706,53 +1274,8 @@
   "vi:không thể làm mới dữ liệu so sánh": {
     "en": "Failed to refresh comparison data"
   },
-  "en:destinations statistics": {
-    "vi": "Thống kê điểm đến"
-  },
-  "vi:thống kê điểm đến": {
-    "en": "Destinations statistics"
-  },
-  "en:overview": {
-    "vi": "Tổng quan"
-  },
-  "vi:tổng quan": {
-    "en": "Overview"
-  },
-  "en:total destinations:": {
-    "vi": "Tổng số điểm đến:"
-  },
-  "vi:tổng số điểm đến:": {
-    "en": "Total Destinations:"
-  },
-  "en:total views:": {
-    "vi": "Tổng số lượt xem:"
-  },
-  "vi:tổng số lượt xem:": {
-    "en": "Total Views:"
-  },
-  "en:total interactions:": {
-    "vi": "Tổng số lượt tương tác:"
-  },
-  "vi:tổng số lượt tương tác:": {
-    "en": "Total Interactions:"
-  },
-  "en:total favorites:": {
-    "vi": "Tổng số lượt yêu thích:"
-  },
-  "vi:tổng số lượt yêu thích:": {
-    "en": "Total Favorites:"
-  },
-  "en:destinations – views, interactions, favorites": {
-    "vi": "Điểm đến – Lượt xem, Tương tác, Yêu thích"
-  },
-  "vi:điểm đến – lượt xem, tương tác, yêu thích": {
-    "en": "Destinations – Views, Interactions, Favorites"
-  },
-  "en:select destinations": {
-    "vi": "Chọn điểm đến"
-  },
-  "vi:chọn điểm đến": {
-    "en": "Select destinations"
+  "en:number of interactions": {
+    "vi": "Số lượt tương tác"
   },
   "en:error!": {
     "vi": "Lỗi!"
@@ -1796,24 +1319,6 @@
   "vi:không thể cập nhật biểu đồ": {
     "en": "Failed to update chart"
   },
-  "en:male": {
-    "vi": "Nam"
-  },
-  "vi:nam": {
-    "en": "Male"
-  },
-  "en:tp. vinh long - tan luoc": {
-    "vi": "TP. Vĩnh Long - Tân Lược"
-  },
-  "vi:tp. vĩnh long - tân lược": {
-    "en": "TP. Vinh Long - Tan Luoc"
-  },
-  "en:thanh duong giao xu mac bac": {
-    "vi": "Thánh Đường Giáo Xứ Mặc Bắc"
-  },
-  "vi:thánh đường giáo xứ mặc bắc": {
-    "en": "Thanh Duong Giao Xu Mac Bac"
-  },
   "en:users": {
     "vi": "người dùng"
   },
@@ -1822,5 +1327,2498 @@
   },
   "vi:giá trị": {
     "en": "Value"
+  },
+  "en:day": {
+    "vi": "Ngày"
+  },
+  "vi:ngày": {
+    "en": "Day"
+  },
+  "en:female": {
+    "vi": "Nữ"
+  },
+  "vi:nữ": {
+    "en": "Female"
+  },
+  "en:male": {
+    "vi": "Nam"
+  },
+  "vi:nam": {
+    "en": "Male"
+  },
+  "en:other": {
+    "vi": "Khác"
+  },
+  "vi:khác": {
+    "en": "Other"
+  },
+  "en:forbidden": {
+    "vi": "Bị cấm"
+  },
+  "vi:bị cấm": {
+    "en": "Forbidden"
+  },
+  "en:unknown": {
+    "vi": "Không xác định"
+  },
+  "vi:không xác định": {
+    "en": "Unknow"
+  },
+  "en:website": {
+    "vi": "Trang web"
+  },
+  "vi:trang web": {
+    "en": "Website"
+  },
+  "en:update ocop product": {
+    "vi": "Cập nhật sản phẩm Ocop"
+  },
+  "vi:cập nhật sản phẩm ocop": {
+    "en": "Update Ocop Product"
+  },
+  "en:product description": {
+    "vi": "Mô tả sản phẩm"
+  },
+  "vi:mô tả sản phẩm": {
+    "en": "Description of product"
+  },
+  "en:rich text editor": {
+    "vi": "Trình chỉnh sửa văn bản đa dạng"
+  },
+  "vi:trình chỉnh sửa văn bản đa dạng": {
+    "en": "Rich Text Editor"
+  },
+  "en:paragraph": {
+    "vi": "Đoạn văn"
+  },
+  "vi:đoạn văn": {
+    "en": "Paragraph"
+  },
+  "en:bold": {
+    "vi": "In đậm"
+  },
+  "vi:in đậm": {
+    "en": "Bold"
+  },
+  "en:italic": {
+    "vi": "In nghiêng"
+  },
+  "vi:in nghiêng": {
+    "en": "Italic"
+  },
+  "en:link": {
+    "vi": "Liên kết"
+  },
+  "vi:liên kết": {
+    "en": "Link"
+  },
+  "en:bulleted list": {
+    "vi": "Danh sách dấu đầu dòng"
+  },
+  "vi:danh sách dấu đầu dòng": {
+    "en": "Bulleted List"
+  },
+  "en:numbered list": {
+    "vi": "Danh sách đánh số"
+  },
+  "vi:danh sách đánh số": {
+    "en": "Numbered List"
+  },
+  "en:block quote": {
+    "vi": "Khối trích dẫn"
+  },
+  "vi:khối trích dẫn": {
+    "en": "Block quote"
+  },
+  "en:insert table": {
+    "vi": "Chèn bảng"
+  },
+  "vi:chèn bảng": {
+    "en": "Insert table"
+  },
+  "en:insert image": {
+    "vi": "Chèn hình ảnh"
+  },
+  "vi:chèn hình ảnh": {
+    "en": "Insert image"
+  },
+  "en:undo": {
+    "vi": "Hoàn tác"
+  },
+  "vi:hoàn tác": {
+    "en": "Undo"
+  },
+  "en:redo": {
+    "vi": "Làm lại"
+  },
+  "vi:làm lại": {
+    "en": "Redo"
+  },
+  "en:-- select ocop type --": {
+    "vi": "-- Chọn loại sản phẩm Ocop --"
+  },
+  "vi:-- chọn loại sản phẩm ocop --": {
+    "en": "-- Select Ocop Type --"
+  },
+  "en:string": {
+    "vi": "chuỗi"
+  },
+  "vi:chuỗi": {
+    "en": "string"
+  },
+  "en:ocop point": {
+    "vi": "Điểm OCOP"
+  },
+  "vi:điểm ocop": {
+    "en": "Ocop Point"
+  },
+  "en:ocop year release": {
+    "vi": "Năm phát hành OCOP"
+  },
+  "vi:năm phát hành ocop": {
+    "en": "Ocop Year Release"
+  },
+  "en:ocop product tag": {
+    "vi": "Thẻ sản phẩm OCOP"
+  },
+  "vi:thẻ sản phẩm ocop": {
+    "en": "Ocop Product Tag"
+  },
+  "en:edit destination": {
+    "vi": "Chỉnh sửa điểm đến"
+  },
+  "vi:chỉnh sửa điểm đến": {
+    "en": "Edit Destination"
+  },
+  "en:name of product": {
+    "vi": "Tên sản phẩm"
+  },
+  "en:project name *": {
+    "vi": "Tên dự án *"
+  },
+  "vi:tên dự án *": {
+    "en": "Project name *"
+  },
+  "en:description of product": {
+    "vi": "Mô tả sản phẩm"
+  },
+  "en:editor toolbar": {
+    "vi": "Thanh công cụ chỉnh sửa"
+  },
+  "vi:thanh công cụ chỉnh sửa": {
+    "en": "Editor toolbar"
+  },
+  "en:heading": {
+    "vi": "Tiêu đề"
+  },
+  "vi:tiêu đề": {
+    "en": "Title"
+  },
+  "en:editor editing area: main": {
+    "vi": "Khu vực chỉnh sửa trình soạn thảo: chính"
+  },
+  "vi:khu vực chỉnh sửa trình soạn thảo: chính": {
+    "en": "Editor editing area: main"
+  },
+  "en:price of product": {
+    "vi": "Giá sản phẩm"
+  },
+  "en:envi": {
+    "vi": "Anh-Việt"
+  },
+  "vi:anh-việt": {
+    "en": "ENVI"
+  },
+  "en:company name": {
+    "vi": "Tên công ty"
+  },
+  "vi:tên công ty": {
+    "en": "Name of company"
+  },
+  "en:cty tnhh soc farm": {
+    "vi": "Công ty TNHH Soc Farm"
+  },
+  "vi:công ty tnhh soc farm": {
+    "en": "Cty TNHH soc farm"
+  },
+  "en:cssx bánh tét cô hường 2": {
+    "vi": "Cơ sở sản xuất Bánh Tét Cô Hường 2"
+  },
+  "vi:cơ sở sản xuất bánh tét cô hường 2": {
+    "en": "CSSX Bánh Tét Cô Hường 2"
+  },
+  "en:hkd nguyễn thị trúc loan- cs sản xuất năm thụy": {
+    "vi": "Hộ Kinh Doanh Nguyễn Thị Trúc Loan - Cơ Sở Sản xuất Năm Thụy"
+  },
+  "vi:hộ kinh doanh nguyễn thị trúc loan - cơ sở sản xuất năm thụy": {
+    "en": "HKD Nguyễn Thị Trúc Loan- CS Sản xuất Năm Thụy"
+  },
+  "en:cssx dầu dừa nguyên chất phương huỳnh": {
+    "vi": "Cơ sở sản xuất Dầu dừa nguyên chất Phương Huỳnh"
+  },
+  "vi:cơ sở sản xuất dầu dừa nguyên chất phương huỳnh": {
+    "en": "CSSX Dầu dừa nguyên chất Phương Huỳnh"
+  },
+  "en:updated ocop product successfully.": {
+    "vi": "Cập nhật sản phẩm ocop thành công."
+  },
+  "vi:cập nhật sản phẩm ocop thành công.": {
+    "en": "Updated ocop product successfully."
+  },
+  "en:please wait...": {
+    "vi": "Vui lòng đợi..."
+  },
+  "vi:vui lòng đợi...": {
+    "en": "Please wait..."
+  },
+  "en:close this dialog": {
+    "vi": "Đóng hộp thoại này"
+  },
+  "vi:đóng hộp thoại này": {
+    "en": "Close this dialog"
+  },
+  "en:ocop statistics": {
+    "vi": "Thống kê OCOP"
+  },
+  "vi:thống kê ocop": {
+    "en": "OCOP Statistics"
+  },
+  "en:ocop analytics": {
+    "vi": "Phân tích OCOP"
+  },
+  "vi:phân tích ocop": {
+    "en": "Ocop Analytics"
+  },
+  "en:ocop products – views, interactions, favorites": {
+    "vi": "Sản phẩm OCOP – Lượt xem, Tương tác, Yêu thích"
+  },
+  "vi:sản phẩm ocop – lượt xem, tương tác, yêu thích": {
+    "en": "OCOP Products – Views, Interactions, Favorites"
+  },
+  "en:quick filter": {
+    "vi": "Lọc nhanh"
+  },
+  "vi:lọc nhanh": {
+    "en": "Quick Filter"
+  },
+  "en:this week": {
+    "vi": "Tuần này"
+  },
+  "vi:tuần này": {
+    "en": "This Week"
+  },
+  "en:this month": {
+    "vi": "Tháng này"
+  },
+  "vi:tháng này": {
+    "en": "This Month"
+  },
+  "en:this year": {
+    "vi": "Năm nay"
+  },
+  "vi:năm nay": {
+    "en": "This Year"
+  },
+  "en:start date": {
+    "vi": "Ngày bắt đầu"
+  },
+  "vi:ngày bắt đầu": {
+    "en": "Starting date"
+  },
+  "en:end date": {
+    "vi": "Ngày kết thúc"
+  },
+  "vi:ngày kết thúc": {
+    "en": "Ending date"
+  },
+  "en:filter": {
+    "vi": "Lọc"
+  },
+  "vi:lọc": {
+    "en": "Filter"
+  },
+  "en:reset": {
+    "vi": "Đặt lại"
+  },
+  "vi:đặt lại": {
+    "en": "Reset"
+  },
+  "en:download png": {
+    "vi": "Tải xuống PNG"
+  },
+  "vi:tải xuống png": {
+    "en": "Download PNG"
+  },
+  "en:download csv": {
+    "vi": "Tải xuống CSV"
+  },
+  "vi:tải xuống csv": {
+    "en": "Download CSV"
+  },
+  "en:download": {
+    "vi": "Tải xuống"
+  },
+  "vi:tải xuống": {
+    "en": "Download"
+  },
+  "en:demographic analysis": {
+    "vi": "Phân tích nhân khẩu học"
+  },
+  "vi:phân tích nhân khẩu học": {
+    "en": "Demographic Analysis"
+  },
+  "en:compare": {
+    "vi": "So sánh"
+  },
+  "vi:so sánh": {
+    "en": "Compare"
+  },
+  "en:select products": {
+    "vi": "Chọn sản phẩm"
+  },
+  "vi:chọn sản phẩm": {
+    "en": "Select products"
+  },
+  "en:details": {
+    "vi": "Chi tiết"
+  },
+  "vi:chi tiết": {
+    "en": "Details"
+  },
+  "en:location name": {
+    "vi": "Tên địa điểm"
+  },
+  "en:edit profile": {
+    "vi": "Chỉnh sửa hồ sơ"
+  },
+  "vi:chỉnh sửa hồ sơ": {
+    "en": "Edit Profile"
+  },
+  "en:change                                                         avatar": {
+    "vi": "Thay đổi ảnh đại diện"
+  },
+  "vi:thay đổi ảnh đại diện": {
+    "en": "Change                                                         Avatar"
+  },
+  "en:please select a valid image file (jpeg, png, gif, etc.)": {
+    "vi": "Vui lòng chọn một tệp hình ảnh hợp lệ (JPEG, PNG, GIF, v.v.)"
+  },
+  "vi:vui lòng chọn một tệp hình ảnh hợp lệ (jpeg, png, gif, v.v.)": {
+    "en": "Please select a valid image file (JPEG, PNG, GIF, etc.)"
+  },
+  "en:user id": {
+    "vi": "Mã người dùng"
+  },
+  "vi:mã người dùng": {
+    "en": "User ID"
+  },
+  "en:security settings": {
+    "vi": "Cài đặt bảo mật"
+  },
+  "vi:cài đặt bảo mật": {
+    "en": "Security Settings"
+  },
+  "en:account details": {
+    "vi": "Thông tin tài khoản"
+  },
+  "vi:thông tin tài khoản": {
+    "en": "Account Details"
+  },
+  "en:username": {
+    "vi": "Tên người dùng"
+  },
+  "vi:tên người dùng": {
+    "en": "User Name"
+  },
+  "en:role": {
+    "vi": "Vai trò"
+  },
+  "vi:vai trò": {
+    "en": "Role"
+  },
+  "en:last updated": {
+    "vi": "Cập nhật lần cuối"
+  },
+  "vi:cập nhật lần cuối": {
+    "en": "Last Updated"
+  },
+  "en:forbidden status": {
+    "vi": "Trạng thái bị cấm"
+  },
+  "vi:trạng thái bị cấm": {
+    "en": "Forbidden Status"
+  },
+  "en:profile image": {
+    "vi": "Ảnh đại diện"
+  },
+  "vi:ảnh đại diện": {
+    "en": "avatar"
+  },
+  "en:admin list": {
+    "vi": "Danh sách quản trị viên"
+  },
+  "vi:danh sách quản trị viên": {
+    "en": "Admin List"
+  },
+  "en:add administrator": {
+    "vi": "Thêm quản trị viên"
+  },
+  "vi:thêm quản trị viên": {
+    "en": "Add Administrator"
+  },
+  "en:create at": {
+    "vi": "Ngày tạo"
+  },
+  "en:showing 1 to 4 of 4 entries": {
+    "vi": "Hiển thị 1 đến 4 trong tổng số 4 mục"
+  },
+  "vi:hiển thị 1 đến 4 trong tổng số 4 mục": {
+    "en": "Showing 1 to 4 of 4 entries"
+  },
+  "en:export admin list": {
+    "vi": "Xuất danh sách quản trị viên"
+  },
+  "vi:xuất danh sách quản trị viên": {
+    "en": "Export Admin List"
+  },
+  "en:no.: activate to sort column descending": {
+    "vi": "Số thứ tự: nhấp để sắp xếp giảm dần"
+  },
+  "vi:số thứ tự: nhấp để sắp xếp giảm dần": {
+    "en": "No.: activate to sort column descending"
+  },
+  "en:username: activate to sort column ascending": {
+    "vi": "Tên người dùng: nhấp để sắp xếp tăng dần"
+  },
+  "vi:tên người dùng: nhấp để sắp xếp tăng dần": {
+    "en": "Username: activate to sort column ascending"
+  },
+  "en:email: activate to sort column ascending": {
+    "vi": "Email: nhấp để sắp xếp tăng dần"
+  },
+  "vi:email: nhấp để sắp xếp tăng dần": {
+    "en": "Email: activate to sort column ascending"
+  },
+  "en:status: activate to sort column ascending": {
+    "vi": "Trạng thái: nhấp để sắp xếp tăng dần"
+  },
+  "vi:trạng thái: nhấp để sắp xếp tăng dần": {
+    "en": "Status: activate to sort column ascending"
+  },
+  "en:create at: activate to sort column ascending": {
+    "vi": "Ngày tạo: nhấp để sắp xếp tăng dần"
+  },
+  "vi:ngày tạo: nhấp để sắp xếp tăng dần": {
+    "en": "Create At: activate to sort column ascending"
+  },
+  "en:action: activate to sort column ascending": {
+    "vi": "Thao tác: nhấp để sắp xếp tăng dần"
+  },
+  "vi:thao tác: nhấp để sắp xếp tăng dần": {
+    "en": "Action: activate to sort column ascending"
+  },
+  "en:delete": {
+    "vi": "Xóa"
+  },
+  "vi:xóa": {
+    "en": "Delete"
+  },
+  "en:restore": {
+    "vi": "Khôi phục"
+  },
+  "vi:khôi phục": {
+    "en": "Restore"
+  },
+  "en:destination management": {
+    "vi": "Quản lý điểm đến"
+  },
+  "vi:quản lý điểm đến": {
+    "en": "Destination Management"
+  },
+  "en:destination list": {
+    "vi": "Danh sách điểm đến"
+  },
+  "vi:danh sách điểm đến": {
+    "en": "Destination List"
+  },
+  "en:create destination": {
+    "vi": "Tạo điểm đến"
+  },
+  "vi:tạo điểm đến": {
+    "en": "Create Destination"
+  },
+  "en:name of destination": {
+    "vi": "Tên điểm đến"
+  },
+  "en:avaragerating": {
+    "vi": "Đánh giá trung bình"
+  },
+  "vi:đánh giá trung bình": {
+    "en": "Avarage Rating"
+  },
+  "en:favorite": {
+    "vi": "Yêu thích"
+  },
+  "vi:yêu thích": {
+    "en": "Favorite"
+  },
+  "en:showing 1 to 10 of 17 entries (filtered from 18 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 17 mục (đã lọc từ tổng số 18 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 17 mục (đã lọc từ tổng số 18 mục)": {
+    "en": "Showing 1 to 10 of 17 entries (filtered from 18 total entries)"
+  },
+  "en:export destinations list": {
+    "vi": "Xuất danh sách điểm đến"
+  },
+  "vi:xuất danh sách điểm đến": {
+    "en": "Export Destinations List"
+  },
+  "en:name of destination: activate to sort column ascending": {
+    "vi": "Tên điểm đến: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:tên điểm đến: nhấp để sắp xếp cột tăng dần": {
+    "en": "Name Of Destination: activate to sort column ascending"
+  },
+  "en:showing 1 to 10 of 10 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 10 mục (đã lọc từ 11 mục tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 10 mục (đã lọc từ 11 mục tổng cộng)": {
+    "en": "Showing 1 to 10 of 10 entries (filtered from 11 total entries)"
+  },
+  "en:product name: activate to sort column ascending": {
+    "vi": "Tên sản phẩm: nhấn để sắp xếp cột tăng dần"
+  },
+  "vi:tên sản phẩm: nhấn để sắp xếp cột tăng dần": {
+    "en": "Product Name: activate to sort column ascending"
+  },
+  "en:reference price: activate to sort column ascending": {
+    "vi": "Giá tham khảo: nhấn để sắp xếp cột tăng dần"
+  },
+  "vi:giá tham khảo: nhấn để sắp xếp cột tăng dần": {
+    "en": "Reference Price: activate to sort column ascending"
+  },
+  "en:★: activate to sort column ascending": {
+    "vi": "★: nhấn để sắp xếp cột tăng dần"
+  },
+  "vi:★: nhấn để sắp xếp cột tăng dần": {
+    "en": "★: activate to sort column ascending"
+  },
+  "en:year release: activate to sort column ascending": {
+    "vi": "Năm phát hành: nhấn để sắp xếp cột tăng dần"
+  },
+  "vi:năm phát hành: nhấn để sắp xếp cột tăng dần": {
+    "en": "Year Release: activate to sort column ascending"
+  },
+  "en:created at: activate to sort column ascending": {
+    "vi": "Ngày tạo: nhấn để sắp xếp cột tăng dần"
+  },
+  "vi:ngày tạo: nhấn để sắp xếp cột tăng dần": {
+    "en": "Created At: activate to sort column ascending"
+  },
+  "en:company management": {
+    "vi": "Quản lý Công ty"
+  },
+  "vi:quản lý công ty": {
+    "en": "Company Management"
+  },
+  "en:company list": {
+    "vi": "Danh sách Công ty"
+  },
+  "vi:danh sách công ty": {
+    "en": "Company List"
+  },
+  "en:create company": {
+    "vi": "Tạo Công ty"
+  },
+  "vi:tạo công ty": {
+    "en": "Create Company"
+  },
+  "en:name": {
+    "vi": "Tên"
+  },
+  "vi:tên": {
+    "en": "Name"
+  },
+  "en:update at": {
+    "vi": "Cập nhật lúc"
+  },
+  "vi:cập nhật lúc": {
+    "en": "Update At"
+  },
+  "en:can tho": {
+    "vi": "Cần Thơ"
+  },
+  "vi:cần thơ": {
+    "en": "Can tho"
+  },
+  "en:showing 1 to 10 of 16 entries": {
+    "vi": "Hiển thị 1 đến 10 trên 16 mục"
+  },
+  "vi:hiển thị 1 đến 10 trên 16 mục": {
+    "en": "Showing 1 to 10 of 16 entries"
+  },
+  "en:export company list": {
+    "vi": "Xuất danh sách công ty"
+  },
+  "vi:xuất danh sách công ty": {
+    "en": "Export Company List"
+  },
+  "en:no. &nbsp;": {
+    "vi": "STT"
+  },
+  "en:name: activate to sort column ascending": {
+    "vi": "Tên: nhấp để sắp xếp tăng dần"
+  },
+  "vi:tên: nhấp để sắp xếp tăng dần": {
+    "en": "Name: activate to sort column ascending"
+  },
+  "en:address: activate to sort column ascending": {
+    "vi": "Địa chỉ: nhấp để sắp xếp tăng dần"
+  },
+  "vi:địa chỉ: nhấp để sắp xếp tăng dần": {
+    "en": "Address: activate to sort column ascending"
+  },
+  "en:update at: activate to sort column ascending": {
+    "vi": "Thời gian cập nhật: nhấp để sắp xếp tăng dần"
+  },
+  "vi:thời gian cập nhật: nhấp để sắp xếp tăng dần": {
+    "en": "Update At: activate to sort column ascending"
+  },
+  "en:company details": {
+    "vi": "Chi tiết công ty"
+  },
+  "vi:chi tiết công ty": {
+    "en": "Company Details"
+  },
+  "en:contact": {
+    "vi": "Liên hệ"
+  },
+  "vi:liên hệ": {
+    "en": "Contact"
+  },
+  "en:point": {
+    "vi": "Điểm"
+  },
+  "vi:điểm": {
+    "en": "Point"
+  },
+  "en:type:": {
+    "vi": "Loại:"
+  },
+  "vi:loại:": {
+    "en": "Type:"
+  },
+  "en:longitude: 106.6297": {
+    "vi": "Kinh độ: 106.6297"
+  },
+  "vi:kinh độ: 106.6297": {
+    "en": "Longitude: 106.6297"
+  },
+  "en:latitude: 10.7769": {
+    "vi": "Vĩ độ: 10.7769"
+  },
+  "vi:vĩ độ: 10.7769": {
+    "en": "Latitude: 10.7769"
+  },
+  "en:website:": {
+    "vi": "Trang web:"
+  },
+  "vi:trang web:": {
+    "en": "Website:"
+  },
+  "en:mail us:": {
+    "vi": "Gửi thư cho chúng tôi:"
+  },
+  "vi:gửi thư cho chúng tôi:": {
+    "en": "Mail Us:"
+  },
+  "en:contact number:": {
+    "vi": "Số điện thoại liên hệ:"
+  },
+  "vi:số điện thoại liên hệ:": {
+    "en": "Contact Number:"
+  },
+  "en:ocop type management": {
+    "vi": "Quản lý loại OCOP"
+  },
+  "vi:quản lý loại ocop": {
+    "en": "Ocop Type Management"
+  },
+  "en:ocop type list": {
+    "vi": "Danh sách loại OCOP"
+  },
+  "vi:danh sách loại ocop": {
+    "en": "Ocop Type List"
+  },
+  "en:create ocop type": {
+    "vi": "Tạo loại OCOP"
+  },
+  "vi:tạo loại ocop": {
+    "en": "Create Ocop Type"
+  },
+  "en:ocop type name": {
+    "vi": "Tên loại OCOP"
+  },
+  "vi:tên loại ocop": {
+    "en": "Ocop Type Name"
+  },
+  "en:showing 1 to 5 of 5 entries": {
+    "vi": "Hiển thị 1 đến 5 trong 5 mục"
+  },
+  "vi:hiển thị 1 đến 5 của 5 mục": {
+    "en": "Showing 1 to 5 of 5 entries"
+  },
+  "en:ocop type name: activate to sort column ascending": {
+    "vi": "Tên loại OCOP: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:tên loại ocop: nhấp để sắp xếp tăng dần": {
+    "en": "Ocop Type Name: activate to sort column ascending"
+  },
+  "vi:hiển thị 1 đến 5 trong 5 mục": {
+    "en": "Showing 1 to 5 of 5 entries"
+  },
+  "vi:tên loại ocop: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Ocop Type Name: activate to sort column ascending"
+  },
+  "en:@html.truncatewords(item.title, 8)": {
+    "vi": "Cắt ngắn tiêu đề thành 8 từ"
+  },
+  "vi:cắt ngắn tiêu đề thành 8 từ": {
+    "en": "@Html.TruncateWords(item.Title, 8)"
+  },
+  "en:123 đường abc, quận 1, tp. hồ chí …": {
+    "vi": "123 Đường ABC, Quận 1, TP. Hồ Chí Minh"
+  },
+  "vi:123 đường abc, quận 1, tp. hồ chí minh": {
+    "en": "123 Đường ABC, Quận 1, TP. Hồ Chí …"
+  },
+  "en:456 đường xyz, quận 2, tp. hồ chí …": {
+    "vi": "456 Đường XYZ, Quận 2, TP. Hồ Chí Minh"
+  },
+  "vi:456 đường xyz, quận 2, tp. hồ chí minh": {
+    "en": "456 Đường XYZ, Quận 2, TP. Hồ Chí …"
+  },
+  "en:789 đường def, quận 3, tp. hồ chí …": {
+    "vi": "789 Đường DEF, Quận 3, TP. Hồ Chí Minh"
+  },
+  "vi:789 đường def, quận 3, tp. hồ chí minh": {
+    "en": "789 Đường DEF, Quận 3, TP. Hồ Chí …"
+  },
+  "en:253/5, ấp 2, xã thạnh phú, huyện cầu …": {
+    "vi": "253/5, Ấp 2, xã Thạnh Phú, huyện Cầu Kè"
+  },
+  "vi:253/5, ấp 2, xã thạnh phú, huyện cầu kè": {
+    "en": "253/5, Ấp 2, xã Thạnh Phú, huyện Cầu …"
+  },
+  "en:118/7 độc lập, khóm 2, trà vinh, việt …": {
+    "vi": "118/7 Độc Lập, khóm 2, Trà Vinh, Việt Nam"
+  },
+  "vi:118/7 độc lập, khóm 2, trà vinh, việt nam": {
+    "en": "118/7 Độc Lập, khóm 2, Trà Vinh, Việt …"
+  },
+  "en:cacao mekong, ql60, song lộc, châu thành, trà …": {
+    "vi": "CACAO MEKONG, QL60, Song Lộc, Châu Thành, Trà Vinh"
+  },
+  "vi:cacao mekong, ql60, song lộc, châu thành, trà vinh": {
+    "en": "CACAO MEKONG, QL60, Song Lộc, Châu Thành, Trà …"
+  },
+  "en:216 bạch đằng, long đức, trà vinh, việt …": {
+    "vi": "216 Bạch Đằng, Long Đức, Trà Vinh, Việt Nam"
+  },
+  "vi:216 bạch đằng, long đức, trà vinh, việt nam": {
+    "en": "216 Bạch Đằng, Long Đức, Trà Vinh, Việt …"
+  },
+  "en:showing 1 to 10 of 15 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 15 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 15 mục": {
+    "en": "Showing 1 to 10 of 15 entries"
+  },
+  "en:\">back": {
+    "vi": "Quay lại"
+  },
+  "en:update company": {
+    "vi": "Cập nhật công ty"
+  },
+  "vi:cập nhật công ty": {
+    "en": "Update Company"
+  },
+  "en:company address": {
+    "vi": "Địa chỉ công ty"
+  },
+  "vi:địa chỉ công ty": {
+    "en": "Company Address"
+  },
+  "en:company locations": {
+    "vi": "Địa điểm công ty"
+  },
+  "vi:địa điểm công ty": {
+    "en": "Company Locations"
+  },
+  "en:type": {
+    "vi": "Loại"
+  },
+  "vi:loại": {
+    "en": "Type"
+  },
+  "en:-- select type --": {
+    "vi": "-- Chọn loại --"
+  },
+  "vi:-- chọn loại --": {
+    "en": "-- Select Type --"
+  },
+  "en:branch": {
+    "vi": "Chi nhánh"
+  },
+  "vi:chi nhánh": {
+    "en": "Branch"
+  },
+  "en:office": {
+    "vi": "Văn phòng"
+  },
+  "vi:văn phòng": {
+    "en": "Office"
+  },
+  "en:contact information": {
+    "vi": "Thông tin liên hệ"
+  },
+  "vi:thông tin liên hệ": {
+    "en": "Contact Information"
+  },
+  "en:phone": {
+    "vi": "Điện thoại"
+  },
+  "vi:điện thoại": {
+    "en": "Phone"
+  },
+  "en:edit company": {
+    "vi": "Chỉnh sửa công ty"
+  },
+  "vi:chỉnh sửa công ty": {
+    "en": "Edit Company"
+  },
+  "en:name of company": {
+    "vi": "Tên công ty"
+  },
+  "en:phone number": {
+    "vi": "Số điện thoại"
+  },
+  "vi:số điện thoại": {
+    "en": "Phone number"
+  },
+  "en:email address": {
+    "vi": "Địa chỉ email"
+  },
+  "vi:địa chỉ email": {
+    "en": "Email address"
+  },
+  "en:website url": {
+    "vi": "URL trang web"
+  },
+  "vi:url trang web": {
+    "en": "Website URL"
+  },
+  "en:local specialties management": {
+    "vi": "Quản lý Đặc sản Địa phương"
+  },
+  "vi:quản lý đặc sản địa phương": {
+    "en": "Local Specialties Management"
+  },
+  "en:local specialties list": {
+    "vi": "Danh sách Đặc sản Địa phương"
+  },
+  "vi:danh sách đặc sản địa phương": {
+    "en": "Local Specialties List"
+  },
+  "en:add local specialties": {
+    "vi": "Thêm Đặc sản Địa phương"
+  },
+  "vi:thêm đặc sản địa phương": {
+    "en": "Add Local Specialties"
+  },
+  "en:name of localspecialties": {
+    "vi": "Tên đặc sản địa phương"
+  },
+  "vi:tên đặc sản địa phương": {
+    "en": "Name of LocalSpecialties"
+  },
+  "en:là một trong những đặc sản nổi tiếng …": {
+    "vi": "là một trong những đặc sản nổi tiếng…"
+  },
+  "vi:là một trong những đặc sản nổi tiếng…": {
+    "en": "là một trong những đặc sản nổi tiếng …"
+  },
+  "en:mỗi khi tháng 10 âm lịch về, người dân trà vinh lại …": {
+    "vi": "Mỗi khi tháng 10 âm lịch về, người dân Trà Vinh lại…"
+  },
+  "vi:mỗi khi tháng 10 âm lịch về, người dân trà vinh lại…": {
+    "en": "Mỗi khi tháng 10 âm lịch về, người dân Trà Vinh lại …"
+  },
+  "en:cháo là món ăn phổ biến ở nhiều địa phương. tuy nhiên, …": {
+    "vi": "Cháo là món ăn phổ biến ở nhiều địa phương. Tuy nhiên,…"
+  },
+  "vi:cháo là món ăn phổ biến ở nhiều địa phương. tuy nhiên,…": {
+    "en": "Cháo là món ăn phổ biến ở nhiều địa phương. Tuy nhiên, …"
+  },
+  "en:bánh ú đa lộc trà vinh\u00A0không chỉ là món ăn đặc trưng …": {
+    "vi": "Bánh ú Đa Lộc Trà Vinh không chỉ là món ăn đặc trưng …"
+  },
+  "vi:bánh ú đa lộc trà vinh không chỉ là món ăn đặc trưng …": {
+    "en": "Bánh ú Đa Lộc Trà Vinh\u00A0không chỉ là món ăn đặc trưng …"
+  },
+  "en:showing 1 to 10 of 13 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 13 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 13 mục": {
+    "en": "Showing 1 to 10 of 13 entries"
+  },
+  "en:export local specialties list": {
+    "vi": "Xuất danh sách đặc sản địa phương"
+  },
+  "vi:xuất danh sách đặc sản địa phương": {
+    "en": "Export Local Specialties List"
+  },
+  "en:name of localspecialties: activate to sort column ascending": {
+    "vi": "Tên đặc sản địa phương: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:tên đặc sản địa phương: nhấp để sắp xếp cột tăng dần": {
+    "en": "Name of LocalSpecialties: activate to sort column ascending"
+  },
+  "en:description: activate to sort column ascending": {
+    "vi": "Mô tả: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:mô tả: nhấp để sắp xếp cột tăng dần": {
+    "en": "Description: activate to sort column ascending"
+  },
+  "en:img": {
+    "vi": "Ảnh"
+  },
+  "vi:ảnh": {
+    "en": "img"
+  },
+  "en:bánh ú đa lộc trà vinh\u00A0không chỉ là …": {
+    "vi": "Bánh ú Đa Lộc Trà Vinh không chỉ là …"
+  },
+  "vi:bánh ú đa lộc trà vinh không chỉ là …": {
+    "en": "Bánh ú Đa Lộc Trà Vinh\u00A0không chỉ là …"
+  },
+  "en:event and festival details": {
+    "vi": "Chi tiết Sự kiện và Lễ hội"
+  },
+  "vi:chi tiết sự kiện và lễ hội": {
+    "en": "Event And Festival Detail"
+  },
+  "en:event and festival management": {
+    "vi": "Quản lý Sự kiện và Lễ hội"
+  },
+  "vi:quản lý sự kiện và lễ hội": {
+    "en": "Event And Festival management"
+  },
+  "en:event and festival detail": {
+    "vi": "Chi tiết Sự kiện và Lễ hội"
+  },
+  "en:tra vinh": {
+    "vi": "Trà Vinh"
+  },
+  "vi:trà vinh": {
+    "en": "Tra Vinh"
+  },
+  "en:category:": {
+    "vi": "Danh mục:"
+  },
+  "vi:thể loại:": {
+    "en": "Category:"
+  },
+  "en:event": {
+    "vi": "Sự kiện"
+  },
+  "vi:sự kiện": {
+    "en": "Event"
+  },
+  "en:create at:": {
+    "vi": "Tạo vào lúc:"
+  },
+  "vi:tạo lúc:": {
+    "en": "Create At:"
+  },
+  "en:location type:": {
+    "vi": "Loại địa điểm:"
+  },
+  "vi:loại địa điểm:": {
+    "en": "Location Type:"
+  },
+  "en:location name:": {
+    "vi": "Tên địa điểm:"
+  },
+  "vi:tên địa điểm:": {
+    "en": "Location name:"
+  },
+  "en:longitude/latitude:": {
+    "vi": "Kinh độ/Vĩ độ:"
+  },
+  "vi:kinh độ/vĩ độ:": {
+    "en": "Longitude/latitude:"
+  },
+  "en:123 ,\u00A0 133": {
+    "vi": "123 , 133"
+  },
+  "vi:123 , 133": {
+    "en": "123 ,\u00A0 133"
+  },
+  "en:destination type :": {
+    "vi": "Loại điểm đến :"
+  },
+  "vi:loại điểm đến:": {
+    "en": "Destination Type :"
+  },
+  "en:edit event and festival": {
+    "vi": "Chỉnh sửa Sự kiện và Lễ hội"
+  },
+  "vi:chỉnh sửa sự kiện và lễ hội": {
+    "en": "Edit Event And Festival"
+  },
+  "en:delete event and festival": {
+    "vi": "Xóa Sự kiện và Lễ hội"
+  },
+  "vi:xóa sự kiện và lễ hội": {
+    "en": "Delete Event And Festival"
+  },
+  "en:operating date": {
+    "vi": "Ngày hoạt động"
+  },
+  "vi:ngày hoạt động": {
+    "en": "Operating Date"
+  },
+  "en:start date:": {
+    "vi": "Ngày bắt đầu:"
+  },
+  "vi:ngày bắt đầu:": {
+    "en": "Start date:"
+  },
+  "en:end date:": {
+    "vi": "Ngày kết thúc:"
+  },
+  "vi:ngày kết thúc:": {
+    "en": "End date:"
+  },
+  "en:image": {
+    "vi": "Hình ảnh"
+  },
+  "vi:hình ảnh": {
+    "en": "image"
+  },
+  "vi:danh mục:": {
+    "en": "Category:"
+  },
+  "vi:tạo vào lúc:": {
+    "en": "Create At:"
+  },
+  "en:5/14/2025 1:20:36 pm": {
+    "vi": "5/14/2025 1:20:36 CH"
+  },
+  "vi:5/14/2025 1:20:36 ch": {
+    "en": "5/14/2025 1:20:36 PM"
+  },
+  "en:chua ang": {
+    "vi": "chùa Ang"
+  },
+  "vi:chùa ang": {
+    "en": "chua ang"
+  },
+  "vi:loại điểm đến :": {
+    "en": "Destination Type :"
+  },
+  "en:notification list": {
+    "vi": "Danh sách thông báo"
+  },
+  "vi:danh sách thông báo": {
+    "en": "Notifications List"
+  },
+  "en:send notification": {
+    "vi": "Gửi thông báo"
+  },
+  "en:notifications list": {
+    "vi": "Danh sách thông báo"
+  },
+  "en:title": {
+    "vi": "Tiêu đề"
+  },
+  "en:content": {
+    "vi": "Nội dung"
+  },
+  "vi:nội dung": {
+    "en": "Content"
+  },
+  "en:showing 1 to 2 of 2 entries": {
+    "vi": "Hiển thị 1 đến 2 trong tổng số 2 mục"
+  },
+  "vi:hiển thị 1 đến 2 trong tổng số 2 mục": {
+    "en": "Showing 1 to 2 of 2 entries"
+  },
+  "en:export notifications list": {
+    "vi": "Xuất danh sách thông báo"
+  },
+  "vi:xuất danh sách thông báo": {
+    "en": "Export Notifications List"
+  },
+  "en:title: activate to sort column ascending": {
+    "vi": "Tiêu đề: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:tiêu đề: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Title: activate to sort column ascending"
+  },
+  "en:content: activate to sort column ascending": {
+    "vi": "Nội dung: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:nội dung: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Content: activate to sort column ascending"
+  },
+  "en:showing 1 to 10 of 16 entries (filtered from 18 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 16 mục (đã lọc từ tổng số 18 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 16 mục (đã lọc từ tổng số 18 mục)": {
+    "en": "Showing 1 to 10 of 16 entries (filtered from 18 total entries)"
+  },
+  "en:avaragerating: activate to sort column ascending": {
+    "vi": "Đánh giá trung bình: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:đánh giá trung bình: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "AvarageRating: activate to sort column ascending"
+  },
+  "en:favorite: activate to sort column ascending": {
+    "vi": "Yêu thích: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:yêu thích: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Favorite: activate to sort column ascending"
+  },
+  "en:destination details": {
+    "vi": "Chi tiết Điểm đến"
+  },
+  "vi:chi tiết điểm đến": {
+    "en": "Destination Details"
+  },
+  "en:thiền viện trúc lâm trà vinh, jhwc+5hr, ấp khoán tiều, thị xã, thị xã duyên hải, trà vinh, việt nam": {
+    "vi": "Thiền viện Trúc Lâm Trà Vinh, JHWC+5HR, ấp Khoán Tiều, Thị xã Duyên Hải, Trà Vinh, Việt Nam"
+  },
+  "vi:thiền viện trúc lâm trà vinh, jhwc+5hr, ấp khoán tiều, thị xã duyên hải, trà vinh, việt nam": {
+    "en": "Thiền viện Trúc Lâm Trà Vinh, JHWC+5HR, ấp khoán tiều, Thị xã, Thị xã Duyên Hải, Trà Vinh, Việt Nam"
+  },
+  "en:106.5688034 ,\u00A0 9.645486": {
+    "vi": "106.5688034 , 9.645486"
+  },
+  "vi:106.5688034 , 9.645486": {
+    "en": "106.5688034 ,\u00A0 9.645486"
+  },
+  "en:avarage rating": {
+    "vi": "Đánh giá trung bình"
+  },
+  "en:destination type:": {
+    "vi": "Loại hình Điểm đến:"
+  },
+  "vi:loại hình điểm đến:": {
+    "en": "Destination Type:"
+  },
+  "en:religious buildings": {
+    "vi": "Công trình Tôn giáo"
+  },
+  "vi:công trình tôn giáo": {
+    "en": "Religious Buildings"
+  },
+  "en:ticket:": {
+    "vi": "Vé:"
+  },
+  "vi:vé:": {
+    "en": "Ticket:"
+  },
+  "en:free": {
+    "vi": "Miễn phí"
+  },
+  "vi:miễn phí": {
+    "en": "Free"
+  },
+  "en:capacity:": {
+    "vi": "Sức chứa:"
+  },
+  "vi:sức chứa:": {
+    "en": "Capacity:"
+  },
+  "en:delete destination": {
+    "vi": "Xóa Điểm đến"
+  },
+  "vi:xóa điểm đến": {
+    "en": "Delete Destination"
+  },
+  "en:operating time": {
+    "vi": "Giờ hoạt động"
+  },
+  "vi:giờ hoạt động": {
+    "en": "Operating time"
+  },
+  "en:contract": {
+    "vi": "Hợp đồng"
+  },
+  "vi:hợp đồng": {
+    "en": "Contract"
+  },
+  "en:history                                 description": {
+    "vi": "Mô tả Lịch sử"
+  },
+  "vi:mô tả lịch sử": {
+    "en": "History                                 Description"
+  },
+  "en:more": {
+    "vi": "Xem thêm"
+  },
+  "vi:xem thêm": {
+    "en": "More"
+  },
+  "en:no history description available.": {
+    "vi": "Không có mô tả lịch sử."
+  },
+  "vi:không có mô tả lịch sử.": {
+    "en": "No history description available."
+  },
+  "en:there is no any history image": {
+    "vi": "Không có hình ảnh lịch sử nào."
+  },
+  "vi:không có hình ảnh lịch sử nào.": {
+    "en": "There is no any history image"
+  },
+  "en:review list": {
+    "vi": "Danh sách đánh giá"
+  },
+  "vi:danh sách đánh giá": {
+    "en": "Review List"
+  },
+  "en:all destinations": {
+    "vi": "Tất cả điểm đến"
+  },
+  "vi:tất cả điểm đến": {
+    "en": "All Destinations"
+  },
+  "en:natural landscape": {
+    "vi": "Cảnh quan thiên nhiên"
+  },
+  "vi:cảnh quan thiên nhiên": {
+    "en": "Natural Landscape"
+  },
+  "en:monuments and museums": {
+    "vi": "Di tích và Bảo tàng"
+  },
+  "vi:di tích và bảo tàng": {
+    "en": "Monuments And Museums"
+  },
+  "en:folklore": {
+    "vi": "Văn hóa dân gian"
+  },
+  "vi:văn hóa dân gian": {
+    "en": "Folklore"
+  },
+  "en:ecology": {
+    "vi": "Sinh thái"
+  },
+  "vi:sinh thái": {
+    "en": "Ecology"
+  },
+  "en:rating": {
+    "vi": "Đánh giá"
+  },
+  "en:all ratings": {
+    "vi": "Tất cả đánh giá"
+  },
+  "vi:tất cả đánh giá": {
+    "en": "All Ratings"
+  },
+  "en:find": {
+    "vi": "Tìm kiếm"
+  },
+  "en:user name": {
+    "vi": "Tên người dùng"
+  },
+  "en:comment": {
+    "vi": "Bình luận"
+  },
+  "vi:bình luận": {
+    "en": "Comment"
+  },
+  "en:no data available in table": {
+    "vi": "Không có dữ liệu trong bảng"
+  },
+  "vi:không có dữ liệu trong bảng": {
+    "en": "No data available in table"
+  },
+  "en:showing 0 to 0 of 0 entries": {
+    "vi": "Hiển thị 0 đến 0 của 0 mục"
+  },
+  "vi:hiển thị 0 đến 0 của 0 mục": {
+    "en": "Showing 0 to 0 of 0 entries"
+  },
+  "en:user name: activate to sort column ascending": {
+    "vi": "Tên người dùng: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:tên người dùng: nhấp để sắp xếp cột tăng dần": {
+    "en": "User Name: activate to sort column ascending"
+  },
+  "en:destination: activate to sort column ascending": {
+    "vi": "Điểm đến: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:điểm đến: nhấp để sắp xếp cột tăng dần": {
+    "en": "Destination: activate to sort column ascending"
+  },
+  "en:rating ★: activate to sort column ascending": {
+    "vi": "Đánh giá ★: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:đánh giá ★: nhấp để sắp xếp cột tăng dần": {
+    "en": "Rating ★: activate to sort column ascending"
+  },
+  "en:comment: activate to sort column ascending": {
+    "vi": "Bình luận: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:bình luận: nhấp để sắp xếp cột tăng dần": {
+    "en": "Comment: activate to sort column ascending"
+  },
+  "en:event and festival list": {
+    "vi": "Danh sách sự kiện và lễ hội"
+  },
+  "vi:danh sách sự kiện và lễ hội": {
+    "en": "Event And Festival List"
+  },
+  "en:create event and festival": {
+    "vi": "Tạo sự kiện và lễ hội"
+  },
+  "vi:tạo sự kiện và lễ hội": {
+    "en": "Event And Festival Create"
+  },
+  "en:name of event and festival": {
+    "vi": "Tên sự kiện và lễ hội"
+  },
+  "vi:tên sự kiện và lễ hội": {
+    "en": "Name Of Event And Festival"
+  },
+  "en:start date to end date": {
+    "vi": "Ngày bắt đầu đến ngày kết thúc"
+  },
+  "vi:ngày bắt đầu đến ngày kết thúc": {
+    "en": "Start date to end date"
+  },
+  "en:29/05/25, 00:00 to                                                  31/05/25, 00:00": {
+    "vi": "29/05/25, 00:00 đến 31/05/25, 00:00"
+  },
+  "vi:29/05/25, 00:00 đến 31/05/25, 00:00": {
+    "en": "29/05/25, 00:00 to                                                  31/05/25, 00:00"
+  },
+  "en:festival": {
+    "vi": "Lễ hội"
+  },
+  "en:26/05/25, 00:00 to                                                  27/05/25, 00:00": {
+    "vi": "26/05/25, 00:00 đến 27/05/25, 00:00"
+  },
+  "vi:26/05/25, 00:00 đến 27/05/25, 00:00": {
+    "en": "26/05/25, 00:00 to                                                  27/05/25, 00:00"
+  },
+  "en:28/05/25, 00:00 to                                                  29/05/25, 00:00": {
+    "vi": "28/05/25, 00:00 đến 29/05/25, 00:00"
+  },
+  "vi:28/05/25, 00:00 đến 29/05/25, 00:00": {
+    "en": "28/05/25, 00:00 to                                                  29/05/25, 00:00"
+  },
+  "en:30/05/25, 00:00 to                                                  31/05/25, 00:00": {
+    "vi": "30/05/25, 00:00 đến 31/05/25, 00:00"
+  },
+  "vi:30/05/25, 00:00 đến 31/05/25, 00:00": {
+    "en": "30/05/25, 00:00 to                                                  31/05/25, 00:00"
+  },
+  "en:showing 1 to 10 of 12 entries (filtered from 13 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 12 mục (đã lọc từ 13 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 12 mục (đã lọc từ 13 mục)": {
+    "en": "Showing 1 to 10 of 12 entries (filtered from 13 total entries)"
+  },
+  "en:export event and festival": {
+    "vi": "Xuất sự kiện và lễ hội"
+  },
+  "vi:xuất sự kiện và lễ hội": {
+    "en": "Export Event And Festival"
+  },
+  "en:name of event and festival: activate to sort column ascending": {
+    "vi": "Tên sự kiện và lễ hội: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:tên sự kiện và lễ hội: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Name Of Event And Festival: activate to sort column ascending"
+  },
+  "en:type: activate to sort column ascending": {
+    "vi": "Loại: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:loại: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Type: activate to sort column ascending"
+  },
+  "en:start date to end date: activate to sort column ascending": {
+    "vi": "Ngày bắt đầu đến ngày kết thúc: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:ngày bắt đầu đến ngày kết thúc: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Start date to end date: activate to sort column ascending"
+  },
+  "en:avatar": {
+    "vi": "Ảnh đại diện"
+  },
+  "en:33 mins ago": {
+    "vi": "33 phút trước"
+  },
+  "vi:33 phút trước": {
+    "en": "33 mins ago"
+  },
+  "en:send": {
+    "vi": "Gửi"
+  },
+  "vi:gửi": {
+    "en": "Send"
+  },
+  "en:select icon": {
+    "vi": "Chọn biểu tượng"
+  },
+  "vi:chọn biểu tượng": {
+    "en": "Select Icon"
+  },
+  "en:-- select an icon --": {
+    "vi": "-- Chọn một biểu tượng --"
+  },
+  "vi:-- chọn một biểu tượng --": {
+    "en": "-- Select an icon --"
+  },
+  "en:\uD83C\uDF5C (bun)": {
+    "vi": "\uD83C\uDF5C (Bún)"
+  },
+  "vi:\uD83C\uDF5C (bún)": {
+    "en": "\uD83C\uDF5C (Bun)"
+  },
+  "en:\uD83C\uDF1D (moon)": {
+    "vi": "\uD83C\uDF1D (Mặt trăng)"
+  },
+  "vi:\uD83C\uDF1D (mặt trăng)": {
+    "en": "\uD83C\uDF1D (Moon)"
+  },
+  "en:❤️ (heart)": {
+    "vi": "❤️ (Trái tim)"
+  },
+  "vi:❤️ (trái tim)": {
+    "en": "❤️ (Heart)"
+  },
+  "en:✨ (sparkles)": {
+    "vi": "✨ (Lấp lánh)"
+  },
+  "vi:✨ (lấp lánh)": {
+    "en": "✨ (Sparkles)"
+  },
+  "en:enter content": {
+    "vi": "Nhập nội dung"
+  },
+  "vi:nhập nội dung": {
+    "en": "Enter Content"
+  },
+  "en:title *": {
+    "vi": "Tiêu đề *"
+  },
+  "vi:tiêu đề *": {
+    "en": "Title *"
+  },
+  "en:34 mins ago": {
+    "vi": "34 phút trước"
+  },
+  "vi:34 phút trước": {
+    "en": "34 mins ago"
+  },
+  "en:showing 1 to 3 of 3 entries": {
+    "vi": "Hiển thị 1 đến 3 trong tổng số 3 mục"
+  },
+  "vi:hiển thị 1 đến 3 trong tổng số 3 mục": {
+    "en": "Showing 1 to 3 of 3 entries"
+  },
+  "en:the notification was sent successfully!": {
+    "vi": "Thông báo đã được gửi thành công!"
+  },
+  "vi:thông báo đã được gửi thành công!": {
+    "en": "The notification was sent successfully!"
+  },
+  "en:35 mins ago": {
+    "vi": "35 phút trước"
+  },
+  "vi:35 phút trước": {
+    "en": "35 mins ago"
+  },
+  "en:36 mins ago": {
+    "vi": "36 phút trước"
+  },
+  "vi:36 phút trước": {
+    "en": "36 mins ago"
+  },
+  "en:notifications details": {
+    "vi": "Chi tiết thông báo"
+  },
+  "vi:chi tiết thông báo": {
+    "en": "Notifications Details"
+  },
+  "en:13/06/25, 00:00 to                                                  14/06/25, 00:00": {
+    "vi": "13/06/25, 00:00 đến 14/06/25, 00:00"
+  },
+  "vi:13/06/25, 00:00 đến 14/06/25, 00:00": {
+    "en": "13/06/25, 00:00 to                                                  14/06/25, 00:00"
+  },
+  "en:showing 1 to 10 of 10 entries (filtered from 13 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 10 mục (được lọc từ tổng số 13 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 10 mục (được lọc từ tổng số 13 mục)": {
+    "en": "Showing 1 to 10 of 10 entries (filtered from 13 total entries)"
+  },
+  "en:37 mins ago": {
+    "vi": "37 phút trước"
+  },
+  "vi:37 phút trước": {
+    "en": "37 mins ago"
+  },
+  "en:38 mins ago": {
+    "vi": "38 phút trước"
+  },
+  "vi:38 phút trước": {
+    "en": "38 mins ago"
+  },
+  "en:event and festival create": {
+    "vi": "Tạo Sự Kiện Và Lễ Hội"
+  },
+  "en:terms of use": {
+    "vi": "Điều khoản sử dụng"
+  },
+  "vi:điều khoản sử dụng": {
+    "en": "Terms of use"
+  },
+  "en:choose view": {
+    "vi": "Chọn chế độ xem"
+  },
+  "vi:chọn chế độ xem": {
+    "en": "Choose view"
+  },
+  "en:map view": {
+    "vi": "Chế độ xem bản đồ"
+  },
+  "vi:chế độ xem bản đồ": {
+    "en": "Map view"
+  },
+  "en:satellite": {
+    "vi": "Vệ tinh"
+  },
+  "vi:vệ tinh": {
+    "en": "Satellite"
+  },
+  "en:traffic conditions": {
+    "vi": "Tình trạng giao thông"
+  },
+  "vi:tình trạng giao thông": {
+    "en": "Traffic conditions"
+  },
+  "en:show traffic incidents": {
+    "vi": "Hiển thị sự cố giao thông"
+  },
+  "vi:hiển thị sự cố giao thông": {
+    "en": "Show traffic incidents"
+  },
+  "en:type location": {
+    "vi": "Nhập vị trí"
+  },
+  "vi:nhập vị trí": {
+    "en": "Type Location"
+  },
+  "en:unknow": {
+    "vi": "Không xác định"
+  },
+  "en:event and festival title": {
+    "vi": "Tiêu đề sự kiện và lễ hội"
+  },
+  "vi:tiêu đề sự kiện và lễ hội": {
+    "en": "Event And Festival Title"
+  },
+  "en:starting date": {
+    "vi": "Ngày bắt đầu"
+  },
+  "en:ending date": {
+    "vi": "Ngày kết thúc"
+  },
+  "en:event type": {
+    "vi": "Loại sự kiện"
+  },
+  "vi:loại sự kiện": {
+    "en": "Event Type"
+  },
+  "en:decrease indent": {
+    "vi": "Giảm thụt lề"
+  },
+  "vi:giảm thụt lề": {
+    "en": "Decrease indent"
+  },
+  "en:increase indent": {
+    "vi": "Tăng thụt lề"
+  },
+  "vi:tăng thụt lề": {
+    "en": "Increase indent"
+  },
+  "en:upload images": {
+    "vi": "Tải ảnh lên"
+  },
+  "vi:tải ảnh lên": {
+    "en": "Upload images"
+  },
+  "en:zoom in": {
+    "vi": "Phóng to"
+  },
+  "vi:phóng to": {
+    "en": "Zoom in"
+  },
+  "en:zoom out": {
+    "vi": "Thu nhỏ"
+  },
+  "vi:thu nhỏ": {
+    "en": "Zoom out"
+  },
+  "en:change to miles": {
+    "vi": "Đổi sang dặm"
+  },
+  "vi:đổi sang dặm": {
+    "en": "Change to miles"
+  },
+  "en:disabled with webgl engine": {
+    "vi": "Đã tắt với công cụ WEBGL"
+  },
+  "vi:đã tắt với công cụ webgl": {
+    "en": "Disabled with WEBGL engine"
+  },
+  "en:address of event or festival": {
+    "vi": "Địa chỉ sự kiện hoặc lễ hội"
+  },
+  "vi:địa chỉ sự kiện hoặc lễ hội": {
+    "en": "Address of event or festival"
+  },
+  "en:event or festival title": {
+    "vi": "Tiêu đề sự kiện hoặc lễ hội"
+  },
+  "vi:tiêu đề sự kiện hoặc lễ hội": {
+    "en": "Event or festival title"
+  },
+  "en:fill your description": {
+    "vi": "Điền mô tả của bạn"
+  },
+  "vi:điền mô tả của bạn": {
+    "en": "Fill your description"
+  },
+  "en:39 mins ago": {
+    "vi": "39 phút trước"
+  },
+  "vi:39 phút trước": {
+    "en": "39 mins ago"
+  },
+  "en:122.2 ,\u00A0 123.3": {
+    "vi": "122.2 , 123.3"
+  },
+  "vi:122.2 , 123.3": {
+    "en": "122.2 ,\u00A0 123.3"
+  },
+  "en:edit tip": {
+    "vi": "Chỉnh sửa Mẹo"
+  },
+  "vi:chỉnh sửa mẹo": {
+    "en": "Edit Tip"
+  },
+  "en:edit tips": {
+    "vi": "Chỉnh sửa các mẹo"
+  },
+  "vi:chỉnh sửa các mẹo": {
+    "en": "Edit Tips"
+  },
+  "en:<p>lễ hội còn có tên lễ cúng trăng diễn ra vào rằm tháng 10 âm lịch, là hội truyền thống lâu đời của đồng bào khmer. người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!</p>": {
+    "vi": "Lễ hội còn có tên lễ Cúng Trăng diễn ra vào rằm tháng 10 âm lịch, là hội truyền thống lâu đời của đồng bào Khmer. Người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt Trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!"
+  },
+  "vi:lễ hội còn có tên lễ cúng trăng diễn ra vào rằm tháng 10 âm lịch, là hội truyền thống lâu đời của đồng bào khmer. người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!": {
+    "en": "<p>Lễ hội còn có tên lễ Cúng Trăng diễn ra vào rằm tháng 10 âm lịch, là hội truyền thống lâu đời của đồng bào Khmer. Người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt Trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!</p>"
+  },
+  "en:introduce": {
+    "vi": "Giới thiệu"
+  },
+  "vi:giới thiệu": {
+    "en": "Introduce"
+  },
+  "en:tip travel": {
+    "vi": "Mẹo du lịch"
+  },
+  "vi:mẹo du lịch": {
+    "en": "Tip Travel"
+  },
+  "en:stay": {
+    "vi": "Lưu trú"
+  },
+  "vi:lưu trú": {
+    "en": "Stay"
+  },
+  "en:utilities": {
+    "vi": "Tiện ích"
+  },
+  "vi:tiện ích": {
+    "en": "Utilities"
+  },
+  "en:save": {
+    "vi": "Lưu"
+  },
+  "vi:lưu": {
+    "en": "Save"
+  },
+  "en:tips details": {
+    "vi": "Chi tiết mẹo"
+  },
+  "vi:chi tiết mẹo": {
+    "en": "Tips Details"
+  },
+  "en:tips management details": {
+    "vi": "Chi tiết quản lý mẹo"
+  },
+  "vi:chi tiết quản lý mẹo": {
+    "en": "Tips Management Details"
+  },
+  "en:creat at": {
+    "vi": "Ngày tạo"
+  },
+  "en:tips management list": {
+    "vi": "Danh sách quản lý mẹo"
+  },
+  "vi:danh sách quản lý mẹo": {
+    "en": "Tips Management List"
+  },
+  "en:add tips": {
+    "vi": "Thêm mẹo"
+  },
+  "vi:thêm mẹo": {
+    "en": "Add Tips"
+  },
+  "en:lễ hội óc om bóc tổ chức khi …": {
+    "vi": "Lễ hội Óc Om Bóc tổ chức khi nào?"
+  },
+  "vi:lễ hội óc om bóc tổ chức khi nào?": {
+    "en": "Lễ hội Óc Om Bóc tổ chức khi …"
+  },
+  "en:lễ hội còn có tên lễ cúng trăng …": {
+    "vi": "Lễ hội còn có tên là lễ Cúng Trăng."
+  },
+  "vi:lễ hội còn có tên là lễ cúng trăng.": {
+    "en": "Lễ hội còn có tên lễ Cúng Trăng …"
+  },
+  "en:lễ hội chôl chnăm thmây tổ chức mấy …": {
+    "vi": "Lễ hội Chôl Chnăm Thmây tổ chức mấy ngày?"
+  },
+  "vi:lễ hội chôl chnăm thmây tổ chức mấy ngày?": {
+    "en": "Lễ hội Chôl Chnăm Thmây tổ chức mấy …"
+  },
+  "en:ngày thứ nhất (chôl sangkran chmây) mọi người …": {
+    "vi": "Ngày thứ nhất (Chôl sangkran Chmây) mọi người sẽ làm gì?"
+  },
+  "vi:ngày thứ nhất (chôl sangkran chmây) mọi người sẽ làm gì?": {
+    "en": "Ngày thứ nhất (Chôl sangkran Chmây) mọi người …"
+  },
+  "en:lễ hội mang đậm dấu ấn tâm linh …": {
+    "vi": "Lễ hội mang đậm dấu ấn tâm linh."
+  },
+  "vi:lễ hội mang đậm dấu ấn tâm linh.": {
+    "en": "Lễ hội mang đậm dấu ấn tâm linh …"
+  },
+  "en:lễ hội chôl chnăm thmây tổ chức khi …": {
+    "vi": "Lễ hội Chôl Chnăm Thmây tổ chức khi nào?"
+  },
+  "vi:lễ hội chôl chnăm thmây tổ chức khi nào?": {
+    "en": "Lễ hội Chôl Chnăm Thmây tổ chức khi …"
+  },
+  "en:tết lớn nhất trong năm của người khmer …": {
+    "vi": "Đây là Tết lớn nhất trong năm của người Khmer."
+  },
+  "vi:đây là tết lớn nhất trong năm của người khmer.": {
+    "en": "Tết lớn nhất trong năm của người Khmer …"
+  },
+  "en:lễ dâng y còn gọi là kathina hay …": {
+    "vi": "Lễ dâng y còn gọi là Kathina hay Lễ dâng áo cà sa."
+  },
+  "vi:lễ dâng y còn gọi là kathina hay lễ dâng áo cà sa.": {
+    "en": "Lễ dâng y còn gọi là Kathina hay …"
+  },
+  "en:theo phong tục của đồng bào khmer nam …": {
+    "vi": "Theo phong tục của đồng bào Khmer Nam Bộ."
+  },
+  "vi:theo phong tục của đồng bào khmer nam bộ.": {
+    "en": "Theo phong tục của đồng bào Khmer Nam …"
+  },
+  "en:phương tiện nào thuận tiện nhất để khám …": {
+    "vi": "Phương tiện nào thuận tiện nhất để khám phá Trà Vinh?"
+  },
+  "vi:phương tiện nào thuận tiện nhất để khám phá trà vinh?": {
+    "en": "Phương tiện nào thuận tiện nhất để khám …"
+  },
+  "en:xe máy là phương tiện lưu thông thuận …": {
+    "vi": "Xe máy là phương tiện lưu thông thuận tiện nhất để khám phá Trà Vinh."
+  },
+  "vi:xe máy là phương tiện lưu thông thuận tiện nhất để khám phá trà vinh.": {
+    "en": "Xe máy là phương tiện lưu thông thuận …"
+  },
+  "en:có nên sử dụng dịch vụ xe ôm …": {
+    "vi": "Có nên sử dụng dịch vụ xe ôm ở Trà Vinh không?"
+  },
+  "vi:có nên sử dụng dịch vụ xe ôm ở trà vinh không?": {
+    "en": "Có nên sử dụng dịch vụ xe ôm …"
+  },
+  "en:dịch vụ xe ôm ở trà vinh khá …": {
+    "vi": "Dịch vụ xe ôm ở Trà Vinh khá phổ biến và tiện lợi."
+  },
+  "vi:dịch vụ xe ôm ở trà vinh khá phổ biến và tiện lợi.": {
+    "en": "Dịch vụ xe ôm ở Trà Vinh khá …"
+  },
+  "en:phương tiện nào phù hợp cho nhóm có …": {
+    "vi": "Phương tiện nào phù hợp cho nhóm có đông người?"
+  },
+  "vi:phương tiện nào phù hợp cho nhóm có đông người?": {
+    "en": "Phương tiện nào phù hợp cho nhóm có …"
+  },
+  "en:taxi là phương tiện giao thông lý tưởng …": {
+    "vi": "Taxi là phương tiện giao thông lý tưởng cho nhóm có đông người."
+  },
+  "vi:taxi là phương tiện giao thông lý tưởng cho nhóm có đông người.": {
+    "en": "Taxi là phương tiện giao thông lý tưởng …"
+  },
+  "en:địa điểm tâm linh nổi bật nào nên …": {
+    "vi": "Địa điểm tâm linh nổi bật nào nên ghé thăm ở Trà Vinh?"
+  },
+  "vi:địa điểm tâm linh nổi bật nào nên ghé thăm ở trà vinh?": {
+    "en": "Địa điểm tâm linh nổi bật nào nên …"
+  },
+  "en:chùa hang và chùa âng là hai ngôi …": {
+    "vi": "Chùa Hang và Chùa Âng là hai ngôi chùa nổi bật nhất."
+  },
+  "vi:chùa hang và chùa âng là hai ngôi chùa nổi bật nhất.": {
+    "en": "Chùa Hang và Chùa Âng là hai ngôi …"
+  },
+  "en:export tips list": {
+    "vi": "Xuất danh sách mẹo"
+  },
+  "vi:xuất danh sách mẹo": {
+    "en": "Export Tips List"
+  },
+  "en:edit": {
+    "vi": "Chỉnh sửa"
+  },
+  "vi:chỉnh sửa": {
+    "en": "Edit"
+  },
+  "en:marker list": {
+    "vi": "Danh sách điểm đánh dấu"
+  },
+  "vi:danh sách điểm đánh dấu": {
+    "en": "Marker List"
+  },
+  "en:create marker": {
+    "vi": "Tạo điểm đánh dấu"
+  },
+  "vi:tạo điểm đánh dấu": {
+    "en": "Create Marker"
+  },
+  "en:name of marker": {
+    "vi": "Tên điểm đánh dấu"
+  },
+  "vi:tên điểm đánh dấu": {
+    "en": "Name Of marker"
+  },
+  "en:marker pointer": {
+    "vi": "Vị trí điểm đánh dấu"
+  },
+  "vi:vị trí điểm đánh dấu": {
+    "en": "Marker pointer"
+  },
+  "en:sell location": {
+    "vi": "Vị trí bán hàng"
+  },
+  "vi:vị trí bán hàng": {
+    "en": "Sell Location"
+  },
+  "en:showing 1 to 8 of 8 entries": {
+    "vi": "Hiển thị 1 đến 8 trong 8 mục"
+  },
+  "vi:hiển thị 1 đến 8 trong 8 mục": {
+    "en": "Showing 1 to 8 of 8 entries"
+  },
+  "en:logo": {
+    "vi": "Biểu trưng"
+  },
+  "vi:biểu trưng": {
+    "en": "Logo"
+  },
+  "en:name of marker: activate to sort column ascending": {
+    "vi": "Tên điểm đánh dấu: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:tên điểm đánh dấu: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Name Of marker: activate to sort column ascending"
+  },
+  "en:marker pointer &nbsp;: activate to sort column ascending": {
+    "vi": "Vị trí điểm đánh dấu: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:vị trí điểm đánh dấu: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Marker pointer &nbsp;: activate to sort column ascending"
+  },
+  "en:itinerary plan details": {
+    "vi": "Chi tiết kế hoạch hành trình"
+  },
+  "vi:chi tiết kế hoạch hành trình": {
+    "en": "Itinerary Plan Details"
+  },
+  "en:itinerary plan management": {
+    "vi": "Quản lý kế hoạch hành trình"
+  },
+  "vi:quản lý kế hoạch hành trình": {
+    "en": "Itinerary Plan Management"
+  },
+  "en:duration:": {
+    "vi": "Thời lượng"
+  },
+  "vi:thời lượng": {
+    "en": "Duration"
+  },
+  "en:one day": {
+    "vi": "Một ngày"
+  },
+  "vi:một ngày": {
+    "en": "One day"
+  },
+  "en:estimate cost:": {
+    "vi": "Chi phí ước tính"
+  },
+  "vi:chi phí ước tính": {
+    "en": "Estimate Cost"
+  },
+  "en:1 million": {
+    "vi": "1 triệu"
+  },
+  "vi:1 triệu": {
+    "en": "1 million"
+  },
+  "en:creation at:": {
+    "vi": "Thời gian tạo"
+  },
+  "vi:thời gian tạo": {
+    "en": "Creation At:"
+  },
+  "en:edit itinerary plan": {
+    "vi": "Chỉnh sửa kế hoạch hành trình"
+  },
+  "vi:chỉnh sửa kế hoạch hành trình": {
+    "en": "Edit Itinerary Plan"
+  },
+  "en:delete itinerary plan": {
+    "vi": "Xóa kế hoạch hành trình"
+  },
+  "vi:xóa kế hoạch hành trình": {
+    "en": "Delete Itinerary Plan"
+  },
+  "en:destination place": {
+    "vi": "Địa điểm đến"
+  },
+  "vi:địa điểm đến": {
+    "en": "Destination Place"
+  },
+  "en:itinerary plan list": {
+    "vi": "Danh sách Kế hoạch Hành trình"
+  },
+  "vi:danh sách kế hoạch hành trình": {
+    "en": "Itinerary Plan List"
+  },
+  "en:create itinerary plan": {
+    "vi": "Tạo Kế hoạch Hành trình"
+  },
+  "vi:tạo kế hoạch hành trình": {
+    "en": "Create Itinerary Plan"
+  },
+  "en:name of itinerary": {
+    "vi": "Tên Hành trình"
+  },
+  "vi:tên hành trình": {
+    "en": "Name Of Itinerary"
+  },
+  "en:duration": {
+    "vi": "Thời lượng"
+  },
+  "en:estimate cost": {
+    "vi": "Chi phí ước tính"
+  },
+  "en:2 million": {
+    "vi": "2 triệu"
+  },
+  "vi:2 triệu": {
+    "en": "2 million"
+  },
+  "en:2 days 1 night": {
+    "vi": "2 ngày 1 đêm"
+  },
+  "vi:2 ngày 1 đêm": {
+    "en": "2 days 1 night"
+  },
+  "en:3 million": {
+    "vi": "3 triệu"
+  },
+  "vi:3 triệu": {
+    "en": "3 million"
+  },
+  "en:tra vinh 2n1d": {
+    "vi": "Trà Vinh 2 ngày 1 đêm"
+  },
+  "vi:trà vinh 2 ngày 1 đêm": {
+    "en": "Tra Vinh 2n1d"
+  },
+  "en:4 days 3 night": {
+    "vi": "4 ngày 3 đêm"
+  },
+  "vi:4 ngày 3 đêm": {
+    "en": "4 days 3 night"
+  },
+  "en:showing 1 to 10 of 10 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 10 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 10 mục": {
+    "en": "Showing 1 to 10 of 10 entries"
+  },
+  "en:export itinerary plans": {
+    "vi": "Xuất Kế hoạch hành trình"
+  },
+  "vi:xuất kế hoạch hành trình": {
+    "en": "Export Itinerary Plans"
+  },
+  "en:name of itinerary: activate to sort column ascending": {
+    "vi": "Tên Lịch trình: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:tên lịch trình: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Name Of Itinerary: activate to sort column ascending"
+  },
+  "en:duration &nbsp;: activate to sort column ascending": {
+    "vi": "Thời lượng: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:thời lượng: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Duration &nbsp;: activate to sort column ascending"
+  },
+  "en:estimate cost: activate to sort column ascending": {
+    "vi": "Chi phí ước tính: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:chi phí ước tính: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Estimate Cost: activate to sort column ascending"
+  },
+  "en:feedback management": {
+    "vi": "Quản lý phản hồi"
+  },
+  "vi:quản lý phản hồi": {
+    "en": "Feedback Management"
+  },
+  "en:feedback list": {
+    "vi": "Danh sách phản hồi"
+  },
+  "vi:danh sách phản hồi": {
+    "en": "Feedback List"
+  },
+  "en:export feedback": {
+    "vi": "Xuất phản hồi"
+  },
+  "vi:xuất phản hồi": {
+    "en": "Export Feedback"
+  },
+  "en:(png & csv)": {
+    "vi": "(PNG và CSV)"
+  },
+  "vi:(png và csv)": {
+    "en": "(PNG & CSV)"
+  },
+  "en:account list": {
+    "vi": "Danh sách tài khoản"
+  },
+  "vi:danh sách tài khoản": {
+    "en": "Account List"
+  },
+  "en:ban (inactive)": {
+    "vi": "Chặn (Không hoạt động)"
+  },
+  "vi:chặn (không hoạt động)": {
+    "en": "Ban (Inactive)"
+  },
+  "en:full name": {
+    "vi": "Họ và Tên"
+  },
+  "vi:họ và tên": {
+    "en": "Full Name"
+  },
+  "en:showing 1 to 10 of 105 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 1 đến 10 của 105 mục (đã lọc từ tổng số 107 mục)"
+  },
+  "vi:hiển thị 1 đến 10 của 105 mục (đã lọc từ tổng số 107 mục)": {
+    "en": "Showing 1 to 10 of 105 entries (filtered from 107 total entries)"
+  },
+  "en:export account list": {
+    "vi": "Xuất danh sách tài khoản"
+  },
+  "vi:xuất danh sách tài khoản": {
+    "en": "Export Account List"
+  },
+  "en:full name: activate to sort column ascending": {
+    "vi": "Họ và Tên: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:họ và tên: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Full Name: activate to sort column ascending"
+  },
+  "en:phone: activate to sort column ascending": {
+    "vi": "Số điện thoại: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "vi:số điện thoại: kích hoạt để sắp xếp cột tăng dần": {
+    "en": "Phone: activate to sort column ascending"
+  },
+  "en:ban": {
+    "vi": "Chặn"
+  },
+  "vi:chặn": {
+    "en": "Ban"
+  },
+  "en:admin details": {
+    "vi": "Thông tin Quản trị"
+  },
+  "vi:thông tin quản trị": {
+    "en": "Admin Details"
+  },
+  "en:profile": {
+    "vi": "Hồ sơ"
+  },
+  "vi:hồ sơ": {
+    "en": "Profile"
+  },
+  "en:no type": {
+    "vi": "Không có loại"
+  },
+  "vi:không có loại": {
+    "en": "No type"
+  },
+  "en:106.33003 ,\u00A0 9.92716": {
+    "vi": "106.33003 , 9.92716"
+  },
+  "vi:106.33003 , 9.92716": {
+    "en": "106.33003 ,\u00A0 9.92716"
+  },
+  "en:1000 people": {
+    "vi": "1000 người"
+  },
+  "vi:1000 người": {
+    "en": "1000 people"
+  },
+  "en:7 am": {
+    "vi": "7 giờ sáng"
+  },
+  "vi:7 giờ sáng": {
+    "en": "7 AM"
+  },
+  "en:7 pm": {
+    "vi": "7 giờ tối"
+  },
+  "vi:7 giờ tối": {
+    "en": "7 PM"
+  },
+  "en:mountains": {
+    "vi": "Núi"
+  },
+  "vi:núi": {
+    "en": "Mountains"
+  },
+  "en:10 days ago": {
+    "vi": "10 ngày trước"
+  },
+  "vi:10 ngày trước": {
+    "en": "10 days ago"
+  },
+  "en:week": {
+    "vi": "Tuần"
+  },
+  "vi:tuần": {
+    "en": "Week"
+  },
+  "en:month": {
+    "vi": "Tháng"
+  },
+  "vi:tháng": {
+    "en": "Month"
+  },
+  "en:year": {
+    "vi": "Năm"
+  },
+  "vi:năm": {
+    "en": "Year"
+  },
+  "en:showing 1 to 10 of 106 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 106 mục (đã lọc từ tổng số 107 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 106 mục (đã lọc từ tổng số 107 mục)": {
+    "en": "Showing 1 to 10 of 106 entries (filtered from 107 total entries)"
+  },
+  "en:local specialties details": {
+    "vi": "Chi tiết đặc sản địa phương"
+  },
+  "vi:chi tiết đặc sản địa phương": {
+    "en": "Local Specialties Details"
+  },
+  "en:point of sell": {
+    "vi": "Điểm bán"
+  },
+  "vi:điểm bán": {
+    "en": "Point of sell"
+  },
+  "en:address:": {
+    "vi": "Địa chỉ:"
+  },
+  "vi:địa chỉ:": {
+    "en": "Address:"
+  },
+  "en:edit local specialties": {
+    "vi": "Chỉnh sửa đặc sản địa phương"
+  },
+  "vi:chỉnh sửa đặc sản địa phương": {
+    "en": "Edit Local Specialties"
+  },
+  "en:marker type": {
+    "vi": "Loại điểm đánh dấu"
+  },
+  "vi:loại điểm đánh dấu": {
+    "en": "Marker Type"
+  },
+  "en:food name": {
+    "vi": "Tên món ăn"
+  },
+  "vi:tên món ăn": {
+    "en": "Food Name"
+  },
+  "en:0 new": {
+    "vi": "Mới"
+  },
+  "vi:mới": {
+    "en": "0 New"
+  },
+  "en:all(0)": {
+    "vi": "Tất cả (0)"
+  },
+  "vi:tất cả (0)": {
+    "en": "All(0)"
+  },
+  "en:long hoa – hoa minh organic": {
+    "vi": "Long Hoa – Hoa Minh Hữu cơ"
+  },
+  "vi:long hoa – hoa minh hữu cơ": {
+    "en": "Long Hoa – Hoa Minh Organic"
+  },
+  "en:long hoa – hoa minh organic …": {
+    "vi": "Long Hoa – Hoa Minh Hữu cơ …"
+  },
+  "vi:long hoa – hoa minh hữu cơ …": {
+    "en": "Long Hoa – Hoa Minh Organic …"
+  },
+  "en:showing 1 to 9 of 9 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 1 đến 9 trên tổng số 9 mục (đã lọc từ tổng số 11 mục)"
+  },
+  "vi:hiển thị 1 đến 9 trên tổng số 9 mục (đã lọc từ tổng số 11 mục)": {
+    "en": "Showing 1 to 9 of 9 entries (filtered from 11 total entries)"
+  },
+  "en:showing 1 to 8 of 8 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 1 đến 8 trong tổng số 8 mục (đã lọc từ 11 mục)"
+  },
+  "vi:hiển thị 1 đến 8 trong tổng số 8 mục (đã lọc từ 11 mục)": {
+    "en": "Showing 1 to 8 of 8 entries (filtered from 11 total entries)"
+  },
+  "en:no matching records found": {
+    "vi": "Không tìm thấy bản ghi nào phù hợp"
+  },
+  "vi:không tìm thấy bản ghi nào phù hợp": {
+    "en": "No matching records found"
+  },
+  "en:showing 0 to 0 of 0 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 0 đến 0 trong số 0 mục (đã lọc từ tổng số 11 mục)"
+  },
+  "vi:hiển thị 0 đến 0 trong số 0 mục (đã lọc từ tổng số 11 mục)": {
+    "en": "Showing 0 to 0 of 0 entries (filtered from 11 total entries)"
+  },
+  "en:showing 1 to 10 of 11 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 11 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 11 mục": {
+    "en": "Showing 1 to 10 of 11 entries"
+  },
+  "en:showing 1 to 7 of 7 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 1 đến 7 trên 7 mục (đã lọc từ 11 mục tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 7 trên 7 mục (đã lọc từ 11 mục tổng cộng)": {
+    "en": "Showing 1 to 7 of 7 entries (filtered from 11 total entries)"
+  },
+  "en:showing 1 to 6 of 6 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 1 đến 6 trong 6 mục (đã lọc từ tổng số 11 mục)"
+  },
+  "vi:hiển thị 1 đến 6 trong 6 mục (đã lọc từ tổng số 11 mục)": {
+    "en": "Showing 1 to 6 of 6 entries (filtered from 11 total entries)"
+  },
+  "en:showing 1 to 5 of 5 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 1 đến 5 trên 5 mục (đã lọc từ 11 mục tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 5 trên 5 mục (đã lọc từ 11 mục tổng cộng)": {
+    "en": "Showing 1 to 5 of 5 entries (filtered from 11 total entries)"
+  },
+  "en:ocop": {
+    "vi": "Mỗi xã một sản phẩm"
+  },
+  "vi:mỗi xã một sản phẩm": {
+    "en": "Ocop"
+  },
+  "en:12/07/25, 00:25": {
+    "vi": "12/07/2025, 00:25"
+  },
+  "vi:12/07/2025, 00:25": {
+    "en": "12/07/25, 00:25"
+  },
+  "en:13/07/25, 01:03": {
+    "vi": "13/07/2025, 01:03"
+  },
+  "vi:13/07/2025, 01:03": {
+    "en": "13/07/25, 01:03"
+  },
+  "en:13/07/25, 22:05": {
+    "vi": "13/07/2025, 22:05"
+  },
+  "vi:13/07/2025, 22:05": {
+    "en": "13/07/25, 22:05"
+  },
+  "en:13/07/25, 23:18": {
+    "vi": "13/07/2025, 23:18"
+  },
+  "vi:13/07/2025, 23:18": {
+    "en": "13/07/25, 23:18"
+  },
+  "en:14/07/25, 01:47": {
+    "vi": "14/07/2025, 01:47"
+  },
+  "vi:14/07/2025, 01:47": {
+    "en": "14/07/25, 01:47"
+  },
+  "en:showing 1 to 3 of 3 entries (filtered from 11 total entries)": {
+    "vi": "Hiển thị 1 đến 3 trong 3 mục (được lọc từ tổng số 11 mục)"
+  },
+  "vi:hiển thị 1 đến 3 trong 3 mục (được lọc từ tổng số 11 mục)": {
+    "en": "Showing 1 to 3 of 3 entries (filtered from 11 total entries)"
+  },
+  "en:drink": {
+    "vi": "Đồ uống"
+  },
+  "vi:đồ uống": {
+    "en": "Drink"
+  },
+  "en:food": {
+    "vi": "Đồ ăn"
+  },
+  "vi:đồ ăn": {
+    "en": "Food"
+  },
+  "en:showing 1 to 7 of 7 entries": {
+    "vi": "Hiển thị 1 đến 7 trong tổng số 7 mục"
+  },
+  "vi:hiển thị 1 đến 7 trong tổng số 7 mục": {
+    "en": "Showing 1 to 7 of 7 entries"
+  },
+  "en:bun nuoc leo": {
+    "vi": "Bún Nước Lèo"
+  },
+  "vi:bún nước lèo": {
+    "en": "Bun Nuoc Leo"
+  },
+  "en:this is a fairly popular dish of the …": {
+    "vi": "Đây là một món ăn khá phổ biến của..."
+  },
+  "vi:đây là một món ăn khá phổ biến của...": {
+    "en": "This is a fairly popular dish of the …"
+  },
+  "en:good good good": {
+    "vi": "Tốt tốt tốt"
+  },
+  "vi:tốt tốt tốt": {
+    "en": "good good good"
+  },
+  "en:product images": {
+    "vi": "Hình ảnh sản phẩm"
+  },
+  "vi:hình ảnh sản phẩm": {
+    "en": "Product Images"
+  },
+  "en:please upload at least one photo.": {
+    "vi": "Vui lòng tải lên ít nhất một ảnh."
+  },
+  "vi:vui lòng tải lên ít nhất một ảnh.": {
+    "en": "Please upload at least one                                                             photo."
+  },
+  "en:product price": {
+    "vi": "Giá sản phẩm"
+  },
+  "vi:giá sản phẩm": {
+    "en": "Product Price"
+  },
+  "en:-- select company --": {
+    "vi": "-- Chọn công ty --"
+  },
+  "vi:-- chọn công ty --": {
+    "en": "-- Select Company --"
+  },
+  "en:company e": {
+    "vi": "Công ty E"
+  },
+  "vi:công ty e": {
+    "en": "Company E"
+  },
+  "en:company c": {
+    "vi": "Công ty C"
+  },
+  "vi:công ty c": {
+    "en": "Company C"
+  },
+  "en:ocop product selling link": {
+    "vi": "Liên kết bán sản phẩm OCOP"
+  },
+  "vi:liên kết bán sản phẩm ocop": {
+    "en": "Ocop Product Selling                                                                 Link"
+  },
+  "en:please upload at least one                                                             photo.": {
+    "vi": "Vui lòng tải lên ít nhất một ảnh."
+  },
+  "en:ocop product selling                                                                 link": {
+    "vi": "Liên kết bán sản phẩm OCOP"
+  },
+  "en:sell locations": {
+    "vi": "Địa điểm bán hàng"
+  },
+  "vi:địa điểm bán hàng": {
+    "en": "Sell Locations"
+  },
+  "en:add location": {
+    "vi": "Thêm địa điểm"
+  },
+  "vi:thêm địa điểm": {
+    "en": "Add Location"
+  },
+  "en:selling link of product": {
+    "vi": "Liên kết bán sản phẩm"
+  },
+  "vi:liên kết bán sản phẩm": {
+    "en": "Selling link of product"
+  },
+  "en:09/06/25, 18:39": {
+    "vi": "09/06/2025, 18:39"
+  },
+  "vi:09/06/2025, 18:39": {
+    "en": "09/06/25, 18:39"
+  },
+  "en:10/06/25, 13:39": {
+    "vi": "10/06/2025, 13:39"
+  },
+  "vi:10/06/2025, 13:39": {
+    "en": "10/06/25, 13:39"
   }
 }
