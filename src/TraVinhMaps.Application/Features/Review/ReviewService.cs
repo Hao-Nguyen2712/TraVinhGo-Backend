@@ -476,4 +476,9 @@ public class ReviewService : IReviewService
     {
         return _reviewRepository.GetTopReviewerAsync(cancellationToken);
     }
+
+    public Task<IEnumerable<Domain.Entities.Review>> GetListReviewByUserId(string id, CancellationToken cancellationToken = default)
+    {
+        return _reviewRepository.GetListReviewByUserId(id, cancellationToken);
+    }
 }
