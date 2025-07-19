@@ -14,6 +14,7 @@ namespace TraVinhMaps.Application.Repositories;
 public interface IReviewRepository : IBaseRepository<Review>
 {
     Task<ReviewResponse> GetReviewByIdAsync(string id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Review>> GetListReviewByUserId(string id, CancellationToken cancellationToken = default);
     Task<IEnumerable<ReviewResponse>> GetLatestReviewsAsync(int count = 5, CancellationToken cancellationToken = default);
     Task<long> GetTotalUsersReviewedAsync(CancellationToken cancellationToken = default);
     Task<long> GetTotalFiveStarReviewsAsync(CancellationToken cancellationToken = default);

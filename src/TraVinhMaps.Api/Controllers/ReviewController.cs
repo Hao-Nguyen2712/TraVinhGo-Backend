@@ -49,6 +49,26 @@ public class ReviewController : ControllerBase
         return this.ApiOk(review);
     }
     [HttpGet]
+    [Route("GetReviewsByUserId/{userId}", Name = "GetReviewsByUserId")]
+    public async Task<IActionResult> GetReviewsByUserId(string userId)
+    {
+        try
+        {
+            var reviews = await _reviewService.GetListReviewByUserId(userId);
+            return this.ApiOk(reviews);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new
+            {
+                message = "Failed to retrieve reviews",
+                error = ex.ToString()
+            });
+        }
+    }
+
+
+    [HttpGet]
     [Route("FilterReviewsAsync", Name = "FilterReviewsAsync")]
     public async Task<IActionResult> FilterReviewsAsync(string? destinationId, int? rating, DateTime? startAt, DateTime? endAt)
     {
