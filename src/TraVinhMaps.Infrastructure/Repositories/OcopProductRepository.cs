@@ -126,8 +126,8 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
         DateTime filterStartDate, filterEndDate;
         if (startDate.HasValue && endDate.HasValue)
         {
-            filterStartDate = startDate.Value;
-            filterEndDate = endDate.Value;
+            filterStartDate = startDate.Value.Date; 
+            filterEndDate = endDate.Value.Date.AddDays(1).AddTicks(-1);
         }
         else
         {

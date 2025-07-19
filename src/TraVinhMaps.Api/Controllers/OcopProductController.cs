@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
-using TraVinhMaps.Application.Features.Company.Models;
 using TraVinhMaps.Application.Features.Company.Interface;
 using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
@@ -382,7 +381,6 @@ public class OcopProductController : ControllerBase
         try
         {
             var analytics = await _service.GetProductAnalyticsAsync(timeRange, startDate, endDate);
-            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
             return this.ApiOk(analytics);
         }
         catch (Exception ex)

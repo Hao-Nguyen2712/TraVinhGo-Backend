@@ -72,7 +72,8 @@ public class EventAndFestivalController : ControllerBase
         {
             await _eventAndFestivalService.AddEventAndFestivalImage(eventAndFestival.Id, item);
         }
-        return CreatedAtRoute("GetEventAndFestivalById", new { id = eventAndFestival.Id }, this.ApiOk(eventAndFestival));
+        //return CreatedAtRoute("GetEventAndFestivalById", new { id = eventAndFestival.Id }, this.ApiOk(eventAndFestival));
+        return this.ApiOk(eventAndFestival);
     }
 
     [HttpPost]
