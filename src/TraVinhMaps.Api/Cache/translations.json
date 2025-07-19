@@ -15,7 +15,7 @@
     "vi": "Thông báo"
   },
   "vi:thông báo": {
-    "en": "Notifications"
+    "en": "Notification"
   },
   "en:5 new": {
     "vi": "5 Mới"
@@ -135,19 +135,19 @@
     "vi": "Loại OCOP"
   },
   "vi:loại ocop": {
-    "en": "Ocop Type"
+    "en": "OcopType"
   },
   "en:company": {
     "vi": "Công ty"
   },
   "vi:công ty": {
-    "en": "Company"
+    "en": "Companies"
   },
   "en:review management": {
     "vi": "Quản lý đánh giá"
   },
   "vi:quản lý đánh giá": {
-    "en": "Review Management"
+    "en": "Reviews Management"
   },
   "en:local specialties": {
     "vi": "Đặc sản địa phương"
@@ -264,7 +264,7 @@
     "vi": "Chọn thẻ"
   },
   "vi:chọn thẻ": {
-    "en": "Select tags"
+    "en": "-- Select a tag --"
   },
   "en:today": {
     "vi": "Hôm nay"
@@ -543,7 +543,7 @@
     "vi": "Thẻ"
   },
   "vi:thẻ": {
-    "en": "Tag"
+    "en": "Tags"
   },
   "en:ok": {
     "vi": "Đồng ý"
@@ -993,7 +993,7 @@
     "vi": "Sản phẩm"
   },
   "vi:sản phẩm": {
-    "en": "Product"
+    "en": "Products"
   },
   "en:top interacted ocop products": {
     "vi": "Sản phẩm OCOP được tương tác nhiều nhất"
@@ -1470,7 +1470,7 @@
     "vi": "Điểm OCOP"
   },
   "vi:điểm ocop": {
-    "en": "Ocop Point"
+    "en": "OcopPoint"
   },
   "en:ocop year release": {
     "vi": "Năm phát hành OCOP"
@@ -1533,7 +1533,7 @@
     "vi": "Tên công ty"
   },
   "vi:tên công ty": {
-    "en": "Name of company"
+    "en": "Company Name"
   },
   "en:cty tnhh soc farm": {
     "vi": "Công ty TNHH Soc Farm"
@@ -1797,7 +1797,7 @@
     "vi": "Email: nhấp để sắp xếp tăng dần"
   },
   "vi:email: nhấp để sắp xếp tăng dần": {
-    "en": "Email: activate to sort column ascending"
+    "en": "Thư điện tử: nhấp để sắp xếp tăng dần"
   },
   "en:status: activate to sort column ascending": {
     "vi": "Trạng thái: nhấp để sắp xếp tăng dần"
@@ -1821,7 +1821,7 @@
     "vi": "Xóa"
   },
   "vi:xóa": {
-    "en": "Delete"
+    "en": "Remove"
   },
   "en:restore": {
     "vi": "Khôi phục"
@@ -2205,7 +2205,7 @@
     "vi": "Số điện thoại"
   },
   "vi:số điện thoại": {
-    "en": "Phone number"
+    "en": "Number Phone"
   },
   "en:email address": {
     "vi": "Địa chỉ email"
@@ -2406,7 +2406,7 @@
     "vi": "Hình ảnh"
   },
   "vi:hình ảnh": {
-    "en": "image"
+    "en": "Images"
   },
   "vi:danh mục:": {
     "en": "Category:"
@@ -3513,13 +3513,13 @@
     "vi": "7 giờ sáng"
   },
   "vi:7 giờ sáng": {
-    "en": "7 AM"
+    "en": "7am"
   },
   "en:7 pm": {
     "vi": "7 giờ tối"
   },
   "vi:7 giờ tối": {
-    "en": "7 PM"
+    "en": "7pm"
   },
   "en:mountains": {
     "vi": "Núi"
@@ -3579,7 +3579,7 @@
     "vi": "Chỉnh sửa đặc sản địa phương"
   },
   "vi:chỉnh sửa đặc sản địa phương": {
-    "en": "Edit Local Specialties"
+    "en": "Edit Local Specialty"
   },
   "en:marker type": {
     "vi": "Loại điểm đánh dấu"
@@ -3605,148 +3605,2185 @@
   "vi:tất cả (0)": {
     "en": "All(0)"
   },
-  "en:long hoa – hoa minh organic": {
-    "vi": "Long Hoa – Hoa Minh Hữu cơ"
+  "en:destinations statistics": {
+    "vi": "Thống kê điểm đến"
   },
-  "vi:long hoa – hoa minh hữu cơ": {
-    "en": "Long Hoa – Hoa Minh Organic"
+  "vi:thống kê điểm đến": {
+    "en": "Destinations statistics"
   },
-  "en:long hoa – hoa minh organic …": {
-    "vi": "Long Hoa – Hoa Minh Hữu cơ …"
+  "en:overview": {
+    "vi": "Tổng quan"
   },
-  "vi:long hoa – hoa minh hữu cơ …": {
-    "en": "Long Hoa – Hoa Minh Organic …"
+  "vi:tổng quan": {
+    "en": "Overview"
   },
-  "en:showing 1 to 9 of 9 entries (filtered from 11 total entries)": {
-    "vi": "Hiển thị 1 đến 9 trên tổng số 9 mục (đã lọc từ tổng số 11 mục)"
+  "en:total destinations:": {
+    "vi": "Tổng số điểm đến:"
   },
-  "vi:hiển thị 1 đến 9 trên tổng số 9 mục (đã lọc từ tổng số 11 mục)": {
-    "en": "Showing 1 to 9 of 9 entries (filtered from 11 total entries)"
+  "vi:tổng số điểm đến:": {
+    "en": "Total Destinations:"
   },
-  "en:showing 1 to 8 of 8 entries (filtered from 11 total entries)": {
-    "vi": "Hiển thị 1 đến 8 trong tổng số 8 mục (đã lọc từ 11 mục)"
+  "en:total views:": {
+    "vi": "Tổng số lượt xem:"
   },
-  "vi:hiển thị 1 đến 8 trong tổng số 8 mục (đã lọc từ 11 mục)": {
-    "en": "Showing 1 to 8 of 8 entries (filtered from 11 total entries)"
+  "vi:tổng số lượt xem:": {
+    "en": "Total Views:"
   },
-  "en:no matching records found": {
-    "vi": "Không tìm thấy bản ghi nào phù hợp"
+  "en:total interactions:": {
+    "vi": "Tổng số lượt tương tác:"
   },
-  "vi:không tìm thấy bản ghi nào phù hợp": {
-    "en": "No matching records found"
+  "vi:tổng số lượt tương tác:": {
+    "en": "Total Interactions:"
   },
-  "en:showing 0 to 0 of 0 entries (filtered from 11 total entries)": {
-    "vi": "Hiển thị 0 đến 0 trong số 0 mục (đã lọc từ tổng số 11 mục)"
+  "en:total favorites:": {
+    "vi": "Tổng số lượt yêu thích:"
   },
-  "vi:hiển thị 0 đến 0 trong số 0 mục (đã lọc từ tổng số 11 mục)": {
-    "en": "Showing 0 to 0 of 0 entries (filtered from 11 total entries)"
+  "vi:tổng số lượt yêu thích:": {
+    "en": "Total Favorites:"
   },
-  "en:showing 1 to 10 of 11 entries": {
-    "vi": "Hiển thị 1 đến 10 trong tổng số 11 mục"
+  "en:destinations – views, interactions, favorites": {
+    "vi": "Điểm đến – Lượt xem, Tương tác, Yêu thích"
   },
-  "vi:hiển thị 1 đến 10 trong tổng số 11 mục": {
-    "en": "Showing 1 to 10 of 11 entries"
+  "vi:điểm đến – lượt xem, tương tác, yêu thích": {
+    "en": "Destinations – Views, Interactions, Favorites"
   },
-  "en:showing 1 to 7 of 7 entries (filtered from 11 total entries)": {
-    "vi": "Hiển thị 1 đến 7 trên 7 mục (đã lọc từ 11 mục tổng cộng)"
+  "en:select destinations": {
+    "vi": "Chọn điểm đến"
   },
-  "vi:hiển thị 1 đến 7 trên 7 mục (đã lọc từ 11 mục tổng cộng)": {
-    "en": "Showing 1 to 7 of 7 entries (filtered from 11 total entries)"
+  "vi:chọn điểm đến": {
+    "en": "Select destinations"
   },
-  "en:showing 1 to 6 of 6 entries (filtered from 11 total entries)": {
-    "vi": "Hiển thị 1 đến 6 trong 6 mục (đã lọc từ tổng số 11 mục)"
+  "en:11 days ago": {
+    "vi": "11 ngày trước"
   },
-  "vi:hiển thị 1 đến 6 trong 6 mục (đã lọc từ tổng số 11 mục)": {
-    "en": "Showing 1 to 6 of 6 entries (filtered from 11 total entries)"
+  "vi:11 ngày trước": {
+    "en": "11 days ago"
   },
-  "en:showing 1 to 5 of 5 entries (filtered from 11 total entries)": {
-    "vi": "Hiển thị 1 đến 5 trên 5 mục (đã lọc từ 11 mục tổng cộng)"
+  "en:an error occurred: [gettopproductsbyfavorites] failed to fetch data. the ssl connection could not be established, see inner exception.": {
+    "vi": "Đã xảy ra lỗi: [GetTopProductsByFavorites] Lấy dữ liệu thất bại. Không thể thiết lập kết nối SSL, xem ngoại lệ bên trong."
   },
-  "vi:hiển thị 1 đến 5 trên 5 mục (đã lọc từ 11 mục tổng cộng)": {
-    "en": "Showing 1 to 5 of 5 entries (filtered from 11 total entries)"
+  "vi:đã xảy ra lỗi: [gettopproductsbyfavorites] lấy dữ liệu thất bại. không thể thiết lập kết nối ssl, xem ngoại lệ bên trong.": {
+    "en": "An error occurred: [GetTopProductsByFavorites] Failed to fetch data. The SSL connection could not be established, see inner exception."
+  },
+  "en:no data available to download.": {
+    "vi": "Không có dữ liệu để tải xuống."
+  },
+  "vi:không có dữ liệu để tải xuống.": {
+    "en": "No data available to download."
+  },
+  "en:some texts could not be translated due to server limits. please try again later.": {
+    "vi": "Một số văn bản không thể dịch do giới hạn máy chủ. Vui lòng thử lại sau."
+  },
+  "vi:một số văn bản không thể dịch do giới hạn máy chủ. vui lòng thử lại sau.": {
+    "en": "Some texts could not be translated due to server limits. Please try again later."
+  },
+  "en:partial translation": {
+    "vi": "Dịch một phần"
+  },
+  "vi:dịch một phần": {
+    "en": "Partial translation"
+  },
+  "en:create multiple ocop products": {
+    "vi": "Tạo nhiều sản phẩm OCOP"
+  },
+  "vi:tạo nhiều sản phẩm ocop": {
+    "en": "Create Multiple OCOP Products"
+  },
+  "en:products": {
+    "vi": "Sản phẩm"
+  },
+  "en:upload an excel file to create multiple ocop products                                             at once": {
+    "vi": "Tải tệp Excel lên để tạo nhiều sản phẩm OCOP cùng lúc"
+  },
+  "vi:tải tệp excel lên để tạo nhiều sản phẩm ocop cùng lúc": {
+    "en": "Upload an Excel file to create multiple OCOP products                                             at once"
+  },
+  "en:drag and drop the excel file here or click to select the file": {
+    "vi": "Kéo và thả tệp Excel vào đây hoặc nhấp để chọn tệp"
+  },
+  "vi:kéo và thả tệp excel vào đây hoặc nhấp để chọn tệp": {
+    "en": "Drag and drop the Excel file here or click to select the file"
+  },
+  "en:supported formats: .xlsx, .xls (maximum 10mb)": {
+    "vi": "Định dạng hỗ trợ: .xlsx, .xls (Tối đa 10MB)"
+  },
+  "vi:định dạng hỗ trợ: .xlsx, .xls (tối đa 10mb)": {
+    "en": "Supported formats: .xlsx, .xls (Maximum 10MB)"
+  },
+  "en:select excel file": {
+    "vi": "Chọn tệp Excel"
+  },
+  "vi:chọn tệp excel": {
+    "en": "Select Excel File"
+  },
+  "en:download excel template": {
+    "vi": "Tải xuống mẫu Excel"
+  },
+  "vi:tải xuống mẫu excel": {
+    "en": "Download the Excel Template"
+  },
+  "en:show valid values": {
+    "vi": "Hiển thị giá trị hợp lệ"
+  },
+  "vi:hiển thị giá trị hợp lệ": {
+    "en": "Show Valid Values"
+  },
+  "en:usage instructions": {
+    "vi": "Hướng dẫn sử dụng"
+  },
+  "vi:hướng dẫn sử dụng": {
+    "en": "Usage Instructions"
+  },
+  "en:available lookup values": {
+    "vi": "Giá trị tra cứu có sẵn"
+  },
+  "vi:giá trị tra cứu có sẵn": {
+    "en": "Available Lookup Values"
+  },
+  "en:ocoptypes": {
+    "vi": "Loại OCOP"
+  },
+  "en:companies": {
+    "vi": "Công ty"
+  },
+  "en:tags": {
+    "vi": "Thẻ"
+  },
+  "en:how to import ocop products": {
+    "vi": "Cách nhập sản phẩm OCOP"
+  },
+  "vi:cách nhập sản phẩm ocop": {
+    "en": "How to Import OCOP Products"
+  },
+  "en:use this template to ensure your data is in the correct format": {
+    "vi": "Sử dụng mẫu này để đảm bảo dữ liệu của bạn đúng định dạng"
+  },
+  "vi:sử dụng mẫu này để đảm bảo dữ liệu của bạn đúng định dạng": {
+    "en": "Use this template to ensure your data is in the correct format"
+  },
+  "en:download the excel template": {
+    "vi": "Tải xuống mẫu Excel"
+  },
+  "en:fill in all required fields in the excel file": {
+    "vi": "Điền đầy đủ các trường bắt buộc trong tệp Excel"
+  },
+  "vi:điền đầy đủ các trường bắt buộc trong tệp excel": {
+    "en": "Fill in all required fields in the Excel file"
+  },
+  "en:enter product information": {
+    "vi": "Nhập thông tin sản phẩm"
+  },
+  "vi:nhập thông tin sản phẩm": {
+    "en": "Enter Product Information"
+  },
+  "en:drag and drop or click to select your file": {
+    "vi": "Kéo và thả hoặc nhấp để chọn tệp của bạn"
+  },
+  "vi:kéo và thả hoặc nhấp để chọn tệp của bạn": {
+    "en": "Drag and drop or click to select your file"
+  },
+  "en:upload the excel file": {
+    "vi": "Tải lên tệp Excel"
+  },
+  "vi:tải lên tệp excel": {
+    "en": "Upload the Excel File"
+  },
+  "en:fix any validation errors before proceeding": {
+    "vi": "Khắc phục mọi lỗi xác thực trước khi tiếp tục"
+  },
+  "vi:khắc phục mọi lỗi xác thực trước khi tiếp tục": {
+    "en": "Fix any validation errors before proceeding"
+  },
+  "en:check and edit data": {
+    "vi": "Kiểm tra và chỉnh sửa dữ liệu"
+  },
+  "vi:kiểm tra và chỉnh sửa dữ liệu": {
+    "en": "Check and Edit Data"
+  },
+  "en:click the import button to create products": {
+    "vi": "Nhấp vào nút nhập để tạo sản phẩm"
+  },
+  "vi:nhấp vào nút nhập để tạo sản phẩm": {
+    "en": "Click the import button to create products"
+  },
+  "en:start import": {
+    "vi": "Bắt đầu nhập"
+  },
+  "vi:bắt đầu nhập": {
+    "en": "Start Import"
+  },
+  "en:tags are automatically set to the ocop tag": {
+    "vi": "Thẻ được tự động đặt thành thẻ OCOP"
+  },
+  "vi:thẻ được tự động đặt thành thẻ ocop": {
+    "en": "Tags are automatically set to the OCOP tag"
+  },
+  "en:note:": {
+    "vi": "Lưu ý:"
+  },
+  "vi:lưu ý:": {
+    "en": "Note:"
+  },
+  "en:detected some issues:": {
+    "vi": "Phát hiện một số vấn đề:"
+  },
+  "vi:phát hiện một số vấn đề:": {
+    "en": "Detected some issues:"
+  },
+  "en:price (vnd)": {
+    "vi": "Giá (VND)"
+  },
+  "vi:giá (vnd)": {
+    "en": "Price (VND)"
+  },
+  "en:ocoptype": {
+    "vi": "Loại OCOP"
+  },
+  "en:ocoppoint": {
+    "vi": "Điểm OCOP"
+  },
+  "en:ocopyear": {
+    "vi": "Năm OCOP"
+  },
+  "vi:năm ocop": {
+    "en": "OcopYear"
+  },
+  "en:images": {
+    "vi": "Hình ảnh"
+  },
+  "en:showing to of items": {
+    "vi": "Hiển thị đến trên tổng số mục"
+  },
+  "vi:hiển thị đến trên tổng số mục": {
+    "en": "Showing to of items"
+  },
+  "en:page of": {
+    "vi": "Trang trên tổng số"
+  },
+  "vi:trang trên tổng số": {
+    "en": "Page of"
+  },
+  "en:total: products | estimated time: minutes": {
+    "vi": "Tổng cộng: sản phẩm | Thời gian ước tính: phút"
+  },
+  "vi:tổng cộng: sản phẩm | thời gian ước tính: phút": {
+    "en": "Total: products | Estimated time: minutes"
+  },
+  "en:~0": {
+    "vi": "Khoảng 0"
+  },
+  "vi:khoảng 0": {
+    "en": "~0"
+  },
+  "en:delete data": {
+    "vi": "Xóa dữ liệu"
+  },
+  "vi:xóa dữ liệu": {
+    "en": "Delete Data"
+  },
+  "en:excel icon": {
+    "vi": "Biểu tượng Excel"
+  },
+  "vi:biểu tượng excel": {
+    "en": "Excel Icon"
   },
   "en:ocop": {
-    "vi": "Mỗi xã một sản phẩm"
+    "vi": "Ocop"
   },
-  "vi:mỗi xã một sản phẩm": {
+  "vi:Ocop": {
     "en": "Ocop"
   },
-  "en:12/07/25, 00:25": {
-    "vi": "12/07/2025, 00:25"
+  "en:dầu dừa nguyên chất phương huỳnh  (dầu dừa kokofi)": {
+    "vi": "Dầu dừa nguyên chất Phương Huỳnh (Dầu dừa KOKOFI)"
   },
-  "vi:12/07/2025, 00:25": {
-    "en": "12/07/25, 00:25"
+  "vi:dầu dừa nguyên chất phương huỳnh (dầu dừa kokofi)": {
+    "en": "Dầu dừa nguyên chất Phương Huỳnh  (Dầu dừa KOKOFI)"
   },
-  "en:13/07/25, 01:03": {
-    "vi": "13/07/2025, 01:03"
+  "en:ocop dashboard": {
+    "vi": "Bảng điều khiển Ocop"
   },
-  "vi:13/07/2025, 01:03": {
-    "en": "13/07/25, 01:03"
+  "vi:bảng điều khiển ocop": {
+    "en": "Ocop Dashboard"
   },
-  "en:13/07/25, 22:05": {
-    "vi": "13/07/2025, 22:05"
+  "en:an error occurred: destination stats request failed. status: internalservererror, message: response status code does not indicate success: 500 (internal server error).": {
+    "vi": "Đã xảy ra lỗi: Yêu cầu thống kê đích không thành công. Trạng thái: Lỗi máy chủ nội bộ, Thông báo: Mã trạng thái phản hồi không cho thấy thành công: 500 (Lỗi máy chủ nội bộ)."
   },
-  "vi:13/07/2025, 22:05": {
-    "en": "13/07/25, 22:05"
+  "vi:đã xảy ra lỗi: yêu cầu thống kê đích không thành công. trạng thái: lỗi máy chủ nội bộ, thông báo: mã trạng thái phản hồi không cho thấy thành công: 500 (lỗi máy chủ nội bộ).": {
+    "en": "An error occurred: Destination stats request failed. Status: InternalServerError, Message: Response status code does not indicate success: 500 (Internal Server Error)."
   },
-  "en:13/07/25, 23:18": {
-    "vi": "13/07/2025, 23:18"
+  "en:an error occurred: destination stats request failed. status: , message: the ssl connection could not be established, see inner exception.": {
+    "vi": "Đã xảy ra lỗi: Yêu cầu thống kê đích không thành công. Trạng thái: , Tin nhắn: Không thể thiết lập kết nối SSL, xem ngoại lệ bên trong."
   },
-  "vi:13/07/2025, 23:18": {
-    "en": "13/07/25, 23:18"
+  "vi:đã xảy ra lỗi: yêu cầu thống kê đích không thành công. trạng thái: , tin nhắn: không thể thiết lập kết nối ssl, xem ngoại lệ bên trong.": {
+    "en": "An error occurred: Destination stats request failed. Status: , Message: The SSL connection could not be established, see inner exception."
   },
-  "en:14/07/25, 01:47": {
-    "vi": "14/07/2025, 01:47"
+  "en:number phone": {
+    "vi": "Số điện thoại"
   },
-  "vi:14/07/2025, 01:47": {
-    "en": "14/07/25, 01:47"
+  "en:dateofbirth": {
+    "vi": "Ngày sinh"
   },
-  "en:showing 1 to 3 of 3 entries (filtered from 11 total entries)": {
-    "vi": "Hiển thị 1 đến 3 trong 3 mục (được lọc từ tổng số 11 mục)"
+  "vi:ngày sinh": {
+    "en": "DateOfBirth"
   },
-  "vi:hiển thị 1 đến 3 trong 3 mục (được lọc từ tổng số 11 mục)": {
-    "en": "Showing 1 to 3 of 3 entries (filtered from 11 total entries)"
+  "en:index": {
+    "vi": "Mục lục"
   },
-  "en:drink": {
-    "vi": "Đồ uống"
+  "vi:mục lục": {
+    "en": "Index"
   },
-  "vi:đồ uống": {
-    "en": "Drink"
+  "en:total users review": {
+    "vi": "Tổng số lượt đánh giá người dùng"
   },
-  "en:food": {
-    "vi": "Đồ ăn"
+  "vi:tổng số lượt đánh giá người dùng": {
+    "en": "Total Users Review"
   },
-  "vi:đồ ăn": {
-    "en": "Food"
+  "en:user has the most comments": {
+    "vi": "Người dùng có nhiều bình luận nhất"
   },
-  "en:showing 1 to 7 of 7 entries": {
-    "vi": "Hiển thị 1 đến 7 trong tổng số 7 mục"
+  "vi:người dùng có nhiều bình luận nhất": {
+    "en": "User Has The Most Comments"
   },
-  "vi:hiển thị 1 đến 7 trong tổng số 7 mục": {
-    "en": "Showing 1 to 7 of 7 entries"
+  "en:not available": {
+    "vi": "Không có sẵn"
   },
-  "en:bun nuoc leo": {
-    "vi": "Bún Nước Lèo"
+  "vi:không có sẵn": {
+    "en": "Not available"
   },
-  "vi:bún nước lèo": {
-    "en": "Bun Nuoc Leo"
+  "en:total review 5": {
+    "vi": "Tổng cộng 5 đánh giá"
   },
-  "en:this is a fairly popular dish of the …": {
-    "vi": "Đây là một món ăn khá phổ biến của..."
+  "vi:tổng cộng 5 đánh giá": {
+    "en": "Total Review 5"
   },
-  "vi:đây là một món ăn khá phổ biến của...": {
-    "en": "This is a fairly popular dish of the …"
+  "en:không có dữ liệu destination": {
+    "vi": "Không có dữ liệu điểm đến"
   },
-  "en:good good good": {
-    "vi": "Tốt tốt tốt"
+  "vi:không có dữ liệu điểm đến": {
+    "en": "Không có dữ liệu destination"
   },
-  "vi:tốt tốt tốt": {
-    "en": "good good good"
+  "en:reviews management": {
+    "vi": "Quản lý đánh giá"
+  },
+  "en:create local specialty": {
+    "vi": "Tạo Đặc sản Địa phương"
+  },
+  "vi:tạo đặc sản địa phương": {
+    "en": "Create Local                                                 Specialty"
+  },
+  "en:upload local specialty images": {
+    "vi": "Tải ảnh đặc sản địa phương lên"
+  },
+  "vi:tải ảnh đặc sản địa phương lên": {
+    "en": "Upload Local Specialty Images"
+  },
+  "en:click to upload images (max 5,                                                 jpg/jpeg/png/gif/bmp/webp)": {
+    "vi": "Nhấp để tải ảnh lên (Tối đa 5, JPG/JPEG/PNG/GIF/BMP/WEBP)"
+  },
+  "vi:nhấp để tải ảnh lên (tối đa 5, jpg/jpeg/png/gif/bmp/webp)": {
+    "en": "Click to upload images (Max 5,                                                 JPG/JPEG/PNG/GIF/BMP/WEBP)"
+  },
+  "en:selling locations": {
+    "vi": "Địa điểm bán"
+  },
+  "vi:địa điểm bán": {
+    "en": "Selling Locations"
+  },
+  "en:add location": {
+    "vi": "Thêm địa điểm"
+  },
+  "vi:thêm địa điểm": {
+    "en": "Add Location"
+  },
+  "en:create local                                                 specialty": {
+    "vi": "Tạo Đặc sản Địa phương"
+  },
+  "en:enter food name (e.g., bánh tét trà vinh)": {
+    "vi": "Nhập tên món ăn (ví dụ: Bánh Tét Trà Vinh)"
+  },
+  "vi:nhập tên món ăn (ví dụ: bánh tét trà vinh)": {
+    "en": "Enter food name (e.g., Bánh Tét Trà Vinh)"
+  },
+  "en:description of the local specialty": {
+    "vi": "Mô tả đặc sản địa phương"
+  },
+  "vi:mô tả đặc sản địa phương": {
+    "en": "Description of the local specialty"
+  },
+  "en:create tip": {
+    "vi": "Tạo mẹo"
+  },
+  "vi:tạo mẹo": {
+    "en": "Create Tip"
+  },
+  "en:-- select a tag --": {
+    "vi": "Chọn thẻ"
+  },
+  "en:add": {
+    "vi": "Thêm"
+  },
+  "vi:thêm": {
+    "en": "Add"
+  },
+  "en:remove": {
+    "vi": "Xóa"
+  },
+  "en:edit local specialty": {
+    "vi": "Chỉnh sửa Đặc sản Địa phương"
+  },
+  "en:5/27/2025 6:31:51 am": {
+    "vi": "27/05/2025 6:31:51 SA"
+  },
+  "vi:27/05/2025 6:31:51 sa": {
+    "en": "5/27/2025 6:31:51 AM"
+  },
+  "en:3333.33333 ,\u00A0 333.3333": {
+    "vi": "3333.33333 , 333.3333"
+  },
+  "vi:3333.33333 , 333.3333": {
+    "en": "3333.33333 ,\u00A0 333.3333"
+  },
+  "en:yes": {
+    "vi": "Có"
+  },
+  "vi:có": {
+    "en": "Yes"
+  },
+  "en:unban": {
+    "vi": "Bỏ cấm"
+  },
+  "vi:bỏ cấm": {
+    "en": "Unban"
+  },
+  "en:confirm": {
+    "vi": "Xác nhận"
+  },
+  "vi:xác nhận": {
+    "en": "Confirmation"
+  },
+  "en:continue": {
+    "vi": "Tiếp tục"
+  },
+  "vi:tiếp tục": {
+    "en": "Continue"
+  },
+  "en:information": {
+    "vi": "Thông tin"
+  },
+  "vi:thông tin": {
+    "en": "Information"
+  },
+  "en:confirmation": {
+    "vi": "Xác nhận"
+  },
+  "en:confirm deletion": {
+    "vi": "Xác nhận xóa"
+  },
+  "vi:xác nhận xóa": {
+    "en": "Confirm delete"
+  },
+  "en:confirm delete": {
+    "vi": "Xác nhận xóa"
+  },
+  "en:deleted!": {
+    "vi": "Đã xóa!"
+  },
+  "vi:đã xóa!": {
+    "en": "Deleted!"
+  },
+  "en:restored!": {
+    "vi": "Đã khôi phục!"
+  },
+  "vi:đã khôi phục!": {
+    "en": "Restored!"
+  },
+  "en:failed!": {
+    "vi": "Thất bại!"
+  },
+  "vi:thất bại!": {
+    "en": "Failed!"
+  },
+  "en:notification": {
+    "vi": "Thông báo"
+  },
+  "en:filters and selections have been reset": {
+    "vi": "Bộ lọc và lựa chọn đã được đặt lại"
+  },
+  "vi:bộ lọc và lựa chọn đã được đặt lại": {
+    "en": "Filters and selections have been reset"
+  },
+  "en:event and festival title is required.": {
+    "vi": "Tiêu đề sự kiện và lễ hội là bắt buộc."
+  },
+  "vi:tiêu đề sự kiện và lễ hội là bắt buộc.": {
+    "en": "Event And Festival Title is required."
+  },
+  "en:name of location is required.": {
+    "vi": "Tên địa điểm là bắt buộc."
+  },
+  "vi:tên địa điểm là bắt buộc.": {
+    "en": "Name of Location is required."
+  },
+  "en:starting date is required.": {
+    "vi": "Ngày bắt đầu là bắt buộc."
+  },
+  "vi:ngày bắt đầu là bắt buộc.": {
+    "en": "Starting date is required."
+  },
+  "en:ending date cannot be before the starting date.": {
+    "vi": "Ngày kết thúc không thể trước ngày bắt đầu."
+  },
+  "vi:ngày kết thúc không thể trước ngày bắt đầu.": {
+    "en": "Ending date cannot be before the starting date."
+  },
+  "en:at least one image is required": {
+    "vi": "Cần ít nhất một hình ảnh"
+  },
+  "vi:cần ít nhất một hình ảnh": {
+    "en": "At least one image is required"
+  },
+  "en:please upload valid image files only (e.g., jpg, png, gif).": {
+    "vi": "Vui lòng chỉ tải lên các tệp hình ảnh hợp lệ (ví dụ: JPG, PNG, GIF)."
+  },
+  "vi:vui lòng chỉ tải lên các tệp hình ảnh hợp lệ (ví dụ: jpg, png, gif).": {
+    "en": "Please upload valid image files only (e.g., JPG, PNG, GIF)."
+  },
+  "en:you can upload a maximum of %s images.": {
+    "vi": "Bạn có thể tải lên tối đa %s hình ảnh."
+  },
+  "vi:bạn có thể tải lên tối đa %s hình ảnh.": {
+    "en": "You can upload a maximum of %s images."
+  },
+  "en:file %s exceeds the maximum size of 5 mb.": {
+    "vi": "Tệp %s vượt quá kích thước tối đa 5 MB."
+  },
+  "vi:tệp %s vượt quá kích thước tối đa 5 mb.": {
+    "en": "File %s exceeds the maximum size of 5 MB."
+  },
+  "en:file %s has an unsupported format. allowed formats: %s.": {
+    "vi": "Tệp %s có định dạng không được hỗ trợ. Các định dạng được phép: %s."
+  },
+  "vi:tệp %s có định dạng không được hỗ trợ. các định dạng được phép: %s.": {
+    "en": "File %s has an unsupported format. Allowed formats: %s."
+  },
+  "en:unsupported format": {
+    "vi": "Định dạng không được hỗ trợ"
+  },
+  "vi:định dạng không được hỗ trợ": {
+    "en": "Unsupported format"
+  },
+  "en:no matching records found": {
+    "vi": "Không tìm thấy bản ghi phù hợp"
+  },
+  "vi:không tìm thấy bản ghi phù hợp": {
+    "en": "No matching records found"
+  },
+  "en:• row %s: product name is required": {
+    "vi": "• Hàng %s: Tên sản phẩm là bắt buộc"
+  },
+  "vi:• hàng %s: tên sản phẩm là bắt buộc": {
+    "en": "• Row %s: Product name is required"
+  },
+  "en:• row %s: product price is required": {
+    "vi": "Hàng %s: Giá sản phẩm là bắt buộc"
+  },
+  "vi:hàng %s: giá sản phẩm là bắt buộc": {
+    "en": "• Row %s: Product price is required"
+  },
+  "en:• row %s: ocoptype is required": {
+    "vi": "Hàng %s: Loại OCOP là bắt buộc"
+  },
+  "vi:hàng %s: loại ocop là bắt buộc": {
+    "en": "• Row %s: OcopType is required"
+  },
+  "en:• row %s: ocoptype \"%s\" not found in database": {
+    "vi": "Hàng %s: Loại OCOP \"%s\" không tìm thấy trong cơ sở dữ liệu"
+  },
+  "vi:hàng %s: loại ocop \"%s\" không tìm thấy trong cơ sở dữ liệu": {
+    "en": "• Row %s: OcopType \"%s\" not found in database"
+  },
+  "en:• row %s: company is required": {
+    "vi": "Hàng %s: Công ty là bắt buộc"
+  },
+  "vi:hàng %s: công ty là bắt buộc": {
+    "en": "• Row %s: Company is required"
+  },
+  "en:• row %s: company \"%s\" not found in database": {
+    "vi": "Hàng %s: Công ty \"%s\" không tìm thấy trong cơ sở dữ liệu"
+  },
+  "vi:hàng %s: công ty \"%s\" không tìm thấy trong cơ sở dữ liệu": {
+    "en": "• Row %s: Company \"%s\" not found in database"
+  },
+  "en:• row %s: ocoppoint must be a number between 1 and 5": {
+    "vi": "Hàng %s: Điểm OCOP phải là số từ 1 đến 5"
+  },
+  "vi:hàng %s: điểm ocop phải là số từ 1 đến 5": {
+    "en": "• Row %s: OcopPoint must be a number between 1 and 5"
+  },
+  "en:• row %s: ocopyear must be a valid year not in the future": {
+    "vi": "Hàng %s: Năm OCOP phải là năm hợp lệ và không được ở tương lai"
+  },
+  "vi:hàng %s: năm ocop phải là năm hợp lệ và không được ở tương lai": {
+    "en": "• Row %s: OcopYear must be a valid year not in the future"
+  },
+  "en:• row %s: tag is recommended": {
+    "vi": "Hàng %s: Thẻ được khuyến nghị"
+  },
+  "vi:hàng %s: thẻ được khuyến nghị": {
+    "en": "• Row %s: Tag is recommended"
+  },
+  "en:• row %s: tag \"%s\" not found in database": {
+    "vi": "Hàng %s: Thẻ \"%s\" không tìm thấy trong cơ sở dữ liệu"
+  },
+  "vi:hàng %s: thẻ \"%s\" không tìm thấy trong cơ sở dữ liệu": {
+    "en": "• Row %s: Tag \"%s\" not found in database"
+  },
+  "en:• row %s: no images uploaded for product \"%s\"": {
+    "vi": "Hàng %s: Không có hình ảnh nào được tải lên cho sản phẩm \"%s\""
+  },
+  "vi:hàng %s: không có hình ảnh nào được tải lên cho sản phẩm \"%s\"": {
+    "en": "• Row %s: No images uploaded for product \"%s\""
+  },
+  "en:• row %s: invalid file type(s): %s. only image files are allowed.": {
+    "vi": "Hàng %s: Loại tệp không hợp lệ: %s. Chỉ cho phép các tệp hình ảnh."
+  },
+  "vi:hàng %s: loại tệp không hợp lệ: %s. chỉ cho phép các tệp hình ảnh.": {
+    "en": "• Row %s: Invalid file type(s): %s. Only image files are allowed."
+  },
+  "en:exporting data": {
+    "vi": "Đang xuất dữ liệu"
+  },
+  "vi:đang xuất dữ liệu": {
+    "en": "Exporting Data"
+  },
+  "en:export successful": {
+    "vi": "Xuất thành công"
+  },
+  "vi:xuất thành công": {
+    "en": "Export Successful"
+  },
+  "en:export successful!": {
+    "vi": "Xuất thành công!"
+  },
+  "vi:xuất thành công!": {
+    "en": "Export Successful!"
+  },
+  "en:export error": {
+    "vi": "Lỗi xuất"
+  },
+  "vi:lỗi xuất": {
+    "en": "Export Error"
+  },
+  "en:export error!": {
+    "vi": "Lỗi xuất!"
+  },
+  "vi:lỗi xuất!": {
+    "en": "Export Error!"
+  },
+  "en:export warning!": {
+    "vi": "Cảnh báo xuất!"
+  },
+  "vi:cảnh báo xuất!": {
+    "en": "Export Warning!"
+  },
+  "en:error creating excel file: %s": {
+    "vi": "Lỗi tạo tệp Excel: %s"
+  },
+  "vi:lỗi tạo tệp excel: %s": {
+    "en": "Error creating Excel file: %s"
+  },
+  "en:error during excel creation:": {
+    "vi": "Lỗi trong quá trình tạo Excel:"
+  },
+  "vi:lỗi trong quá trình tạo excel:": {
+    "en": "Error during Excel creation:"
+  },
+  "en:confirm import": {
+    "vi": "Xác nhận nhập"
+  },
+  "vi:xác nhận nhập": {
+    "en": "Confirm Import"
+  },
+  "en:importing...": {
+    "vi": "Đang nhập..."
+  },
+  "vi:đang nhập...": {
+    "en": "Importing..."
+  },
+  "en:import progress": {
+    "vi": "Tiến độ nhập"
+  },
+  "vi:tiến độ nhập": {
+    "en": "Import Progress"
+  },
+  "en:import successful": {
+    "vi": "Nhập thành công"
+  },
+  "vi:nhập thành công": {
+    "en": "Import Successful"
+  },
+  "en:import completed with issues": {
+    "vi": "Nhập hoàn tất với lỗi"
+  },
+  "vi:nhập hoàn tất với lỗi": {
+    "en": "Import Completed with Issues"
+  },
+  "en:batch import error": {
+    "vi": "Lỗi nhập hàng loạt"
+  },
+  "vi:lỗi nhập hàng loạt": {
+    "en": "Batch Import Error"
+  },
+  "en:invalid files": {
+    "vi": "Tệp không hợp lệ"
+  },
+  "vi:tệp không hợp lệ": {
+    "en": "Invalid Files"
+  },
+  "en:invalid products": {
+    "vi": "Sản phẩm không hợp lệ"
+  },
+  "vi:sản phẩm không hợp lệ": {
+    "en": "Invalid Products"
+  },
+  "en:no valid records": {
+    "vi": "Không có bản ghi hợp lệ"
+  },
+  "vi:không có bản ghi hợp lệ": {
+    "en": "No Valid Records"
+  },
+  "en:please upload a valid excel file (.xlsx, .xls)": {
+    "vi": "Vui lòng tải lên tệp Excel hợp lệ (.xlsx, .xls)"
+  },
+  "vi:vui lòng tải lên tệp excel hợp lệ (.xlsx, .xls)": {
+    "en": "Please upload a valid Excel file (.xlsx, .xls)"
+  },
+  "en:invalid data format. please use the provided template.": {
+    "vi": "Định dạng dữ liệu không hợp lệ. Vui lòng sử dụng mẫu được cung cấp."
+  },
+  "vi:định dạng dữ liệu không hợp lệ. vui lòng sử dụng mẫu được cung cấp.": {
+    "en": "Invalid data format. Please use the provided template."
+  },
+  "en:no admin data available.": {
+    "vi": "Không có dữ liệu quản trị viên."
+  },
+  "vi:không có dữ liệu quản trị viên.": {
+    "en": "No admin data available."
+  },
+  "en:no company data available.": {
+    "vi": "Không có dữ liệu công ty."
+  },
+  "vi:không có dữ liệu công ty.": {
+    "en": "No company data available."
+  },
+  "en:no destinations found for export.": {
+    "vi": "Không tìm thấy điểm đến để xuất."
+  },
+  "vi:không tìm thấy điểm đến để xuất.": {
+    "en": "No destinations found for export."
+  },
+  "en:no feedback found for export.": {
+    "vi": "Không tìm thấy phản hồi để xuất."
+  },
+  "vi:không tìm thấy phản hồi để xuất.": {
+    "en": "No feedback found for export."
+  },
+  "en:no festivals found for export.": {
+    "vi": "Không tìm thấy lễ hội để xuất."
+  },
+  "vi:không tìm thấy lễ hội để xuất.": {
+    "en": "No festivals found for export."
+  },
+  "en:no itineraries found.": {
+    "vi": "Không tìm thấy hành trình."
+  },
+  "vi:không tìm thấy hành trình.": {
+    "en": "No itineraries found."
+  },
+  "en:no local specialties found for export.": {
+    "vi": "Không tìm thấy đặc sản địa phương để xuất."
+  },
+  "vi:không tìm thấy đặc sản địa phương để xuất.": {
+    "en": "No local specialties found for export."
+  },
+  "en:no notifications found.": {
+    "vi": "Không tìm thấy thông báo."
+  },
+  "vi:không tìm thấy thông báo.": {
+    "en": "No notifications found."
+  },
+  "en:no ocop product data available for export.": {
+    "vi": "Không có dữ liệu sản phẩm OCOP để xuất."
+  },
+  "vi:không có dữ liệu sản phẩm ocop để xuất.": {
+    "en": "No OCOP product data available for export."
+  },
+  "en:no ocop type data available for export.": {
+    "vi": "Không có dữ liệu loại OCOP để xuất."
+  },
+  "vi:không có dữ liệu loại ocop để xuất.": {
+    "en": "No OCOP type data available for export."
+  },
+  "en:no tips found for export.": {
+    "vi": "Không tìm thấy lời khuyên nào để xuất."
+  },
+  "vi:không tìm thấy lời khuyên nào để xuất.": {
+    "en": "No tips found for export."
+  },
+  "en:no user data available for export.": {
+    "vi": "Không có dữ liệu người dùng nào để xuất."
+  },
+  "vi:không có dữ liệu người dùng nào để xuất.": {
+    "en": "No user data available for export."
+  },
+  "en:items have been exported to excel.": {
+    "vi": "các mục đã được xuất ra Excel."
+  },
+  "vi:các mục đã được xuất ra excel.": {
+    "en": "items have been exported to Excel."
+  },
+  "en:retrieving all admin data for export...": {
+    "vi": "Đang truy xuất tất cả dữ liệu quản trị viên để xuất..."
+  },
+  "vi:đang truy xuất tất cả dữ liệu quản trị viên để xuất...": {
+    "en": "Retrieving all admin data for export..."
+  },
+  "en:retrieving all company data for export...": {
+    "vi": "Đang truy xuất tất cả dữ liệu công ty để xuất..."
+  },
+  "vi:đang truy xuất tất cả dữ liệu công ty để xuất...": {
+    "en": "Retrieving all company data for export..."
+  },
+  "en:retrieving all community tips for export...": {
+    "vi": "Đang truy xuất tất cả lời khuyên cộng đồng để xuất..."
+  },
+  "vi:đang truy xuất tất cả lời khuyên cộng đồng để xuất...": {
+    "en": "Retrieving all community tips for export..."
+  },
+  "en:retrieving all feedback for export...": {
+    "vi": "Đang truy xuất tất cả phản hồi để xuất..."
+  },
+  "vi:đang truy xuất tất cả phản hồi để xuất...": {
+    "en": "Retrieving all feedback for export..."
+  },
+  "en:retrieving all festivals for export...": {
+    "vi": "Đang truy xuất tất cả lễ hội để xuất..."
+  },
+  "vi:đang truy xuất tất cả lễ hội để xuất...": {
+    "en": "Retrieving all festivals for export..."
+  },
+  "en:retrieving all itineraries for export...": {
+    "vi": "Đang truy xuất tất cả hành trình để xuất..."
+  },
+  "vi:đang truy xuất tất cả hành trình để xuất...": {
+    "en": "Retrieving all itineraries for export..."
+  },
+  "en:retrieving all local specialties for export...": {
+    "vi": "Đang truy xuất tất cả đặc sản địa phương để xuất..."
+  },
+  "vi:đang truy xuất tất cả đặc sản địa phương để xuất...": {
+    "en": "Retrieving all local specialties for export..."
+  },
+  "en:retrieving all notifications for export...": {
+    "vi": "Đang truy xuất tất cả thông báo để xuất..."
+  },
+  "vi:đang truy xuất tất cả thông báo để xuất...": {
+    "en": "Retrieving all notifications for export..."
+  },
+  "en:retrieving all tourist destinations for export...": {
+    "vi": "Đang truy xuất tất cả điểm đến du lịch để xuất..."
+  },
+  "vi:đang truy xuất tất cả điểm đến du lịch để xuất...": {
+    "en": "Retrieving all tourist destinations for export..."
+  },
+  "en:retrieving all user data for export...": {
+    "vi": "Đang truy xuất tất cả dữ liệu người dùng để xuất..."
+  },
+  "vi:đang truy xuất tất cả dữ liệu người dùng để xuất...": {
+    "en": "Retrieving all user data for export..."
+  },
+  "en:retrieving ocop product data for export...": {
+    "vi": "Đang truy xuất dữ liệu sản phẩm OCOP để xuất..."
+  },
+  "vi:đang truy xuất dữ liệu sản phẩm ocop để xuất...": {
+    "en": "Retrieving OCOP product data for export..."
+  },
+  "en:retrieving ocop type data for export...": {
+    "vi": "Đang truy xuất dữ liệu loại OCOP để xuất."
+  },
+  "vi:đang truy xuất dữ liệu loại ocop để xuất.": {
+    "en": "Retrieving OCOP type data for export..."
+  },
+  "en:add at least one image to each product.": {
+    "vi": "Thêm ít nhất một hình ảnh vào mỗi sản phẩm."
+  },
+  "vi:thêm ít nhất một hình ảnh vào mỗi sản phẩm.": {
+    "en": "Add at least one image to each product."
+  },
+  "en:fix the validation errors before importing.": {
+    "vi": "Sửa các lỗi xác thực trước khi nhập."
+  },
+  "vi:sửa các lỗi xác thực trước khi nhập.": {
+    "en": "Fix the validation errors before importing."
+  },
+  "en:some files are not images and will be skipped: %s": {
+    "vi": "Một số tệp không phải là hình ảnh và sẽ bị bỏ qua: %s"
+  },
+  "vi:một số tệp không phải là hình ảnh và sẽ bị bỏ qua: %s": {
+    "en": "Some files are not images and will be skipped: %s"
+  },
+  "en:there are %s invalid products. (%s products missing images)<br>do you want to continue importing only the <b>%s</b> valid products?": {
+    "vi": "Có %s sản phẩm không hợp lệ. (%s sản phẩm thiếu hình ảnh)<br>Bạn có muốn tiếp tục nhập chỉ <b>%s</b> sản phẩm hợp lệ không?"
+  },
+  "vi:có %s sản phẩm không hợp lệ. (%s sản phẩm thiếu hình ảnh)<br>bạn có muốn tiếp tục nhập chỉ <b>%s</b> sản phẩm hợp lệ không?": {
+    "en": "There are %s invalid products. (%s products missing images)<br>Do you want to continue importing only the <b>%s</b> valid products?"
+  },
+  "en:are you sure you want to import %s products?": {
+    "vi": "Bạn có chắc chắn muốn nhập %s sản phẩm không?"
+  },
+  "vi:bạn có chắc chắn muốn nhập %s sản phẩm không?": {
+    "en": "Are you sure you want to import %s products?"
+  },
+  "en:yes, continue": {
+    "vi": "Có, tiếp tục"
+  },
+  "vi:có, tiếp tục": {
+    "en": "Yes, continue"
+  },
+  "en:yes, import products": {
+    "vi": "Có, nhập sản phẩm"
+  },
+  "vi:có, nhập sản phẩm": {
+    "en": "Yes, import products"
+  },
+  "en:preparing to import...": {
+    "vi": "Đang chuẩn bị nhập..."
+  },
+  "vi:đang chuẩn bị nhập...": {
+    "en": "Preparing to import..."
+  },
+  "en:importing batch %s/%s": {
+    "vi": "Đang nhập lô %s/%s"
+  },
+  "vi:đang nhập lô %s/%s": {
+    "en": "Importing batch %s/%s"
+  },
+  "en:processing batch %s of %s <small>(%s of %s products processed)</small>": {
+    "vi": "Đang xử lý lô %s trong số %s <small>(%s trong số %s sản phẩm đã được xử lý)</small>"
+  },
+  "vi:đang xử lý lô %s trong số %s <small>(%s trong số %s sản phẩm đã được xử lý)</small>": {
+    "en": "Processing batch %s of %s <small>(%s of %s products processed)</small>"
+  },
+  "en:batch %s completed successfully. processing next batch...": {
+    "vi": "Lô %s đã hoàn thành thành công. Đang xử lý lô tiếp theo..."
+  },
+  "vi:lô %s đã hoàn thành thành công. đang xử lý lô tiếp theo...": {
+    "en": "Batch %s completed successfully. Processing next batch..."
+  },
+  "en:batch %s failed. continuing with next batch...": {
+    "vi": "Lô %s thất bại. Tiếp tục với lô tiếp theo..."
+  },
+  "vi:lô %s thất bại. tiếp tục với lô tiếp theo...": {
+    "en": "Batch %s failed. Continuing with next batch..."
+  },
+  "en:failed to import batch %s: %s": {
+    "vi": "Không thể nhập lô %s: %s"
+  },
+  "vi:không thể nhập lô %s: %s": {
+    "en": "Failed to import batch %s: %s"
+  },
+  "en:import completed. <b>%s</b> products imported successfully.": {
+    "vi": "Nhập hoàn tất. <b>%s</b> sản phẩm đã được nhập thành công."
+  },
+  "vi:nhập hoàn tất. <b>%s</b> sản phẩm đã được nhập thành công.": {
+    "en": "Import completed. <b>%s</b> products imported successfully."
+  },
+  "en:successfully imported <b>%s</b> products!": {
+    "vi": "Đã nhập thành công <b>%s</b> sản phẩm!"
+  },
+  "vi:đã nhập thành công <b>%s</b> sản phẩm!": {
+    "en": "Successfully imported <b>%s</b> products!"
+  },
+  "en:successfully imported <b>%s</b> products.<br><b>%s</b> products failed.": {
+    "vi": "Đã nhập thành công <b>%s</b> sản phẩm.<br><b>%s</b> sản phẩm bị lỗi."
+  },
+  "vi:đã nhập thành công <b>%s</b> sản phẩm.<br><b>%s</b> sản phẩm bị lỗi.": {
+    "en": "Successfully imported <b>%s</b> products.<br><b>%s</b> products failed."
+  },
+  "en:are you sure you want to perform this action?": {
+    "vi": "Bạn có chắc chắn muốn thực hiện hành động này không?"
+  },
+  "vi:bạn có chắc chắn muốn thực hiện hành động này không?": {
+    "en": "Are you sure you want to perform this action?"
+  },
+  "en:are you sure you want to delete this admin?": {
+    "vi": "Bạn có chắc chắn muốn xóa quản trị viên này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa quản trị viên này không?": {
+    "en": "Are you sure you want to delete this admin?"
+  },
+  "en:do you really want to delete this admin?": {
+    "vi": "Bạn có thực sự muốn xóa quản trị viên này không?"
+  },
+  "vi:bạn có thực sự muốn xóa quản trị viên này không?": {
+    "en": "Do you really want to delete this admin?"
+  },
+  "en:are you sure you want to restore this admin?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục quản trị viên này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục quản trị viên này không?": {
+    "en": "Are you sure you want to restore this admin?"
+  },
+  "en:do you want to restore this admin?": {
+    "vi": "Bạn có muốn khôi phục quản trị viên này không?"
+  },
+  "vi:bạn có muốn khôi phục quản trị viên này không?": {
+    "en": "Do you want to restore this admin?"
+  },
+  "en:delete failed!": {
+    "vi": "Xóa thất bại!"
+  },
+  "vi:xóa thất bại!": {
+    "en": "Delete failed!"
+  },
+  "en:restore failed!": {
+    "vi": "Khôi phục thất bại!"
+  },
+  "vi:khôi phục thất bại!": {
+    "en": "Restore failed!"
+  },
+  "en:there was an error deleting the admin.": {
+    "vi": "Đã xảy ra lỗi khi xóa quản trị viên."
+  },
+  "vi:đã xảy ra lỗi khi xóa quản trị viên.": {
+    "en": "There was an error deleting the admin."
+  },
+  "en:there was an error restoring the admin.": {
+    "vi": "Đã xảy ra lỗi khi khôi phục quản trị viên."
+  },
+  "vi:đã xảy ra lỗi khi khôi phục quản trị viên.": {
+    "en": "There was an error restoring the admin."
+  },
+  "en:yes, delete it!": {
+    "vi": "Có, xóa nó!"
+  },
+  "vi:có, xóa nó!": {
+    "en": "Yes, delete it!"
+  },
+  "en:yes, restore it!": {
+    "vi": "Có, khôi phục nó!"
+  },
+  "vi:có, khôi phục nó!": {
+    "en": "Yes, restore it!"
+  },
+  "en:are you sure you want to ban this user?": {
+    "vi": "Bạn có chắc chắn muốn cấm người dùng này không?"
+  },
+  "vi:bạn có chắc chắn muốn cấm người dùng này không?": {
+    "en": "Are you sure you want to ban this user?"
+  },
+  "en:are you sure you want to unban this user?": {
+    "vi": "Bạn có chắc chắn muốn bỏ cấm người dùng này không?"
+  },
+  "vi:bạn có chắc chắn muốn bỏ cấm người dùng này không?": {
+    "en": "Are you sure you want to unban this user?"
+  },
+  "en:an error occurred while banning the user: %s": {
+    "vi": "Đã xảy ra lỗi khi cấm người dùng: %s"
+  },
+  "vi:đã xảy ra lỗi khi cấm người dùng: %s": {
+    "en": "An error occurred while banning the user: %s"
+  },
+  "en:an error occurred while unbanning the user: %s": {
+    "vi": "Đã xảy ra lỗi khi bỏ cấm người dùng: %s"
+  },
+  "vi:đã xảy ra lỗi khi bỏ cấm người dùng: %s": {
+    "en": "An error occurred while unbanning the user: %s"
+  },
+  "en:are you sure you want to delete this destination?": {
+    "vi": "Bạn có chắc chắn muốn xóa điểm đến này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa điểm đến này không?": {
+    "en": "Are you sure you want to delete this destination?"
+  },
+  "en:are you sure you want torestore this destination?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục điểm đến này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục điểm đến này không?": {
+    "en": "Are you sure you want to restore this destination?"
+  },
+  "en:are you sure you want to delete this event and festival?": {
+    "vi": "Bạn có chắc chắn muốn xóa sự kiện và lễ hội này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa sự kiện và lễ hội này không?": {
+    "en": "Are you sure you want to delete this event and festival?"
+  },
+  "en:are you sure you want to restore this event and festival?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục sự kiện và lễ hội này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục sự kiện và lễ hội này không?": {
+    "en": "Are you sure you want to restore this event and festival?"
+  },
+  "en:are you sure you want to delete this itinerary plan?": {
+    "vi": "Bạn có chắc chắn muốn xóa kế hoạch hành trình này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa kế hoạch hành trình này không?": {
+    "en": "Are you sure you want to delete this itinerary plan?"
+  },
+  "en:are you sure you want to restore this itinerary plan?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục kế hoạch hành trình này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục kế hoạch hành trình này không?": {
+    "en": "Are you sure you want to restore this itinerary plan?"
+  },
+  "en:are you sure you want to delete this local specialties?": {
+    "vi": "Bạn có chắc chắn muốn xóa đặc sản địa phương này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa đặc sản địa phương này không?": {
+    "en": "Are you sure you want to delete this local specialties?"
+  },
+  "en:are you sure you want to restore this local specialties?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục đặc sản địa phương này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục đặc sản địa phương này không?": {
+    "en": "Are you sure you want to restore this local specialties?"
+  },
+  "en:restore local specialties": {
+    "vi": "Khôi phục Đặc sản Địa phương"
+  },
+  "vi:khôi phục đặc sản địa phương": {
+    "en": "Restore Local Specialties"
+  },
+  "en:are you sure you want to delete this marker?": {
+    "vi": "Bạn có chắc chắn muốn xóa điểm đánh dấu này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa điểm đánh dấu này không?": {
+    "en": "Are you sure you want to delete this marker?"
+  },
+  "en:are you sure you want to restore this marker?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục điểm đánh dấu này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục điểm đánh dấu này không?": {
+    "en": "Are you sure you want to restore this Marker?"
+  },
+  "en:are you sure you want to delete this ocop product?": {
+    "vi": "Bạn có chắc chắn muốn xóa sản phẩm OCOP này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa sản phẩm ocop này không?": {
+    "en": "Are you sure you want to delete this ocop product?"
+  },
+  "en:are you sure you want to restore this ocop product?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục sản phẩm OCOP này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục sản phẩm ocop này không?": {
+    "en": "Are you sure you want to restore this ocop product?"
+  },
+  "en:are you sure you want to delete this tip?": {
+    "vi": "Bạn có chắc chắn muốn xóa mẹo này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa mẹo này không?": {
+    "en": "Are you sure you want to delete this tip?"
+  },
+  "en:are you sure you want to restore this tip?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục mẹo này không?"
+  },
+  "vi:bạn có chắc chắn muốn khôi phục mẹo này không?": {
+    "en": "Are you sure you want to restore this tip?"
+  },
+  "en:restore tip": {
+    "vi": "Khôi phục Mẹo"
+  },
+  "vi:khôi phục mẹo": {
+    "en": "Restore Tip"
+  },
+  "en:an error occurred while deleting.": {
+    "vi": "Đã xảy ra lỗi khi xóa."
+  },
+  "vi:đã xảy ra lỗi khi xóa.": {
+    "en": "An error occurred while deleting."
+  },
+  "en:an error occurred while restoring.": {
+    "vi": "Đã xảy ra lỗi khi khôi phục."
+  },
+  "vi:đã xảy ra lỗi khi khôi phục.": {
+    "en": "An error occurred while restoring."
+  },
+  "en:an error occurred while deleting the tip.": {
+    "vi": "Đã xảy ra lỗi khi xóa mẹo."
+  },
+  "vi:đã xảy ra lỗi khi xóa mẹo.": {
+    "en": "An error occurred while deleting the tip."
+  },
+  "en:an error occurred while restoring the tip.": {
+    "vi": "Đã xảy ra lỗi khi khôi phục mẹo."
+  },
+  "vi:đã xảy ra lỗi khi khôi phục mẹo.": {
+    "en": "An error occurred while restoring the tip."
+  },
+  "en:an error occurred while banning the destination: %s": {
+    "vi": "Đã xảy ra lỗi khi cấm điểm đến: %s"
+  },
+  "vi:đã xảy ra lỗi khi cấm điểm đến: %s": {
+    "en": "An error occurred while banning the destination: %s"
+  },
+  "en:an error occurred while restoring the destination: %s": {
+    "vi": "Đã xảy ra lỗi khi khôi phục điểm đến: %s"
+  },
+  "vi:đã xảy ra lỗi khi khôi phục điểm đến: %s": {
+    "en": "An error occurred while restoring the destination: %s"
+  },
+  "en:are you sure you want to delete this image?": {
+    "vi": "Bạn có chắc chắn muốn xóa hình ảnh này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa hình ảnh này không?": {
+    "en": "Are you sure you want to delete this image?"
+  },
+  "en:are you sure you want to delete this selling link?": {
+    "vi": "Bạn có chắc chắn muốn xóa liên kết bán hàng này không?"
+  },
+  "vi:bạn có chắc chắn muốn xóa liên kết bán hàng này không?": {
+    "en": "Are you sure you want to delete this selling link?"
+  },
+  "en:do you want to delete the location \"%s\"?": {
+    "vi": "Bạn có muốn xóa địa điểm \"%s\" không?"
+  },
+  "vi:bạn có muốn xóa địa điểm \"%s\" không?": {
+    "en": "Do you want to delete the location \"%s\"?"
+  },
+  "en:image deleted successfully!": {
+    "vi": "Hình ảnh đã được xóa thành công!"
+  },
+  "vi:hình ảnh đã được xóa thành công!": {
+    "en": "Image deleted successfully!"
+  },
+  "en:location added successfully!": {
+    "vi": "Địa điểm đã được thêm thành công!"
+  },
+  "vi:địa điểm đã được thêm thành công!": {
+    "en": "Location added successfully!"
+  },
+  "en:location deleted successfully!": {
+    "vi": "Địa điểm đã được xóa thành công!"
+  },
+  "vi:địa điểm đã được xóa thành công!": {
+    "en": "Location deleted successfully!"
+  },
+  "en:location updated successfully!": {
+    "vi": "Địa điểm đã được cập nhật thành công!"
+  },
+  "vi:địa điểm đã được cập nhật thành công!": {
+    "en": "Location updated successfully!"
+  },
+  "en:selling link updated successfully!": {
+    "vi": "Liên kết bán hàng đã được cập nhật thành công!"
+  },
+  "vi:liên kết bán hàng đã được cập nhật thành công!": {
+    "en": "Selling link updated successfully!"
+  },
+  "en:failed to delete image.": {
+    "vi": "Không thể xóa hình ảnh."
+  },
+  "vi:không thể xóa hình ảnh.": {
+    "en": "Failed to delete image."
+  },
+  "en:failed to delete location.": {
+    "vi": "Không thể xóa địa điểm."
+  },
+  "vi:không thể xóa địa điểm.": {
+    "en": "Failed to delete location."
+  },
+  "en:failed to add location.": {
+    "vi": "Không thể thêm địa điểm."
+  },
+  "vi:không thể thêm địa điểm.": {
+    "en": "Failed to add location."
+  },
+  "en:failed to update location.": {
+    "vi": "Không thể cập nhật địa điểm."
+  },
+  "vi:không thể cập nhật địa điểm.": {
+    "en": "Failed to update location."
+  },
+  "en:failed to update selling link.": {
+    "vi": "Không thể cập nhật liên kết bán hàng."
+  },
+  "vi:không thể cập nhật liên kết bán hàng.": {
+    "en": "Failed to update selling link."
+  },
+  "en:failed to reload location data.": {
+    "vi": "Không thể tải lại dữ liệu vị trí."
+  },
+  "vi:không thể tải lại dữ liệu vị trí.": {
+    "en": "Failed to reload location data."
+  },
+  "en:failed to reload selling link data.": {
+    "vi": "Không thể tải lại dữ liệu liên kết bán hàng."
+  },
+  "vi:không thể tải lại dữ liệu liên kết bán hàng.": {
+    "en": "Failed to reload selling link data."
+  },
+  "en:an error occurred while deleting the image.": {
+    "vi": "Đã xảy ra lỗi khi xóa ảnh."
+  },
+  "vi:đã xảy ra lỗi khi xóa ảnh.": {
+    "en": "An error occurred while deleting the image."
+  },
+  "en:an error occurred while adding the location.": {
+    "vi": "Đã xảy ra lỗi khi thêm vị trí."
+  },
+  "vi:đã xảy ra lỗi khi thêm vị trí.": {
+    "en": "An error occurred while adding the location."
+  },
+  "en:an error occurred while deleting the location.": {
+    "vi": "Đã xảy ra lỗi khi xóa vị trí."
+  },
+  "vi:đã xảy ra lỗi khi xóa vị trí.": {
+    "en": "An error occurred while deleting the location."
+  },
+  "en:an error occurred while updating the location.": {
+    "vi": "Đã xảy ra lỗi khi cập nhật vị trí."
+  },
+  "vi:đã xảy ra lỗi khi cập nhật vị trí.": {
+    "en": "An error occurred while updating the location."
+  },
+  "en:an error occurred while deleting the selling link: %s": {
+    "vi": "Đã xảy ra lỗi khi xóa liên kết bán hàng: %s"
+  },
+  "vi:đã xảy ra lỗi khi xóa liên kết bán hàng: %s": {
+    "en": "An error occurred while deleting the selling link: %s"
+  },
+  "en:an error occurred while updating the selling link.": {
+    "vi": "Đã xảy ra lỗi khi cập nhật liên kết bán hàng."
+  },
+  "vi:đã xảy ra lỗi khi cập nhật liên kết bán hàng.": {
+    "en": "An error occurred while updating the selling link."
+  },
+  "en:an error occurred while uploading the images.": {
+    "vi": "Đã xảy ra lỗi khi tải ảnh lên."
+  },
+  "vi:đã xảy ra lỗi khi tải ảnh lên.": {
+    "en": "An error occurred while uploading the images."
+  },
+  "en:error: sessionid is missing or undefined": {
+    "vi": "Lỗi: sessionId bị thiếu hoặc không xác định"
+  },
+  "vi:lỗi: sessionid bị thiếu hoặc không xác định": {
+    "en": "Error: sessionId is missing or undefined"
+  },
+  "en:session id is missing. please log in again.": {
+    "vi": "Thiếu ID phiên. Vui lòng đăng nhập lại."
+  },
+  "vi:thiếu id phiên. vui lòng đăng nhập lại.": {
+    "en": "Session ID is missing. Please log in again."
+  },
+  "en:unauthorized access. please log in again.": {
+    "vi": "Truy cập trái phép. Vui lòng đăng nhập lại."
+  },
+  "vi:truy cập trái phép. vui lòng đăng nhập lại.": {
+    "en": "Unauthorized access. Please log in again."
+  },
+  "en:you do not have permission to perform this action.": {
+    "vi": "Bạn không có quyền thực hiện hành động này."
+  },
+  "vi:bạn không có quyền thực hiện hành động này.": {
+    "en": "You do not have permission to perform this action."
+  },
+  "en:api endpoint not found. verify the url.": {
+    "vi": "Không tìm thấy điểm cuối API. Vui lòng kiểm tra lại URL."
+  },
+  "vi:không tìm thấy điểm cuối api. vui lòng kiểm tra lại url.": {
+    "en": "API endpoint not found. Verify the URL."
+  },
+  "en:could not retrieve destination data. please check your connection or permissions.": {
+    "vi": "Không thể truy xuất dữ liệu điểm đến. Vui lòng kiểm tra kết nối hoặc quyền của bạn."
+  },
+  "vi:không thể truy xuất dữ liệu điểm đến. vui lòng kiểm tra kết nối hoặc quyền của bạn.": {
+    "en": "Could not retrieve destination data. Please check your connection or permissions."
+  },
+  "en:could not retrieve feedback data. please check your connection or permissions.": {
+    "vi": "Không thể truy xuất dữ liệu phản hồi. Vui lòng kiểm tra kết nối hoặc quyền của bạn."
+  },
+  "vi:không thể truy xuất dữ liệu phản hồi. vui lòng kiểm tra kết nối hoặc quyền của bạn.": {
+    "en": "Could not retrieve feedback data. Please check your connection or permissions."
+  },
+  "en:could not retrieve festival data. please check your connection or permissions.": {
+    "vi": "Không thể truy xuất dữ liệu lễ hội. Vui lòng kiểm tra kết nối hoặc quyền của bạn."
+  },
+  "vi:không thể truy xuất dữ liệu lễ hội. vui lòng kiểm tra kết nối hoặc quyền của bạn.": {
+    "en": "Could not retrieve festival data. Please check your connection or permissions."
+  },
+  "en:could not retrieve local specialties data. please check your connection or permissions.": {
+    "vi": "Không thể truy xuất dữ liệu đặc sản địa phương. Vui lòng kiểm tra kết nối hoặc quyền của bạn."
+  },
+  "vi:không thể truy xuất dữ liệu đặc sản địa phương. vui lòng kiểm tra kết nối hoặc quyền của bạn.": {
+    "en": "Could not retrieve local specialties data. Please check your connection or permissions."
+  },
+  "en:could not retrieve notification data.": {
+    "vi": "Không thể truy xuất dữ liệu thông báo."
+  },
+  "vi:không thể truy xuất dữ liệu thông báo.": {
+    "en": "Could not retrieve notification data."
+  },
+  "en:could not retrieve product data. please check your connection or permissions.": {
+    "vi": "Không thể truy xuất dữ liệu sản phẩm. Vui lòng kiểm tra kết nối hoặc quyền của bạn."
+  },
+  "vi:không thể truy xuất dữ liệu sản phẩm. vui lòng kiểm tra kết nối hoặc quyền của bạn.": {
+    "en": "Could not retrieve product data. Please check your connection or permissions."
+  },
+  "en:could not retrieve tip data. please check your connection or permissions.": {
+    "vi": "Không thể truy xuất dữ liệu mẹo. Vui lòng kiểm tra kết nối hoặc quyền của bạn."
+  },
+  "vi:không thể truy xuất dữ liệu mẹo. vui lòng kiểm tra kết nối hoặc quyền của bạn.": {
+    "en": "Could not retrieve tip data. Please check your connection or permissions."
+  },
+  "en:could not retrieve user data. please check your connection or permissions.": {
+    "vi": "Không thể truy xuất dữ liệu người dùng. Vui lòng kiểm tra kết nối hoặc quyền của bạn."
+  },
+  "vi:không thể truy xuất dữ liệu người dùng. vui lòng kiểm tra kết nối hoặc quyền của bạn.": {
+    "en": "Could not retrieve user data. Please check your connection or permissions."
+  },
+  "en:failed to retrieve data. check connection or permission.": {
+    "vi": "Không thể truy xuất dữ liệu. Vui lòng kiểm tra kết nối hoặc quyền."
+  },
+  "vi:không thể truy xuất dữ liệu. vui lòng kiểm tra kết nối hoặc quyền.": {
+    "en": "Failed to retrieve data. Check connection or permission."
+  },
+  "en:unknown error": {
+    "vi": "Lỗi không xác định"
+  },
+  "vi:lỗi không xác định": {
+    "en": "Unknown error"
+  },
+  "en:showing 11 to 14 of 14 entries": {
+    "vi": "Hiển thị 11 đến 14 trong 14 mục"
+  },
+  "vi:hiển thị 11 đến 14 trong 14 mục": {
+    "en": "Showing 11 to 14 of 14 entries"
+  },
+  "en:showing 1 to 10 of 14 entries": {
+    "vi": "Hiển thị 1 đến 10 trên 14 mục"
+  },
+  "vi:hiển thị 1 đến 10 trên 14 mục": {
+    "en": "Showing 1 to 10 of 14 entries"
+  },
+  "en:showing 11 to 16 of 16 entries": {
+    "vi": "Hiển thị 11 đến 16 trong tổng số 16 mục"
+  },
+  "vi:hiển thị 11 đến 16 trong tổng số 16 mục": {
+    "en": "Showing 11 to 16 of 16 entries"
+  },
+  "en:12 days ago": {
+    "vi": "12 ngày trước"
+  },
+  "vi:12 ngày trước": {
+    "en": "12 days ago"
+  },
+  "en:5/16/2025 3:06:24 am": {
+    "vi": "16/05/2025 3:06:24 SA"
+  },
+  "vi:16/05/2025 3:06:24 sa": {
+    "en": "5/16/2025 3:06:24 AM"
+  },
+  "en:something went wrong with delete image, please try again": {
+    "vi": "Có lỗi khi xóa ảnh, vui lòng thử lại"
+  },
+  "vi:có lỗi khi xóa ảnh, vui lòng thử lại": {
+    "en": "Something went wrong with delete image, please try again"
+  },
+  "en:email": {
+    "vi": "Thư điện tử"
+  },
+  "vi:thư điện tử": {
+    "en": "Email"
+  },
+  "en:address destination": {
+    "vi": "Địa chỉ Điểm đến"
+  },
+  "vi:địa chỉ điểm đến": {
+    "en": "Address of destination"
+  },
+  "en:destination title": {
+    "vi": "Tiêu đề Điểm đến"
+  },
+  "vi:tiêu đề điểm đến": {
+    "en": "Destination Title"
+  },
+  "en:capacity": {
+    "vi": "Sức chứa"
+  },
+  "vi:sức chứa": {
+    "en": "Capacity"
+  },
+  "en:10 people": {
+    "vi": "10 người"
+  },
+  "vi:10 người": {
+    "en": "10 people"
+  },
+  "en:20 people": {
+    "vi": "20 người"
+  },
+  "vi:20 người": {
+    "en": "20 people"
+  },
+  "en:30 people": {
+    "vi": "30 người"
+  },
+  "vi:30 người": {
+    "en": "30 people"
+  },
+  "en:40 people": {
+    "vi": "40 người"
+  },
+  "vi:40 người": {
+    "en": "40 people"
+  },
+  "en:50 people": {
+    "vi": "50 người"
+  },
+  "vi:50 người": {
+    "en": "50 people"
+  },
+  "en:60 people": {
+    "vi": "60 người"
+  },
+  "vi:60 người": {
+    "en": "60 people"
+  },
+  "en:70 people": {
+    "vi": "70 người"
+  },
+  "vi:70 người": {
+    "en": "70 people"
+  },
+  "en:80 people": {
+    "vi": "80 người"
+  },
+  "vi:80 người": {
+    "en": "80 people"
+  },
+  "en:90 people": {
+    "vi": "90 người"
+  },
+  "vi:90 người": {
+    "en": "90 people"
+  },
+  "en:100 people": {
+    "vi": "100 người"
+  },
+  "vi:100 người": {
+    "en": "100 peple"
+  },
+  "en:200 people": {
+    "vi": "200 người"
+  },
+  "vi:200 người": {
+    "en": "200 people"
+  },
+  "en:300 people": {
+    "vi": "300 người"
+  },
+  "vi:300 người": {
+    "en": "300 people"
+  },
+  "en:400 people": {
+    "vi": "400 người"
+  },
+  "vi:400 người": {
+    "en": "400 people"
+  },
+  "en:500 people": {
+    "vi": "500 người"
+  },
+  "vi:500 người": {
+    "en": "500 people"
+  },
+  "en:600 people": {
+    "vi": "600 người"
+  },
+  "vi:600 người": {
+    "en": "600 people"
+  },
+  "en:700 people": {
+    "vi": "700 người"
+  },
+  "vi:700 người": {
+    "en": "700 people"
+  },
+  "en:800 people": {
+    "vi": "800 người"
+  },
+  "vi:800 người": {
+    "en": "800 people"
+  },
+  "en:900 people": {
+    "vi": "900 người"
+  },
+  "vi:900 người": {
+    "en": "900 people"
+  },
+  "en:over 1000 people": {
+    "vi": "Hơn 1000 người"
+  },
+  "vi:hơn 1000 người": {
+    "en": "Over 1000 people"
+  },
+  "en:destination type": {
+    "vi": "Loại điểm đến"
+  },
+  "vi:loại điểm đến": {
+    "en": "Destination Type"
+  },
+  "en:opent time": {
+    "vi": "Thời gian mở cửa"
+  },
+  "vi:thời gian mở cửa": {
+    "en": "Opent Time"
+  },
+  "en:12 am": {
+    "vi": "12 giờ sáng"
+  },
+  "vi:12 giờ sáng": {
+    "en": "12 AM"
+  },
+  "en:1 am": {
+    "vi": "1 giờ sáng"
+  },
+  "vi:1 giờ sáng": {
+    "en": "1 AM"
+  },
+  "en:2 am": {
+    "vi": "2 giờ sáng"
+  },
+  "vi:2 giờ sáng": {
+    "en": "2 AM"
+  },
+  "en:3 am": {
+    "vi": "3 giờ sáng"
+  },
+  "vi:3 giờ sáng": {
+    "en": "3 AM"
+  },
+  "en:4 am": {
+    "vi": "4 giờ sáng"
+  },
+  "vi:4 giờ sáng": {
+    "en": "4 AM"
+  },
+  "en:5 am": {
+    "vi": "5 giờ sáng"
+  },
+  "vi:5 giờ sáng": {
+    "en": "5 AM"
+  },
+  "en:6 am": {
+    "vi": "6 giờ sáng"
+  },
+  "vi:6 giờ sáng": {
+    "en": "6 AM"
+  },
+  "en:8 am": {
+    "vi": "8 giờ sáng"
+  },
+  "vi:8 giờ sáng": {
+    "en": "8 AM"
+  },
+  "en:9 am": {
+    "vi": "9 giờ sáng"
+  },
+  "vi:9 giờ sáng": {
+    "en": "9 AM"
+  },
+  "en:10 am": {
+    "vi": "10 giờ sáng"
+  },
+  "vi:10 giờ sáng": {
+    "en": "10 AM"
+  },
+  "en:11 am": {
+    "vi": "11 giờ sáng"
+  },
+  "vi:11 giờ sáng": {
+    "en": "11 AM"
+  },
+  "en:12 pm": {
+    "vi": "12 giờ trưa"
+  },
+  "vi:12 giờ trưa": {
+    "en": "12 PM"
+  },
+  "en:1 pm": {
+    "vi": "1 giờ chiều"
+  },
+  "vi:1 giờ chiều": {
+    "en": "1 PM"
+  },
+  "en:2 pm": {
+    "vi": "2 giờ chiều"
+  },
+  "vi:2 giờ chiều": {
+    "en": "2 PM"
+  },
+  "en:3 pm": {
+    "vi": "3 giờ chiều"
+  },
+  "vi:3 giờ chiều": {
+    "en": "3 PM"
+  },
+  "en:4 pm": {
+    "vi": "4 giờ chiều"
+  },
+  "vi:4 giờ chiều": {
+    "en": "4 PM"
+  },
+  "en:5 pm": {
+    "vi": "5 giờ chiều"
+  },
+  "vi:5 giờ chiều": {
+    "en": "5 PM"
+  },
+  "en:6 pm": {
+    "vi": "6 giờ chiều"
+  },
+  "vi:6 giờ chiều": {
+    "en": "6 PM"
+  },
+  "en:8 pm": {
+    "vi": "8 giờ tối"
+  },
+  "vi:8 giờ tối": {
+    "en": "8pm"
+  },
+  "en:9 pm": {
+    "vi": "9 giờ tối"
+  },
+  "vi:9 giờ tối": {
+    "en": "9 PM"
+  },
+  "en:10 pm": {
+    "vi": "10 giờ tối"
+  },
+  "vi:10 giờ tối": {
+    "en": "10 PM"
+  },
+  "en:11 pm": {
+    "vi": "11 giờ tối"
+  },
+  "vi:11 giờ tối": {
+    "en": "11 PM"
+  },
+  "en:close time": {
+    "vi": "Giờ đóng cửa"
+  },
+  "vi:giờ đóng cửa": {
+    "en": "Close Time"
+  },
+  "en:ticket": {
+    "vi": "Vé"
+  },
+  "vi:vé": {
+    "en": "Ticket"
+  },
+  "en:chargeable": {
+    "vi": "Có tính phí"
+  },
+  "vi:có tính phí": {
+    "en": "Chargeable"
+  },
+  "en:insert media": {
+    "vi": "Chèn phương tiện"
+  },
+  "vi:chèn phương tiện": {
+    "en": "Insert media"
+  },
+  "en:history story": {
+    "vi": "Câu chuyện lịch sử"
+  },
+  "vi:câu chuyện lịch sử": {
+    "en": "History Story"
+  },
+  "en:address of destination": {
+    "vi": "Địa chỉ điểm đến"
+  },
+  "en:latitude of destination": {
+    "vi": "Vĩ độ điểm đến"
+  },
+  "vi:vĩ độ điểm đến": {
+    "en": "Latitude of destination"
+  },
+  "en:longitude of destination": {
+    "vi": "Kinh độ điểm đến"
+  },
+  "vi:kinh độ điểm đến": {
+    "en": "Longitude of destination"
+  },
+  "en:mail address": {
+    "vi": "Địa chỉ thư điện tử"
+  },
+  "vi:địa chỉ thư điện tử": {
+    "en": "Mail address"
+  },
+  "en:description of destination": {
+    "vi": "Mô tả điểm đến"
+  },
+  "vi:mô tả điểm đến": {
+    "en": "Description of destination"
+  },
+  "en:history content of destination": {
+    "vi": "Nội dung lịch sử của điểm đến"
+  },
+  "vi:nội dung lịch sử của điểm đến": {
+    "en": "History content of destination"
+  },
+  "en:5/16/2025 3:12:13 am": {
+    "vi": "16/05/2025 3:12:13 SA"
+  },
+  "vi:16/05/2025 3:12:13 sa": {
+    "en": "5/16/2025 3:12:13 AM"
+  },
+  "en:9.9158303 ,\u00A0 106.3022627": {
+    "vi": "9.9158303 , 106.3022627"
+  },
+  "vi:9.9158303 , 106.3022627": {
+    "en": "9.9158303 ,\u00A0 106.3022627"
+  },
+  "en:free ticket": {
+    "vi": "vé miễn phí"
+  },
+  "vi:vé miễn phí": {
+    "en": "free ticket"
+  },
+  "en:thanh duong giao xu mac bac": {
+    "vi": "Thánh đường Giáo xứ Mặc Bắc"
+  },
+  "vi:thánh đường giáo xứ mặc bắc": {
+    "en": "Thanh Duong Giao Xu Mac Bac"
+  },
+  "en:5/18/2025 3:19:33 am": {
+    "vi": "18/05/2025 03:19:33 SA"
+  },
+  "vi:18/05/2025 03:19:33 sa": {
+    "en": "5/18/2025 3:19:33 AM"
+  },
+  "en:9.772831 ,\u00A0 106.127218": {
+    "vi": "9.772831 , 106.127218"
+  },
+  "vi:9.772831 , 106.127218": {
+    "en": "9.772831 ,\u00A0 106.127218"
+  },
+  "en:mac bac catholic church is located in cau quan town, tieu can district, tra vinh, is one of the largest and oldest churches in the mekong delta region. built in 1886, according to the drawings of saigon notre dame cathedral, the church has a combination of roman, french and traditional vietnamese architecture, highlighted by vietnamese royal tile roofs and western tile roofs.": {
+    "vi": "Thánh đường Mặc Bắc tọa lạc tại thị trấn Cầu Quan, huyện Tiểu Cần, Trà Vinh, là một trong những nhà thờ lớn và cổ kính nhất ở vùng Đồng bằng sông Cửu Long. Được xây dựng vào năm 1886, theo bản vẽ của Nhà thờ Đức Bà Sài Gòn, nhà thờ mang sự kết hợp giữa kiến trúc La Mã, Pháp và kiến trúc truyền thống Việt Nam, nổi bật với mái ngói kiểu hoàng cung Việt Nam và mái ngói phương Tây."
+  },
+  "vi:thánh đường mặc bắc tọa lạc tại thị trấn cầu quan, huyện tiểu cần, trà vinh, là một trong những nhà thờ lớn và cổ kính nhất ở vùng đồng bằng sông cửu long. được xây dựng vào năm 1886, theo bản vẽ của nhà thờ đức bà sài gòn, nhà thờ mang sự kết hợp giữa kiến trúc la mã, pháp và kiến trúc truyền thống việt nam, nổi bật với mái ngói kiểu hoàng cung việt nam và mái ngói phương tây.": {
+    "en": "Mac Bac Catholic Church is located in Cau Quan town, Tieu Can district, Tra Vinh, is one of the largest and oldest churches in the Mekong Delta region. Built in 1886, according to the drawings of Saigon Notre Dame Cathedral, the church has a combination of Roman, French and traditional Vietnamese architecture, highlighted by Vietnamese royal tile roofs and Western tile roofs."
+  },
+  "en:the church has unique stained glass, marble altars and roman-gothic chandeliers creating a solemn space. known as the \"basilica of the southwest\", the church has two 32 m high bell towers, an important religious structure with a long history. after 130 years, despite undergoing restoration, the church still retains its original beauty and is the center of the parish's ceremonies.": {
+    "vi": "Nhà thờ có những ô cửa kính màu độc đáo, bàn thờ bằng đá cẩm thạch và những đèn chùm La Mã-Gothic tạo nên một không gian trang nghiêm. Được mệnh danh là \"Vương cung thánh đường miền Tây Nam Bộ\", nhà thờ có hai tháp chuông cao 32 m, một công trình tôn giáo quan trọng với lịch sử lâu đời. Sau 130 năm, dù đã trải qua nhiều lần trùng tu, nhà thờ vẫn giữ được vẻ đẹp nguyên bản và là trung tâm của các nghi lễ giáo xứ."
+  },
+  "vi:nhà thờ có những ô cửa kính màu độc đáo, bàn thờ bằng đá cẩm thạch và những đèn chùm la mã-gothic tạo nên một không gian trang nghiêm. được mệnh danh là \"vương cung thánh đường miền tây nam bộ\", nhà thờ có hai tháp chuông cao 32 m, một công trình tôn giáo quan trọng với lịch sử lâu đời. sau 130 năm, dù đã trải qua nhiều lần trùng tu, nhà thờ vẫn giữ được vẻ đẹp nguyên bản và là trung tâm của các nghi lễ giáo xứ.": {
+    "en": "The church has unique stained glass, marble altars and Roman-Gothic chandeliers creating a solemn space. Known as the \"Basilica of the Southwest\", the church has two 32 m high bell towers, an important religious structure with a long history. After 130 years, despite undergoing restoration, the church still retains its original beauty and is the center of the parish's ceremonies."
+  },
+  "en:5/19/2025 6:39:23 am": {
+    "vi": "19/05/2025 06:39:23"
+  },
+  "vi:19/05/2025 06:39:23": {
+    "en": "5/19/2025 6:39:23 AM"
+  },
+  "en:9.6561136 ,\u00A0 106.2725276": {
+    "vi": "9.6561136 , 106.2725276"
+  },
+  "vi:9.6561136 , 106.2725276": {
+    "en": "9.6561136 ,\u00A0 106.2725276"
+  },
+  "en:100 peple": {
+    "vi": "100 người"
+  },
+  "en:7am": {
+    "vi": "7 giờ sáng"
+  },
+  "en:8pm": {
+    "vi": "8 giờ tối"
+  },
+  "en:chùa vàm ray, nằm tại xã hàm tân, huyện trà cú, cách tp. trà vinh 35km, là một trong những ngôi chùa khmer nổi bật nhất. chùa được xây dựng lại trên nền chùa cũ hơn 600 năm tuổi, mang phong cách kiến trúc angkor đặc trưng của người khmer campuchia.": {
+    "vi": "Chùa Vàm Ray, nằm tại xã Hàm Tân, huyện Trà Cú, cách thành phố Trà Vinh 35km, là một trong những ngôi chùa Khmer nổi bật nhất. Chùa được xây dựng lại trên nền chùa cũ hơn 600 năm tuổi, mang phong cách kiến trúc Angkor đặc trưng của người Khmer Campuchia."
+  },
+  "vi:chùa vàm ray, nằm tại xã hàm tân, huyện trà cú, cách thành phố trà vinh 35km, là một trong những ngôi chùa khmer nổi bật nhất. chùa được xây dựng lại trên nền chùa cũ hơn 600 năm tuổi, mang phong cách kiến trúc angkor đặc trưng của người khmer campuchia.": {
+    "en": "Chùa Vàm Ray, nằm tại xã Hàm Tân, huyện Trà Cú, cách TP. Trà Vinh 35km, là một trong những ngôi chùa Khmer nổi bật nhất. Chùa được xây dựng lại trên nền chùa cũ hơn 600 năm tuổi, mang phong cách kiến trúc Angkor đặc trưng của người Khmer Campuchia."
+  },
+  "en:close time must be later than open time.": {
+    "vi": "Giờ đóng cửa phải sau giờ mở cửa."
+  },
+  "vi:giờ đóng cửa phải sau giờ mở cửa.": {
+    "en": "Close time must be later than open time."
+  },
+  "en:vam rai temple (chùa vàm ray)": {
+    "vi": "Chùa Vàm Ray"
+  },
+  "vi:chùa vàm ray": {
+    "en": "Vam Rai Temple (Chùa Vàm Ray)"
+  },
+  "en:106.27461 ,\u00A0 9.6561": {
+    "vi": "106.27461 , 9.6561"
+  },
+  "vi:106.27461 , 9.6561": {
+    "en": "106.27461 ,\u00A0 9.6561"
+  },
+  "en:123 ,\u00A0 122": {
+    "vi": "123 , 122"
+  },
+  "vi:123 , 122": {
+    "en": "123 ,\u00A0 122"
+  },
+  "en:105.9954 ,\u00A0 9.89302": {
+    "vi": "105.9954 , 9.89302"
+  },
+  "vi:105.9954 , 9.89302": {
+    "en": "105.9954 ,\u00A0 9.89302"
+  },
+  "en:5/23/2025 3:19:19 am": {
+    "vi": "23/05/2025 03:19:19 SA"
+  },
+  "vi:23/05/2025 03:19:19 sa": {
+    "en": "5/23/2025 3:19:19 AM"
+  },
+  "en:adding photos to this tourist attraction failed, please try again later": {
+    "vi": "Thêm ảnh vào điểm du lịch này không thành công, vui lòng thử lại sau"
+  },
+  "vi:thêm ảnh vào điểm du lịch này không thành công, vui lòng thử lại sau": {
+    "en": "Adding photos to this tourist attraction failed, please try again later"
+  },
+  "en:something went wrong, please try again": {
+    "vi": "Có lỗi xảy ra, vui lòng thử lại"
+  },
+  "vi:có lỗi xảy ra, vui lòng thử lại": {
+    "en": "Something went wrong, please try again"
+  },
+  "en:chùa hang (chua hang tra vinh)": {
+    "vi": "Chùa Hang (Chua Hang Trà Vinh)"
+  },
+  "vi:chùa hang (chua hang trà vinh)": {
+    "en": "Chùa Hang (Chua Hang Tra Vinh)"
+  },
+  "en:106.34415 ,\u00A0 9.88704": {
+    "vi": "106.34415 , 9.88704"
+  },
+  "vi:106.34415 , 9.88704": {
+    "en": "106.34415 ,\u00A0 9.88704"
+  },
+  "en:<p>ngày 22/10/2020, chùa được công nhận là di tích kiến trúc nghệ thuật cấp tỉnh.</p>": {
+    "vi": "Ngày 22/10/2020, chùa được công nhận là di tích kiến trúc nghệ thuật cấp tỉnh."
+  },
+  "vi:ngày 22/10/2020, chùa được công nhận là di tích kiến trúc nghệ thuật cấp tỉnh.": {
+    "en": "<p>Ngày 22/10/2020, chùa được công nhận là di tích kiến trúc nghệ thuật cấp tỉnh.</p>"
+  },
+  "en:106.36127 ,\u00A0 9.94034": {
+    "vi": "106.36127 , 9.94034"
+  },
+  "vi:106.36127 , 9.94034": {
+    "en": "106.36127 ,\u00A0 9.94034"
+  },
+  "en:showing 1 to 10 of 18 entries": {
+    "vi": "Hiển thị 1 đến 10 trong 18 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong 18 mục": {
+    "en": "Showing 1 to 10 of 18 entries"
+  },
+  "en:9.6039052 ,\u00A0 106.4022309": {
+    "vi": "9.6039052 , 106.4022309"
+  },
+  "vi:9.6039052 , 106.4022309": {
+    "en": "9.6039052 ,\u00A0 106.4022309"
+  },
+  "en:7pm": {
+    "vi": "7 giờ tối"
+  },
+  "en:hu du lịch rừng đước trà vinh (xã long khánh, huyện duyên hải) rộng hơn 200 ha": {
+    "vi": "Khu du lịch Rừng Đước Trà Vinh (xã Long Khánh, huyện Duyên Hải) rộng hơn 200 ha"
+  },
+  "vi:khu du lịch rừng đước trà vinh (xã long khánh, huyện duyên hải) rộng hơn 200 ha": {
+    "en": "<p>hu du lịch Rừng Đước Trà Vinh (xã Long Khánh, huyện Duyên Hải) rộng hơn 200 ha</p>"
+  },
+  "en:<p>hu du lịch rừng đước trà vinh (xã long khánh, huyện duyên hải) rộng hơn 200 ha</p>": {
+    "vi": "Khu du lịch Rừng Đước Trà Vinh (xã Long Khánh, huyện Duyên Hải) rộng hơn 200 ha"
+  },
+  "en:9.603905 ,\u00A0 106.402231": {
+    "vi": "9.603905 , 106.402231"
+  },
+  "vi:9.603905 , 106.402231": {
+    "en": "9.603905 ,\u00A0 106.402231"
+  },
+  "en:museum of khmer ethnic culture, w884+f2c, nguyễn du, phường 8, trà vinh, việt nam": {
+    "vi": "Bảo tàng Văn hóa Dân tộc Khmer, W884+F2C, Nguyễn Du, Phường 8, Trà Vinh, Việt Nam"
+  },
+  "vi:bảo tàng văn hóa dân tộc khmer, w884+f2c, nguyễn du, phường 8, trà vinh, việt nam": {
+    "en": "Museum of Khmer Ethnic Culture, W884+F2C, Nguyễn Du, Phường 8, Trà Vinh, Việt Nam"
+  },
+  "en:105.3037293 ,\u00A0 9.9161858": {
+    "vi": "105.3037293 , 9.9161858"
+  },
+  "vi:105.3037293 , 9.9161858": {
+    "en": "105.3037293 ,\u00A0 9.9161858"
+  },
+  "en:bảo tàng tọa lạc tại phường 8, tp.\u00A0trà vinh, nằm trong quần thể khu văn hóa – du lịch ao bà om và chùa âng. công trình có diện tích hơn 1.700 m² trên khuôn viên 1 ha, kết hợp kiến trúc khmer truyền thống và hiện đại.": {
+    "vi": "Bảo tàng tọa lạc tại Phường 8, TP. Trà Vinh, nằm trong quần thể khu văn hóa – du lịch Ao Bà Om và chùa Âng. Công trình có diện tích hơn 1.700 m² trên khuôn viên 1 ha, kết hợp kiến trúc Khmer truyền thống và hiện đại."
+  },
+  "vi:bảo tàng tọa lạc tại phường 8, tp. trà vinh, nằm trong quần thể khu văn hóa – du lịch ao bà om và chùa âng. công trình có diện tích hơn 1.700 m² trên khuôn viên 1 ha, kết hợp kiến trúc khmer truyền thống và hiện đại.": {
+    "en": "Bảo tàng tọa lạc tại Phường 8, TP.\u00A0Trà Vinh, nằm trong quần thể khu văn hóa – du lịch Ao Bà Om và chùa Âng. Công trình có diện tích hơn 1.700 m² trên khuôn viên 1 ha, kết hợp kiến trúc Khmer truyền thống và hiện đại."
+  },
+  "en:105.58237 ,\u00A0 21.46228": {
+    "vi": "105.58237 , 21.46228"
+  },
+  "vi:105.58237 , 21.46228": {
+    "en": "105.58237 ,\u00A0 21.46228"
+  },
+  "en:nhà cổ cầu kè,  tt. cầu kè, cầu kè, trà vinh, việt nam": {
+    "vi": "Nhà cổ Cầu Kè, TT. Cầu Kè, Cầu Kè, Trà Vinh, Việt Nam"
+  },
+  "vi:nhà cổ cầu kè, tt. cầu kè, cầu kè, trà vinh, việt nam": {
+    "en": "Nhà cổ Cầu Kè,  TT. Cầu Kè, Cầu Kè, Trà Vinh, Việt Nam"
+  },
+  "en:<p>nhà cổ cầu kè (hay nhà cổ huỳnh kỳ) tọa lạc tại thị trấn cầu kè, tỉnh trà vinh. đây là một trong những dinh thự đẹp nhất miền tây nam bộ, mang dấu ấn kiến trúc pháp kết hợp với nét truyền thống việt nam.</p>": {
+    "vi": "Nhà cổ Cầu Kè (hay nhà cổ Huỳnh Kỳ) tọa lạc tại thị trấn Cầu Kè, tỉnh Trà Vinh. Đây là một trong những dinh thự đẹp nhất miền Tây Nam Bộ, mang dấu ấn kiến trúc Pháp kết hợp với nét truyền thống Việt Nam."
+  },
+  "vi:nhà cổ cầu kè (hay nhà cổ huỳnh kỳ) tọa lạc tại thị trấn cầu kè, tỉnh trà vinh. đây là một trong những dinh thự đẹp nhất miền tây nam bộ, mang dấu ấn kiến trúc pháp kết hợp với nét truyền thống việt nam.": {
+    "en": "<p>Nhà cổ Cầu Kè (hay nhà cổ Huỳnh Kỳ) tọa lạc tại thị trấn Cầu Kè, tỉnh Trà Vinh. Đây là một trong những dinh thự đẹp nhất miền Tây Nam Bộ, mang dấu ấn kiến trúc Pháp kết hợp với nét truyền thống Việt Nam.</p>"
+  },
+  "en:heading 3": {
+    "vi": "Tiêu đề 3"
+  },
+  "vi:tiêu đề 3": {
+    "en": "Heading 3"
+  },
+  "en:106.05804 ,\u00A0 9.8725": {
+    "vi": "106.05804 , 9.8725"
+  },
+  "vi:106.05804 , 9.8725": {
+    "en": "106.05804 ,\u00A0 9.8725"
+  },
+  "en:106.3438586 ,\u00A0 9.9568595": {
+    "vi": "106.3438586 , 9.9568595"
+  },
+  "vi:106.3438586 , 9.9568595": {
+    "en": "106.3438586 ,\u00A0 9.9568595"
+  },
+  "en:check the local price": {
+    "vi": "Kiểm tra giá tại địa phương"
+  },
+  "vi:kiểm tra giá tại địa phương": {
+    "en": "Check the local price"
+  },
+  "en:106.34645 ,\u00A0 9.95687": {
+    "vi": "106.34645 , 9.95687"
+  },
+  "vi:106.34645 , 9.95687": {
+    "en": "106.34645 ,\u00A0 9.95687"
+  },
+  "en:temple of bac (đền thờ bác hồ)": {
+    "vi": "Đền thờ Bác (Đền Thờ Bác Hồ)"
+  },
+  "vi:đền thờ bác (đền thờ bác hồ)": {
+    "en": "Temple Of Bac (Đền Thờ Bác Hồ)"
+  },
+  "en:106.3295 ,\u00A0 9.98571": {
+    "vi": "106.3295 , 9.98571"
+  },
+  "vi:106.3295 , 9.98571": {
+    "en": "106.3295 ,\u00A0 9.98571"
+  },
+  "en:cù lao long trị,  long đức, tp. trà vinh, trà vinh, việt nam": {
+    "vi": "Cù lao Long Trị, Long Đức, Tp. Trà Vinh, Trà Vinh, Việt Nam"
+  },
+  "vi:cù lao long trị, long đức, tp. trà vinh, trà vinh, việt nam": {
+    "en": "Cù lao Long Trị,  Long Đức, Tp. Trà Vinh, Trà Vinh, Việt Nam"
+  },
+  "en:106.3473099 ,\u00A0 9.9717527": {
+    "vi": "106.3473099 , 9.9717527"
+  },
+  "vi:106.3473099 , 9.9717527": {
+    "en": "106.3473099 ,\u00A0 9.9717527"
+  },
+  "en:106.34731 ,\u00A0 9.971753": {
+    "vi": "106.34731 , 9.971753"
+  },
+  "vi:106.34731 , 9.971753": {
+    "en": "106.34731 ,\u00A0 9.971753"
+  },
+  "en:105.4181125 ,\u00A0 9.9162126": {
+    "vi": "105.4181125 , 9.9162126"
+  },
+  "vi:105.4181125 , 9.9162126": {
+    "en": "105.4181125 ,\u00A0 9.9162126"
+  },
+  "en:chùa ông mẹt ( bodhisálaràja )": {
+    "vi": "Chùa Ông Mẹt (Bodhisálaràja)"
+  },
+  "vi:chùa ông mẹt (bodhisálaràja)": {
+    "en": "Chùa Ông Mẹt ( Bodhisálaràja )"
+  },
+  "en:105.3393656 ,\u00A0 9.9391828": {
+    "vi": "105.3393656, 9.9391828"
+  },
+  "vi:105.3393656, 9.9391828": {
+    "en": "105.3393656 ,\u00A0 9.9391828"
+  },
+  "en:( 0 )": {
+    "vi": "(0)"
+  },
+  "vi:(0)": {
+    "en": "( 0 )"
+  },
+  "en:106.3406514 ,\u00A0 9.935217": {
+    "vi": "106.3406514 , 9.935217"
+  },
+  "vi:106.3406514 , 9.935217": {
+    "en": "106.3406514 ,\u00A0 9.935217"
+  },
+  "en:đây là chợ đầu mối của cả thành phố, người đến mua hàng và các tiểu thương rất đông. các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,… khi tới đây du khách có thể tìm thấy một số sản vật địa phương có thể mua về làm quà cho người thân và gia đình. đặc biệt người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua đồ.": {
+    "vi": "Đây là chợ đầu mối của cả thành phố, người mua hàng và tiểu thương rất đông. Các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,.... Khi tới đây, du khách có thể tìm thấy một số sản vật địa phương để mua về làm quà cho người thân và gia đình. Đặc biệt, người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua sắm."
+  },
+  "vi:đây là chợ đầu mối của cả thành phố, người mua hàng và tiểu thương rất đông. các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,.... khi tới đây, du khách có thể tìm thấy một số sản vật địa phương để mua về làm quà cho người thân và gia đình. đặc biệt, người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua sắm.": {
+    "en": "Đây là chợ đầu mối của cả thành phố, người đến mua hàng và các tiểu thương rất đông. Các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,… Khi tới đây du khách có thể tìm thấy một số sản vật địa phương có thể mua về làm quà cho người thân và gia đình. Đặc biệt người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua đồ."
+  },
+  "en:<p>đây là chợ đầu mối của cả thành phố, người đến mua hàng và các tiểu thương rất đông. các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,… khi tới đây du khách có thể tìm thấy một số sản vật địa phương có thể mua về làm quà cho người thân và gia đình. đặc biệt người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua đồ.&nbsp;</p>": {
+    "vi": "Đây là chợ đầu mối của cả thành phố, người đến mua hàng và các tiểu thương rất đông. Các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,… Khi tới đây du khách có thể tìm thấy một số sản vật địa phương có thể mua về làm quà cho người thân và gia đình. Đặc biệt người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua đồ."
+  },
+  "vi:đây là chợ đầu mối của cả thành phố, người đến mua hàng và các tiểu thương rất đông. các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,… khi tới đây du khách có thể tìm thấy một số sản vật địa phương có thể mua về làm quà cho người thân và gia đình. đặc biệt người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua đồ.": {
+    "en": "<p>Đây là chợ đầu mối của cả thành phố, người đến mua hàng và các tiểu thương rất đông. Các mặt hàng bán tại chợ rất đa dạng từ nông sản đến quần áo, đồ gia dụng,… Khi tới đây du khách có thể tìm thấy một số sản vật địa phương có thể mua về làm quà cho người thân và gia đình. Đặc biệt người bán hàng tại chợ rất thân thiện, dễ thương nên du khách hoàn toàn yên tâm khi tới đây mua đồ.&nbsp;</p>"
+  },
+  "en:106.34206 ,\u00A0 9.93585": {
+    "vi": "106.34206 , 9.93585"
+  },
+  "vi:106.34206 , 9.93585": {
+    "en": "106.34206 ,\u00A0 9.93585"
+  },
+  "en:showing 1 to 10 of 17 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 17 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 17 mục": {
+    "en": "Showing 1 to 10 of 17 entries"
+  },
+  "en:<p>mac bac catholic church is located in cau quan town, tieu can district, tra vinh, is one of the largest and oldest churches in the mekong delta region. built in 1886, according to the drawings of saigon notre dame cathedral, the church has a combination of roman, french and traditional vietnamese architecture, highlighted by vietnamese royal tile roofs and western tile roofs.</p>": {
+    "vi": "Nhà thờ Công giáo Mặc Bắc tọa lạc tại thị trấn Cầu Quan, huyện Tiểu Cần, Trà Vinh, là một trong những nhà thờ lớn nhất và lâu đời nhất ở vùng Đồng bằng sông Cửu Long. Được xây dựng vào năm 1886, theo bản vẽ của Nhà thờ Đức Bà Sài Gòn, nhà thờ có sự kết hợp kiến trúc La Mã, Pháp và truyền thống Việt Nam, nổi bật với mái ngói hoàng gia Việt Nam và mái ngói phương Tây."
+  },
+  "vi:nhà thờ công giáo mặc bắc tọa lạc tại thị trấn cầu quan, huyện tiểu cần, trà vinh, là một trong những nhà thờ lớn nhất và lâu đời nhất ở vùng đồng bằng sông cửu long. được xây dựng vào năm 1886, theo bản vẽ của nhà thờ đức bà sài gòn, nhà thờ có sự kết hợp kiến trúc la mã, pháp và truyền thống việt nam, nổi bật với mái ngói hoàng gia việt nam và mái ngói phương tây.": {
+    "en": "<p>Mac Bac Catholic Church is located in Cau Quan town, Tieu Can district, Tra Vinh, is one of the largest and oldest churches in the Mekong Delta region. Built in 1886, according to the drawings of Saigon Notre Dame Cathedral, the church has a combination of Roman, French and traditional Vietnamese architecture, highlighted by Vietnamese royal tile roofs and Western tile roofs.</p>"
+  },
+  "en:upload image destination file": {
+    "vi": "Tải lên tệp ảnh đích"
+  },
+  "vi:tải lên tệp ảnh đích": {
+    "en": "Upload image destination file"
+  },
+  "en:upload image destination history file": {
+    "vi": "Tải lên tệp lịch sử ảnh đích"
+  },
+  "vi:tải lên tệp lịch sử ảnh đích": {
+    "en": "Upload image destination history file"
   },
   "en:product images": {
-    "vi": "Hình ảnh sản phẩm"
+    "vi": "Ảnh sản phẩm"
   },
-  "vi:hình ảnh sản phẩm": {
+  "vi:ảnh sản phẩm": {
     "en": "Product Images"
   },
   "en:please upload at least one photo.": {
@@ -3762,22 +5799,10 @@
     "en": "Product Price"
   },
   "en:-- select company --": {
-    "vi": "-- Chọn công ty --"
+    "vi": "-- Chọn Công ty --"
   },
   "vi:-- chọn công ty --": {
     "en": "-- Select Company --"
-  },
-  "en:company e": {
-    "vi": "Công ty E"
-  },
-  "vi:công ty e": {
-    "en": "Company E"
-  },
-  "en:company c": {
-    "vi": "Công ty C"
-  },
-  "vi:công ty c": {
-    "en": "Company C"
   },
   "en:ocop product selling link": {
     "vi": "Liên kết bán sản phẩm OCOP"
@@ -3797,28 +5822,553 @@
   "vi:địa điểm bán hàng": {
     "en": "Sell Locations"
   },
-  "en:add location": {
-    "vi": "Thêm địa điểm"
-  },
-  "vi:thêm địa điểm": {
-    "en": "Add Location"
-  },
   "en:selling link of product": {
     "vi": "Liên kết bán sản phẩm"
   },
   "vi:liên kết bán sản phẩm": {
     "en": "Selling link of product"
   },
-  "en:09/06/25, 18:39": {
-    "vi": "09/06/2025, 18:39"
+  "en:july,": {
+    "vi": "Tháng Bảy,"
   },
-  "vi:09/06/2025, 18:39": {
-    "en": "09/06/25, 18:39"
+  "vi:tháng bảy,": {
+    "en": "July,"
   },
-  "en:10/06/25, 13:39": {
-    "vi": "10/06/2025, 13:39"
+  "en:first": {
+    "vi": "Đầu tiên"
   },
-  "vi:10/06/2025, 13:39": {
-    "en": "10/06/25, 13:39"
+  "vi:đầu tiên": {
+    "en": "First"
+  },
+  "en:last": {
+    "vi": "Cuối cùng"
+  },
+  "vi:cuối cùng": {
+    "en": "Last"
+  },
+  "en:show _menu_ entries": {
+    "vi": "Hiển thị _MENU_ mục"
+  },
+  "vi:hiển thị _menu_ mục": {
+    "en": "Show _MENU_ entries"
+  },
+  "en:showing _start_ to _end_ of _total_ entries": {
+    "vi": "Hiển thị từ _START_ đến _END_ trong tổng số _TOTAL_ mục"
+  },
+  "vi:hiển thị từ _start_ đến _end_ trong tổng số _total_ mục": {
+    "en": "Showing _START_ to _END_ of _TOTAL_ entries"
+  },
+  "en:(filtered from _max_ total entries)": {
+    "vi": "(đã lọc từ tổng số _MAX_ mục)"
+  },
+  "vi:(đã lọc từ tổng số _max_ mục)": {
+    "en": "(filtered from _MAX_ total entries)"
+  },
+  "en:processing...": {
+    "vi": "Đang xử lý..."
+  },
+  "vi:đang xử lý...": {
+    "en": "Processing..."
+  },
+  "en:loading...": {
+    "vi": "Đang tải..."
+  },
+  "vi:đang tải...": {
+    "en": "Loading..."
+  },
+  "en:email or phone number": {
+    "vi": "Email hoặc Số điện thoại"
+  },
+  "vi:email hoặc số điện thoại": {
+    "en": "Email or Phone Number"
+  },
+  "en:password": {
+    "vi": "Mật khẩu"
+  },
+  "vi:mật khẩu": {
+    "en": "Password"
+  },
+  "en:remember me": {
+    "vi": "Ghi nhớ đăng nhập"
+  },
+  "vi:ghi nhớ đăng nhập": {
+    "en": "Remember me"
+  },
+  "en:verification code": {
+    "vi": "Mã xác minh"
+  },
+  "vi:mã xác minh": {
+    "en": "Verification Code"
+  },
+  "en:new password": {
+    "vi": "Mật khẩu mới"
+  },
+  "vi:mật khẩu mới": {
+    "en": "New Password"
+  },
+  "en:confirm password": {
+    "vi": "Xác nhận Mật khẩu"
+  },
+  "vi:xác nhận mật khẩu": {
+    "en": "Confirm Password"
+  },
+  "en:email or phone number is required": {
+    "vi": "Email hoặc số điện thoại là bắt buộc"
+  },
+  "vi:email hoặc số điện thoại là bắt buộc": {
+    "en": "Email or Phonenumber is required"
+  },
+  "en:email or phonenumber is required": {
+    "vi": "Email hoặc số điện thoại là bắt buộc"
+  },
+  "en:password is required": {
+    "vi": "Mật khẩu là bắt buộc"
+  },
+  "vi:mật khẩu là bắt buộc": {
+    "en": "Password is required"
+  },
+  "en:verification code is required": {
+    "vi": "Mã xác minh là bắt buộc"
+  },
+  "vi:mã xác minh là bắt buộc": {
+    "en": "Verification code is required"
+  },
+  "en:new password is required": {
+    "vi": "Mật khẩu mới là bắt buộc"
+  },
+  "vi:mật khẩu mới là bắt buộc": {
+    "en": "New password is required"
+  },
+  "en:confirm password is required": {
+    "vi": "Xác nhận mật khẩu là bắt buộc"
+  },
+  "vi:xác nhận mật khẩu là bắt buộc": {
+    "en": "Confirm password is required"
+  },
+  "en:title must be at least 20 characters long.": {
+    "vi": "Tiêu đề phải dài ít nhất 20 ký tự."
+  },
+  "vi:tiêu đề phải dài ít nhất 20 ký tự.": {
+    "en": "Title must be at least 20 characters long."
+  },
+  "en:title can be at most 100 characters long.": {
+    "vi": "Tiêu đề có thể dài tối đa 100 ký tự."
+  },
+  "vi:tiêu đề có thể dài tối đa 100 ký tự.": {
+    "en": "Title can be at most 100 characters long."
+  },
+  "en:content must be at least 20 characters long.": {
+    "vi": "Nội dung phải dài ít nhất 20 ký tự."
+  },
+  "vi:nội dung phải dài ít nhất 20 ký tự.": {
+    "en": "Content must be at least 20 characters long."
+  },
+  "en:content can be at most 1000 characters long.": {
+    "vi": "Nội dung có thể dài tối đa 1000 ký tự."
+  },
+  "vi:nội dung có thể dài tối đa 1000 ký tự.": {
+    "en": "Content can be at most 1000 characters long."
+  },
+  "en:company name is required.": {
+    "vi": "Tên công ty là bắt buộc."
+  },
+  "vi:tên công ty là bắt buộc.": {
+    "en": "Company name is required."
+  },
+  "en:name must be between 3 and 100 characters.": {
+    "vi": "Tên phải dài từ 3 đến 100 ký tự."
+  },
+  "vi:tên phải dài từ 3 đến 100 ký tự.": {
+    "en": "Name must be between 3 and 100 characters."
+  },
+  "en:company address is required.": {
+    "vi": "Địa chỉ công ty là bắt buộc."
+  },
+  "vi:địa chỉ công ty là bắt buộc.": {
+    "en": "Company address is required."
+  },
+  "en:address must be between 5 and 200 characters.": {
+    "vi": "Địa chỉ phải dài từ 5 đến 200 ký tự."
+  },
+  "vi:địa chỉ phải dài từ 5 đến 200 ký tự.": {
+    "en": "Address must be between 5 and 200 characters."
+  },
+  "en:at least one location is required.": {
+    "vi": "Ít nhất một vị trí là bắt buộc."
+  },
+  "vi:ít nhất một vị trí là bắt buộc.": {
+    "en": "At least one location is required."
+  },
+  "en:invalid phone number.": {
+    "vi": "Số điện thoại không hợp lệ."
+  },
+  "vi:số điện thoại không hợp lệ.": {
+    "en": "Invalid phone number."
+  },
+  "en:invalid email address.": {
+    "vi": "Địa chỉ email không hợp lệ."
+  },
+  "vi:địa chỉ email không hợp lệ.": {
+    "en": "Invalid email address."
+  },
+  "en:invalid website url.": {
+    "vi": "URL trang web không hợp lệ."
+  },
+  "vi:url trang web không hợp lệ.": {
+    "en": "Invalid website URL."
+  },
+  "en:name cannot be longer than 100 characters.": {
+    "vi": "Tên không thể dài hơn 100 ký tự."
+  },
+  "vi:tên không thể dài hơn 100 ký tự.": {
+    "en": "Name cannot be longer than 100 characters."
+  },
+  "en:name is required.": {
+    "vi": "Tên là bắt buộc."
+  },
+  "vi:tên là bắt buộc.": {
+    "en": "Name is required."
+  },
+  "en:address is required.": {
+    "vi": "Địa chỉ là bắt buộc."
+  },
+  "vi:địa chỉ là bắt buộc.": {
+    "en": "Address is required."
+  },
+  "en:location is required.": {
+    "vi": "Vị trí là bắt buộc."
+  },
+  "vi:vị trí là bắt buộc.": {
+    "en": "Location is required."
+  },
+  "en:type is required.": {
+    "vi": "Loại là bắt buộc."
+  },
+  "vi:loại là bắt buộc.": {
+    "en": "Type is required."
+  },
+  "en:coordinates are required.": {
+    "vi": "Tọa độ là bắt buộc."
+  },
+  "vi:tọa độ là bắt buộc.": {
+    "en": "Coordinates are required."
+  },
+  "en:food name is required.": {
+    "vi": "Tên món ăn là bắt buộc."
+  },
+  "vi:tên món ăn là bắt buộc.": {
+    "en": "Food name is required."
+  },
+  "en:food name must be between 5 and 100 characters.": {
+    "vi": "Tên món ăn phải dài từ 5 đến 100 ký tự."
+  },
+  "vi:tên món ăn phải dài từ 5 đến 100 ký tự.": {
+    "en": "Food name must be between 5 and 100 characters."
+  },
+  "en:description is required.": {
+    "vi": "Mô tả là bắt buộc."
+  },
+  "vi:mô tả là bắt buộc.": {
+    "en": "Description is required."
+  },
+  "en:description must be between 10 and 3000 characters.": {
+    "vi": "Mô tả phải dài từ 10 đến 3000 ký tự."
+  },
+  "vi:mô tả phải dài từ 10 đến 3000 ký tự.": {
+    "en": "Description must be between 10 and 3000 characters."
+  },
+  "en:tagid is required.": {
+    "vi": "ID thẻ là bắt buộc."
+  },
+  "vi:id thẻ là bắt buộc.": {
+    "en": "TagId is required."
+  },
+  "en:location name is required.": {
+    "vi": "Tên vị trí là bắt buộc."
+  },
+  "vi:tên vị trí là bắt buộc.": {
+    "en": "Location name is required."
+  },
+  "en:location address is required.": {
+    "vi": "Địa chỉ vị trí là bắt buộc."
+  },
+  "vi:địa chỉ vị trí là bắt buộc.": {
+    "en": "Location address is required."
+  },
+  "en:longitude is required.": {
+    "vi": "Kinh độ là bắt buộc."
+  },
+  "vi:kinh độ là bắt buộc.": {
+    "en": "Longitude is required."
+  },
+  "en:longitude must be between -180 and 180.": {
+    "vi": "Kinh độ phải nằm trong khoảng từ -180 đến 180."
+  },
+  "vi:kinh độ phải nằm trong khoảng từ -180 đến 180.": {
+    "en": "Longitude must be between -180 and 180."
+  },
+  "en:latitude is required.": {
+    "vi": "Vĩ độ là bắt buộc."
+  },
+  "vi:vĩ độ là bắt buộc.": {
+    "en": "Latitude is required."
+  },
+  "en:latitude must be between -90 and 90.": {
+    "vi": "Vĩ độ phải nằm trong khoảng từ -90 đến 90."
+  },
+  "vi:vĩ độ phải nằm trong khoảng từ -90 đến 90.": {
+    "en": "Latitude must be between -90 and 90."
+  },
+  "en:id is required.": {
+    "vi": "ID là bắt buộc."
+  },
+  "vi:id là bắt buộc.": {
+    "en": "Id is required."
+  },
+  "en:image is required": {
+    "vi": "Hình ảnh là bắt buộc"
+  },
+  "vi:hình ảnh là bắt buộc": {
+    "en": "Image is required"
+  },
+  "en:please select an icon.": {
+    "vi": "Vui lòng chọn một biểu tượng."
+  },
+  "vi:vui lòng chọn một biểu tượng.": {
+    "en": "Please select an icon."
+  },
+  "en:product name is required.": {
+    "vi": "Tên sản phẩm là bắt buộc."
+  },
+  "vi:tên sản phẩm là bắt buộc.": {
+    "en": "Product name is required."
+  },
+  "en:product name must not exceed 100 characters.": {
+    "vi": "Tên sản phẩm không được vượt quá 100 ký tự."
+  },
+  "vi:tên sản phẩm không được vượt quá 100 ký tự.": {
+    "en": "Product name must not exceed 100 characters."
+  },
+  "en:product description must not exceed 500 characters.": {
+    "vi": "Mô tả sản phẩm không được vượt quá 500 ký tự."
+  },
+  "vi:mô tả sản phẩm không được vượt quá 500 ký tự.": {
+    "en": "Product description must not exceed 500 characters."
+  },
+  "en:product description must not exceed 3000 characters.": {
+    "vi": "Mô tả sản phẩm không được vượt quá 3000 ký tự."
+  },
+  "vi:mô tả sản phẩm không được vượt quá 3000 ký tự.": {
+    "en": "Product description must not exceed 3000 characters."
+  },
+  "en:at least one product image is required.": {
+    "vi": "Cần ít nhất một hình ảnh sản phẩm."
+  },
+  "vi:cần ít nhất một hình ảnh sản phẩm.": {
+    "en": "At least one product image is required."
+  },
+  "en:product price must be a valid number.": {
+    "vi": "Giá sản phẩm phải là một số hợp lệ."
+  },
+  "vi:giá sản phẩm phải là một số hợp lệ.": {
+    "en": "Product price must be a valid number."
+  },
+  "en:selling link is required.": {
+    "vi": "Liên kết bán hàng là bắt buộc."
+  },
+  "vi:liên kết bán hàng là bắt buộc.": {
+    "en": "Selling link is required."
+  },
+  "en:sellinglinkid must be a valid url.": {
+    "vi": "SellingLinkId phải là một URL hợp lệ."
+  },
+  "vi:sellinglinkid phải là một url hợp lệ.": {
+    "en": "SellingLinkId must be a valid URL."
+  },
+  "en:at least one sell location is required.": {
+    "vi": "Cần ít nhất một địa điểm bán hàng."
+  },
+  "vi:cần ít nhất một địa điểm bán hàng.": {
+    "en": "At least one sell location is required."
+  },
+  "en:product id is required.": {
+    "vi": "Mã sản phẩm là bắt buộc."
+  },
+  "vi:mã sản phẩm là bắt buộc.": {
+    "en": "Product ID is required."
+  },
+  "en:title is required.": {
+    "vi": "Tiêu đề là bắt buộc."
+  },
+  "vi:tiêu đề là bắt buộc.": {
+    "en": "Title is required."
+  },
+  "en:title must be at least 2 characters": {
+    "vi": "Tiêu đề phải có ít nhất 2 ký tự."
+  },
+  "vi:tiêu đề phải có ít nhất 2 ký tự.": {
+    "en": "Title must be at least 2 characters"
+  },
+  "en:title must be less than or equal to 100 characters": {
+    "vi": "Tiêu đề phải nhỏ hơn hoặc bằng 100 ký tự."
+  },
+  "vi:tiêu đề phải nhỏ hơn hoặc bằng 100 ký tự.": {
+    "en": "Title must be less than or equal to 100 characters"
+  },
+  "en:title of destination is required": {
+    "vi": "Tiêu đề của điểm đến là bắt buộc."
+  },
+  "vi:tiêu đề của điểm đến là bắt buộc.": {
+    "en": "Title of destination is required"
+  },
+  "en:description must be at least 10 characters": {
+    "vi": "Mô tả phải có ít nhất 10 ký tự."
+  },
+  "vi:mô tả phải có ít nhất 10 ký tự.": {
+    "en": "Description must be at least 10 characters"
+  },
+  "en:description must be less than or equal to 3000 characters": {
+    "vi": "Mô tả phải nhỏ hơn hoặc bằng 3000 ký tự."
+  },
+  "vi:mô tả phải nhỏ hơn hoặc bằng 3000 ký tự.": {
+    "en": "Description must be less than or equal to 3000 characters"
+  },
+  "en:address must be at least 10 characters": {
+    "vi": "Địa chỉ phải có ít nhất 10 ký tự."
+  },
+  "vi:địa chỉ phải có ít nhất 10 ký tự.": {
+    "en": "Address must be at least 10 characters"
+  },
+  "en:address must be less than or equal to 150 characters": {
+    "vi": "Địa chỉ phải nhỏ hơn hoặc bằng 150 ký tự."
+  },
+  "vi:địa chỉ phải nhỏ hơn hoặc bằng 150 ký tự.": {
+    "en": "Address must be less than or equal to 150 characters"
+  },
+  "en:address of destination is required": {
+    "vi": "Địa chỉ của điểm đến là bắt buộc."
+  },
+  "vi:địa chỉ của điểm đến là bắt buộc.": {
+    "en": "Address of destination is required"
+  },
+  "en:longitude of destination is required": {
+    "vi": "Kinh độ của điểm đến là bắt buộc."
+  },
+  "vi:kinh độ của điểm đến là bắt buộc.": {
+    "en": "Longitude of destination is required"
+  },
+  "en:latitude of destination is required": {
+    "vi": "Vĩ độ của điểm đến là bắt buộc."
+  },
+  "vi:vĩ độ của điểm đến là bắt buộc.": {
+    "en": "Latitude of destination is required"
+  },
+  "en:at least one image file is required.": {
+    "vi": "Cần ít nhất một tập tin hình ảnh."
+  },
+  "vi:cần ít nhất một tập tin hình ảnh.": {
+    "en": "At least one image file is required."
+  },
+  "en:only jpg, jpeg, png, and gif files are allowed.": {
+    "vi": "Chỉ các tập tin JPG, JPEG, PNG và GIF được phép."
+  },
+  "vi:chỉ các tập tin jpg, jpeg, png và gif được phép.": {
+    "en": "Only JPG, JPEG, PNG, and GIF files are allowed."
+  },
+  "en:the %s field is required.": {
+    "vi": "Trường %s là bắt buộc."
+  },
+  "vi:trường %s là bắt buộc.": {
+    "en": "The %s field is required."
+  },
+  "en:the field %s must be a string with a maximum length of %s.": {
+    "vi": "Trường %s phải là một chuỗi có độ dài tối đa là %s."
+  },
+  "vi:trường %s phải là một chuỗi có độ dài tối đa là %s.": {
+    "en": "The field %s must be a string with a maximum length of %s."
+  },
+  "en:the %s must be at least %s and at most %s characters long.": {
+    "vi": "%s phải có độ dài ít nhất %s và nhiều nhất %s ký tự."
+  },
+  "vi:%s phải có độ dài ít nhất %s và nhiều nhất %s ký tự.": {
+    "en": "The %s must be at least %s and at most %s characters long."
+  },
+  "en:the %s field is not a valid e-mail address.": {
+    "vi": "Trường %s không phải là địa chỉ email hợp lệ."
+  },
+  "vi:trường %s không phải là địa chỉ email hợp lệ.": {
+    "en": "The %s field is not a valid e-mail address."
+  },
+  "en:the %s field is not a valid phone number.": {
+    "vi": "Trường %s không phải là số điện thoại hợp lệ."
+  },
+  "vi:trường %s không phải là số điện thoại hợp lệ.": {
+    "en": "The %s field is not a valid phone number."
+  },
+  "en:the field %s must be between %s and %s.": {
+    "vi": "Trường %s phải nằm trong khoảng từ %s đến %s."
+  },
+  "vi:trường %s phải nằm trong khoảng từ %s đến %s.": {
+    "en": "The field %s must be between %s and %s."
+  },
+  "en:'{0}' and '{1}' do not match.": {
+    "vi": "'{0}' và '{1}' không khớp."
+  },
+  "vi:'{0}' và '{1}' không khớp.": {
+    "en": "'{0}' and '{1}' do not match."
+  },
+  "en:the password and confirmation password do not match.": {
+    "vi": "Mật khẩu và mật khẩu xác nhận không khớp."
+  },
+  "vi:mật khẩu và mật khẩu xác nhận không khớp.": {
+    "en": "The password and confirmation password do not match."
+  },
+  "en:the value '%s' is not valid for %s.": {
+    "vi": "Giá trị '%s' không hợp lệ cho %s."
+  },
+  "vi:giá trị '%s' không hợp lệ cho %s.": {
+    "en": "The value '%s' is not valid for %s."
+  },
+  "en:showing 1 to 10 of 104 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 104 bản ghi (đã lọc từ 107 bản ghi tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 104 bản ghi (đã lọc từ 107 bản ghi tổng cộng)": {
+    "en": "Showing 1 to 10 of 104 entries (filtered from 107 total entries)"
+  },
+  "en:showing 11 to 20 of 104 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 11 đến 20 trong số 104 mục (được lọc từ tổng số 107 mục)"
+  },
+  "vi:hiển thị 11 đến 20 trong số 104 mục (được lọc từ tổng số 107 mục)": {
+    "en": "Showing 11 to 20 of 104 entries (filtered from 107 total entries)"
+  },
+  "en:showing 21 to 30 of 104 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 21 đến 30 trong số 104 mục (đã lọc từ tổng số 107 mục)"
+  },
+  "vi:hiển thị 21 đến 30 trong số 104 mục (đã lọc từ tổng số 107 mục)": {
+    "en": "Showing 21 to 30 of 104 entries (filtered from 107 total entries)"
+  },
+  "en:are you sure you want to restore this destination?": {
+    "vi": "Bạn có chắc chắn muốn khôi phục điểm đến này không?"
+  },
+  "en:email: nhấp để sắp xếp tăng dần": {
+    "vi": "Thư điện tử: nhấp để sắp xếp tăng dần"
+  },
+  "vi:thư điện tử: nhấp để sắp xếp tăng dần": {
+    "en": "Email: nhấp để sắp xếp tăng dần"
+  },
+  "en:thư điện tử: nhấp để sắp xếp tăng dần": {
+    "vi": "Email: nhấp để sắp xếp tăng dần"
+  },
+  "en:showing 1 to 10 of 19 entries": {
+    "vi": "Hiển thị 1 đến 10 trên tổng số 19 mục"
+  },
+  "vi:hiển thị 1 đến 10 trên tổng số 19 mục": {
+    "en": "Showing 1 to 10 of 19 entries"
+  },
+  "en:showing 11 to 19 of 19 entries": {
+    "vi": "Hiển thị 11 đến 19 trên tổng số 19 mục"
+  },
+  "vi:hiển thị 11 đến 19 trên tổng số 19 mục": {
+    "en": "Showing 11 to 19 of 19 entries"
   }
 }
