@@ -2,8 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
+using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Company.Interface;
 using TraVinhMaps.Application.Features.Markers.Interface;
@@ -24,13 +26,15 @@ public class OcopProductController : ControllerBase
     private readonly ImageManagementOcopProductServices _imageManagementOcopProductServices;
     private readonly ICompanyService _companyService;
     private readonly IOcopTypeService _ocopTypeService;
-    public OcopProductController(IOcopProductService service, ImageManagementOcopProductServices imageManagementOcopProductServices, IMarkerService markerService, ICompanyService companyService, IOcopTypeService _ocopTypeService)
+    private readonly IHubContext<DashboardHub> _hubContext;
+    public OcopProductController(IOcopProductService service, ImageManagementOcopProductServices imageManagementOcopProductServices, IMarkerService markerService, ICompanyService companyService, IOcopTypeService _ocopTypeService, IHubContext<DashboardHub> hubContext)
     {
         _service = service;
         _imageManagementOcopProductServices = imageManagementOcopProductServices;
         _markerService = markerService;
         _companyService = companyService;
         this._ocopTypeService = _ocopTypeService;
+        _hubContext = hubContext;
     }
 
     [HttpGet]
@@ -145,6 +149,7 @@ public class OcopProductController : ControllerBase
         {
             await this._service.AddImageOcopProduct(ocopProducts.Id, item);
         }
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return CreatedAtRoute("GetOcopProductById", new { id = ocopProducts.Id }, this.ApiOk(ocopProducts));
     }
     [HttpPost]
@@ -189,6 +194,7 @@ public class OcopProductController : ControllerBase
         }
         ocopProduct.ProductImage.Remove(decodedImageUrl);
         await _service.UpdateAsync(ocopProduct);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk("Image of ocop product deleted successfully.");
     }
     [HttpPut]
@@ -219,6 +225,7 @@ public class OcopProductController : ControllerBase
             existingProduct.UpdateAt = updateOcopProductRequest.UpdateAt.Value;
         }
         await _service.UpdateAsync(existingProduct);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk("Updated ocop product successfully.");
     }
 
@@ -232,6 +239,7 @@ public class OcopProductController : ControllerBase
             throw new NotFoundException("Ocop product not found.");
         }
         await _service.DeleteOcopProductAsync(id);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk("Ocop product deleted successfully.");
     }
 
@@ -245,6 +253,7 @@ public class OcopProductController : ControllerBase
             throw new NotFoundException("Ocop product not found.");
         }
         await _service.RestoreOcopProductAsync(id);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk("Ocop product restored successfully.");
     }
     [HttpPost]
@@ -269,6 +278,7 @@ public class OcopProductController : ControllerBase
         }
         mapSellLocation.MarkerId = maker.Id;
         var addSellLocation = await _service.AddSellLocation(sellLocation.Id, mapSellLocation);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk(addSellLocation);
     }
     [HttpPut]
@@ -282,6 +292,7 @@ public class OcopProductController : ControllerBase
         }
         var mapSellLocation = OcopProductMapper.Mapper.Map<SellLocation>(sellLocation);
         var addSellLocation = await _service.UpdateSellLocation(sellLocation.Id, mapSellLocation);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk(addSellLocation);
     }
     [HttpDelete]
@@ -299,6 +310,7 @@ public class OcopProductController : ControllerBase
         }
 
         var deleteSellLocation = await _service.DeleteSellLocation(id, name);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics"); 
         return this.ApiOk("Sell location deleted successfully.");
     }
 

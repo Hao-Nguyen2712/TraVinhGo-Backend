@@ -87,7 +87,7 @@
     "vi": "Cài đặt"
   },
   "vi:cài đặt": {
-    "en": "Settings"
+    "en": "Setting"
   },
   "en:log                                             out": {
     "vi": "Đăng xuất"
@@ -149,11 +149,11 @@
   "vi:quản lý đánh giá": {
     "en": "Reviews Management"
   },
-  "en:local specialties": {
+  "en:local specialty": {
     "vi": "Đặc sản địa phương"
   },
   "vi:đặc sản địa phương": {
-    "en": "Local Specialty"
+    "en": "Local Specialties"
   },
   "en:event and festival": {
     "vi": "Sự kiện và Lễ hội"
@@ -174,9 +174,9 @@
     "en": "Send Notification"
   },
   "en:marker managment": {
-    "vi": "Quản lý Điểm đánh dấu"
+    "vi": "Điểm đánh dấu"
   },
-  "vi:quản lý điểm đánh dấu": {
+  "vi:điểm đánh dấu": {
     "en": "Marker Managment"
   },
   "en:itineraries": {
@@ -238,9 +238,6 @@
   },
   "vi:hiệu suất theo thẻ": {
     "en": "Performance by Tag"
-  },
-  "en:local specialty": {
-    "vi": "Đặc sản địa phương"
   },
   "en:tips": {
     "vi": "Mẹo"
@@ -2571,7 +2568,7 @@
     "vi": "Xem thêm"
   },
   "vi:xem thêm": {
-    "en": "More"
+    "en": "Show more items"
   },
   "en:no history description available.": {
     "vi": "Không có mô tả lịch sử."
@@ -2772,7 +2769,7 @@
     "vi": "Gửi"
   },
   "vi:gửi": {
-    "en": "Send"
+    "en": "Submit"
   },
   "en:select icon": {
     "vi": "Chọn biểu tượng"
@@ -3225,7 +3222,7 @@
     "vi": "Tên điểm đánh dấu"
   },
   "vi:tên điểm đánh dấu": {
-    "en": "Name Of marker"
+    "en": "Marker name"
   },
   "en:marker pointer": {
     "vi": "Vị trí điểm đánh dấu"
@@ -5235,9 +5232,9 @@
     "en": "Destination Type"
   },
   "en:opent time": {
-    "vi": "Thời gian mở cửa"
+    "vi": "Giờ mở cửa"
   },
-  "vi:thời gian mở cửa": {
+  "vi:giờ mở cửa": {
     "en": "Opent Time"
   },
   "en:12 am": {
@@ -6370,5 +6367,809 @@
   },
   "vi:hiển thị 11 đến 19 trên tổng số 19 mục": {
     "en": "Showing 11 to 19 of 19 entries"
+  },
+  "en:showing 1 to 2 of 2 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 1 đến 2 trong số 2 mục (đã lọc từ tổng số 107 mục)"
+  },
+  "vi:hiển thị 1 đến 2 trong số 2 mục (đã lọc từ tổng số 107 mục)": {
+    "en": "Showing 1 to 2 of 2 entries (filtered from 107 total entries)"
+  },
+  "en:showing 11 to 20 of 106 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 11 đến 20 trong 106 mục (đã lọc từ tổng số 107 mục)"
+  },
+  "vi:hiển thị 11 đến 20 trong 106 mục (đã lọc từ tổng số 107 mục)": {
+    "en": "Showing 11 to 20 of 106 entries (filtered from 107 total entries)"
+  },
+  "en:188/45 nguyen van cu, can tho": {
+    "vi": "188/45 Nguyễn Văn Cừ, Cần Thơ"
+  },
+  "vi:188/45 nguyễn văn cừ, cần thơ": {
+    "en": "188/45 nguyen van cu, can tho"
+  },
+  "en:(chôl sangkran chmây)": {
+    "vi": "(Chôl Chnăm Thmây)"
+  },
+  "vi:(chôl chnăm thmây)": {
+    "en": "(Chôl sangkran Chmây)"
+  },
+  "en:chùa bà thiên hậu cầu quan 天后古廟": {
+    "vi": "Chùa Bà Thiên Hậu Cầu Quan Thiên Hậu Cổ Miếu"
+  },
+  "vi:chùa bà thiên hậu cầu quan thiên hậu cổ miếu": {
+    "en": "Chùa Bà Thiên Hậu Cầu Quan 天后古廟"
+  },
+  "en:showing 1 to 10 of 18 entries (filtered from 19 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 18 mục (đã lọc từ tổng số 19 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 18 mục (đã lọc từ tổng số 19 mục)": {
+    "en": "Showing 1 to 10 of 18 entries (filtered from 19 total entries)"
+  },
+  "en:showing 1 to 1 of 1 entries (filtered from 19 total entries)": {
+    "vi": "Hiển thị 1 đến 1 trên tổng số 1 mục (được lọc từ 19 mục)"
+  },
+  "vi:hiển thị 1 đến 1 trên tổng số 1 mục (được lọc từ 19 mục)": {
+    "en": "Showing 1 to 1 of 1 entries (filtered from 19 total entries)"
+  },
+  "en:setting": {
+    "vi": "Cài đặt"
+  },
+  "en:security information": {
+    "vi": "Thông tin bảo mật"
+  },
+  "vi:thông tin bảo mật": {
+    "en": "Security Information"
+  },
+  "en:change email": {
+    "vi": "Đổi Email"
+  },
+  "vi:đổi email": {
+    "en": "Change Email"
+  },
+  "en:no phone number yet.": {
+    "vi": "Chưa có số điện thoại."
+  },
+  "vi:chưa có số điện thoại.": {
+    "en": "No phone number yet."
+  },
+  "en:change phone number": {
+    "vi": "Đổi số điện thoại"
+  },
+  "vi:đổi số điện thoại": {
+    "en": "Change Phone Number"
+  },
+  "en:password has been set.": {
+    "vi": "Mật khẩu đã được đặt."
+  },
+  "vi:mật khẩu đã được thiết lập.": {
+    "en": "Password has been set."
+  },
+  "en:change password": {
+    "vi": "Đổi mật khẩu"
+  },
+  "vi:đổi mật khẩu": {
+    "en": "Change Password"
+  },
+  "en:verify                     current email": {
+    "vi": "Xác minh Email hiện tại"
+  },
+  "vi:xác minh email hiện tại": {
+    "en": "Verify                     Current Email"
+  },
+  "en:your otp is                     sent to joongnguyen2712@gmail.com now": {
+    "vi": "Mã OTP của bạn đã được gửi đến joongnguyen2712@gmail.com"
+  },
+  "vi:mã otp của bạn đã được gửi đến joongnguyen2712@gmail.com": {
+    "en": "Your OTP is                     sent to joongnguyen2712@gmail.com now"
+  },
+  "en:confirm otp": {
+    "vi": "Xác nhận OTP"
+  },
+  "vi:xác nhận otp": {
+    "en": "Confirm OTP"
+  },
+  "en:verify": {
+    "vi": "Xác minh"
+  },
+  "vi:xác minh": {
+    "en": "Verify"
+  },
+  "en:resend otp after": {
+    "vi": "Gửi lại OTP sau"
+  },
+  "vi:gửi lại otp sau": {
+    "en": "Resend OTP after"
+  },
+  "en:update email": {
+    "vi": "Cập nhật Email"
+  },
+  "vi:cập nhật email": {
+    "en": "Update Email"
+  },
+  "en:new email                             address": {
+    "vi": "Địa chỉ Email mới"
+  },
+  "vi:địa chỉ email mới": {
+    "en": "New Email                             Address"
+  },
+  "en:please enter a valid email address.": {
+    "vi": "Vui lòng nhập một địa chỉ email hợp lệ."
+  },
+  "vi:vui lòng nhập địa chỉ email hợp lệ.": {
+    "en": "Please enter a valid email address."
+  },
+  "en:update phone number": {
+    "vi": "Cập nhật Số điện thoại"
+  },
+  "vi:cập nhật số điện thoại": {
+    "en": "Update Phone Number"
+  },
+  "en:new phone                             number": {
+    "vi": "Số điện thoại mới"
+  },
+  "vi:số điện thoại mới": {
+    "en": "New Phone                             Number"
+  },
+  "en:please enter a valid phone number.": {
+    "vi": "Vui lòng nhập một số điện thoại hợp lệ."
+  },
+  "vi:vui lòng nhập số điện thoại hợp lệ.": {
+    "en": "Please enter a valid phone number."
+  },
+  "en:update password": {
+    "vi": "Cập nhật Mật khẩu"
+  },
+  "vi:cập nhật mật khẩu": {
+    "en": "Update Password"
+  },
+  "en:current                             password": {
+    "vi": "Mật khẩu hiện tại"
+  },
+  "vi:mật khẩu hiện tại": {
+    "en": "Current                             Password"
+  },
+  "en:please enter your current password.": {
+    "vi": "Vui lòng nhập mật khẩu hiện tại của bạn."
+  },
+  "vi:vui lòng nhập mật khẩu hiện tại của bạn.": {
+    "en": "Please enter your current password."
+  },
+  "en:password must be at least 8 characters.": {
+    "vi": "Mật khẩu phải có ít nhất 8 ký tự."
+  },
+  "vi:mật khẩu phải có ít nhất 8 ký tự.": {
+    "en": "Password must be at least 8 characters."
+  },
+  "en:confirm new                             password": {
+    "vi": "Xác nhận Mật khẩu mới"
+  },
+  "vi:xác nhận mật khẩu mới": {
+    "en": "Confirm New                             Password"
+  },
+  "en:passwords must match.": {
+    "vi": "Mật khẩu phải trùng khớp."
+  },
+  "vi:mật khẩu phải khớp.": {
+    "en": "Passwords must match."
+  },
+  "en:enter your new email": {
+    "vi": "Nhập email mới của bạn"
+  },
+  "vi:nhập email mới của bạn": {
+    "en": "Enter your new email"
+  },
+  "en:enter your new phone number": {
+    "vi": "Nhập số điện thoại mới của bạn"
+  },
+  "vi:nhập số điện thoại mới của bạn": {
+    "en": "Enter your new phone number"
+  },
+  "en:enter your current password": {
+    "vi": "Nhập mật khẩu hiện tại của bạn"
+  },
+  "vi:nhập mật khẩu hiện tại của bạn": {
+    "en": "Enter your current password"
+  },
+  "en:enter your new password": {
+    "vi": "Nhập mật khẩu mới của bạn"
+  },
+  "vi:nhập mật khẩu mới của bạn": {
+    "en": "Enter your new password"
+  },
+  "en:confirm your new password": {
+    "vi": "Xác nhận mật khẩu mới của bạn"
+  },
+  "vi:xác nhận mật khẩu mới của bạn": {
+    "en": "Confirm your new password"
+  },
+  "vi:mật khẩu đã được đặt.": {
+    "en": "Password has been set."
+  },
+  "vi:vui lòng nhập một địa chỉ email hợp lệ.": {
+    "en": "Please enter a valid email address."
+  },
+  "vi:vui lòng nhập một số điện thoại hợp lệ.": {
+    "en": "Please enter a valid phone number."
+  },
+  "vi:mật khẩu phải trùng khớp.": {
+    "en": "Passwords must match."
+  },
+  "en:26/05/25, 00:00 to                                                  29/05/25, 00:00": {
+    "vi": "26/05/25, 00:00 to 29/05/25, 00:00"
+  },
+  "vi:26/05/25, 00:00 to 29/05/25, 00:00": {
+    "en": "26/05/25, 00:00 to                                                  29/05/25, 00:00"
+  },
+  "en:angkorajaborey pagoda (chùa khmer chùa âng)": {
+    "vi": "Chùa Angkorajaborey (Chùa Khmer Chùa Âng)"
+  },
+  "vi:chùa angkorajaborey (chùa khmer chùa âng)": {
+    "en": "Angkorajaborey Pagoda (Chùa Khmer Chùa Âng)"
+  },
+  "en:show more items": {
+    "vi": "Xem thêm"
+  },
+  "en:là một trong những …": {
+    "vi": "là một trong những…"
+  },
+  "vi:là một trong những…": {
+    "en": "là một trong những …"
+  },
+  "en:bánh canh bến có nổi tiếng hơn 20 …": {
+    "vi": "Bánh canh Bến Có nổi tiếng hơn 20…"
+  },
+  "vi:bánh canh bến có nổi tiếng hơn 20…": {
+    "en": "Bánh canh Bến Có nổi tiếng hơn 20 …"
+  },
+  "en:bún nước lèo là món ăn đặc sản …": {
+    "vi": "Bún nước lèo là món ăn đặc sản…"
+  },
+  "vi:bún nước lèo là món ăn đặc sản…": {
+    "en": "Bún nước lèo là món ăn đặc sản …"
+  },
+  "en:theo người dân địa phương, bún suông là …": {
+    "vi": "Theo người dân địa phương, bún suông là…"
+  },
+  "vi:theo người dân địa phương, bún suông là…": {
+    "en": "Theo người dân địa phương, bún suông là …"
+  },
+  "en:dừa sáp, viên ngọc quý của vùng đất …": {
+    "vi": "Dừa Sáp, viên ngọc quý của vùng đất…"
+  },
+  "vi:dừa sáp, viên ngọc quý của vùng đất…": {
+    "en": "Dừa Sáp, viên ngọc quý của vùng đất …"
+  },
+  "en:chuối táo quạ nổi tiếng với kích thước …": {
+    "vi": "Chuối táo quạ nổi tiếng với kích thước…"
+  },
+  "vi:chuối táo quạ nổi tiếng với kích thước…": {
+    "en": "Chuối táo quạ nổi tiếng với kích thước …"
+  },
+  "en:mỗi khi tháng 10 âm lịch về, người …": {
+    "vi": "Mỗi khi tháng 10 âm lịch về, người…"
+  },
+  "vi:mỗi khi tháng 10 âm lịch về, người…": {
+    "en": "Mỗi khi tháng 10 âm lịch về, người …"
+  },
+  "en:cháo là món ăn phổ biến ở nhiều …": {
+    "vi": "Cháo là món ăn phổ biến ở nhiều…"
+  },
+  "vi:cháo là món ăn phổ biến ở nhiều…": {
+    "en": "Cháo là món ăn phổ biến ở nhiều …"
+  },
+  "en:về trà vinh, bạn đừng quên cái tên …": {
+    "vi": "Về Trà Vinh, bạn đừng quên cái tên…"
+  },
+  "vi:về trà vinh, bạn đừng quên cái tên…": {
+    "en": "Về Trà Vinh, bạn đừng quên cái tên …"
+  },
+  "en:can tho, ninh kieu": {
+    "vi": "Cần Thơ, Ninh Kiều"
+  },
+  "vi:cần thơ, ninh kiều": {
+    "en": "Can tho, ninh kieu"
+  },
+  "en:6/12/2025 1:01:14 am": {
+    "vi": "6/12/2025 1:01:14 SA"
+  },
+  "vi:6/12/2025 1:01:14 sa": {
+    "en": "6/12/2025 1:01:14 AM"
+  },
+  "en:management company": {
+    "vi": "Công ty quản lý"
+  },
+  "vi:công ty quản lý": {
+    "en": "Management Company"
+  },
+  "en:company create form": {
+    "vi": "Mẫu tạo công ty"
+  },
+  "vi:mẫu tạo công ty": {
+    "en": "Company Create form"
+  },
+  "en:no reviews available.": {
+    "vi": "Chưa có đánh giá."
+  },
+  "vi:chưa có đánh giá.": {
+    "en": "No reviews available."
+  },
+  "en:showing 1 to 10 of 15 entries (filtered from 18 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 15 mục (được lọc từ 18 mục tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 15 mục (được lọc từ 18 mục tổng cộng)": {
+    "en": "Showing 1 to 10 of 15 entries (filtered from 18 total entries)"
+  },
+  "en:please enter a valid 6-digit code": {
+    "vi": "Vui lòng nhập mã gồm 6 chữ số hợp lệ"
+  },
+  "vi:vui lòng nhập mã gồm 6 chữ số hợp lệ": {
+    "en": "Please enter a valid 6-digit code"
+  },
+  "en:or sign in with": {
+    "vi": "Hoặc Đăng nhập bằng"
+  },
+  "vi:hoặc đăng nhập bằng": {
+    "en": "Or Sign in with"
+  },
+  "en:forgot password?": {
+    "vi": "Quên mật khẩu?"
+  },
+  "vi:quên mật khẩu?": {
+    "en": "Forgot password?"
+  },
+  "en:sign in to account": {
+    "vi": "Đăng nhập vào tài khoản"
+  },
+  "vi:đăng nhập vào tài khoản": {
+    "en": "Sign in to account"
+  },
+  "en:enter your email & password to login": {
+    "vi": "Nhập email và mật khẩu của bạn để đăng nhập"
+  },
+  "vi:nhập email và mật khẩu của bạn để đăng nhập": {
+    "en": "Enter your email & password to login"
+  },
+  "en:remember password": {
+    "vi": "Nhớ mật khẩu"
+  },
+  "vi:nhớ mật khẩu": {
+    "en": "Remember password"
+  },
+  "en:sign in": {
+    "vi": "Đăng nhập"
+  },
+  "vi:đăng nhập": {
+    "en": "Sign in"
+  },
+  "en:show": {
+    "vi": "Hiện"
+  },
+  "vi:hiện": {
+    "en": "show"
+  },
+  "en:hide": {
+    "vi": "Ẩn"
+  },
+  "vi:ẩn": {
+    "en": "hide"
+  },
+  "en:create new password": {
+    "vi": "Tạo mật khẩu mới"
+  },
+  "vi:tạo mật khẩu mới": {
+    "en": "Create New Password"
+  },
+  "en:enter your new password below": {
+    "vi": "Nhập mật khẩu mới của bạn bên dưới"
+  },
+  "vi:nhập mật khẩu mới của bạn bên dưới": {
+    "en": "Enter your new password below"
+  },
+  "en:reset password": {
+    "vi": "Đặt lại mật khẩu"
+  },
+  "vi:đặt lại mật khẩu": {
+    "en": "Reset Password"
+  },
+  "en:password reset verification": {
+    "vi": "Xác minh đặt lại mật khẩu"
+  },
+  "vi:xác minh đặt lại mật khẩu": {
+    "en": "Password Reset Verification"
+  },
+  "en:enter the verification code sent to reset your password": {
+    "vi": "Nhập mã xác minh đã gửi để đặt lại mật khẩu của bạn"
+  },
+  "vi:nhập mã xác minh đã gửi để đặt lại mật khẩu của bạn": {
+    "en": "Enter the verification code sent to reset your password"
+  },
+  "en:resend available in:": {
+    "vi": "Gửi lại có sẵn sau:"
+  },
+  "vi:gửi lại có sẵn sau:": {
+    "en": "Resend available in:"
+  },
+  "en:resend code": {
+    "vi": "Gửi lại mã"
+  },
+  "vi:gửi lại mã": {
+    "en": "Resend Code"
+  },
+  "en:entries": {
+    "vi": "mục"
+  },
+  "vi:mục": {
+    "en": "entries"
+  },
+  "en:13 days ago": {
+    "vi": "13 ngày trước"
+  },
+  "vi:13 ngày trước": {
+    "en": "13 days ago"
+  },
+  "en:edit ocop type": {
+    "vi": "Chỉnh sửa loại Ocop"
+  },
+  "vi:chỉnh sửa loại ocop": {
+    "en": "Edit Ocop Type"
+  },
+  "en:mini bao thọ phát trà vinh": {
+    "vi": "Bánh bao mini Thọ Phát Trà Vinh"
+  },
+  "vi:bánh bao mini thọ phát trà vinh": {
+    "en": "Mini Bao Thọ Phát Trà Vinh"
+  },
+  "en:lễ hội còn có tên lễ cúng trăng diễn ra vào rằm tháng 10 âm lịch, là hội truyền thống lâu đời của đồng bào khmer. người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!": {
+    "vi": "Lễ hội còn có tên lễ Cúng Trăng diễn ra vào rằm tháng 10 âm lịch, là lễ hội truyền thống lâu đời của đồng bào Khmer. Người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt Trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!"
+  },
+  "vi:lễ hội còn có tên lễ cúng trăng diễn ra vào rằm tháng 10 âm lịch, là lễ hội truyền thống lâu đời của đồng bào khmer. người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!": {
+    "en": "Lễ hội còn có tên lễ Cúng Trăng diễn ra vào rằm tháng 10 âm lịch, là hội truyền thống lâu đời của đồng bào Khmer. Người dân tổ chức lễ này để tỏ lòng biết ơn đối với mặt Trăng - vị thần thiên nhiên đã giúp đỡ họ trong việc bảo vệ mùa màng, đem lại ấm no!"
+  },
+  "en:lễ hội mang đậm dấu ấn tâm linh của ngư dân vùng biển ở nam bộ. lễ nghinh ông được xem là lễ hội dân gian truyền thống tiêu biểu ở trà vinh diễn ra vào tháng 5 âm lịch.": {
+    "vi": "Lễ hội mang đậm dấu ấn tâm linh của ngư dân vùng biển Nam Bộ. Lễ nghinh ông được xem là lễ hội dân gian truyền thống tiêu biểu ở Trà Vinh diễn ra vào tháng 5 âm lịch."
+  },
+  "vi:lễ hội mang đậm dấu ấn tâm linh của ngư dân vùng biển nam bộ. lễ nghinh ông được xem là lễ hội dân gian truyền thống tiêu biểu ở trà vinh diễn ra vào tháng 5 âm lịch.": {
+    "en": "Lễ hội mang đậm dấu ấn tâm linh của ngư dân vùng biển ở Nam Bộ. Lễ nghinh ông được xem là lễ hội dân gian truyền thống tiêu biểu ở Trà Vinh diễn ra vào tháng 5 âm lịch."
+  },
+  "en:tip updated successfully!": {
+    "vi": "Đã cập nhật mẹo thành công!"
+  },
+  "vi:đã cập nhật mẹo thành công!": {
+    "en": "Tip updated successfully!"
+  },
+  "en:admin create": {
+    "vi": "Quản trị viên tạo"
+  },
+  "vi:quản trị viên tạo": {
+    "en": "Admin Create"
+  },
+  "en:enter email *": {
+    "vi": "Nhập email *"
+  },
+  "vi:nhập email *": {
+    "en": "Enter email *"
+  },
+  "en:marker details": {
+    "vi": "Chi tiết điểm đánh dấu"
+  },
+  "vi:chi tiết điểm đánh dấu": {
+    "en": "Marker Details"
+  },
+  "en:marker name": {
+    "vi": "Tên điểm đánh dấu"
+  },
+  "en:upload new image marker": {
+    "vi": "Tải lên ảnh điểm đánh dấu mới"
+  },
+  "vi:tải lên ảnh điểm đánh dấu mới": {
+    "en": "Upload new image marker"
+  },
+  "en:update marker image failed, please try again": {
+    "vi": "Cập nhật ảnh điểm đánh dấu thất bại, vui lòng thử lại"
+  },
+  "vi:cập nhật ảnh điểm đánh dấu thất bại, vui lòng thử lại": {
+    "en": "Update marker image failed, please try again"
+  },
+  "en:destination image": {
+    "vi": "Ảnh đích"
+  },
+  "vi:ảnh đích": {
+    "en": "Destination Image"
+  },
+  "en:please wait 4.8 seconds before translating again.": {
+    "vi": "Vui lòng đợi 4.8 giây trước khi dịch lại."
+  },
+  "vi:vui lòng đợi 4.8 giây trước khi dịch lại.": {
+    "en": "Please wait 4.8 seconds before translating again."
+  },
+  "en:please wait 0.5 seconds before translating again.": {
+    "vi": "Vui lòng chờ 0,5 giây trước khi dịch lại."
+  },
+  "vi:vui lòng chờ 0,5 giây trước khi dịch lại.": {
+    "en": "Please wait 0.5 seconds before translating again."
+  },
+  "en:please wait 4.7 seconds before translating again.": {
+    "vi": "Vui lòng đợi 4.7 giây trước khi dịch lại."
+  },
+  "vi:vui lòng đợi 4.7 giây trước khi dịch lại.": {
+    "en": "Please wait 4.7 seconds before translating again."
+  },
+  "en:submit": {
+    "vi": "Gửi"
+  },
+  "en:please wait 4.9 seconds before translating again.": {
+    "vi": "Vui lòng đợi 4,9 giây trước khi dịch lại."
+  },
+  "vi:vui lòng đợi 4,9 giây trước khi dịch lại.": {
+    "en": "Please wait 4.9 seconds before translating again."
+  },
+  "en:please wait 1.7 seconds before translating again.": {
+    "vi": "Vui lòng đợi 1.7 giây trước khi dịch lại."
+  },
+  "vi:vui lòng đợi 1.7 giây trước khi dịch lại.": {
+    "en": "Please wait 1.7 seconds before translating again."
+  },
+  "en:please wait 3.8 seconds before translating again.": {
+    "vi": "Vui lòng chờ 3.8 giây trước khi dịch lại."
+  },
+  "vi:vui lòng chờ 3.8 giây trước khi dịch lại.": {
+    "en": "Please wait 3.8 seconds before translating again."
+  },
+  "en:please wait 5.0 seconds before translating again.": {
+    "vi": "Vui lòng đợi 5.0 giây trước khi dịch lại."
+  },
+  "vi:vui lòng đợi 5.0 giây trước khi dịch lại.": {
+    "en": "Please wait 5.0 seconds before translating again."
+  },
+  "en:add event/festival failure, please try again": {
+    "vi": "Thêm sự kiện/lễ hội thất bại, vui lòng thử lại"
+  },
+  "vi:thêm sự kiện/lễ hội thất bại, vui lòng thử lại": {
+    "en": "Add event/festival failure, please try again"
+  },
+  "en:showing 1 to 10 of 13 entries (filtered from 14 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 13 mục (đã lọc từ tổng số 14 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 13 mục (đã lọc từ tổng số 14 mục)": {
+    "en": "Showing 1 to 10 of 13 entries (filtered from 14 total entries)"
+  },
+  "en:showing 1 to 10 of 15 entries (filtered from 16 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 15 mục (đã lọc từ tổng số 16 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 15 mục (đã lọc từ tổng số 16 mục)": {
+    "en": "Showing 1 to 10 of 15 entries (filtered from 16 total entries)"
+  },
+  "en:add event/festival successfull": {
+    "vi": "Thêm sự kiện/lễ hội thành công"
+  },
+  "vi:thêm sự kiện/lễ hội thành công": {
+    "en": "Add event/festival successfull"
+  },
+  "en:mm/dd/yyyy": {
+    "vi": "Tháng/Ngày/Năm"
+  },
+  "vi:tháng/ngày/năm": {
+    "en": "MM/dd/yyyy"
+  },
+  "en:showing 1 to 1 of 1 entries": {
+    "vi": "Hiển thị 1 đến 1 trong tổng số 1 mục"
+  },
+  "vi:hiển thị 1 đến 1 trong tổng số 1 mục": {
+    "en": "Showing 1 to 1 of 1 entries"
+  },
+  "en:app bi giat lag qua nhieu": {
+    "vi": "App bị giật lag quá nhiều"
+  },
+  "vi:app bị giật lag quá nhiều": {
+    "en": "App bi giat lag qua nhieu"
+  },
+  "en:app da sap thanh cong roi": {
+    "vi": "Ứng dụng đã sập thành công rồi"
+  },
+  "vi:ứng dụng đã sập thành công rồi": {
+    "en": "app da sap thanh cong roi"
+  },
+  "en:app nay dung rat tot": {
+    "vi": "Ứng dụng này dùng rất tốt"
+  },
+  "vi:ứng dụng này dùng rất tốt": {
+    "en": "app nay dung rat tot"
+  },
+  "en:no data available": {
+    "vi": "Không có dữ liệu"
+  },
+  "vi:không có dữ liệu": {
+    "en": "No data                                                 available"
+  },
+  "en:no data                                                 available": {
+    "vi": "Không có dữ liệu"
+  },
+  "en:ba om pond": {
+    "vi": "Ao Bà Om"
+  },
+  "vi:ao bà om": {
+    "en": "Ba Om Pond"
+  },
+  "en:sending new code...": {
+    "vi": "Đang gửi mã mới..."
+  },
+  "vi:đang gửi mã mới...": {
+    "en": "Sending new code..."
+  },
+  "en:verification code has been resent successfully": {
+    "vi": "Mã xác minh đã được gửi lại thành công"
+  },
+  "vi:mã xác minh đã được gửi lại thành công": {
+    "en": "Verification code has been resent successfully"
+  },
+  "en:16/06/2025": {
+    "vi": "16 tháng 06, 2025"
+  },
+  "vi:16 tháng 06, 2025": {
+    "en": "16/06/2025"
+  },
+  "en:03/06/25, 12:24": {
+    "vi": "03/06/25, 12:24"
+  },
+  "vi:03/06/25, 12:24": {
+    "en": "03/06/25, 12:24"
+  },
+  "en:app rat huu ich, toi rat thich": {
+    "vi": "Ứng dụng rất hữu ích, tôi rất thích"
+  },
+  "vi:ứng dụng rất hữu ích, tôi rất thích": {
+    "en": "App rat huu ich, toi rat thich"
+  },
+  "en:toi yeu thich ung dung nay!": {
+    "vi": "Tôi yêu thích ứng dụng này!"
+  },
+  "vi:tôi yêu thích ứng dụng này!": {
+    "en": "Toi yeu thich ung dung nay!"
+  },
+  "en:app con nhieu van de loi, mong som fix xong de tang trai nghiem nguoi dung!": {
+    "vi": "Ứng dụng còn nhiều vấn đề lỗi, mong sớm sửa xong để tăng trải nghiệm người dùng!"
+  },
+  "vi:ứng dụng còn nhiều vấn đề lỗi, mong sớm sửa xong để tăng trải nghiệm người dùng!": {
+    "en": "App con nhieu van de loi, mong som fix xong de tang trai nghiem nguoi dung!"
+  },
+  "en:app nay huu ich!": {
+    "vi": "Ứng dụng này hữu ích!"
+  },
+  "vi:ứng dụng này hữu ích!": {
+    "en": "App nay huu ich!"
+  },
+  "en:showing 1 to 6 of 6 entries": {
+    "vi": "Đang hiển thị 1 đến 6 trên tổng số 6 mục"
+  },
+  "vi:đang hiển thị 1 đến 6 trên tổng số 6 mục": {
+    "en": "Showing 1 to 6 of 6 entries"
+  },
+  "en:app nay rat huu ich, tuy lag nhung ma van coi duoc, rat mong phat trien them de chay muot hon": {
+    "vi": "Ứng dụng này rất hữu ích, tuy lag nhưng vẫn xem được, rất mong phát triển thêm để chạy mượt hơn"
+  },
+  "vi:ứng dụng này rất hữu ích, tuy lag nhưng vẫn xem được, rất mong phát triển thêm để chạy mượt hơn": {
+    "en": "App nay rat huu ich, tuy lag nhung ma van coi duoc, rat mong phat trien them de chay muot hon"
+  },
+  "en:app nay rat tuyet danh cho nguoi di du lich o tra vinh": {
+    "vi": "App này rất tuyệt dành cho người đi du lịch ở Trà Vinh"
+  },
+  "vi:app này rất tuyệt dành cho người đi du lịch ở trà vinh": {
+    "en": "App nay rat tuyet danh cho nguoi di du lich o tra vinh"
+  },
+  "en:showing 1 to 7 of 7 entries": {
+    "vi": "Hiển thị 1 đến 7 trong tổng số 7 mục"
+  },
+  "vi:hiển thị 1 đến 7 trong tổng số 7 mục": {
+    "en": "Showing 1 to 7 of 7 entries"
+  },
+  "en:aapp bi loi": {
+    "vi": "App bị lỗi"
+  },
+  "vi:app bị lỗi": {
+    "en": "aapp bi loi"
+  },
+  "en:showing 1 to 9 of 9 entries": {
+    "vi": "Hiển thị 1 đến 9 trên tổng số 9 mục"
+  },
+  "vi:hiển thị 1 đến 9 trên tổng số 9 mục": {
+    "en": "Showing 1 to 9 of 9 entries"
+  },
+  "en:14 days ago": {
+    "vi": "14 ngày trước"
+  },
+  "vi:14 ngày trước": {
+    "en": "14 days ago"
+  },
+  "en:local specialties": {
+    "vi": "Đặc sản địa phương"
+  },
+  "en:all(200)": {
+    "vi": "Tất cả (200)"
+  },
+  "vi:tất cả (200)": {
+    "en": "All(200)"
+  },
+  "en:highly recommend this destination.": {
+    "vi": "Rất khuyến khích điểm đến này."
+  },
+  "vi:rất khuyến khích điểm đến này.": {
+    "en": "Highly recommend this destination."
+  },
+  "en:friendly locals and clean environment.": {
+    "vi": "Người dân thân thiện và môi trường sạch sẽ."
+  },
+  "vi:người dân thân thiện và môi trường sạch sẽ.": {
+    "en": "Friendly locals and clean environment."
+  },
+  "en:lovely architecture and nature.": {
+    "vi": "Kiến trúc và thiên nhiên tuyệt đẹp."
+  },
+  "vi:kiến trúc và thiên nhiên tuyệt đẹp.": {
+    "en": "Lovely architecture and nature."
+  },
+  "en:great for family trips!": {
+    "vi": "Tuyệt vời cho các chuyến đi gia đình!"
+  },
+  "vi:tuyệt vời cho các chuyến đi gia đình!": {
+    "en": "Great for family trips!"
+  },
+  "en:enjoyed every moment here.": {
+    "vi": "Đã tận hưởng từng khoảnh khắc ở đây."
+  },
+  "vi:đã tận hưởng từng khoảnh khắc ở đây.": {
+    "en": "Enjoyed every moment here."
+  },
+  "en:amazing place to visit!": {
+    "vi": "Nơi tuyệt vời để ghé thăm!"
+  },
+  "vi:nơi tuyệt vời để ghé thăm!": {
+    "en": "Amazing place to visit!"
+  },
+  "en:a must-see attraction.": {
+    "vi": "Một điểm tham quan không thể bỏ qua."
+  },
+  "vi:một điểm tham quan không thể bỏ qua.": {
+    "en": "A must-see attraction."
+  },
+  "en:showing 1 to 10 of 200 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 200 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 200 mục": {
+    "en": "Showing 1 to 10 of 200 entries"
+  },
+  "en:would love to come back again.": {
+    "vi": "Rất muốn quay lại lần nữa."
+  },
+  "vi:rất muốn quay lại lần nữa.": {
+    "en": "Would love to come back again."
+  },
+  "en:very peaceful and beautiful.": {
+    "vi": "Rất yên bình và đẹp."
+  },
+  "vi:rất yên bình và đẹp.": {
+    "en": "Very peaceful and beautiful."
+  },
+  "en:a hidden gem in tra vinh.": {
+    "vi": "Một viên ngọc quý ẩn mình ở Trà Vinh."
+  },
+  "vi:một viên ngọc quý ẩn mình ở trà vinh.": {
+    "en": "A hidden gem in Tra Vinh."
+  },
+  "en:showing 1 to 10 of 103 entries (filtered from 107 total entries)": {
+    "vi": "Đang hiển thị 1 đến 10 trên 103 mục (đã lọc từ tổng số 107 mục)"
+  },
+  "vi:đang hiển thị 1 đến 10 trên 103 mục (đã lọc từ tổng số 107 mục)": {
+    "en": "Showing 1 to 10 of 103 entries (filtered from 107 total entries)"
+  },
+  "en:20/07/25, 00:00 to                                                  26/07/25, 00:00": {
+    "vi": "20/07/25, 00:00 đến 26/07/25, 00:00"
+  },
+  "vi:20/07/25, 00:00 đến 26/07/25, 00:00": {
+    "en": "20/07/25, 00:00 to                                                  26/07/25, 00:00"
+  },
+  "en:showing 1 to 10 of 11 entries (filtered from 14 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 11 mục (đã lọc từ 14 mục tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 11 mục (đã lọc từ 14 mục tổng cộng)": {
+    "en": "Showing 1 to 10 of 11 entries (filtered from 14 total entries)"
   }
 }
