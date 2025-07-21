@@ -2,7 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using TraVinhMaps.Api.Extensions;
+using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Destination;
 using TraVinhMaps.Application.Features.Destination.Interface;
@@ -19,11 +21,13 @@ public class TouristDestinationController : ControllerBase
 {
     private readonly ITouristDestinationService _touristDestinationService;
     private readonly ImageManagementDestinationServices _imageManagementDestinationServices;
+    private readonly IHubContext<DashboardHub> _hubContext;
 
-    public TouristDestinationController(ITouristDestinationService touristDestinationService, ImageManagementDestinationServices imageManagementDestinationServices)
+    public TouristDestinationController(ITouristDestinationService touristDestinationService, ImageManagementDestinationServices imageManagementDestinationServices, IHubContext<DashboardHub> hubContext)
     {
         _touristDestinationService = touristDestinationService;
         _imageManagementDestinationServices = imageManagementDestinationServices;
+        _hubContext = hubContext;
     }
 
     [HttpGet]
@@ -119,16 +123,9 @@ public class TouristDestinationController : ControllerBase
                 await this._touristDestinationService.AddDestinationHistoryStoryImage(newDestination.Id, historyItem);
             }
         }
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return CreatedAtRoute("GetDestinationById", new { id = newDestination.Id }, this.ApiOk(newDestination));
     }
-
-    //[HttpPost]
-    //[Route("AddDestinationImage")]
-    //public async Task<IActionResult> AddDestinationImage([FromForm] AddImageRequest addImageRequest)
-    //{
-    //    var linkImage = await _imageManagementDestinationServices.AddImageDestination(addImageRequest.imageFile);
-    //    return Ok(linkImage);
-    //}
 
     [HttpPost]
     [Route("AddDestinationImage")]
@@ -141,6 +138,7 @@ public class TouristDestinationController : ControllerBase
         }
         return this.ApiOk(linkImage);
     }
+
     [HttpPost]
     [Route("AddDestinationHistoryStoryImage")]
     public async Task<IActionResult> AddDestinationHistoryStoryImage([FromForm] AddImageRequest addImageRequest)
@@ -221,6 +219,7 @@ public class TouristDestinationController : ControllerBase
         //destination.TicketCount = updateDestinationRequest.TicketCount;
         destination.UpdateAt = DateTime.Now.ToLocalTime();
         await this._touristDestinationService.UpdateAsync(destination);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return CreatedAtRoute("GetDestinationById", new { id = updateDestinationRequest.Id }, this.ApiOk(updateDestinationRequest));
     }
 
@@ -234,7 +233,10 @@ public class TouristDestinationController : ControllerBase
         var result = await _touristDestinationService.PlusFavorite(id);
 
         if (result)
+        {
+            await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
             return this.ApiOk("Favorite count increased successfully");
+        }
         throw new NotFoundException("Destination not found or update failed");
     }
 
@@ -258,7 +260,7 @@ public class TouristDestinationController : ControllerBase
         destination.status = false;
         destination.UpdateAt = DateTime.Now.ToLocalTime();
         await this._touristDestinationService.UpdateAsync(destination);
-        //return NoContent();
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk("Destination deleted successfully");
     }
 
@@ -286,6 +288,7 @@ public class TouristDestinationController : ControllerBase
         destination.UpdateAt = DateTime.Now.ToLocalTime();
 
         await _touristDestinationService.UpdateAsync(destination);
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk("Destination restored successfully");
     }
 

@@ -50,14 +50,26 @@ builder.Services.Configure<MongoDbSetting>(options =>
 
 builder.Services.AddHealthChecks();
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll",
+//        builder =>
+//        {
+//            builder.AllowAnyOrigin()
+//                .AllowAnyMethod()
+//                .AllowAnyHeader();
+//        });
+//});
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
+    options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
+            builder.WithOrigins("http://localhost:5280") 
+                   .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials();
         });
 });
 
@@ -223,7 +235,8 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.MapHub<DashboardHub>("/dashboardHub");
 app.UseHttpsRedirection();
-app.UseCors("AllowAll");
+//app.UseCors("AllowAll");
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthentication();
 // Add our custom authentication response handler
 app.UseMiddleware<CustomAuthenticationMiddleware>();
