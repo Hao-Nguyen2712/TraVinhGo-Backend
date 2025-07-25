@@ -366,7 +366,7 @@
     "vi": "STT"
   },
   "vi:stt": {
-    "en": "No. &nbsp;"
+    "en": "No."
   },
   "en:customer": {
     "vi": "Khách hàng"
@@ -3930,15 +3930,15 @@
     "en": "Index"
   },
   "en:total users review": {
-    "vi": "Tổng số lượt đánh giá người dùng"
+    "vi": "Tổng số người dùng đánh giá"
   },
-  "vi:tổng số lượt đánh giá người dùng": {
+  "vi:tổng số người dùng đánh giá": {
     "en": "Total Users Review"
   },
   "en:user has the most comments": {
-    "vi": "Người dùng có nhiều bình luận nhất"
+    "vi": "Người dùng đánh giá nhiều nhất"
   },
-  "vi:người dùng có nhiều bình luận nhất": {
+  "vi:người dùng đánh giá nhiều nhất": {
     "en": "User Has The Most Comments"
   },
   "en:not available": {
@@ -7171,5 +7171,368 @@
   },
   "vi:hiển thị 1 đến 10 trong số 11 mục (đã lọc từ 14 mục tổng cộng)": {
     "en": "Showing 1 to 10 of 11 entries (filtered from 14 total entries)"
+  },
+  "en:status: activate to sort column descending": {
+    "vi": "Trạng thái: kích hoạt để sắp xếp cột giảm dần"
+  },
+  "vi:trạng thái: kích hoạt để sắp xếp cột giảm dần": {
+    "en": "Status: activate to sort column descending"
+  },
+  "en:showing 1 to 10 of 20 entries (filtered from 21 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 20 mục (được lọc từ tổng số 21 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 20 mục (được lọc từ tổng số 21 mục)": {
+    "en": "Showing 1 to 10 of 20 entries (filtered from 21 total entries)"
+  },
+  "en:please wait 2.5 seconds before translating again.": {
+    "vi": "Xin vui lòng đợi 2,5 giây trước khi dịch lại."
+  },
+  "vi:xin vui lòng đợi 2,5 giây trước khi dịch lại.": {
+    "en": "Please wait 2.5 seconds before translating again."
+  },
+  "en:showing 1 to 1 of 1 entries (filtered from 107 total entries)": {
+    "vi": "Hiển thị 1 đến 1 trong số 1 mục (đã lọc từ tổng cộng 107 mục)"
+  },
+  "vi:hiển thị 1 đến 1 trong số 1 mục (đã lọc từ tổng cộng 107 mục)": {
+    "en": "Showing 1 to 1 of 1 entries (filtered from 107 total entries)"
+  },
+  "en:phamthitutrinh": {
+    "vi": "Phạm Thị Tú Trinh"
+  },
+  "vi:phạm thị tú trinh": {
+    "en": "PhamThiTuTrinh"
+  },
+  "en:nguyendiemkhue": {
+    "vi": "Nguyễn Diễm Khuê"
+  },
+  "vi:nguyễn diễm khuê": {
+    "en": "NguyenDiemKhue"
+  },
+  "en:dovandinh": {
+    "vi": "Đỗ Văn Định"
+  },
+  "vi:đỗ văn định": {
+    "en": "DoVanDinh"
+  },
+  "en:tranthiphiphi": {
+    "vi": "Trần Thị Phi Phi"
+  },
+  "vi:trần thị phi phi": {
+    "en": "TranThiPhiPhi"
+  },
+  "en:duonguyenthi": {
+    "vi": "Dương Uyên Thi"
+  },
+  "vi:dương uyên thi": {
+    "en": "DuongUyenThi"
+  },
+  "en:huynhthingoclam": {
+    "vi": "Huỳnh Thị Ngọc Lâm"
+  },
+  "vi:huỳnh thị ngọc lâm": {
+    "en": "HuynhThiNgocLam"
+  },
+  "en:showing 1 to 10 of 41 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 41 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 41 mục": {
+    "en": "Showing 1 to 10 of 41 entries"
+  },
+  "en:showing 1 to 10 of 38 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 38 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 38 mục": {
+    "en": "Showing 1 to 10 of 38 entries"
+  },
+  "en:nguyenminhvu": {
+    "vi": "Nguyễn Minh Vũ"
+  },
+  "vi:nguyễn minh vũ": {
+    "en": "NguyenMinhVu"
+  },
+  "en:ngothivietkhue": {
+    "vi": "Ngô Thị Việt Khuê"
+  },
+  "vi:ngô thị việt khuê": {
+    "en": "NgoThiVietKhue"
+  },
+  "en:ocop product and sell locations created successfully!": {
+    "vi": "Sản phẩm OCOP và địa điểm bán hàng đã được tạo thành công!"
+  },
+  "vi:sản phẩm ocop và địa điểm bán hàng đã được tạo thành công!": {
+    "en": "Ocop product and sell locations created successfully!"
+  },
+  "en:showing 1 to 10 of 21 entries (filtered from 22 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong 21 mục (đã lọc từ tổng số 22 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong 21 mục (đã lọc từ tổng số 22 mục)": {
+    "en": "Showing 1 to 10 of 21 entries (filtered from 22 total entries)"
+  },
+  "en:trà vinh cửa hàng sokfarm trà vinh": {
+    "vi": "Cửa hàng Sokfarm Trà Vinh"
+  },
+  "vi:cửa hàng sokfarm trà vinh": {
+    "en": "Trà Vinh Cửa hàng Sokfarm Trà Vinh"
+  },
+  "en:showing 1 to 10 of 22 entries (filtered from 23 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 22 mục (được lọc từ 23 mục tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 22 mục (được lọc từ 23 mục tổng cộng)": {
+    "en": "Showing 1 to 10 of 22 entries (filtered from 23 total entries)"
+  },
+  "en:image of ocop product added successfully!": {
+    "vi": "Đã thêm ảnh sản phẩm OCOP thành công!"
+  },
+  "vi:đã thêm ảnh sản phẩm ocop thành công!": {
+    "en": "Image of ocop product added successfully!"
+  },
+  "en:106.344106 ,\u00A0 9.887612": {
+    "vi": "106.344106 , 9.887612"
+  },
+  "vi:106.344106 , 9.887612": {
+    "en": "106.344106 ,\u00A0 9.887612"
+  },
+  "en:no description available.": {
+    "vi": "Không có mô tả."
+  },
+  "vi:không có mô tả.": {
+    "en": "No description available."
+  },
+  "en:<p>để đến được ao bà om, các bạn có thể di chuyển bằng xe du lịch, hoặc vi vu xe máy trên một con đường dài thẳng tắp được làm mát bằng cây xanh xung quanh. nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội ok om bok nhé.</p>": {
+    "vi": "Để đến được Ao Bà Om, các bạn có thể di chuyển bằng xe du lịch, hoặc vi vu xe máy trên một con đường dài thẳng tắp được làm mát bằng cây xanh xung quanh. Nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội Ok Om Bok nhé."
+  },
+  "vi:để đến được ao bà om, các bạn có thể di chuyển bằng xe du lịch, hoặc vi vu xe máy trên một con đường dài thẳng tắp được làm mát bằng cây xanh xung quanh. nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội ok om bok nhé.": {
+    "en": "<p>Để đến được Ao Bà Om, các bạn có thể di chuyển bằng xe du lịch, hoặc vi vu xe máy trên một con đường dài thẳng tắp được làm mát bằng cây xanh xung quanh. Nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội Ok Om Bok nhé.</p>"
+  },
+  "en:để đến được , các bạn có thể di chuyển bằng xe du lịch, hoặc vi vu xe máy trên một con đường dài thẳng tắp được làm mát bằng cây xanh xung quanh. nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội ok om bok nhé.": {
+    "vi": "Để đến được, bạn có thể di chuyển bằng xe du lịch, hoặc đi xe máy trên một con đường dài thẳng tắp được làm mát bởi cây xanh xung quanh. Nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội Ok Om Bok."
+  },
+  "vi:để đến được, bạn có thể di chuyển bằng xe du lịch, hoặc đi xe máy trên một con đường dài thẳng tắp được làm mát bởi cây xanh xung quanh. nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội ok om bok.": {
+    "en": "Để đến được , các bạn có thể di chuyển bằng xe du lịch, hoặc vi vu xe máy trên một con đường dài thẳng tắp được làm mát bằng cây xanh xung quanh. Nếu có cơ hội, bạn nên đi vào tháng 10 âm lịch để cùng tham gia lễ hội Ok Om Bok nhé."
+  },
+  "en:nguyễn thái học, phường 1, trà vinh, 87000, vietnam": {
+    "vi": "Nguyễn Thái Học, Phường 1, Trà Vinh, 87000, Việt Nam"
+  },
+  "vi:nguyễn thái học, phường 1, trà vinh, 87000, việt nam": {
+    "en": "Nguyễn Thái Học, Phường 1, Trà Vinh, 87000, Vietnam"
+  },
+  "en:điểm dừng chân sáu dư ( ocop trà vinh)": {
+    "vi": "ĐIỂM DỪNG CHÂN SÁU DƯ (OCOP TRÀ VINH)"
+  },
+  "vi:điểm dừng chân sáu dư (ocop trà vinh)": {
+    "en": "ĐIỂM DỪNG CHÂN SÁU DƯ ( OCOP TRÀ VINH)"
+  },
+  "en:6 hrs ago": {
+    "vi": "6 giờ trước"
+  },
+  "vi:6 giờ trước": {
+    "en": "6 hrs ago"
+  },
+  "en:15 days ago": {
+    "vi": "15 ngày trước"
+  },
+  "vi:15 ngày trước": {
+    "en": "15 days ago"
+  },
+  "en:showing 1 to 10 of 107 entries (filtered from 108 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 107 mục (đã lọc từ tổng số 108 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 107 mục (đã lọc từ tổng số 108 mục)": {
+    "en": "Showing 1 to 10 of 107 entries (filtered from 108 total entries)"
+  },
+  "en:9 hrs ago": {
+    "vi": "9 giờ trước"
+  },
+  "vi:9 giờ trước": {
+    "en": "9 hrs ago"
+  },
+  "en:1 days ago": {
+    "vi": "1 ngày trước"
+  },
+  "vi:1 ngày trước": {
+    "en": "1 days ago"
+  },
+  "en:16 days ago": {
+    "vi": "16 ngày trước"
+  },
+  "vi:16 ngày trước": {
+    "en": "16 days ago"
+  },
+  "en:500 m": {
+    "vi": "500 mét"
+  },
+  "vi:500 mét": {
+    "en": "500 m"
+  },
+  "en:106.329789 ,\u00A0 9.927547": {
+    "vi": "106.329789 , 9.927547"
+  },
+  "vi:106.329789 , 9.927547": {
+    "en": "106.329789 ,\u00A0 9.927547"
+  },
+  "en:2 days ago": {
+    "vi": "2 ngày trước"
+  },
+  "vi:2 ngày trước": {
+    "en": "2 days ago"
+  },
+  "en:cài đặt": {
+    "vi": "Tùy chỉnh"
+  },
+  "vi:tùy chỉnh": {
+    "en": "Cài đặt"
+  },
+  "en:tourist destination name:": {
+    "vi": "Tên điểm du lịch:"
+  },
+  "vi:tên điểm du lịch:": {
+    "en": "Tourist Destination Name:"
+  },
+  "en:rating:": {
+    "vi": "Đánh giá:"
+  },
+  "vi:đánh giá:": {
+    "en": "Rating:"
+  },
+  "en:comment:": {
+    "vi": "Bình luận:"
+  },
+  "vi:bình luận:": {
+    "en": "Comment:"
+  },
+  "en:feedback details": {
+    "vi": "Chi tiết phản hồi"
+  },
+  "vi:chi tiết phản hồi": {
+    "en": "Feedback Details"
+  },
+  "en:17 days ago": {
+    "vi": "17 ngày trước"
+  },
+  "vi:17 ngày trước": {
+    "en": "17 days ago"
+  },
+  "en:showing 1 to 10 of 36 entries": {
+    "vi": "Hiển thị 1 đến 10 trong tổng số 36 mục"
+  },
+  "vi:hiển thị 1 đến 10 trong tổng số 36 mục": {
+    "en": "Showing 1 to 10 of 36 entries"
+  },
+  "en:review details": {
+    "vi": "Chi tiết đánh giá"
+  },
+  "vi:chi tiết đánh giá": {
+    "en": "Review Details"
+  },
+  "en:showing 1 to 10 of 21 entries": {
+    "vi": "Hiển thị 1 đến 10 trên 21 mục"
+  },
+  "vi:hiển thị 1 đến 10 trên 21 mục": {
+    "en": "Showing 1 to 10 of 21 entries"
+  },
+  "en:showing 1 to 10 of 106 entries (filtered from 108 total entries)": {
+    "vi": "Hiển thị 1 đến 10 trong số 106 mục (đã lọc từ tổng số 108 mục)"
+  },
+  "vi:hiển thị 1 đến 10 trong số 106 mục (đã lọc từ tổng số 108 mục)": {
+    "en": "Showing 1 to 10 of 106 entries (filtered from 108 total entries)"
+  },
+  "en:please wait 4.2 seconds before translating again.": {
+    "vi": "Vui lòng đợi 4.2 giây trước khi dịch lại."
+  },
+  "vi:vui lòng đợi 4.2 giây trước khi dịch lại.": {
+    "en": "Please wait 4.2 seconds before translating again."
+  },
+  "en:please correct the errors before submitting.": {
+    "vi": "Vui lòng sửa lỗi trước khi gửi."
+  },
+  "vi:vui lòng sửa lỗi trước khi gửi.": {
+    "en": "Please correct the errors before submitting."
+  },
+  "en:action completed successfully!": {
+    "vi": "Hành động đã hoàn tất thành công!"
+  },
+  "vi:hành động đã hoàn tất thành công!": {
+    "en": "Action completed successfully!"
+  },
+  "en:failed to perform action. please try again.": {
+    "vi": "Thực hiện hành động thất bại. Vui lòng thử lại."
+  },
+  "vi:thực hiện hành động thất bại. vui lòng thử lại.": {
+    "en": "Failed to perform action. Please try again."
+  },
+  "en:are you sure you want to proceed?": {
+    "vi": "Bạn có chắc chắn muốn tiếp tục không?"
+  },
+  "vi:bạn có chắc chắn muốn tiếp tục không?": {
+    "en": "Are you sure you want to proceed?"
+  },
+  "en:operation cancelled.": {
+    "vi": "Thao tác đã bị hủy."
+  },
+  "vi:thao tác đã bị hủy.": {
+    "en": "Operation cancelled."
+  },
+  "en:3 days ago": {
+    "vi": "3 ngày trước"
+  },
+  "vi:3 ngày trước": {
+    "en": "3 days ago"
+  },
+  "en:(function () {\n            const success = null;\n            const error = null;\n            if (success) showtimedalert(\"success!\", success, \"success\", 1000);\n            if (error) showtimedalert(\"error!\", error, \"error\", 1000);\n        })();": {
+    "vi": "(function () {            const success = null;            const error = null;            if (success) showTimedAlert(\"Success!\", success, \"success\", 1000);            if (error) showTimedAlert(\"Error!\", error, \"error\", 1000);        })();"
+  },
+  "vi:(function () {            const success = null;            const error = null;            if (success) showtimedalert(\"success!\", success, \"success\", 1000);            if (error) showtimedalert(\"error!\", error, \"error\", 1000);        })();": {
+    "en": "(function () {\n            const success = null;\n            const error = null;\n            if (success) showTimedAlert(\"Success!\", success, \"success\", 1000);\n            if (error) showTimedAlert(\"Error!\", error, \"error\", 1000);\n        })();"
+  },
+  "en:user restored successfully": {
+    "vi": "Người dùng đã được khôi phục thành công"
+  },
+  "vi:người dùng đã được khôi phục thành công": {
+    "en": "User restored successfully"
+  },
+  "en:are you sure?": {
+    "vi": "Bạn có chắc không?"
+  },
+  "vi:bạn có chắc không?": {
+    "en": "Are you sure?"
+  },
+  "en:đánh giá trung bình: kích hoạt để sắp xếp cột tăng dần": {
+    "vi": "Đánh giá trung bình: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:đánh giá trung bình: nhấp để sắp xếp cột tăng dần": {
+    "en": "Đánh giá trung bình: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "en:yêu thích: kích hoạt để sắp xếp cột tăng dần": {
+    "vi": "Yêu thích: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:yêu thích: nhấp để sắp xếp cột tăng dần": {
+    "en": "Yêu thích: kích hoạt để sắp xếp cột tăng dần"
+  },
+  "en:ngày tạo: nhấn để sắp xếp cột tăng dần": {
+    "vi": "Ngày tạo: nhấp để sắp xếp cột tăng dần"
+  },
+  "vi:ngày tạo: nhấp để sắp xếp cột tăng dần": {
+    "en": "Ngày tạo: nhấn để sắp xếp cột tăng dần"
+  },
+  "en:please wait 0.8 seconds before translating again.": {
+    "vi": "Vui lòng đợi 0.8 giây trước khi dịch lại."
+  },
+  "vi:vui lòng đợi 0.8 giây trước khi dịch lại.": {
+    "en": "Please wait 0.8 seconds before translating again."
+  },
+  "en:18 days ago": {
+    "vi": "18 ngày trước"
+  },
+  "vi:18 ngày trước": {
+    "en": "18 days ago"
+  },
+  "en:choose language": {
+    "vi": "Chọn ngôn ngữ"
+  },
+  "vi:chọn ngôn ngữ": {
+    "en": "Select Language"
+  },
+  "en:select language": {
+    "vi": "Chọn ngôn ngữ"
   }
 }
