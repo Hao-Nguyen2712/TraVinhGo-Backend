@@ -77,7 +77,8 @@ public class FeedbackService : IFeedbackService
             UserId = feedback.UserId,
             Username = user?.Username ?? "Unknown",
             Content = feedback.Content,
-            Images = feedback.Images
+            Images = feedback.Images,
+            CreatedAt = feedback.CreatedAt,
         };
     }
 

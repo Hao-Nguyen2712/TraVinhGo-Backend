@@ -50,28 +50,24 @@ builder.Services.Configure<MongoDbSetting>(options =>
 
 builder.Services.AddHealthChecks();
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowAll",
-//        builder =>
-//        {
-//            builder.AllowAnyOrigin()
-//                .AllowAnyMethod()
-//                .AllowAnyHeader();
-//        });
-//});
-
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
-        builder =>
-        {
-            builder.WithOrigins("http://localhost:5280") 
-                   .AllowAnyHeader()
-                   .AllowAnyMethod()
-                   .AllowCredentials();
-        });
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins("http://localhost:5280")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
 });
+
 
 // layer di
 builder.Services.AddInfrastructure();
@@ -199,13 +195,13 @@ builder.Services.Configure<KestrelServerOptions>(options =>
 });
 
 // config for push notifications using Firebase
-//if (FirebaseApp.DefaultInstance == null)
-//{
-//    FirebaseApp.Create(new AppOptions()
-//    {
-//        Credential = GoogleCredential.FromFile("travinhgo-ba688-firebase-adminsdk-fbsvc-5ffd0fa4a9.json"),
-//    });
-//}
+if (FirebaseApp.DefaultInstance == null)
+{
+    FirebaseApp.Create(new AppOptions()
+    {
+        Credential = GoogleCredential.FromFile("travinhgo-ba688-firebase-adminsdk-fbsvc-5ffd0fa4a9.json"),
+    });
+}
 
 var app = builder.Build();
 
@@ -233,15 +229,17 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
 
-app.MapHub<DashboardHub>("/dashboardHub");
 app.UseHttpsRedirection();
-//app.UseCors("AllowAll");
-app.UseCors("AllowSpecificOrigin");
+// Enable CORS for all origins
+app.UseCors("AllowAll");
 app.UseAuthentication();
 // Add our custom authentication response handler
 app.UseMiddleware<CustomAuthenticationMiddleware>();
 app.UseAuthorization();
 
 app.MapControllers();
+// SignalR
+app.MapHub<DashboardHub>("/dashboardHub")
+   .RequireCors("AllowSpecificOrigin");
 
 app.Run();
