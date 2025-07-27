@@ -7600,5 +7600,35 @@
   },
   "vi:bảo tàng văn hóa dân tộc khmer": {
     "en": "Bảo tàng văn hóa dân tộc của người Khmer"
+  },
+  "en:6 days ago": {
+    "vi": "6 ngày trước"
+  },
+  "vi:6 ngày trước": {
+    "en": "6 days ago"
+  },
+  "en:user banned successfully": {
+    "vi": "Chặn người dùng thành công"
+  },
+  "vi:chặn người dùng thành công": {
+    "en": "User banned successfully"
+  },
+  "en:stt": {
+    "vi": "Số thứ tự"
+  },
+  "vi:số thứ tự": {
+    "en": "STT"
+  },
+  "en:admin banned successfully": {
+    "vi": "Admin đã cấm thành công"
+  },
+  "vi:admin đã cấm thành công": {
+    "en": "Admin banned successfully"
+  },
+  "en:admin restored successfully": {
+    "vi": "Quản trị viên đã khôi phục thành công"
+  },
+  "vi:quản trị viên đã khôi phục thành công": {
+    "en": "Admin restored successfully"
   }
 }
