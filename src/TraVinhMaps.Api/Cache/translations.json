@@ -255,7 +255,7 @@
     "vi": "Tất cả"
   },
   "vi:tất cả": {
-    "en": "All"
+    "en": "All()"
   },
   "en:select tags": {
     "vi": "Chọn thẻ"
@@ -1749,7 +1749,7 @@
     "vi": "Ảnh đại diện"
   },
   "vi:ảnh đại diện": {
-    "en": "avatar"
+    "en": "avt"
   },
   "en:admin list": {
     "vi": "Danh sách quản trị viên"
@@ -7534,5 +7534,71 @@
   },
   "en:select language": {
     "vi": "Chọn ngôn ngữ"
+  },
+  "en:avt": {
+    "vi": "Ảnh đại diện"
+  },
+  "en:please wait 1.9 seconds before translating again.": {
+    "vi": "Xin vui lòng đợi 1.9 giây trước khi dịch lại."
+  },
+  "vi:xin vui lòng đợi 1.9 giây trước khi dịch lại.": {
+    "en": "Please wait 1.9 seconds before translating again."
+  },
+  "en:showing 1 to 3 of 3 entries (filtered from 18 total entries)": {
+    "vi": "Hiển thị 1 đến 3 trong tổng số 3 mục (đã lọc từ 18 mục tổng cộng)"
+  },
+  "vi:hiển thị 1 đến 3 trong tổng số 3 mục (đã lọc từ 18 mục tổng cộng)": {
+    "en": "Showing 1 to 3 of 3 entries (filtered from 18 total entries)"
+  },
+  "en:4 days ago": {
+    "vi": "4 ngày trước"
+  },
+  "vi:4 ngày trước": {
+    "en": "4 days ago"
+  },
+  "en:19 days ago": {
+    "vi": "19 ngày trước"
+  },
+  "vi:19 ngày trước": {
+    "en": "19 days ago"
+  },
+  "en:welcome alex": {
+    "vi": "Chào mừng Alex"
+  },
+  "vi:chào mừng alex": {
+    "en": "Welcome Alex"
+  },
+  "en:here’s what’s                             happening with                             your store today.": {
+    "vi": "Đây là những gì đang diễn ra với cửa hàng của bạn hôm nay."
+  },
+  "vi:đây là những gì đang diễn ra với cửa hàng của bạn hôm nay.": {
+    "en": "Here’s what’s                             happening with                             your store today."
+  },
+  "en:5 days ago": {
+    "vi": "5 ngày trước"
+  },
+  "vi:5 ngày trước": {
+    "en": "5 days ago"
+  },
+  "en:create administrator": {
+    "vi": "Tạo Quản trị viên"
+  },
+  "vi:tạo quản trị viên": {
+    "en": "Create Administrator"
+  },
+  "en:20 days ago": {
+    "vi": "20 ngày trước"
+  },
+  "vi:20 ngày trước": {
+    "en": "20 days ago"
+  },
+  "en:all()": {
+    "vi": "Tất cả"
+  },
+  "en:bảo tàng văn hóa dân tộc của người khmer": {
+    "vi": "Bảo tàng văn hóa dân tộc Khmer"
+  },
+  "vi:bảo tàng văn hóa dân tộc khmer": {
+    "en": "Bảo tàng văn hóa dân tộc của người Khmer"
   }
 }
