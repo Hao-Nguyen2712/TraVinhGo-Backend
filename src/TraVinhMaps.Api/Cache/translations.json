@@ -8563,5 +8563,17 @@
   },
   "vi:hiển thị 1 đến 10 của 20 mục (được lọc từ 23 mục tổng cộng)": {
     "en": "Showing 1 to 10 of 20 entries (filtered from 23 total entries)"
+  },
+  "en:26 days ago": {
+    "vi": "26 ngày trước"
+  },
+  "vi:26 ngày trước": {
+    "en": "26 days ago"
+  },
+  "en:august,": {
+    "vi": "Tháng Tám,"
+  },
+  "vi:tháng tám,": {
+    "en": "August,"
   }
 }

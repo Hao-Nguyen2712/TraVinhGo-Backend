@@ -505,7 +505,7 @@ public class OcopProductController : ControllerBase
         try
         {
             var analytics = await _service.CompareProductsAsync(productIds, timeRange, startDate, endDate);
-            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
+            //if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
             return this.ApiOk(analytics);
         }
         catch (Exception ex)
