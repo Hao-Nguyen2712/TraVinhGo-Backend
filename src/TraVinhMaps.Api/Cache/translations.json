@@ -8575,5 +8575,22 @@
   },
   "vi:tháng tám,": {
     "en": "August,"
+  "en:1 hrs ago": {
+    "vi": "1 giờ trước"
+  },
+  "vi:1 giờ trước": {
+    "en": "1 hrs ago"
+  },
+  "en:change": {
+    "vi": "Thay đổi"
+  },
+  "vi:thay đổi": {
+    "en": "Change"
+  },
+  "en:not forbidden": {
+    "vi": "Không cấm"
+  },
+  "vi:không cấm": {
+    "en": "Not Forbidden"
   }
 }
