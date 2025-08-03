@@ -1,6 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using System.Threading.RateLimiting;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authorization;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using TraVinhMaps.Api.AuthenticationHandlers;
+using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Api.Middlewares;
 using TraVinhMaps.Application;
@@ -203,6 +205,36 @@ if (FirebaseApp.DefaultInstance == null)
     });
 }
 
+
+
+// rate limiter configuration
+builder.Services.AddRateLimiter(rateLimiterOption =>
+{
+    rateLimiterOption.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: GetPartitionKeyExtension.GetPartitionKey(context),
+            factory: partition => new FixedWindowRateLimiterOptions
+            {
+                AutoReplenishment = true,
+                PermitLimit = 100,
+                Window = TimeSpan.FromMinutes(1),
+                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+                QueueLimit = 10  // Queue 10 requests khi limit exceeded
+            }));
+
+    // Custom rejection handler
+    rateLimiterOption.OnRejected = async (context, token) =>
+    {
+        context.HttpContext.Response.StatusCode = 429;
+        await context.HttpContext.Response.WriteAsJsonAsync(new
+        {
+            error = "Rate limit exceeded",
+            message = $"Too many requests for partition: {GetPartitionKeyExtension.GetPartitionKey(context.HttpContext)}",
+            retryAfter = 60
+        }, cancellationToken: token);
+    };
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -236,6 +268,8 @@ app.UseAuthentication();
 // Add our custom authentication response handler
 app.UseMiddleware<CustomAuthenticationMiddleware>();
 app.UseAuthorization();
+
+app.UseRateLimiter();
 
 app.MapControllers();
 // SignalR
