@@ -47,7 +47,7 @@ public class HomeController : ControllerBase
         var cacheKeyEvents = "HomePageData_top_events";
         var cacheKeyOcopProducts = "HomePageData_ocop_products";
 
-        // Kiểm tra cache trước
+        // check cache firsts
         var cachedDataTopFavorite = await _cacheService.GetData<List<TopFavoriteRequest>>(cacheKeyFavoriteDestination);
         var cachedDataTopEvents = await _cacheService.GetData<IEnumerable<EventAndFestival>>(cacheKeyEvents);
         var cachedDataOcopProducts = await _cacheService.GetData<List<OcopProductResponse>>(cacheKeyOcopProducts);

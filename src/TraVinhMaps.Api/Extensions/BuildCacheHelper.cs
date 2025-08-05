@@ -58,4 +58,75 @@ public static class BuildCacheHelper
         };
         return string.Join(":", keyParts);
     }
+
+    public static string BuildCacheKeyForEventAndFestival(EventAndFestivalSpecParams parameters)
+    {
+        var keyParts = new List<string>
+        {
+            CacheKey.EventAndFestival_Paging,
+            $"page:{parameters.PageIndex}",
+            $"size:{parameters.PageSize}"
+        };
+        if (!string.IsNullOrEmpty(parameters.Sort))
+        {
+            keyParts.Add($"sort:{parameters.Sort}");
+        }
+        if (!string.IsNullOrEmpty(parameters.Search))
+        {
+            keyParts.Add($"search:{parameters.Search}");
+        }
+        if (parameters.PageIndex <= 0 || parameters.PageSize <= 0)
+        {
+            throw new ArgumentException("PageIndex and PageSize must be greater than zero.");
+        }
+        // Ensure that the key parts are sorted to maintain consistency
+        return string.Join(":", keyParts);
+    }
+    public static string BuildCacheKeyForOcopProduct(OcopProductSpecParams parameters)
+    {
+        var keyParts = new List<string>
+        {
+            CacheKey.OcopProduct_Paging,
+            $"page:{parameters.PageIndex}",
+            $"size:{parameters.PageSize}"
+        };
+        if (!string.IsNullOrEmpty(parameters.Sort))
+        {
+            keyParts.Add($"sort:{parameters.Sort}");
+        }
+        if (!string.IsNullOrEmpty(parameters.Search))
+        {
+            keyParts.Add($"search:{parameters.Search}");
+        }
+        if (parameters.PageIndex <= 0 || parameters.PageSize <= 0)
+        {
+            throw new ArgumentException("PageIndex and PageSize must be greater than zero.");
+        }
+        // Ensure that the key parts are sorted to maintain consistency
+        return string.Join(":", keyParts);
+    }
+
+    public static string BuildCacheKeyForLocalSpecialties(LocalSpecialtiesSpecParams parameters)
+    {
+        var keyParts = new List<string>
+        {
+            CacheKey.LocalSpecialties_Paging,
+            $"page:{parameters.PageIndex}",
+            $"size:{parameters.PageSize}"
+        };
+        if (!string.IsNullOrEmpty(parameters.Sort))
+        {
+            keyParts.Add($"sort:{parameters.Sort}");
+        }
+        if (!string.IsNullOrEmpty(parameters.Search))
+        {
+            keyParts.Add($"search:{parameters.Search}");
+        }
+        if (parameters.PageIndex <= 0 || parameters.PageSize <= 0)
+        {
+            throw new ArgumentException("PageIndex and PageSize must be greater than zero.");
+        }
+        // Ensure that the key parts are sorted to maintain consistency
+        return string.Join(":", keyParts);
+    }
 }
