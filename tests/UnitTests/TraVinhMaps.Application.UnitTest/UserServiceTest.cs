@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Moq;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.External;
+using TraVinhMaps.Application.Features.Destination.Interface;
 using TraVinhMaps.Application.Features.Users;
 using TraVinhMaps.Application.Features.Users.Models;
 using TraVinhMaps.Application.UnitOfWorks;
@@ -22,16 +23,26 @@ public class UserServiceTest
     private readonly Mock<ICloudinaryService> _mockCloudinaryService;
     private readonly UserService _userService;
 
+    private readonly Mock<ITouristDestinationService> _mockTouristDestinationService;
+    private readonly Mock<IHttpContextAccessor> _mockHttpContextAccessor;
+    private readonly Mock<IEmailSender> _mockEmailSender;
+
     public UserServiceTest()
     {
         _mockUserRepository = new Mock<IUserRepository>();
         _mockRoleRepository = new Mock<IBaseRepository<Domain.Entities.Role>>();
         _mockCloudinaryService = new Mock<ICloudinaryService>();
+        _mockTouristDestinationService = new Mock<ITouristDestinationService>();
+        _mockHttpContextAccessor = new Mock<IHttpContextAccessor>();
+        _mockEmailSender = new Mock<IEmailSender>();
         _userService = new UserService(
-            _mockUserRepository.Object,
-            _mockRoleRepository.Object,
-            _mockCloudinaryService.Object
-        );
+        _mockUserRepository.Object,
+        _mockTouristDestinationService.Object,
+        _mockRoleRepository.Object,
+        _mockCloudinaryService.Object,
+        _mockHttpContextAccessor.Object,
+        _mockEmailSender.Object
+    );
     }
 
     [Fact]

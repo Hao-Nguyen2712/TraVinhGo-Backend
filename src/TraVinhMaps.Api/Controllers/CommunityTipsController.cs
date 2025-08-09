@@ -4,10 +4,10 @@
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
-using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Application.Features.CommunityTips.Interface;
-using TraVinhMaps.Application.Features.CommunityTips.Models;
 using TraVinhMaps.Application.Features.CommunityTips.Mappers;
+using TraVinhMaps.Application.Features.CommunityTips.Models;
+using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Api.Controllers;
 
