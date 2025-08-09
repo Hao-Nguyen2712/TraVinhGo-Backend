@@ -1,15 +1,11 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using FirebaseAdmin;
-using FirebaseAdmin.Messaging;
-using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Mvc;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Notifications.Interface;
 using TraVinhMaps.Application.Features.Notifications.Models;
-using TraVinhMaps.Domain.Entities;
 
 namespace TraVinhMaps.Api.Controllers;
 
