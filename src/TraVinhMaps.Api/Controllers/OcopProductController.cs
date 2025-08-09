@@ -7,7 +7,9 @@ using Newtonsoft.Json;
 using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Common.Exceptions;
+using TraVinhMaps.Application.External;
 using TraVinhMaps.Application.Features.Company.Interface;
+using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
@@ -15,6 +17,7 @@ using TraVinhMaps.Application.Features.OcopProduct.Mappers;
 using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Application.Features.OcopType.Interface;
 using TraVinhMaps.Domain.Entities;
+using TraVinhMaps.Domain.Specs;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]
@@ -27,7 +30,9 @@ public class OcopProductController : ControllerBase
     private readonly ICompanyService _companyService;
     private readonly IOcopTypeService _ocopTypeService;
     private readonly IHubContext<DashboardHub> _hubContext;
-    public OcopProductController(IOcopProductService service, ImageManagementOcopProductServices imageManagementOcopProductServices, IMarkerService markerService, ICompanyService companyService, IOcopTypeService _ocopTypeService, IHubContext<DashboardHub> hubContext)
+    private readonly ICacheService _cacheService;
+
+    public OcopProductController(IOcopProductService service, ImageManagementOcopProductServices imageManagementOcopProductServices, IMarkerService markerService, ICompanyService companyService, IOcopTypeService _ocopTypeService, IHubContext<DashboardHub> hubContext, ICacheService cacheService)
     {
         _service = service;
         _imageManagementOcopProductServices = imageManagementOcopProductServices;
@@ -35,6 +40,7 @@ public class OcopProductController : ControllerBase
         _companyService = companyService;
         this._ocopTypeService = _ocopTypeService;
         _hubContext = hubContext;
+        _cacheService = cacheService;
     }
 
     [HttpGet]
@@ -94,7 +100,18 @@ public class OcopProductController : ControllerBase
     [Route("GetOcopProductById/{id}", Name = "GetOcopProductById")]
     public async Task<IActionResult> GetOcopProductById(string id)
     {
+        var cacheKey = $"GetOcopProduct:{id}";
+        var cacheValue = await _cacheService.GetData<OcopProduct>(cacheKey);
+        if (cacheValue != null)
+        {
+            return this.ApiOk(cacheValue);
+        }
         var ocopProduct = await _service.GetByIdAsync(id);
+        if (ocopProduct == null)
+        {
+            return this.ApiError($"Ocop product with id '{id}' not found.");
+        }
+        await _cacheService.SetData(cacheKey, ocopProduct);
         return this.ApiOk(ocopProduct);
     }
     [HttpGet]
@@ -154,7 +171,7 @@ public class OcopProductController : ControllerBase
     }
     [HttpPost]
     [Route("AddImageOcopProduct")]
-    public async Task<IActionResult> AddImageOcopProduct([FromForm] AddImageRequest addImageRequest)
+    public async Task<IActionResult> AddImageOcopProduct([FromForm] TraVinhMaps.Application.Features.Destination.Models.AddImageRequest addImageRequest)
     {
         if (addImageRequest.imageFile == null && !addImageRequest.imageFile.Any())
         {
@@ -183,6 +200,11 @@ public class OcopProductController : ControllerBase
     public async Task<IActionResult> DeleteImageOcopProduct(string id, string imageUrl)
     {
         var decodedImageUrl = Uri.UnescapeDataString(imageUrl);
+        var isDeleteUrl = await this._imageManagementOcopProductServices.DeleteImageOCOP(decodedImageUrl);
+        if (!isDeleteUrl)
+        {
+            return this.ApiError("No valid images url were removed.");
+        }
         var ocopProduct = await _service.GetByIdAsync(id);
         if (ocopProduct == null)
         {
@@ -310,7 +332,7 @@ public class OcopProductController : ControllerBase
         }
 
         var deleteSellLocation = await _service.DeleteSellLocation(id, name);
-        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics"); 
+        await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
         return this.ApiOk("Sell location deleted successfully.");
     }
 
@@ -320,11 +342,18 @@ public class OcopProductController : ControllerBase
     [HttpGet("get-lookup-product")]
     public async Task<IActionResult> LooksUpForProduct()
     {
+        var cacheKey = "GetLookupOcopProduct";
+        var cacheResult = await _cacheService.GetData<ProductLookUpsResponse>(cacheKey);
+        if (cacheResult != null)
+        {
+            return this.ApiOk(cacheResult);
+        }
         var result = await _service.LooksUpForProduct();
         if (result == null)
         {
             return this.ApiError("No product found for lookup.");
         }
+        await _cacheService.SetData(cacheKey, result);
         return this.ApiOk(result);
     }
 
@@ -505,7 +534,7 @@ public class OcopProductController : ControllerBase
         try
         {
             var analytics = await _service.CompareProductsAsync(productIds, timeRange, startDate, endDate);
-            if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
+            //if (!analytics.Any()) throw new NotFoundException("No analytics data available.");
             return this.ApiOk(analytics);
         }
         catch (Exception ex)
@@ -576,6 +605,28 @@ public class OcopProductController : ControllerBase
         }).ToList();
 
         return this.ApiOk(response);
+    }
+
+    [HttpGet]
+    [Route("GetOcopProductPaging")]
+    public async Task<IActionResult> GetOcopProductPaging([FromQuery] OcopProductSpecParams specParams)
+    {
+        var cacheKey = BuildCacheHelper.BuildCacheKeyForOcopProduct(specParams);
+        var cacheResult = await _cacheService.GetData<Pagination<OcopProduct>>(cacheKey);
+        if (cacheResult != null)
+        {
+            return this.ApiOk(cacheResult);
+        }
+
+        var pagedResult = await _service.GetOcopProductPaging(specParams);
+        if (pagedResult == null)
+        {
+            return this.ApiError("No OCOP products found.");
+        }
+        // Cache the paged result
+        var cacheTTL = BuildCacheHelper.GetCacheTtl(specParams.PageIndex);
+        await _cacheService.SetData(cacheKey, pagedResult, cacheTTL);
+        return this.ApiOk(pagedResult);
     }
 
     [HttpGet]
