@@ -319,7 +319,7 @@ public class UserRepository : BaseRepository<User>, IUserRepository
                     endDate = startDate.AddYears(1);
                     break;
                 default:
-                    _logger.LogWarning("❌ Invalid timeRange: {TimeRange}", timeRange);
+                    _logger.LogWarning("Invalid timeRange: {TimeRange}", timeRange);
                     return result;
             }
 
@@ -435,59 +435,144 @@ public class UserRepository : BaseRepository<User>, IUserRepository
             };
             }
 
+            //if (groupBy == "all" || groupBy == "hometown")
+            //{
+            //    // Sửa lỗi bằng cách thay thế hàm Javascript bằng logic đơn giản và đáng tin cậy hơn.
+            //    var pipeline = new List<BsonDocument>
+            //    {
+            //        new BsonDocument("$match", baseMatch),
+            //        new BsonDocument("$addFields", new BsonDocument("normalizedAddress",
+            //            new BsonDocument("$function", new BsonDocument
+            //            {
+            //                { "body", @"
+            //                    function(addr) {
+            //                        // 1. Luôn kiểm tra đầu vào để đảm bảo an toàn
+            //                        if (!addr || typeof addr !== 'string' || addr.trim() === '') {
+            //                            return 'Unknown';
+            //                        }
+
+            //                        // 2. Tách địa chỉ bằng dấu phẩy, cắt bỏ khoảng trắng thừa và loại bỏ các phần tử rỗng
+            //                        const parts = addr.split(',').map(p => p.trim()).filter(p => p);
+
+            //                        // 3. Áp dụng quy tắc xử lý:
+            //                        if (parts.length >= 2) {
+            //                            // Nếu có 2 phần trở lên, lấy 2 phần cuối cùng.
+            //                            // Đây là trường hợp phổ biến nhất (Quận/Huyện, Tỉnh/Thành phố).
+            //                            // Ví dụ: 'Q. Ô Môn, TP. Cần Thơ'
+            //                            return `${parts[parts.length - 2]}, ${parts[parts.length - 1]}`;
+            //                        } 
+
+            //                        if (parts.length === 1) {
+            //                            // Nếu chỉ có 1 phần, trả về chính nó (thường là chỉ có Tỉnh/Thành phố).
+            //                            // Ví dụ: 'Cần Thơ'
+            //                            return parts[0];
+            //                        } 
+
+            //                        // Nếu địa chỉ rỗng hoặc chỉ chứa dấu phẩy, trả về 'Unknown'.
+            //                        return 'Unknown';
+            //                    }
+            //                " },
+            //                { "args", new BsonArray { "$profile.address" } },
+            //                { "lang", "js" }
+            //            })
+            //        )),
+            //        new BsonDocument("$group", new BsonDocument
+            //        {
+            //            { "_id", "$normalizedAddress" },
+            //            { "count", new BsonDocument("$sum", 1) }
+            //        }),
+            //        new BsonDocument("$sort", new BsonDocument("count", -1))
+            //    };
+
+            //    var docs = await _collection.Aggregate<BsonDocument>(pipeline).ToListAsync(cancellationToken);
+
+            //    // Chuyển đổi kết quả sang Dictionary, đồng thời xử lý các kết quả 'Unknown' từ pipeline
+            //    var hometownStats = docs.ToDictionary(x => x["_id"].AsString, x => x["count"].AsInt32);
+
+            //    result["hometown"] = hometownStats;
+            //}
             if (groupBy == "all" || groupBy == "hometown")
             {
-                // Sửa lỗi bằng cách thay thế hàm Javascript bằng logic đơn giản và đáng tin cậy hơn.
+                // --- Pipeline để xử lý các địa chỉ HỢP LỆ ---
                 var pipeline = new List<BsonDocument>
+    {
+        // Match các user cơ bản (roleId, username, createdAt)
+        new BsonDocument("$match", baseMatch),
+        
+        // SỬA LỖI Ở ĐÂY: Lọc ra những user có địa chỉ hợp lệ để xử lý
+        // Dùng $nin (not in) để kiểm tra cả null và chuỗi rỗng trong một lần
+        new BsonDocument("$match", new BsonDocument
+        {
+            { "profile.address", new BsonDocument
                 {
-                    new BsonDocument("$match", baseMatch),
-                    new BsonDocument("$addFields", new BsonDocument("normalizedAddress",
-                        new BsonDocument("$function", new BsonDocument
-                        {
-                            { "body", @"
-                                function(addr) {
-                                    // 1. Luôn kiểm tra đầu vào để đảm bảo an toàn
-                                    if (!addr || typeof addr !== 'string' || addr.trim() === '') {
-                                        return 'Unknown';
-                                    }
-                        
-                                    // 2. Tách địa chỉ bằng dấu phẩy, cắt bỏ khoảng trắng thừa và loại bỏ các phần tử rỗng
-                                    const parts = addr.split(',').map(p => p.trim()).filter(p => p);
+                    { "$exists", true },
+                    { "$nin", new BsonArray { BsonNull.Value, "" } }
+                }
+            }
+        }),
 
-                                    // 3. Áp dụng quy tắc xử lý:
-                                    if (parts.length >= 2) {
-                                        // Nếu có 2 phần trở lên, lấy 2 phần cuối cùng.
-                                        // Đây là trường hợp phổ biến nhất (Quận/Huyện, Tỉnh/Thành phố).
-                                        // Ví dụ: 'Q. Ô Môn, TP. Cần Thơ'
-                                        return `${parts[parts.length - 2]}, ${parts[parts.length - 1]}`;
-                                    } 
-                        
-                                    if (parts.length === 1) {
-                                        // Nếu chỉ có 1 phần, trả về chính nó (thường là chỉ có Tỉnh/Thành phố).
-                                        // Ví dụ: 'Cần Thơ'
-                                        return parts[0];
-                                    } 
-                        
-                                    // Nếu địa chỉ rỗng hoặc chỉ chứa dấu phẩy, trả về 'Unknown'.
-                                    return 'Unknown';
-                                }
-                            " },
-                            { "args", new BsonArray { "$profile.address" } },
-                            { "lang", "js" }
-                        })
-                    )),
-                    new BsonDocument("$group", new BsonDocument
+        // Tách chuỗi địa chỉ thành mảng các phần tử
+        new BsonDocument("$addFields", new BsonDocument("addressParts",
+            new BsonDocument("$split", new BsonArray { "$profile.address", "," })
+        )),
+
+        // Lấy ra Tỉnh/Thành phố từ địa chỉ (thường là 1 hoặc 2 phần tử cuối)
+        new BsonDocument("$addFields", new BsonDocument("hometown",
+            new BsonDocument("$let", new BsonDocument
+            {
+                { "vars", new BsonDocument("parts", "$addressParts") },
+                { "in", new BsonDocument("$cond", new BsonDocument
                     {
-                        { "_id", "$normalizedAddress" },
-                        { "count", new BsonDocument("$sum", 1) }
-                    }),
-                    new BsonDocument("$sort", new BsonDocument("count", -1))
-                };
+                        // Nếu có 2 phần tử trở lên, ghép 2 phần tử cuối lại
+                        { "if", new BsonDocument("$gte", new BsonArray { new BsonDocument("$size", "$$parts"), 2 }) },
+                        {
+                            "then", new BsonDocument("$concat", new BsonArray
+                            {
+                                new BsonDocument("$trim", new BsonDocument("input", new BsonDocument("$arrayElemAt", new BsonArray { "$$parts", -2 }))),
+                                ", ",
+                                new BsonDocument("$trim", new BsonDocument("input", new BsonDocument("$arrayElemAt", new BsonArray { "$$parts", -1 })))
+                            })
+                        },
+                        // Nếu không, chỉ lấy phần tử đầu tiên (an toàn cho cả trường hợp chỉ có 1 phần)
+                        {
+                            "else", new BsonDocument("$trim", new BsonDocument("input", new BsonDocument("$arrayElemAt", new BsonArray { "$$parts", 0 })))
+                        }
+                    })
+                }
+            })
+        )),
+        
+        // Gom nhóm và đếm
+        new BsonDocument("$group", new BsonDocument
+        {
+            { "_id", "$hometown" },
+            { "count", new BsonDocument("$sum", 1) }
+        }),
+        new BsonDocument("$sort", new BsonDocument("count", -1))
+    };
 
                 var docs = await _collection.Aggregate<BsonDocument>(pipeline).ToListAsync(cancellationToken);
+                var hometownStats = docs.ToDictionary(x => x["_id"].ToString(), x => x["count"].AsInt32);
 
-                // Chuyển đổi kết quả sang Dictionary, đồng thời xử lý các kết quả 'Unknown' từ pipeline
-                var hometownStats = docs.ToDictionary(x => x["_id"].AsString, x => x["count"].AsInt32);
+                // --- Đếm riêng số lượng user có địa chỉ KHÔNG HỢP LỆ (Unknown) ---
+                // Tạo một bộ lọc an toàn hơn bằng cách kết hợp baseMatch và điều kiện $or
+                var unknownAddressFilter = new BsonDocument("$and", new BsonArray
+    {
+        baseMatch, // Điều kiện lọc cơ bản
+        new BsonDocument("$or", new BsonArray
+        {
+            new BsonDocument("profile.address", new BsonDocument("$exists", false)),
+            new BsonDocument("profile.address", BsonNull.Value),
+            new BsonDocument("profile.address", "")
+        })
+    });
+                var unknownCount = (int)await _collection.CountDocumentsAsync(unknownAddressFilter, cancellationToken: cancellationToken);
+
+                // Thêm số lượng 'Unknown' vào kết quả nếu có
+                if (unknownCount > 0)
+                {
+                    hometownStats["Unknown"] = unknownCount;
+                }
 
                 result["hometown"] = hometownStats;
             }
