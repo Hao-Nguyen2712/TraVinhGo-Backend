@@ -572,4 +572,11 @@ public class TouristDestinationController : ControllerBase
         await _cacheService.SetData(cacheKey, destinations, cacheTtl);
         return this.ApiOk(destinations);
     }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchTouristDestinationByName(string name)
+    {
+        var list = await _touristDestinationService.SearchTouristDestinationByNameAsync(name);
+        return this.ApiOk(list);
+    }
 }

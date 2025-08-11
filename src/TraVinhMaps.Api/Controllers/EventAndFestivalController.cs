@@ -240,4 +240,11 @@ public class EventAndFestivalController : ControllerBase
         await _cacheService.SetData(cacheKey, pagedResult, cacheTtl);
         return this.ApiOk(pagedResult);
     }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchEventAndFestivalByName(string name)
+    {
+        var list = await _eventAndFestivalService.SearchEventAndFestivalByNameAsync(name);
+        return this.ApiOk(list);
+    }
 }
