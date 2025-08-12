@@ -110,7 +110,7 @@ public class OcopProductController : ControllerBase
         {
             return this.ApiError($"Ocop product with id '{id}' not found.");
         }
-        await _cacheService.SetData(cacheKey, ocopProduct);
+        //await _cacheService.SetData(cacheKey, ocopProduct);
         return this.ApiOk(ocopProduct);
     }
     [HttpGet]

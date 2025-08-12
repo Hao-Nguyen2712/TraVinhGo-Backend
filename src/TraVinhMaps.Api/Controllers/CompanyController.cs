@@ -49,9 +49,9 @@ public class CompanyController : ControllerBase
     public async Task<IActionResult> AddCompany([FromBody] CreateCompanyRequest createCompanyRequest)
     {
         var allCompany = await _companyService.ListAllAsync();
-        if (allCompany != null && allCompany.Any(c => c.Name == createCompanyRequest.Name))
+        if (allCompany != null && allCompany.Any(c => c.Name == createCompanyRequest.Name && c.Address == createCompanyRequest.Address))
         {
-            return this.ApiError("Company already exists.");
+            return this.ApiError("Company name already exists.");
         }
         var createCompany = CompanyMapper.Mapper.Map<Company>(createCompanyRequest);
         var company = await _companyService.AddAsync(createCompany);
@@ -67,9 +67,9 @@ public class CompanyController : ControllerBase
             throw new NotFoundException("Company not found.");
         }
         var allCompany = await _companyService.ListAllAsync();
-        if (allCompany != null && allCompany.Any(c => c.Name == updateCompanyRequest.Name && c.Id != updateCompanyRequest.Id))
+        if (allCompany != null && allCompany.Any(c => c.Name == updateCompanyRequest.Name && c.Address == updateCompanyRequest.Address && c.Id != updateCompanyRequest.Id))
         {
-            return this.ApiError("Company already exists.");
+            return this.ApiError("Company name already exists.");
         }
 
         existingCompany.Name = updateCompanyRequest.Name;
