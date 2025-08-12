@@ -9,6 +9,7 @@ using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.Features.Feedback.Interface;
 using TraVinhMaps.Application.Features.Feedback.Models;
+using TraVinhMaps.Application.Features.Users.Interface;
 
 namespace TraVinhMaps.Api.Controllers;
 [Route("api/[controller]")]
@@ -17,10 +18,12 @@ public class FeedbackController : ControllerBase
 {
     private readonly IFeedbackService _feedbackService;
     private readonly IHubContext<DashboardHub> _hubContext;
-    public FeedbackController(IFeedbackService feedbackService, IHubContext<DashboardHub> hubContext)
+    private readonly IUserService _userService;
+    public FeedbackController(IFeedbackService feedbackService, IHubContext<DashboardHub> hubContext, IUserService userService)
     {
         _feedbackService = feedbackService;
         _hubContext = hubContext;
+        _userService = userService;
     }
 
     // GET endpoint to retrieve all feedbacks
@@ -75,8 +78,20 @@ public class FeedbackController : ControllerBase
         {
             var feedback = await _feedbackService.AddAsync(request);
 
+            var user = await _userService.GetByIdAsync(feedback.UserId);
+            var username = user != null ? user.Username : "Unknown";
+            var feedbackPayload = new
+            {
+                id = feedback.Id,
+                Content = feedback.Content,
+                CreatedAt = feedback.CreatedAt,
+                Username = username,
+                UserId = feedback.UserId,
+                Images = feedback.Images
+            };
+
             // Get the SignalR hub context to notify admins
-            await _hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", feedback);
+            await _hubContext.Clients.Group("admin").SendAsync("ReceiveFeedback", feedbackPayload);
 
             return this.ApiOk(feedback);
         }

@@ -263,7 +263,8 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseHttpsRedirection();
 // Enable CORS for all origins
-app.UseCors("AllowAll");
+//app.UseCors("AllowAll");
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthentication();
 // Add our custom authentication response handler
 app.UseMiddleware<CustomAuthenticationMiddleware>();
@@ -273,7 +274,6 @@ app.UseRateLimiter();
 
 app.MapControllers();
 // SignalR
-app.MapHub<DashboardHub>("/dashboardHub")
-   .RequireCors("AllowSpecificOrigin");
+app.MapHub<DashboardHub>("/dashboardHub").RequireCors("AllowSpecificOrigin");
 
 app.Run();
