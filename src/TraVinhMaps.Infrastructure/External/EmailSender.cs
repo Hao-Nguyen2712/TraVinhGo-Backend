@@ -203,7 +203,7 @@ public class EmailSender : IEmailSender
         <body>
             <div class='container'>
                 <div class='header'>
-                    <h2>OTP Verification</h2>
+                    <h2>OTP Verification </h2>
                 </div>
                 <div class='content'>
                     <p>Thank you for using our service!</p>

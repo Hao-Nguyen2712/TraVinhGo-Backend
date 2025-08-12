@@ -150,8 +150,6 @@ public class LocalSpecialtiesService : ILocalSpecialtiesService
         return await _localSpecialtiesRepository.UpdateSellLocationAsync(id, request, cancellationToken);
     }
 
-
-
     public async Task<Pagination<Domain.Entities.LocalSpecialties>> GetLocalSpecialtiesPaging(LocalSpecialtiesSpecParams specParams)
     {
         var result = await _localSpecialtiesRepository.GetLocalSpecialtiesPaging(specParams);

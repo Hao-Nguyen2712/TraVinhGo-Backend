@@ -846,7 +846,7 @@
     "vi": "Ảnh đại diện"
   },
   "vi:ảnh đại diện": {
-    "en": "Profile picture"
+    "en": "Profile Image"
   },
   "en:product name": {
     "vi": "Tên sản phẩm"
@@ -3481,5 +3481,260 @@
   },
   "vi:đang tìm kiếm...": {
     "en": "Đang tìm kiếm ..."
+  },
+  "en:home": {
+    "vi": "Trang chủ"
+  },
+  "vi:trang chủ": {
+    "en": "Home"
+  },
+  "en:security information": {
+    "vi": "Thông tin bảo mật"
+  },
+  "vi:thông tin bảo mật": {
+    "en": "Security Information"
+  },
+  "en:change email": {
+    "vi": "Thay đổi Email"
+  },
+  "vi:thay đổi email": {
+    "en": "Change Email"
+  },
+  "en:no phone number yet.": {
+    "vi": "Chưa có số điện thoại."
+  },
+  "vi:chưa có số điện thoại.": {
+    "en": "No phone number yet."
+  },
+  "en:change phone number": {
+    "vi": "Thay đổi số điện thoại"
+  },
+  "vi:thay đổi số điện thoại": {
+    "en": "Change Phone Number"
+  },
+  "en:password has been set.": {
+    "vi": "Mật khẩu đã được đặt."
+  },
+  "vi:mật khẩu đã được đặt.": {
+    "en": "Password has been set."
+  },
+  "en:change password": {
+    "vi": "Thay đổi mật khẩu"
+  },
+  "vi:thay đổi mật khẩu": {
+    "en": "Change Password"
+  },
+  "en:change": {
+    "vi": "Thay đổi"
+  },
+  "vi:thay đổi": {
+    "en": "Change"
+  },
+  "en:please select a valid image file (jpeg, png, gif, etc.)": {
+    "vi": "Vui lòng chọn một tệp hình ảnh hợp lệ (JPEG, PNG, GIF, v.v.)"
+  },
+  "vi:vui lòng chọn một tệp hình ảnh hợp lệ (jpeg, png, gif, v.v.)": {
+    "en": "Please select a valid image file (JPEG, PNG, GIF, etc.)"
+  },
+  "en:username": {
+    "vi": "Tên người dùng"
+  },
+  "vi:tên người dùng": {
+    "en": "Username"
+  },
+  "en:role": {
+    "vi": "Vai trò"
+  },
+  "vi:vai trò": {
+    "en": "Role"
+  },
+  "en:last updated": {
+    "vi": "Cập nhật lần cuối"
+  },
+  "vi:cập nhật lần cuối": {
+    "en": "Last Updated"
+  },
+  "en:forbidden status": {
+    "vi": "Trạng thái cấm"
+  },
+  "vi:trạng thái cấm": {
+    "en": "Forbidden Status"
+  },
+  "en:not forbidden": {
+    "vi": "Không bị cấm"
+  },
+  "vi:không bị cấm": {
+    "en": "Not Forbidden"
+  },
+  "en:save changes": {
+    "vi": "Lưu thay đổi"
+  },
+  "vi:lưu thay đổi": {
+    "en": "Save Changes"
+  },
+  "en:your otp is                     sent to joongnguyen2712@gmail.com now": {
+    "vi": "Mã OTP của bạn đã được gửi đến joongnguyen2712@gmail.com"
+  },
+  "vi:mã otp của bạn đã được gửi đến joongnguyen2712@gmail.com": {
+    "en": "Your OTP is                     sent to joongnguyen2712@gmail.com now"
+  },
+  "en:resend otp after": {
+    "vi": "Gửi lại OTP sau"
+  },
+  "vi:gửi lại otp sau": {
+    "en": "Resend OTP after"
+  },
+  "en:update email": {
+    "vi": "Cập nhật Email"
+  },
+  "vi:cập nhật email": {
+    "en": "Update Email"
+  },
+  "en:new email                             address": {
+    "vi": "Địa chỉ Email mới"
+  },
+  "vi:địa chỉ email mới": {
+    "en": "New Email                             Address"
+  },
+  "en:please enter a valid email address.": {
+    "vi": "Vui lòng nhập một địa chỉ email hợp lệ."
+  },
+  "vi:vui lòng nhập một địa chỉ email hợp lệ.": {
+    "en": "Please enter a valid email address."
+  },
+  "en:update phone number": {
+    "vi": "Cập nhật số điện thoại"
+  },
+  "vi:cập nhật số điện thoại": {
+    "en": "Update Phone Number"
+  },
+  "en:new phone                             number": {
+    "vi": "Số điện thoại mới"
+  },
+  "vi:số điện thoại mới": {
+    "en": "New Phone                             Number"
+  },
+  "en:please enter a valid phone number.": {
+    "vi": "Vui lòng nhập một số điện thoại hợp lệ."
+  },
+  "vi:vui lòng nhập một số điện thoại hợp lệ.": {
+    "en": "Please enter a valid phone number."
+  },
+  "en:update password": {
+    "vi": "Cập nhật mật khẩu"
+  },
+  "vi:cập nhật mật khẩu": {
+    "en": "Update Password"
+  },
+  "en:current                             password": {
+    "vi": "Mật khẩu hiện tại"
+  },
+  "vi:mật khẩu hiện tại": {
+    "en": "Current                             Password"
+  },
+  "en:please enter your current password.": {
+    "vi": "Vui lòng nhập mật khẩu hiện tại của bạn."
+  },
+  "vi:vui lòng nhập mật khẩu hiện tại của bạn.": {
+    "en": "Please enter your current password."
+  },
+  "en:password must be at least 8 characters.": {
+    "vi": "Mật khẩu phải có ít nhất 8 ký tự."
+  },
+  "vi:mật khẩu phải có ít nhất 8 ký tự.": {
+    "en": "Password must be at least 8 characters."
+  },
+  "en:confirm new                             password": {
+    "vi": "Xác nhận mật khẩu mới"
+  },
+  "vi:xác nhận mật khẩu mới": {
+    "en": "Confirm New                             Password"
+  },
+  "en:passwords must match.": {
+    "vi": "Mật khẩu phải khớp."
+  },
+  "vi:mật khẩu phải khớp.": {
+    "en": "Passwords must match."
+  },
+  "en:profile image": {
+    "vi": "Ảnh đại diện"
+  },
+  "en:enter your new email": {
+    "vi": "Nhập email mới của bạn"
+  },
+  "vi:nhập email mới của bạn": {
+    "en": "Enter your new email"
+  },
+  "en:enter your new phone number": {
+    "vi": "Nhập số điện thoại mới của bạn"
+  },
+  "vi:nhập số điện thoại mới của bạn": {
+    "en": "Enter your new phone number"
+  },
+  "en:enter your current password": {
+    "vi": "Nhập mật khẩu hiện tại của bạn"
+  },
+  "vi:nhập mật khẩu hiện tại của bạn": {
+    "en": "Enter your current password"
+  },
+  "en:enter your new password": {
+    "vi": "Nhập mật khẩu mới của bạn"
+  },
+  "vi:nhập mật khẩu mới của bạn": {
+    "en": "Enter your new password"
+  },
+  "en:confirm your new password": {
+    "vi": "Xác nhận mật khẩu mới của bạn"
+  },
+  "vi:xác nhận mật khẩu mới của bạn": {
+    "en": "Confirm your new password"
+  },
+  "en:duong bao luan": {
+    "vi": "Dương Bảo Luân"
+  },
+  "vi:dương bảo luân": {
+    "en": "duong bao luan"
+  },
+  "en:13 hrs ago": {
+    "vi": "13 giờ trước"
+  },
+  "vi:13 giờ trước": {
+    "en": "13 hrs ago"
+  },
+  "en:hao nguyen": {
+    "vi": "Hạo Nguyễn"
+  },
+  "vi:hạo nguyễn": {
+    "en": "Hao Nguyen"
+  },
+  "en:10 days ago": {
+    "vi": "10 ngày trước"
+  },
+  "vi:10 ngày trước": {
+    "en": "10 days ago"
+  },
+  "en:duong tan van": {
+    "vi": "Dương Tấn Văn"
+  },
+  "vi:dương tấn văn": {
+    "en": "Duong Tan van"
+  },
+  "en:duonguyenthi": {
+    "vi": "Dương Uyên Thi"
+  },
+  "vi:dương uyên thi": {
+    "en": "DuongUyenThi"
+  },
+  "en:phamthitutrinh": {
+    "vi": "Phạm Thị Tú Trinh"
+  },
+  "vi:phạm thị tú trinh": {
+    "en": "PhamThiTuTrinh"
+  },
+  "en:failed to resend verification code. please try again.": {
+    "vi": "Không thể gửi lại mã xác minh. Vui lòng thử lại."
+  },
+  "vi:không thể gửi lại mã xác minh. vui lòng thử lại.": {
+    "en": "Failed to resend verification code. Please try again."
   }
 }
