@@ -48,7 +48,7 @@ public class OcopTypeController : ControllerBase
         var allOcopTypes = await _typeService.ListAllAsync();
         if (allOcopTypes != null && allOcopTypes.Any(ot => ot.OcopTypeName == createOcopTypeRequest.OcopTypeName))
         {
-            return this.ApiError("Ocop type already exists.");
+            return this.ApiError("Ocop type name already exists.");
         }
         var createOcopType = OcopTypeMapper.Mapper.Map<OcopType>(createOcopTypeRequest);
         createOcopType.OcopTypeStatus = true;
@@ -67,7 +67,7 @@ public class OcopTypeController : ControllerBase
         var allOcopTypes = await _typeService.ListAllAsync();
         if (allOcopTypes != null && allOcopTypes.Any(ot => ot.OcopTypeName == updateOcopTypeRequest.OcopTypeName && ot.Id != updateOcopTypeRequest.Id))
         {
-            return this.ApiError("Ocop type already exists.");
+            return this.ApiError("Ocop type name already exists.");
         }
         existingOcopType.OcopTypeName = updateOcopTypeRequest.OcopTypeName;
 
