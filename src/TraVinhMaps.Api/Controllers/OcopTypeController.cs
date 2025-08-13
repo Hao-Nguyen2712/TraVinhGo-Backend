@@ -78,4 +78,12 @@ public class OcopTypeController : ControllerBase
         await _typeService.UpdateAsync(existingOcopType);
         return this.ApiOk("Ocop type updated successfully.");
     }
+
+    [HttpGet]
+    [Route("CountOcopProductsByTypeId/{id}")]
+    public async Task<IActionResult> CountOcopProductsByTypeId(string id)
+    {
+        var count = await _typeService.CountOcopProductsByTypeIdAsync(id);
+        return this.ApiOk(count);
+    }
 }

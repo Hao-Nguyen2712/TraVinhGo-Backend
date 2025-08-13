@@ -1,12 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using TraVinhMaps.Application.Features.EventAndFestivalFeature.Interface;
 using TraVinhMaps.Application.Repositories;
 using TraVinhMaps.Domain.Entities;
@@ -82,11 +77,16 @@ public class EventAndFestivalService : IEventAndFestivalService
 
     public Task UpdateAsync(EventAndFestival entity, CancellationToken cancellationToken = default)
     {
-        return  _repository.UpdateAsync(entity, cancellationToken);
+        return _repository.UpdateAsync(entity, cancellationToken);
     }
 
     public async Task<Pagination<EventAndFestival>> GetEventAndFestivalPaging(EventAndFestivalSpecParams specParams, CancellationToken cancellationToken = default)
     {
         return await _repository.GetEventAndFestivalPaging(specParams, cancellationToken);
+    }
+
+    public async Task<IEnumerable<EventAndFestival>> SearchEventAndFestivalByNameAsync(string name, CancellationToken cancellationToken = default)
+    {
+        return await _repository.SearchEventAndFestivalByNameAsync(name, cancellationToken);
     }
 }

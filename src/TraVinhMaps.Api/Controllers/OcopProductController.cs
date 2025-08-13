@@ -9,7 +9,6 @@ using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Application.Common.Exceptions;
 using TraVinhMaps.Application.External;
 using TraVinhMaps.Application.Features.Company.Interface;
-using TraVinhMaps.Application.Features.Destination.Models;
 using TraVinhMaps.Application.Features.Markers.Interface;
 using TraVinhMaps.Application.Features.OcopProduct;
 using TraVinhMaps.Application.Features.OcopProduct.Interface;
@@ -683,5 +682,11 @@ public class OcopProductController : ControllerBase
                 }
         };
         return this.ApiOk(response);
+    }
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchOcopProductByName(string name)
+    {
+        var listOcopProduct = await _service.SearchOcopProductByNameAsync(name);
+        return this.ApiOk(listOcopProduct);
     }
 }
