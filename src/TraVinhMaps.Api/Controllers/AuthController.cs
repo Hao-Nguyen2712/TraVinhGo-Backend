@@ -84,7 +84,8 @@ public class AuthController : ControllerBase
         }
         // Send SignalR for dashboard
         await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
-            
+        await _hubContext.Clients.Group("super-admin").SendAsync("ChartAnalytics");
+
         return this.ApiOk(JsonConvert.SerializeObject(result), "OTP verified successfully");
     }
 

@@ -3015,7 +3015,7 @@
     "vi": "Tên địa điểm"
   },
   "vi:tên địa điểm": {
-    "en": "Name of Location"
+    "en": "Location Name"
   },
   "en:address": {
     "vi": "Địa chỉ"
@@ -3736,6 +3736,177 @@
   },
   "vi:không thể gửi lại mã xác minh. vui lòng thử lại.": {
     "en": "Failed to resend verification code. Please try again."
+  },
+  "en:15 hrs ago": {
+    "vi": "15 giờ trước"
+  },
+  "vi:15 giờ trước": {
+    "en": "15 hrs ago"
+  },
+  "en:1 days ago": {
+    "vi": "1 ngày trước"
+  },
+  "vi:1 ngày trước": {
+    "en": "1 days ago"
+  },
+  "en:destinations statistics": {
+    "vi": "Thống kê điểm đến"
+  },
+  "vi:thống kê điểm đến": {
+    "en": "Destinations statistics"
+  },
+  "en:overview": {
+    "vi": "Tổng quan"
+  },
+  "vi:tổng quan": {
+    "en": "Overview"
+  },
+  "en:total destinations:": {
+    "vi": "Tổng số điểm đến:"
+  },
+  "vi:tổng số điểm đến:": {
+    "en": "Total Destinations:"
+  },
+  "en:total views:": {
+    "vi": "Tổng lượt xem:"
+  },
+  "vi:tổng lượt xem:": {
+    "en": "Total Views:"
+  },
+  "en:total interactions:": {
+    "vi": "Tổng lượt tương tác:"
+  },
+  "vi:tổng lượt tương tác:": {
+    "en": "Total Interactions:"
+  },
+  "en:total favorites:": {
+    "vi": "Tổng lượt yêu thích:"
+  },
+  "vi:tổng lượt yêu thích:": {
+    "en": "Total Favorites:"
+  },
+  "en:destinations – views, interactions, favorites": {
+    "vi": "Điểm đến – Lượt xem, Tương tác, Yêu thích"
+  },
+  "vi:điểm đến – lượt xem, tương tác, yêu thích": {
+    "en": "Destinations – Views, Interactions, Favorites"
+  },
+  "en:quick filter": {
+    "vi": "Bộ lọc nhanh"
+  },
+  "vi:bộ lọc nhanh": {
+    "en": "Quick Filter"
+  },
+  "en:this week": {
+    "vi": "Tuần này"
+  },
+  "vi:tuần này": {
+    "en": "This Week"
+  },
+  "en:this month": {
+    "vi": "Tháng này"
+  },
+  "vi:tháng này": {
+    "en": "This Month"
+  },
+  "en:this year": {
+    "vi": "Năm nay"
+  },
+  "vi:năm nay": {
+    "en": "This Year"
+  },
+  "en:start date": {
+    "vi": "Ngày bắt đầu"
+  },
+  "vi:ngày bắt đầu": {
+    "en": "Start Date"
+  },
+  "en:end date": {
+    "vi": "Ngày kết thúc"
+  },
+  "vi:ngày kết thúc": {
+    "en": "End Date"
+  },
+  "en:filter": {
+    "vi": "Lọc"
+  },
+  "vi:lọc": {
+    "en": "Filter"
+  },
+  "en:reset": {
+    "vi": "Đặt lại"
+  },
+  "vi:đặt lại": {
+    "en": "Reset"
+  },
+  "en:download png": {
+    "vi": "Tải xuống PNG"
+  },
+  "vi:tải xuống png": {
+    "en": "Download PNG"
+  },
+  "en:download csv": {
+    "vi": "Tải xuống CSV"
+  },
+  "vi:tải xuống csv": {
+    "en": "Download CSV"
+  },
+  "en:download": {
+    "vi": "Tải xuống"
+  },
+  "vi:tải xuống": {
+    "en": "Download"
+  },
+  "en:demographic analysis": {
+    "vi": "Phân tích nhân khẩu học"
+  },
+  "vi:phân tích nhân khẩu học": {
+    "en": "Demographic Analysis"
+  },
+  "en:compare": {
+    "vi": "So sánh"
+  },
+  "vi:so sánh": {
+    "en": "Compare"
+  },
+  "en:select destinations": {
+    "vi": "Chọn điểm đến"
+  },
+  "vi:chọn điểm đến": {
+    "en": "Select destinations"
+  },
+  "en:location name": {
+    "vi": "Tên địa điểm"
+  },
+  "en:ocop statistics": {
+    "vi": "Thống kê OCOP"
+  },
+  "vi:thống kê ocop": {
+    "en": "OCOP Statistics"
+  },
+  "en:ocop analytics": {
+    "vi": "Phân tích OCOP"
+  },
+  "vi:phân tích ocop": {
+    "en": "Ocop Analytics"
+  },
+  "en:ocop products – views, interactions, favorites": {
+    "vi": "Sản phẩm OCOP – Lượt xem, Tương tác, Yêu thích"
+  },
+  "vi:sản phẩm ocop – lượt xem, tương tác, yêu thích": {
+    "en": "OCOP Products – Views, Interactions, Favorites"
+  },
+  "en:dầu dừa nguyên chất phương huỳnh  (dầu dừa kokofi)": {
+    "vi": "Dầu dừa nguyên chất Phương Huỳnh (Dầu dừa KOKOFI)"
+  },
+  "vi:dầu dừa nguyên chất phương huỳnh (dầu dừa kokofi)": {
+    "en": "Dầu dừa nguyên chất Phương Huỳnh  (Dầu dừa KOKOFI)"
+  },
+  "en:select products": {
+    "vi": "Chọn sản phẩm"
+  },
+  "vi:chọn sản phẩm": {
+    "en": "Select products"
   },
   "en:23 hrs ago": {
     "vi": "23 giờ trước"
