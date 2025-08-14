@@ -1,0 +1,6 @@
+services:
+  travinhmaps.api:
+    image: ${DOCKER_REGISTRY-}travinhmapsapi
+    build:
+      context: .
+      dockerfile: src/TraVinhMaps.Api/Dockerfile

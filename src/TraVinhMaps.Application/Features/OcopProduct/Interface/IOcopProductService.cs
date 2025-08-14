@@ -1,10 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using Microsoft.VisualBasic;
 using TraVinhMaps.Application.Features.OcopProduct.Models;
 using TraVinhMaps.Domain.Entities;
 using TraVinhMaps.Domain.Specs;
@@ -35,10 +32,11 @@ public interface IOcopProductService
     // Top Interacted OCOP Products
     Task<IEnumerable<OcopProductAnalytics>> GetTopProductsByInteractionsAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
     // Top Wishlisted OCOP Products
-    Task<IEnumerable<OcopProductAnalytics>> GetTopProductsByFavoritesAsync(int top =5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
+    Task<IEnumerable<OcopProductAnalytics>> GetTopProductsByFavoritesAsync(int top = 5, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
     // OCOP Product Comparison
     Task<IEnumerable<OcopProductAnalytics>> CompareProductsAsync(IEnumerable<string> productIds, string timeRange = "month", DateTime? startDate = null, DateTime? endDate = null, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.OcopProduct>> GetOcopProductsByIds(List<string> idList, CancellationToken cancellationToken = default);
     Task<IEnumerable<Domain.Entities.OcopProduct>> GetCurrentOcopProduct(CancellationToken cancellationToken = default);
     Task<Pagination<Domain.Entities.OcopProduct>> GetOcopProductPaging(OcopProductSpecParams specParams, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Domain.Entities.OcopProduct>> SearchOcopProductByNameAsync(string name, CancellationToken cancellationToken = default);
 }

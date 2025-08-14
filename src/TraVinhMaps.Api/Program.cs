@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using TraVinhMaps.Api.AuthenticationHandlers;
-using TraVinhMaps.Api.Extensions;
 using TraVinhMaps.Api.Hubs;
 using TraVinhMaps.Api.Middlewares;
 using TraVinhMaps.Application;
@@ -63,13 +62,12 @@ builder.Services.AddCors(options =>
 
     options.AddPolicy("AllowSpecificOrigin", policy =>
     {
-        policy.WithOrigins("http://localhost:5280")
+        policy.WithOrigins("http://localhost:5280", "https://localhost:7137")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
     });
 });
-
 
 // layer di
 builder.Services.AddInfrastructure();
@@ -205,34 +203,21 @@ if (FirebaseApp.DefaultInstance == null)
     });
 }
 
-
-
 // rate limiter configuration
-builder.Services.AddRateLimiter(rateLimiterOption =>
+builder.Services.AddRateLimiter(options =>
 {
-    rateLimiterOption.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(context =>
-        RateLimitPartition.GetFixedWindowLimiter(
-            partitionKey: GetPartitionKeyExtension.GetPartitionKey(context),
-            factory: partition => new FixedWindowRateLimiterOptions
-            {
-                AutoReplenishment = true,
-                PermitLimit = 100,
-                Window = TimeSpan.FromMinutes(1),
-                QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
-                QueueLimit = 10  // Queue 10 requests khi limit exceeded
-            }));
-
-    // Custom rejection handler
-    rateLimiterOption.OnRejected = async (context, token) =>
-    {
-        context.HttpContext.Response.StatusCode = 429;
-        await context.HttpContext.Response.WriteAsJsonAsync(new
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("global", httpContext =>
+    RateLimitPartition.GetFixedWindowLimiter(
+        partitionKey: httpContext.Connection.RemoteIpAddress?.ToString(),
+        factory: _ => new FixedWindowRateLimiterOptions
         {
-            error = "Rate limit exceeded",
-            message = $"Too many requests for partition: {GetPartitionKeyExtension.GetPartitionKey(context.HttpContext)}",
-            retryAfter = 60
-        }, cancellationToken: token);
-    };
+            PermitLimit = 10, // Maximum number of requests allowed in the time window
+            Window = TimeSpan.FromMinutes(1), // Time window duration
+            QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
+            QueueLimit = 10 // Maximum number of requests that can be queued
+        }
+        ));
 });
 
 var app = builder.Build();
@@ -265,14 +250,13 @@ app.UseHttpsRedirection();
 // Enable CORS for all origins
 //app.UseCors("AllowAll");
 app.UseCors("AllowSpecificOrigin");
+app.UseRateLimiter();
 app.UseAuthentication();
 // Add our custom authentication response handler
 app.UseMiddleware<CustomAuthenticationMiddleware>();
 app.UseAuthorization();
 
-app.UseRateLimiter();
-
-app.MapControllers();
+app.MapControllers().RequireRateLimiting("global");
 // SignalR
 app.MapHub<DashboardHub>("/dashboardHub").RequireCors("AllowSpecificOrigin");
 

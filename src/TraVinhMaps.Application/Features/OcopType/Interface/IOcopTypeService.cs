@@ -17,4 +17,5 @@ public interface IOcopTypeService
     Task<Domain.Entities.OcopType> AddAsync(Domain.Entities.OcopType entity, CancellationToken cancellationToken = default);
     Task UpdateAsync(Domain.Entities.OcopType entity, CancellationToken cancellationToken = default);
     Task<long> CountAsync(Expression<Func<Domain.Entities.OcopType, bool>> predicate = null, CancellationToken cancellationToken = default);
+    Task<int> CountOcopProductsByTypeIdAsync(string typeId, CancellationToken cancellationToken = default);
 }

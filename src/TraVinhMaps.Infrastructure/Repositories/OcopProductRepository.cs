@@ -700,4 +700,12 @@ public class OcopProductRepository : BaseRepository<OcopProduct>, IOcopProductRe
                     .ToListAsync(cancellationToken);
         }
     }
+
+    public async Task<IEnumerable<OcopProduct>> SearchOcopProductByNameAsync(string name, CancellationToken cancellationToken = default)
+    {
+        var nameFilter = Builders<OcopProduct>.Filter.Regex(p => p.ProductName, new BsonRegularExpression(name, "i"));
+        var statusFilter = Builders<OcopProduct>.Filter.Eq(s => s.Status, true);
+        var filter = Builders<OcopProduct>.Filter.And(nameFilter, statusFilter);
+        return await _collection.Find(filter).ToListAsync(cancellationToken);
+    }
 }

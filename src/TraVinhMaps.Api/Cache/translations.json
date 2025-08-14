@@ -3907,5 +3907,35 @@
   },
   "vi:chọn sản phẩm": {
     "en": "Select products"
+  },
+  "en:23 hrs ago": {
+    "vi": "23 giờ trước"
+  },
+  "vi:23 giờ trước": {
+    "en": "23 hrs ago"
+  },
+  "en:local specialties management": {
+    "vi": "Quản lý đặc sản địa phương"
+  },
+  "vi:quản lý đặc sản địa phương": {
+    "en": "Local Specialties Management"
+  },
+  "en:local specialties list": {
+    "vi": "Danh sách đặc sản địa phương"
+  },
+  "vi:danh sách đặc sản địa phương": {
+    "en": "Local Specialties List"
+  },
+  "en:create local specialties": {
+    "vi": "Tạo đặc sản địa phương"
+  },
+  "vi:tạo đặc sản địa phương": {
+    "en": "Create Local Specialties"
+  },
+  "en:name of localspecialties": {
+    "vi": "Tên đặc sản địa phương"
+  },
+  "vi:tên đặc sản địa phương": {
+    "en": "Name of LocalSpecialties"
   }
 }
