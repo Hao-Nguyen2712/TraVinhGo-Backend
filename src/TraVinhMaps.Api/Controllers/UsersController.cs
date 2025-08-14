@@ -312,6 +312,8 @@ public class UsersController : ControllerBase
     {
         if (await _userService.addItemToFavoriteList(favoriteRequest))
         {
+            await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
+            await _hubContext.Clients.Group("super-admin").SendAsync("ChartAnalytics");
             return this.ApiOk("", "Add item to favorite list successfully");
         }
         return this.ApiError("Failed to add item to favorite list", HttpStatusCode.BadRequest);
@@ -324,6 +326,8 @@ public class UsersController : ControllerBase
     {
         if (await _userService.removeItemToFavoriteList(id))
         {
+            await _hubContext.Clients.Group("admin").SendAsync("ChartAnalytics");
+            await _hubContext.Clients.Group("super-admin").SendAsync("ChartAnalytics");
             return this.ApiOk("", "Remove item to favorite list successfully");
         }
         return this.ApiError("Failed to remove item from favorite list", HttpStatusCode.BadRequest);
