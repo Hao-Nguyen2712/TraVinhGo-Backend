@@ -4,6 +4,7 @@ It provides RESTful APIs for the Admin Web and Mobile App, built with Clean Arch
 
 ## 🛠 Tech Stack
 - **.NET 8** (ASP.NET Core Web API)
+- **Clean Architecture**
 - **MongoDB**, **Redis**
 - **JWT & Session Authentication**
 - **SignalR**
